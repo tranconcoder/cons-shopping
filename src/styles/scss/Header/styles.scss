@@ -1,0 +1,28 @@
+@import "../_package/index.scss";
+
+.header-wrapper {
+	display: flex;
+	justify-content: center;
+	width: 100vw;
+	height: $headerHeight;
+	box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+	background-color: $whiteColor;
+
+	.header-container {
+		display: flex;
+		align-items: center;
+		gap: 20px;
+		width: 1200px;
+		max-width: 100vw;
+		height: $headerHeight;
+
+		// LOGO
+		@import "./_logo";
+
+		// Center slide
+		@import "./_center-slide";
+
+		// User profile
+		@import "./user-profile";
+	}
+}
