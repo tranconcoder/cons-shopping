@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="./src/styles/css/Header/styles.css"/>
+<link rel="stylesheet" href="./src/styles/css/Header/styles.css" />
 <header class="header-wrapper">
 	<div class="header-container">
 		<?php
@@ -11,6 +11,6 @@
   // User profile
   include "./src/views/Header/user-profile.php";
   ?>
-
 	</div>
 </header>
+<script src="./src/assets/js/Header.js"></script>
