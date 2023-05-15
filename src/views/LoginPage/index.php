@@ -6,6 +6,7 @@
 		<title>Đăng nhập tài khoản</title>
 		<link rel="stylesheet" href="../../styles/css/HomePage/styles.css" />
 		<link rel="stylesheet" href="../../styles/css/LoginPage/styles.css" />
+		<script src="../../assets/js/LoginPage.js" defer></script>
 	</head>
 	<body>
 		<div class="container">
@@ -23,20 +24,28 @@
 
 					<div class="input-ctn">
 						<div class="username">
-							<input
-								type="text"
-								name="username"
-								placeholder=" "
-							/>
-							<p class="placeholder">Điền tên đăng nhập...</p>
+							<div class="input-wrapper">
+								<input
+									id="username-input"
+									type="text"
+									name="username"
+									placeholder=" "
+								/>
+								<p class="placeholder">Điền tên đăng nhập...</p>
+							</div>
+							<p class="error-message"></p>
 						</div>
 						<div class="password">
-							<input
-								type="password"
-								name="password"
-								placeholder=" "
-							/>
-							<p class="placeholder">Nhập mật khẩu...</p>
+							<div class="input-wrapper">
+								<input
+									id="password-input"
+									type="password"
+									name="password"
+									placeholder=" "
+								/>
+								<p class="placeholder">Nhập mật khẩu...</p>
+							</div>
+							<p class="error-message"></p>
 						</div>
 					</div>
 
@@ -48,7 +57,7 @@
 
 			<img
 				class="background"
-				src="../../assets/images/LoginPage/backgrond.jpg"
+				src="../../assets/images/LoginPage/background.jpg"
 				alt="background"
 			/>
 		</div>
