@@ -42,18 +42,31 @@
 			flex-direction: column;
 			align-items: stretch;
 			justify-content: center;
+			padding-right: 15px;
 
 			.title {
 				font-size: 28px;
 				text-align: center;
 				color: $primaryColor;
+				margin-bottom: 30px;
 			}
 
 			.input-ctn {
 				.username,
 				.password {
 					position: relative;
-					margin-top: 30px;
+					margin-top: 34px;
+
+					.placeholder {
+						font-size: 16px;
+						color: #444;
+						position: absolute;
+						left: 10px;
+						top: 50%;
+						transform: translateY(-50%);
+						pointer-events: none;
+						transition: all ease 300ms;
+					}
 
 					input {
 						width: 100%;
@@ -73,19 +86,39 @@
 							-webkit-box-shadow: 0 0 0 30px white inset !important;
 						}
 
+						&:not(:placeholder-shown),
 						&:focus {
 							border-color: $primaryColor;
+
+							& + .placeholder {
+								top: 0;
+								transform: translateY(calc(-100% - 5px));
+							}
 						}
 					}
+				}
+			}
 
-					.placeholder {
-						font-size: 15px;
-						color: #444;
-						position: absolute;
-						left: 10px;
-						top: 50%;
-						transform: translateY(-50%);
-						pointer-events: none;
+			.submit-button {
+				background-color: $primaryColor;
+				border: 2px solid $primaryColor;
+				height: 50px;
+				margin-top: 20px;
+				border-radius: 6px;
+				transition: all ease 300ms;
+
+				p {
+					color: $whiteColor;
+					font-size: 16px;
+					font-weight: 600;
+				}
+
+				&:hover {
+					cursor: pointer;
+					background-color: $whiteColor;
+
+					p {
+						color: $primaryColor;
 					}
 				}
 			}

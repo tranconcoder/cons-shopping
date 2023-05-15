@@ -40,7 +40,7 @@
 						</div>
 					</div>
 
-					<button type="submit">
+					<button class="submit-button" type="submit">
 						<p>Đăng nhập</p>
 					</button>
 				</form>
