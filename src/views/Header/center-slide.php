@@ -11,7 +11,26 @@
 			<div class="search-box">
 				<section class="viewed-products">
 					<span>Sản phẩm đã xem</span>
-					<ul class="viewed-products__list"></ul>
+					<ul class="viewed-products__list">
+						<?php
+      $sql = 'SELECT * FROM product';
+      $phoneList = $conn->query($sql);
+
+      if ($phoneList->num_rows > 0) {
+      	// output data of each row
+      	while ($row = $phoneList->fetch_assoc()) { ?>
+			<li>
+
+				<img src="./src/assets/images/<?= $row['images'] ?>" />
+				<h4><?= $row['label'] ?></h4>
+			</li>
+		<?php }
+      } else {
+      	echo '0 results';
+      }
+      $conn->close();
+      ?>	
+					</ul>
 				</section>
 
 				<section class="history">
@@ -37,8 +56,7 @@
 					</p>
 
 					<ul>
-						<li></li>
-					</ul>
+									</ul>
 				</section>
 			</div>
 		</div>

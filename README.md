@@ -1,5 +1,3 @@
-# cons-shopping
-
 <div class="center-slide">
   <div class="search-bar">
     <div class="input-ctn">
@@ -11,7 +9,11 @@
       <i class="search-icon fa-solid fa-magnifying-glass"></i>
 
       <div class="search-box">
-        <section class="viewed-products"></section>
+        <section class="viewed-products">
+          <ul>
+
+          </ul>
+        </section>
 
         <section class="history">
           <p class="label-ctn">

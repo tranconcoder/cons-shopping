@@ -3,14 +3,13 @@
 	<div class="header-container">
 		<?php
   //LOGO
-  include "./src/views/Header/logo.php";
+  include './src/views/Header/logo.php';
 
   // Center slide
-  include "./src/views/Header/center-slide.php";
+  include './src/views/Header/center-slide.php';
 
   // User profile
-  include "./src/views/Header/user-profile.php";
+  include './src/views/Header/user-profile.php';
   ?>
 	</div>
 </header>
-<script src="./src/assets/js/Header.js"></script>
