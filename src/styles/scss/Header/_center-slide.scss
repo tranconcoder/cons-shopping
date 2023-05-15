@@ -120,6 +120,26 @@
 							padding-right: 4px;
 						}
 					}
+
+					ul {
+						padding-block: 5px;
+						cursor: pointer;
+
+						li {
+							font-size: 15px;
+							font-family: Roboto;
+							line-height: 30px;
+							display: block;
+
+							&:hover {
+								background-color: #eee;
+							}
+
+							p {
+								padding-left: 10px;
+							}
+						}
+					}
 				}
 			}
 		}

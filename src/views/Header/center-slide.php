@@ -12,24 +12,19 @@
 				<section class="viewed-products">
 					<span>Sản phẩm đã xem</span>
 					<ul class="viewed-products__list">
-						<?php
-      $sql = 'SELECT * FROM product';
-      $phoneList = $conn->query($sql);
+<?php
+include_once "./src/config/db/connect.php";
 
-      if ($phoneList->num_rows > 0) {
-      	// output data of each row
-      	while ($row = $phoneList->fetch_assoc()) { ?>
-			<li>
+$db = new DatabaseSQL();
+$phoneList = $db->query("SELECT * FROM product");
 
-				<img src="./src/assets/images/<?= $row['images'] ?>" />
-				<h4><?= $row['label'] ?></h4>
-			</li>
-		<?php }
-      } else {
-      	echo '0 results';
-      }
-      $conn->close();
-      ?>	
+foreach ($phoneList as $phone) { ?>
+	<li>
+		<img src="<?= $phone["images"] ?>" alt="<?= $phone["label"] ?>">
+		<h4><?= $phone["label"] ?></h4>
+	</li>
+<?php }
+?>
 					</ul>
 				</section>
 
@@ -43,9 +38,12 @@
 					</p>
 
 					<ul>
-						<li>Iphone 14 Pro Max</li>
-						<li>Samsung S23 Ultra</li>
-						<li>Mi 13 Pro</li>
+<?php
+$historyList = $db->query("SELECT * FROM `search-history`");
+foreach ($historyList as $history) { ?>
+	<li><p><?= $history["content"] ?></p></li>
+<?php }
+?>
 					</ul>
 				</section>
 
@@ -56,7 +54,9 @@
 					</p>
 
 					<ul>
-									</ul>
+						<li><p>Iphone 14 Pro Max</p></li>
+						<li><p>Sản phẩm bán chạy</p></li>
+					</ul>
 				</section>
 			</div>
 		</div>

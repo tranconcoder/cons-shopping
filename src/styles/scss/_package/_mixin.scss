@@ -1,0 +1,9 @@
+@mixin setPrimaryGradientColor() {
+	background: -webkit-linear-gradient(
+		180deg,
+		$primaryColorBlack,
+		$primaryColor
+	);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}

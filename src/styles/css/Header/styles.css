@@ -108,5 +108,21 @@
             .header-wrapper .header-container .center-slide .search-bar .input-ctn .search-box .history .label-ctn i,
             .header-wrapper .header-container .center-slide .search-bar .input-ctn .search-box .suggest-ctn .label-ctn i {
               padding-right: 4px; }
+          .header-wrapper .header-container .center-slide .search-bar .input-ctn .search-box .history ul,
+          .header-wrapper .header-container .center-slide .search-bar .input-ctn .search-box .suggest-ctn ul {
+            padding-block: 5px;
+            cursor: pointer; }
+            .header-wrapper .header-container .center-slide .search-bar .input-ctn .search-box .history ul li,
+            .header-wrapper .header-container .center-slide .search-bar .input-ctn .search-box .suggest-ctn ul li {
+              font-size: 15px;
+              font-family: Roboto;
+              line-height: 30px;
+              display: block; }
+              .header-wrapper .header-container .center-slide .search-bar .input-ctn .search-box .history ul li:hover,
+              .header-wrapper .header-container .center-slide .search-bar .input-ctn .search-box .suggest-ctn ul li:hover {
+                background-color: #eee; }
+              .header-wrapper .header-container .center-slide .search-bar .input-ctn .search-box .history ul li p,
+              .header-wrapper .header-container .center-slide .search-bar .input-ctn .search-box .suggest-ctn ul li p {
+                padding-left: 10px; }
     .header-wrapper .header-container .user-profile {
       width: 300px; }

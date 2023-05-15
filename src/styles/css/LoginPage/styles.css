@@ -1,0 +1,80 @@
+.container .login-box {
+  width: 1000px;
+  height: 650px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #ffffff;
+  border-radius: 15px;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.3);
+  z-index: 2;
+  padding: 15px;
+  display: flex; }
+  .container .login-box .banner-ctn {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    width: 60%; }
+    .container .login-box .banner-ctn > img {
+      width: 100%; }
+    .container .login-box .banner-ctn h4 {
+      background: -webkit-linear-gradient(180deg, #006bb3, #0099ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      position: relative;
+      top: 10px;
+      font-size: 24px;
+      text-align: center; }
+  .container .login-box .form-ctn {
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: center; }
+    .container .login-box .form-ctn .title {
+      font-size: 28px;
+      text-align: center;
+      color: #0099ff; }
+    .container .login-box .form-ctn .input-ctn .username,
+    .container .login-box .form-ctn .input-ctn .password {
+      position: relative;
+      margin-top: 30px; }
+      .container .login-box .form-ctn .input-ctn .username input,
+      .container .login-box .form-ctn .input-ctn .password input {
+        width: 100%;
+        height: 50px;
+        border-radius: 6px;
+        border: 2px solid #ccc;
+        padding-inline: 10px;
+        font-size: 15px;
+        outline: none;
+        transition: all ease 300ms; }
+        .container .login-box .form-ctn .input-ctn .username input:-webkit-autofill, .container .login-box .form-ctn .input-ctn .username input:-webkit-autofill:hover, .container .login-box .form-ctn .input-ctn .username input:-webkit-autofill:focus, .container .login-box .form-ctn .input-ctn .username input:-webkit-autofill:active,
+        .container .login-box .form-ctn .input-ctn .password input:-webkit-autofill,
+        .container .login-box .form-ctn .input-ctn .password input:-webkit-autofill:hover,
+        .container .login-box .form-ctn .input-ctn .password input:-webkit-autofill:focus,
+        .container .login-box .form-ctn .input-ctn .password input:-webkit-autofill:active {
+          -webkit-box-shadow: 0 0 0 30px white inset !important; }
+        .container .login-box .form-ctn .input-ctn .username input:focus,
+        .container .login-box .form-ctn .input-ctn .password input:focus {
+          border-color: #0099ff; }
+      .container .login-box .form-ctn .input-ctn .username .placeholder,
+      .container .login-box .form-ctn .input-ctn .password .placeholder {
+        font-size: 15px;
+        color: #444;
+        position: absolute;
+        left: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        pointer-events: none; }
+
+.container .background {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  object-fit: cover;
+  filter: blur(5px); }
