@@ -1,10 +1,10 @@
 <?php
 class DatabaseSQL
 {
-	private $serverName = "localhost";
-	private $username = "root";
-	private $password = "Anhnam9ce";
-	private $databaseName = "CONS-Store";
+	private $serverName = 'localhost';
+	private $username = 'root';
+	private $password = 'Anhnam9ce';
+	private $databaseName = 'CONS-Store';
 	private $conn;
 
 	function __construct()
@@ -17,11 +17,11 @@ class DatabaseSQL
 		);
 
 		if ($this->conn->connect_error) {
-			exit("Connect to database failed!");
+			exit('Connect to database failed!');
 		}
 	}
 
-	public function query(string $sqlString = "")
+	protected function query(string $sqlString = '')
 	{
 		$data = mysqli_query($this->conn, $sqlString);
 		$result = [];
@@ -31,6 +31,7 @@ class DatabaseSQL
 				array_push($result, $row);
 			}
 		}
+
 		return $result;
 	}
 }

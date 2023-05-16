@@ -1,2 +1,16 @@
-@import "./reset";
-@import "./fonts";
+@import './reset';
+@import './fonts';
+@import '../_package/index.scss';
+
+.container {
+	width: $layoutWidth;
+	max-width: 100vw;
+	min-height: calc(100vh - $headerHeight);
+	margin-inline: auto;
+	display: block;
+	margin-top: $headerHeight;
+	padding-top: 10px;
+	z-index: 1;
+
+	@import './hero';
+}

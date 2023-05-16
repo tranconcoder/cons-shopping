@@ -1,1 +1,3 @@
-<div class="hero-ctn">123</div>
+<div class="hero-ctn">
+	<?php include "./src/views/HomePage/images-slider.php"; ?>
+</div>

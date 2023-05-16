@@ -1,4 +1,6 @@
 <!-- SEARCH BAR -->
+<?php $searchBar = new SearchBar(); ?>
+
 <div class="search-bar">
 	<div class="input-ctn">
 		<input
@@ -11,18 +13,7 @@
 			<section class="viewed-products">
 				<span>Sản phẩm đã xem</span>
 				<ul class="viewed-products__list">
-					<?php
-     $db = new DatabaseSQL();
-     $phoneList = $db->query("SELECT * FROM product");
-     foreach ($phoneList as $phone) { ?>
-					<li>
-						<img src="<?= $phone["images"] ?>" alt="<?= $phone["label"] ?>">
-						<h4>
-							<?= $phone["label"] ?>
-						</h4>
-					</li>
-					<?php }
-     ?>
+					<?php $searchBar->renderPhoneList(); ?>
 				</ul>
 			</section>
 			<section class="history">
@@ -34,16 +25,7 @@
 					<span>Lịch sử tìm kiếm</span>
 				</p>
 				<ul>
-					<?php
-     $historyList = $db->query("SELECT * FROM `search-history`");
-     foreach ($historyList as $history) { ?>
-					<li>
-						<p>
-							<?= $history["content"] ?>
-						</p>
-					</li>
-					<?php }
-     ?>
+					<?php $searchBar->renderHistoryList(); ?>
 				</ul>
 			</section>
 			<section class="suggest-ctn">
