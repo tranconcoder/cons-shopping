@@ -1,5 +1,6 @@
 const usernameInput = document.getElementById("username-input");
 const passwordInput = document.getElementById("password-input");
+const formElm = document.querySelector(".form-ctn");
 
 const requiredNotify = "Không được để trống trường này!";
 const minLengthNotify = (n) => "Độ dài tối thiểu từ " + n + " ký tự!";
@@ -153,4 +154,19 @@ passwordInput.addEventListener("focusout", (e) => {
 	checkInputValues(e.target, {
 		secureLevel1: true,
 	});
+});
+
+formElm.addEventListener("submit", (e) => {
+	const usernameCheckResult = checkInputValues(usernameInput, {
+		minLength: 6,
+		maxLength: 24,
+		notSymbol: true,
+	});
+	const passwordCheckResult = checkInputValues(passwordInput, {
+		secureLevel1: true,
+	});
+
+	const allowSubmit = usernameCheckResult && passwordCheckResult;
+
+	if (!allowSubmit) e.preventDefault();
 });

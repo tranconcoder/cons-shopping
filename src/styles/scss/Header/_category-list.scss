@@ -1,0 +1,32 @@
+@import "../_package/index.scss";
+
+.category-ctn {
+	height: $headerHeight - $headerSearchBarHeight;
+
+	.category-list {
+		height: 100%;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		list-style-type: none;
+
+		.item {
+			&:hover {
+				a {
+					color: #333;
+				}
+			}
+
+			a {
+				color: $primaryColorBlack;
+				font-size: 14px;
+				text-decoration: none;
+				transition: all ease 300ms;
+
+				span {
+					margin-left: 6px;
+				}
+			}
+		}
+	}
+}

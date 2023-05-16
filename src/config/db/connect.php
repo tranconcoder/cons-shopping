@@ -21,11 +21,6 @@ class DatabaseSQL
 		}
 	}
 
-	function __destruct()
-	{
-		mysqli_close($this->conn);
-	}
-
 	public function query(string $sqlString = "")
 	{
 		$data = mysqli_query($this->conn, $sqlString);
@@ -36,7 +31,6 @@ class DatabaseSQL
 				array_push($result, $row);
 			}
 		}
-
 		return $result;
 	}
 }

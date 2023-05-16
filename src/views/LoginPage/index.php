@@ -52,6 +52,8 @@
 					<button class="submit-button" type="submit">
 						<p>Đăng nhập</p>
 					</button>
+
+<a href="../LoginPage" class="register-button"><p>Đăng ký</p></a>
 				</form>
 			</div>
 

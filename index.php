@@ -12,9 +12,9 @@
 	</head>
 	<body>
 		<!-- Header component -->
-		<?php 
-			include "./src/config/db/connect.php";
-			include "./src/views/HomePage/index.php";
-		?>
+		<?php
+  include_once "./src/config/db/connect.php";
+  include "./src/views/HomePage/index.php";
+  ?>
 	</body>
 </html>
