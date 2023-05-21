@@ -1,3 +1,36 @@
+@font-face {
+  font-family: Roboto;
+  font-weight: 300;
+  src: url("../../../assets/fonts/Roboto-Thin.ttf"); }
+
+@font-face {
+  font-family: Roboto;
+  font-weight: 400;
+  src: url("../../../assets/fonts/Roboto-Regular.ttf"); }
+
+@font-face {
+  font-family: Roboto;
+  font-weight: 500;
+  src: url("../../../assets/fonts/Roboto-Medium.ttf"); }
+
+@font-face {
+  font-family: Roboto;
+  font-weight: 700;
+  src: url("../../../assets/fonts/Roboto-Bold.ttf"); }
+
+@font-face {
+  font-family: Roboto;
+  font-weight: 900;
+  src: url("../../../assets/fonts/Roboto-Black.ttf"); }
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box; }
+
+body {
+  font-family: Roboto, sans-serif; }
+
 .header-wrapper {
   display: flex;
   justify-content: center;
@@ -16,6 +49,42 @@
     width: 1200px;
     max-width: 100vw;
     height: 90px; }
+
+@font-face {
+  .header-wrapper .header-container {
+    font-family: Roboto;
+    font-weight: 300;
+    src: url("../../../assets/fonts/Roboto-Thin.ttf"); } }
+
+@font-face {
+  .header-wrapper .header-container {
+    font-family: Roboto;
+    font-weight: 400;
+    src: url("../../../assets/fonts/Roboto-Regular.ttf"); } }
+
+@font-face {
+  .header-wrapper .header-container {
+    font-family: Roboto;
+    font-weight: 500;
+    src: url("../../../assets/fonts/Roboto-Medium.ttf"); } }
+
+@font-face {
+  .header-wrapper .header-container {
+    font-family: Roboto;
+    font-weight: 700;
+    src: url("../../../assets/fonts/Roboto-Bold.ttf"); } }
+
+@font-face {
+  .header-wrapper .header-container {
+    font-family: Roboto;
+    font-weight: 900;
+    src: url("../../../assets/fonts/Roboto-Black.ttf"); } }
+    .header-wrapper .header-container * {
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box; }
+    .header-wrapper .header-container body {
+      font-family: Roboto, sans-serif; }
     .header-wrapper .header-container .logo-container {
       width: 200px;
       text-align: center;
@@ -25,6 +94,42 @@
       background: -webkit-linear-gradient(180deg, #006bb3, #0099ff);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent; }
+
+@font-face {
+  .header-wrapper .header-container {
+    font-family: Roboto;
+    font-weight: 300;
+    src: url("../../../assets/fonts/Roboto-Thin.ttf"); } }
+
+@font-face {
+  .header-wrapper .header-container {
+    font-family: Roboto;
+    font-weight: 400;
+    src: url("../../../assets/fonts/Roboto-Regular.ttf"); } }
+
+@font-face {
+  .header-wrapper .header-container {
+    font-family: Roboto;
+    font-weight: 500;
+    src: url("../../../assets/fonts/Roboto-Medium.ttf"); } }
+
+@font-face {
+  .header-wrapper .header-container {
+    font-family: Roboto;
+    font-weight: 700;
+    src: url("../../../assets/fonts/Roboto-Bold.ttf"); } }
+
+@font-face {
+  .header-wrapper .header-container {
+    font-family: Roboto;
+    font-weight: 900;
+    src: url("../../../assets/fonts/Roboto-Black.ttf"); } }
+    .header-wrapper .header-container * {
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box; }
+    .header-wrapper .header-container body {
+      font-family: Roboto, sans-serif; }
     .header-wrapper .header-container .center-slide {
       flex: 1;
       align-self: flex-start; }
@@ -126,6 +231,42 @@
                 .header-wrapper .header-container .center-slide .search-bar .input-ctn .search-box .history ul li p,
                 .header-wrapper .header-container .center-slide .search-bar .input-ctn .search-box .suggest-ctn ul li p {
                   padding-left: 10px; }
+
+@font-face {
+  .header-wrapper .header-container .center-slide {
+    font-family: Roboto;
+    font-weight: 300;
+    src: url("../../../assets/fonts/Roboto-Thin.ttf"); } }
+
+@font-face {
+  .header-wrapper .header-container .center-slide {
+    font-family: Roboto;
+    font-weight: 400;
+    src: url("../../../assets/fonts/Roboto-Regular.ttf"); } }
+
+@font-face {
+  .header-wrapper .header-container .center-slide {
+    font-family: Roboto;
+    font-weight: 500;
+    src: url("../../../assets/fonts/Roboto-Medium.ttf"); } }
+
+@font-face {
+  .header-wrapper .header-container .center-slide {
+    font-family: Roboto;
+    font-weight: 700;
+    src: url("../../../assets/fonts/Roboto-Bold.ttf"); } }
+
+@font-face {
+  .header-wrapper .header-container .center-slide {
+    font-family: Roboto;
+    font-weight: 900;
+    src: url("../../../assets/fonts/Roboto-Black.ttf"); } }
+      .header-wrapper .header-container .center-slide * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box; }
+      .header-wrapper .header-container .center-slide body {
+        font-family: Roboto, sans-serif; }
       .header-wrapper .header-container .center-slide .category-ctn {
         height: 40px; }
         .header-wrapper .header-container .center-slide .category-ctn .category-list {
@@ -143,6 +284,42 @@
             transition: all ease 300ms; }
             .header-wrapper .header-container .center-slide .category-ctn .category-list .item a span {
               margin-left: 6px; }
+
+@font-face {
+  .header-wrapper .header-container {
+    font-family: Roboto;
+    font-weight: 300;
+    src: url("../../../assets/fonts/Roboto-Thin.ttf"); } }
+
+@font-face {
+  .header-wrapper .header-container {
+    font-family: Roboto;
+    font-weight: 400;
+    src: url("../../../assets/fonts/Roboto-Regular.ttf"); } }
+
+@font-face {
+  .header-wrapper .header-container {
+    font-family: Roboto;
+    font-weight: 500;
+    src: url("../../../assets/fonts/Roboto-Medium.ttf"); } }
+
+@font-face {
+  .header-wrapper .header-container {
+    font-family: Roboto;
+    font-weight: 700;
+    src: url("../../../assets/fonts/Roboto-Bold.ttf"); } }
+
+@font-face {
+  .header-wrapper .header-container {
+    font-family: Roboto;
+    font-weight: 900;
+    src: url("../../../assets/fonts/Roboto-Black.ttf"); } }
+    .header-wrapper .header-container * {
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box; }
+    .header-wrapper .header-container body {
+      font-family: Roboto, sans-serif; }
     .header-wrapper .header-container .user-profile {
       width: 300px; }
       .header-wrapper .header-container .user-profile .login-button {

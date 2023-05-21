@@ -1,18 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<link rel="stylesheet" href="./src/styles/css/HomePage/styles.css" />
-		<link
-			rel="stylesheet"
-			href="./src/assets/fontawesome-6.4.0/css/all.min.css"
-		/>
-		<title>CONS Shopping</title>
-	</head>
-	<body>
-		<!-- Header component -->
-		<?php require_once './src/classes/index.php'; ?>
-		<?php include './src/views/HomePage/index.php'; ?>
-	</body>
-</html>
+<?php
+include_once './src/config/db/connect.php';
+
+$page = 'home_page';
+$controllerName = 'HomePageController';
+$controllerFileName = 'HomePage.controller.php';
+
+if (isset($_GET['page'])) {
+	$page = $_GET['page'];
+}
+
+$controllerName = str_replace('_', '', ucwords($page, '_')) . 'Controller';
+$controllerFileName =
+	str_replace('_', '', ucwords($page, '_')) . '.controller.php';
+include_once './src/controllers/' . $controllerFileName;
+
+$controller = new $controllerName();
+$controller->invoke();

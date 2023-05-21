@@ -34,4 +34,11 @@ class DatabaseSQL
 
 		return $result;
 	}
+
+	protected function getAll(string $tableName)
+	{
+		$tableData = $this->query("SELECT * FROM `$tableName`");
+
+		return $tableData;
+	}
 }
