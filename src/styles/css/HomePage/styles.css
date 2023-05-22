@@ -34,7 +34,7 @@ body {
 .container {
   width: 1200px;
   max-width: 100vw;
-  min-height: calc(100vh - $headerHeight);
+  min-height: calc(100vh - 90px);
   margin-inline: auto;
   display: block;
   margin-top: 90px;
@@ -52,9 +52,10 @@ body {
       position: absolute;
       inset: 0;
       white-space: nowrap;
-      transition: all ease 300ms;
+      transition: all ease 700ms;
       display: flex;
-      align-items: center; }
+      align-items: center;
+      list-style: none; }
       .container .hero-ctn .image-slide-ctn .image-list > li {
         width: 100%;
         height: 100%;

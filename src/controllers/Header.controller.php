@@ -1,5 +1,5 @@
 <?php
-include_once './src/models/Header.model.php';
+include_once __DIR__ . './../models/Header.model.php';
 
 class HeaderController
 {
@@ -16,6 +16,6 @@ class HeaderController
 		$historyList = $this->model->getHistoryList();
 		$categoryList = $this->model->getCategoryList();
 
-		include_once './src/views/Header/index.php';
+		include_once __DIR__ . './../views/Header/index.php';
 	}
 }

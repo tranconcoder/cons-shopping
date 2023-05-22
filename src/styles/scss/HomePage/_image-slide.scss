@@ -11,9 +11,10 @@
 		position: absolute;
 		inset: 0;
 		white-space: nowrap;
-		transition: all ease 300ms;
+		transition: all ease 700ms;
 		display: flex;
 		align-items: center;
+		list-style: none;
 
 		> li {
 			width: 100%;

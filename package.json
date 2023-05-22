@@ -4,7 +4,7 @@
 	"description": "",
 	"main": "index.js",
 	"scripts": {
-		"watch": "node-sass --watch ./src/styles/scss/ -o ./src/styles/css",
+		"watch": "node-sass --watch --style=compressed ./src/styles/scss/ -o ./src/styles/css",
 		"test": "echo \"Error: no test specified\" && exit 1"
 	},
 	"author": "",

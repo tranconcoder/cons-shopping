@@ -18,9 +18,9 @@
 	<body>
 		<div class="container">
 			<?php $headerCtrl->invoke(); ?>
-		
-			<div class="body">
-				<?php include './src/views/HomePage/hero.php'; ?>
+			
+			<div class="body">	
+				<?php include_once __DIR__ . '/' . './hero.php'; ?>
 			</div>
 		</div>
 	</body>

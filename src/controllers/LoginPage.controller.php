@@ -1,5 +1,5 @@
 <?php
-include_once './src/models/LoginPage.model.php';
+include_once __DIR__ . './../models/LoginPage.model.php';
 
 class LoginPageController
 {

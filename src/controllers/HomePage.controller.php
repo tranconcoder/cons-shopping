@@ -1,6 +1,6 @@
 <?php
-include_once './src/models/HomePage.model.php';
-include_once './src/controllers/Header.controller.php';
+include_once __DIR__ . './../models/HomePage.model.php';
+include_once __DIR__ . './../controllers/Header.controller.php';
 
 class HomePageController
 {

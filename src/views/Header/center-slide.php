@@ -1,4 +1,4 @@
 <div class="center-slide">
-	<?php include "./src/views/Header/search-bar.php"; ?>
-	<?php include "./src/views/Header/category-list.php"; ?>
+	<?php include_once __DIR__ . '/' . './search-bar.php'; ?>
+	<?php include_once __DIR__ . '/' . './category-list.php'; ?>
 </div>

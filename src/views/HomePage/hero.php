@@ -1,3 +1,3 @@
 <div class="hero-ctn">
-	<?php include "./src/views/HomePage/images-slider.php"; ?>
+	<?php include_once __DIR__ . '/' . './images-slider.php'; ?>
 </div>

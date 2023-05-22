@@ -13,11 +13,11 @@ class ImageSlide {
 
 	private currentImageIndex = 0;
 	// Auto next image each 10s
-	private readonly TIME_CHANGE_IMAGE = 3 * 1000;
+	private readonly TIME_CHANGE_IMAGE = 10 * 1000;
 	private readonly IMAGE_COUNT: number;
 
-	// Enviroment variable
-	private autoChangeImageIntervalId: number = 0;
+	// Environment variable
+	private autoChangeImageIntervalId: number = -1;
 
 	constructor() {
 		this.imageSlideElm = $('.image-slide-ctn');
@@ -113,7 +113,7 @@ class ImageSlide {
 		// Reset auto next image interval
 		this.setIntervalAutoChangeImage();
 
-		// Set new image list postion
+		// Set new image list position
 		this.imageListElm.style.transform = `translateX(-${
 			this.currentImageIndex * 100
 		}%)`;
@@ -124,11 +124,11 @@ class ImageSlide {
 		currentActiveDot.classList.remove('active');
 
 		// Set new active dot
-		const newAcitveDot = $(
+		const newActiveDot = $(
 			`.dot[data-index="${this.currentImageIndex}"`,
 			this.imageSlideElm
 		);
-		newAcitveDot.classList.add('active');
+		newActiveDot.classList.add('active');
 	}
 
 	private handleClickProgressBar(e: MouseEvent) {
