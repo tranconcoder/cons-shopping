@@ -3,17 +3,22 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+		<!-- Styles -->
+		<link rel="stylesheet" href="./src/styles/css/HomePage/styles.css" />
+		<link rel="stylesheet" href="./src/styles/css/LoginPage/styles.css" />
+
+		<!-- Script -->
+		<script src="./src/assets/js/LoginPage.js" defer></script>
+
 		<title>Đăng nhập tài khoản</title>
-		<link rel="stylesheet" href="../../styles/css/HomePage/styles.css" />
-		<link rel="stylesheet" href="../../styles/css/LoginPage/styles.css" />
-		<script src="../../assets/js/LoginPage.js" defer></script>
 	</head>
 	<body>
 		<div class="container">
 			<div class="login-box">
 				<div class="banner-ctn">
 					<img
-						src="../../assets/images/LoginPage/banner.svg"
+						src="./src/assets/images/LoginPage/banner.svg"
 						alt="banner"
 					/>
 					<h4>Chào mừng bạn đến với CONS-Shopping!!</h4>
@@ -53,13 +58,13 @@
 						<p>Đăng nhập</p>
 					</button>
 
-<a href="../LoginPage" class="register-button"><p>Đăng ký</p></a>
+					<a href="?page=home_page" class="register-button"><p>Đăng ký</p></a>
 				</form>
 			</div>
 
 			<img
 				class="background"
-				src="../../assets/images/LoginPage/background.jpg"
+				src="./src/assets/images/LoginPage/background.jpg"
 				alt="background"
 			/>
 		</div>

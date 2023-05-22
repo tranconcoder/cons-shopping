@@ -1,27 +1,54 @@
-.images-slider-ctn {
+.image-slide-ctn {
 	width: 100%;
 	height: 0px;
 	position: relative;
-	padding-bottom: 33.333%;
+	padding-bottom: calc(100% / 3);
 	border-radius: 10px;
 	box-shadow: 0 0 10px 0 rgba(#000, 0.3);
 	overflow: hidden;
 
-	.images-list {
+	.image-list {
 		position: absolute;
-		white-space: nowrap;
 		inset: 0;
+		white-space: nowrap;
+		transition: all ease 300ms;
+		display: flex;
+		align-items: center;
 
 		> li {
 			width: 100%;
 			height: 100%;
-			display: inline-block;
+			flex-shrink: 0;
 
 			img {
 				width: 100%;
 				height: 100%;
 				object-fit: cover;
 				object-position: center;
+			}
+		}
+	}
+
+	.progress-bar {
+		position: absolute;
+		bottom: 15px;
+		left: 50%;
+		transform: translateX(-50%);
+		display: flex;
+		justify-content: center;
+		list-style-type: none;
+		gap: 15px;
+		padding: 6px;
+
+		.dot {
+			width: 12px;
+			height: 12px;
+			background-color: rgba($whiteColor, 0.5);
+			border-radius: 50%;
+			cursor: pointer;
+
+			&.active {
+				background-color: $primaryColor;
 			}
 		}
 	}
