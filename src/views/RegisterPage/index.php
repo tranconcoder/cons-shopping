@@ -26,7 +26,7 @@
 				</div>
 
 				<form action="" class="form-ctn">
-					<h3 class="title">Đăng nhập</h3>
+					<h3 class="title">Đăng ký</h3>
 
 					<div class="input-ctn">
 						<div class="username">
@@ -59,7 +59,7 @@
 						<p>Đăng nhập</p>
 					</button>
 
-					<a href="/register" class="register-button"><p>Đăng ký</p></a>
+					<a href="/" class="register-button"><p>Đăng ký</p></a>
 				</form>
 			</div>
 

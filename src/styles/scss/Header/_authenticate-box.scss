@@ -1,0 +1,235 @@
+@import "../_package/index.scss";
+
+#toggle-visible-auth-box {
+	&:checked + .authenticate-ctn {
+		pointer-events: unset;
+
+		.background {
+			opacity: 1;
+		}
+
+		.authenticate-box {
+			transform: translate(-50%, -50%);
+			opacity: 1;
+		}
+	}
+}
+
+.authenticate-ctn {
+	$transition: all ease 400ms;
+
+	position: fixed;
+	width: 100vw;
+	height: 100vh;
+	z-index: 1;
+	pointer-events: none;
+
+	.background {
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		backdrop-filter: blur(8px);
+		background-color: rgba(#000, 0.6);
+		z-index: 1;
+		opacity: 0;
+		transition: $transition;
+	}
+
+	.authenticate-box {
+		$headerHeight: 50px;
+
+		max-width: 100vw;
+		max-height: 100vh;
+		width: 1000px;
+		height: 650px;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, 100%) scale(0.7);
+		opacity: 0;
+		background-color: $whiteColor;
+		border-radius: 15px;
+		box-shadow: 0 0 20px 0 rgba(#000, 0.3);
+		z-index: 2;
+		overflow-y: auto;
+		transition: $transition;
+
+		.box__header {
+			height: $headerHeight;
+			width: 100%;
+			display: flex;
+			align-items: center;
+			justify-content: flex-end;
+			padding-right: 5px;
+
+			.close-button {
+				width: 40px;
+				height: 40px;
+				border-radius: 50%;
+				display: flex;
+				transition: all ease 300ms;
+
+				&:hover {
+					cursor: pointer;
+					background-color: #eee;
+				}
+
+				i {
+					margin: auto;
+				}
+			}
+		}
+
+		.box__body {
+			height: calc(100% - #{$headerHeight});
+			display: flex;
+
+			.banner-ctn {
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				height: 100%;
+				width: 60%;
+
+				> img {
+					width: 100%;
+				}
+
+				h4 {
+					@include setPrimaryGradientColor();
+					position: relative;
+					top: 10px;
+					font-size: 24px;
+					text-align: center;
+				}
+			}
+
+			.form-ctn {
+				width: 40%;
+				display: flex;
+				flex-direction: column;
+				align-items: stretch;
+				justify-content: center;
+				padding-right: 15px;
+
+				.title {
+					font-size: 28px;
+					text-align: center;
+					color: $primaryColor;
+					margin-bottom: 10px;
+				}
+
+				.input-ctn {
+					.username,
+					.password {
+						margin-top: 34px;
+
+						&.error {
+							.input-wrapper input {
+								color: red;
+								border-color: red !important;
+							}
+
+							.input-wrapper .placeholder {
+								color: red;
+							}
+
+							.error-message {
+								max-height: 20px;
+								opacity: 1;
+							}
+						}
+
+						.input-wrapper {
+							position: relative;
+
+							.placeholder {
+								font-size: 16px;
+								color: #444;
+								position: absolute;
+								left: 10px;
+								top: 50%;
+								transform: translateY(-50%);
+								pointer-events: none;
+								transition: all ease 300ms;
+							}
+
+							input {
+								width: 100%;
+								height: 50px;
+								border-radius: 6px;
+								border: 2px solid #ccc;
+								padding-inline: 10px;
+								font-size: 15px;
+								outline: none;
+								transition: all ease 300ms;
+
+								// Remove background color of autocomplete on Chrome
+								&:-webkit-autofill,
+								&:-webkit-autofill:hover,
+								&:-webkit-autofill:focus,
+								&:-webkit-autofill:active {
+									-webkit-box-shadow: 0 0 0 30px white inset !important;
+								}
+
+								&:not(:placeholder-shown),
+								&:focus {
+									border-color: $primaryColor;
+
+									& + .placeholder {
+										top: 0;
+										transform: translateY(
+											calc(-100% - 5px)
+										);
+									}
+								}
+							}
+						}
+
+						.error-message {
+							max-height: 0;
+							font-size: 14px;
+							margin-top: 5px;
+							opacity: 0;
+							display: -webkit-box;
+							-webkit-box-orient: vertical;
+							-webkit-line-clamp: 1;
+							overflow: hidden;
+							transition: all ease 300ms;
+							color: red;
+						}
+					}
+				}
+
+				.submit-button,
+				.register-button {
+					border: 2px solid $primaryColor;
+					height: 50px;
+					margin-top: 20px;
+					border-radius: 6px;
+					transition: all ease 300ms;
+					display: flex;
+					align-items: center;
+					justify-content: center;
+					background-color: $primaryColor;
+					text-decoration: none;
+
+					p {
+						color: $whiteColor;
+						font-size: 16px;
+						font-weight: 600;
+					}
+
+					&:hover {
+						cursor: pointer;
+						background-color: $whiteColor;
+
+						p {
+							color: $primaryColor;
+						}
+					}
+				}
+			}
+		}
+	}
+}

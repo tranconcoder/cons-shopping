@@ -12,7 +12,9 @@ class ValidateForm {
             requiredLower: "Trường này bắt buộc chứa ký tự in thường",
             requiredNumber: "Trường này bắt buộc chứa chữ số",
         };
-        this.formElm = $(".form-ctn");
+        const $ = (query, bindElm = document) => bindElm.querySelector(query);
+        this.formElm = $(".authenticate-ctn .form-ctn");
+        console.log(this.formElm);
         this.usernameInput = $(".username input", this.formElm);
         this.passwordInput = $(".password input", this.formElm);
     }
@@ -144,6 +146,13 @@ class ValidateForm {
         this.removeError(inputElm);
         return true;
     }
+}
+class AuthenticateBox {
+    constructor() {
+        const $ = (query, bindElm = document) => bindElm.querySelector(query);
+        this.checkboxToShowBox = $("#box-visible-state");
+    }
+    listenEventToShowAndHideBox() { }
 }
 const validate = new ValidateForm();
 validate.listenEvent();

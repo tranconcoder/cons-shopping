@@ -3,8 +3,8 @@
 		<?php foreach ($categoryList as $category) { ?>
 			<li class="item">
 				<a href="#">
-					<i class="<?= $category['fontawesome_icon'] ?>"></i>
-					<span><?= $category['label'] ?></span>
+					<i class="<?= $category["fontawesome_icon"] ?>"></i>
+					<span><?= $category["label"] ?></span>
 				</a>
 			</li>
 		<?php } ?>

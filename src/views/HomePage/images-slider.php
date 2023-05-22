@@ -8,14 +8,18 @@
                <li>
                     <img
                          src="<?= $image['source'] ?>"
-                         alt="<?= $image['title'] ?>">
+                         alt="<?= $image['title'] ?>"
+				/>
                </li>          
           <?php } ?>
 	</ul>
 
 	<ul class="progress-bar">
 		<?php for ($i = 0; $i < count($imageList); $i++) { ?>
-			<li class="dot <?= $i === 0 ? 'active' : '' ?>" data-index="<?= $i ?>"></li>
+			<li
+				class="dot<?= $i === 0 ? ' active' : '' ?>"
+				data-index="<?= $i ?>"
+			></li>
 		<?php } ?>
 	</ul>
 	

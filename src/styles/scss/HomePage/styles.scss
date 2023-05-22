@@ -1,6 +1,6 @@
-@import '../_package/index.scss';
+@import "../_package/index.scss";
 
-.container {
+.body {
 	width: $layoutWidth;
 	max-width: 100vw;
 	min-height: calc(100vh - #{$headerHeight});
@@ -10,5 +10,9 @@
 	padding-top: 10px;
 	z-index: 1;
 
-	@import './hero';
+	.container {
+		z-index: 1;
+
+		@import "./hero";
+	}
 }

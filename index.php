@@ -1,18 +1,14 @@
 <?php
-include_once './src/config/db/connect.php';
+include_once "./src/config/db/connect.php";
 
-$page = 'home_page';
-$controllerName = 'HomePageController';
-$controllerFileName = 'HomePage.controller.php';
+$uri = $_SERVER["REQUEST_URI"];
 
-if (isset($_GET['page'])) {
-	$page = $_GET['page'];
+$controller;
+
+switch ($uri) {
+	default:
+		include_once __DIR__ . "/./src/controllers/HomePage.controller.php";
+		$controller = new HomePageController();
 }
 
-$controllerName = str_replace('_', '', ucwords($page, '_')) . 'Controller';
-$controllerFileName =
-	str_replace('_', '', ucwords($page, '_')) . '.controller.php';
-include_once './src/controllers/' . $controllerFileName;
-
-$controller = new $controllerName();
 $controller->invoke();

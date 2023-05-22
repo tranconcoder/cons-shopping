@@ -7,7 +7,7 @@ class DatabaseSQL
 	private $databaseName = 'CONS-Store';
 	private $conn;
 
-	function __construct()
+	public function __construct()
 	{
 		$this->conn = mysqli_connect(
 			$this->serverName,
