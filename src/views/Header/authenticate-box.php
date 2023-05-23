@@ -1,4 +1,5 @@
 <input type="checkbox" id="toggle-visible-auth-box" hidden/>
+<input type="checkbox" id="toggle-register-auth-box" hidden />
 
 <div class="authenticate-ctn">
 	<label class="background" for="toggle-visible-auth-box"></label>
@@ -16,42 +17,133 @@
 				<h4>Chào mừng bạn đến với CONS-Shopping!!</h4>
 			</div>
 
-			<form action="" class="form-ctn">
-				<h3 class="title">Đăng nhập</h3>
+			<div class="form-wrapper">
+				<form class="form-ctn login">
+					<h3 class="title">Đăng nhập</h3>
 
-				<div class="input-ctn">
-					<div class="username">
-						<div class="input-wrapper">
-							<input
-								id="username-input"
-								type="text"
-								name="username"
-								placeholder=" "
-							/>
-							<p class="placeholder">Điền tên đăng nhập...</p>
+					<div class="input-ctn">
+						<div class="username">
+							<div class="input-wrapper">
+								<input
+									id="username-input"
+									type="text"
+									name="username"
+									placeholder=" "
+								/>
+								<p class="placeholder">Điền tên đăng nhập...</p>
+							</div>
+							<p class="error-message"></p>
 						</div>
-						<p class="error-message"></p>
-					</div>
-					<div class="password">
-						<div class="input-wrapper">
-							<input
-								id="password-input"
-								type="password"
-								name="password"
-								placeholder=" "
-							/>
-							<p class="placeholder">Nhập mật khẩu...</p>
+						<div class="password">
+							<div class="input-wrapper">
+								<input
+									id="password-input"
+									type="password"
+									name="password"
+									placeholder=" "
+								/>
+								<p class="placeholder">Nhập mật khẩu...</p>
+							</div>
+							<p class="error-message"></p>
 						</div>
-						<p class="error-message"></p>
 					</div>
-				</div>
 
-				<button class="submit-button" type="submit">
-					<p>Đăng nhập</p>
-				</button>
+					<button class="submit-button" type="submit">
+						<p>Đăng nhập</p>
+					</button>
 
-				<a href="/register" class="register-button"><p>Đăng ký</p></a>
-			</form>
+					<label for="toggle-register-auth-box" class="register-button">
+						<p>Đăng ký</p>
+					</label>
+				</form>
+		
+				<form class="form-ctn register">
+					<h3 class="title">Đăng ký</h3>
+
+					<div class="input-ctn">
+						<div class="first-name">
+							<div class="input-wrapper">
+								<input
+									id="first-name-input"
+									type="text"
+									name="first-name"
+									placeholder=" "
+								/>
+								<p class="placeholder">Họ ...</p>
+							</div>
+							<p class="error-message"></p>
+						</div>
+					</div>
+
+					<div class="input-ctn">
+						<div class="last-name">
+							<div class="input-wrapper">
+								<input
+									id="last-name-input"
+									type="text"
+									name="last-name"
+									placeholder=" "
+								/>
+								<p class="placeholder">Tên ...</p>
+							</div>
+							<p class="error-message"></p>
+						</div>
+					</div>
+
+					<div class="input-ctn">
+						<div class="address">
+							<div class="input-wrapper">
+								<input
+									id="address-input"
+									type="text"
+									name="address"
+									placeholder=" "
+								/>
+								<p class="placeholder">Địa chỉ ...</p>
+							</div>
+							<p class="error-message"></p>
+						</div>
+					</div>
+
+					<div class="input-ctn">
+						<div class="phone-number">
+							<div class="input-wrapper">
+								<input
+									id="phone-number-input"
+									type="text"
+									name="phone-number"
+									placeholder=" "
+								/>
+								<p class="placeholder">Số điện thoại ...</p>
+							</div>
+							<p class="error-message"></p>
+						</div>
+					</div>
+
+					<div class="input-ctn">
+						<div class="gmail">
+							<div class="input-wrapper">
+								<input
+									id="gmail-input"
+									type="text"
+									name="gmail"
+									placeholder=" "
+								/>
+								<p class="placeholder">Địa chỉ gmail ...</p>
+							</div>
+							<p class="error-message"></p>
+						</div>
+					</div>
+
+					<button class="register-button" type="button">
+						<p>Đăng ký</p>
+					</button>
+
+					<label for="toggle-register-auth-box" class="login-button">
+						<p>Đăng nhập</p>
+					</label>
+				</form>
+			</div>
 		</div>
 	</div>
 </div>

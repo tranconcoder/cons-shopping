@@ -1,5 +1,4 @@
 "use strict";
-const $ = (selector, bindElm = document) => bindElm.querySelector(selector);
 class ImageSlide {
     constructor() {
         this.currentImageIndex = 0;
@@ -7,31 +6,31 @@ class ImageSlide {
         this.TIME_CHANGE_IMAGE = 10 * 1000;
         // Environment variable
         this.autoChangeImageIntervalId = -1;
-        this.imageSlideElm = $('.image-slide-ctn');
-        this.imageListElm = $('.image-list', this.imageSlideElm);
-        this.progressBarElm = $('.progress-bar', this.imageSlideElm);
-        this.prevButton = $('.prev-button', this.imageSlideElm);
-        this.nextButton = $('.next-button', this.imageSlideElm);
+        this.imageSlideElm = $(".image-slide-ctn");
+        this.imageListElm = $(".image-list", this.imageSlideElm);
+        this.progressBarElm = $(".progress-bar", this.imageSlideElm);
+        this.prevButton = $(".prev-button", this.imageSlideElm);
+        this.nextButton = $(".next-button", this.imageSlideElm);
         this.IMAGE_COUNT = this.imageListElm.childElementCount;
         this.listenEventButton();
         this.setIntervalAutoChangeImage();
     }
     clearEventButton() {
-        this.prevButton.removeEventListener('click', this.handlePrevImage.bind(this));
+        this.prevButton.removeEventListener("click", this.handlePrevImage.bind(this));
         // Next button
-        this.nextButton.removeEventListener('click', this.handleNextImage.bind(this));
+        this.nextButton.removeEventListener("click", this.handleNextImage.bind(this));
         // Progress bar
-        this.progressBarElm.addEventListener('click', this.handleClickProgressBar.bind(this));
+        this.progressBarElm.addEventListener("click", this.handleClickProgressBar.bind(this));
     }
     listenEventButton() {
         // Clear before listener
         this.clearEventButton();
         // Prev button
-        this.prevButton.addEventListener('click', this.handlePrevImage.bind(this));
+        this.prevButton.addEventListener("click", this.handlePrevImage.bind(this));
         // Next button
-        this.nextButton.addEventListener('click', this.handleNextImage.bind(this));
+        this.nextButton.addEventListener("click", this.handleNextImage.bind(this));
         // Progress bar
-        this.progressBarElm.addEventListener('click', this.handleClickProgressBar.bind(this));
+        this.progressBarElm.addEventListener("click", this.handleClickProgressBar.bind(this));
     }
     setIntervalAutoChangeImage() {
         clearInterval(this.autoChangeImageIntervalId);
@@ -71,15 +70,15 @@ class ImageSlide {
         this.imageListElm.style.transform = `translateX(-${this.currentImageIndex * 100}%)`;
         // Reset dot list style
         // Remove current active dot
-        const currentActiveDot = $('.dot.active', this.progressBarElm);
-        currentActiveDot.classList.remove('active');
+        const currentActiveDot = $(".dot.active", this.progressBarElm);
+        currentActiveDot.classList.remove("active");
         // Set new active dot
         const newActiveDot = $(`.dot[data-index="${this.currentImageIndex}"`, this.imageSlideElm);
-        newActiveDot.classList.add('active');
+        newActiveDot.classList.add("active");
     }
     handleClickProgressBar(e) {
         const target = e.target;
-        if (target === null || target === void 0 ? void 0 : target.hasAttribute('data-index')) {
+        if (target === null || target === void 0 ? void 0 : target.hasAttribute("data-index")) {
             this.handleJumpImage(Number(target.dataset.index));
         }
     }

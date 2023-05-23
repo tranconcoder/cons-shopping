@@ -12,40 +12,6 @@ class ValidateForm {
             requiredLower: "Trường này bắt buộc chứa ký tự in thường",
             requiredNumber: "Trường này bắt buộc chứa chữ số",
         };
-        const $ = (query, bindElm = document) => bindElm.querySelector(query);
-        this.formElm = $(".authenticate-ctn .form-ctn");
-        console.log(this.formElm);
-        this.usernameInput = $(".username input", this.formElm);
-        this.passwordInput = $(".password input", this.formElm);
-    }
-    listenEvent() {
-        this.usernameInput.addEventListener("focusout", (e) => {
-            const inputElm = e.target;
-            this.checkInputValues(inputElm, {
-                minLength: 6,
-                maxLength: 24,
-                notSymbol: true,
-            });
-        });
-        this.passwordInput.addEventListener("focusout", (e) => {
-            const inputElm = e.target;
-            this.checkInputValues(inputElm, {
-                secureLevel1: true,
-            });
-        });
-        this.formElm.addEventListener("submit", (e) => {
-            const usernameCheckResult = this.checkInputValues(this.usernameInput, {
-                minLength: 6,
-                maxLength: 24,
-                notSymbol: true,
-            });
-            const passwordCheckResult = this.checkInputValues(this.passwordInput, {
-                secureLevel1: true,
-            });
-            const allowSubmit = usernameCheckResult && passwordCheckResult;
-            if (!allowSubmit)
-                e.preventDefault();
-        });
     }
     required(value) {
         if (value.length == 0)
@@ -147,12 +113,69 @@ class ValidateForm {
         return true;
     }
 }
+class LoginForm extends ValidateForm {
+    constructor() {
+        super();
+        this.formElm = $(".authenticate-ctn .form-ctn.login");
+        this.usernameInput = $("#username-input");
+        this.passwordInput = $("#password-input");
+    }
+    listenEvent() {
+        this.usernameInput.addEventListener("focusout", (e) => {
+            const inputElm = e.target;
+            this.checkInputValues(inputElm, {
+                minLength: 6,
+                maxLength: 24,
+                notSymbol: true,
+            });
+        });
+        this.passwordInput.addEventListener("focusout", (e) => {
+            const inputElm = e.target;
+            this.checkInputValues(inputElm, {
+                secureLevel1: true,
+            });
+        });
+        this.formElm.addEventListener("submit", (e) => {
+            const usernameCheckResult = this.checkInputValues(this.usernameInput, {
+                minLength: 6,
+                maxLength: 24,
+                notSymbol: true,
+            });
+            const passwordCheckResult = this.checkInputValues(this.passwordInput, {
+                secureLevel1: true,
+            });
+            const allowSubmit = usernameCheckResult && passwordCheckResult;
+            if (!allowSubmit)
+                e.preventDefault();
+        });
+    }
+}
+class RegisterForm extends ValidateForm {
+    constructor() {
+        super();
+        this.formElm = $(".authenticate-ctn .form-ctn.register");
+        this.firstNameInput = $("#first-name-input");
+        this.lastNameInput = $("#last-name-input");
+        this.addressInput = $("#address-input");
+        this.phoneNumberInput = $("#phone-number-input");
+        this.gmailInput = $("#gmail-input");
+    }
+    listenEvent() { }
+}
 class AuthenticateBox {
     constructor() {
-        const $ = (query, bindElm = document) => bindElm.querySelector(query);
-        this.checkboxToShowBox = $("#box-visible-state");
+        this.checkboxToShowBox = $("#toggle-register-auth-box");
+        this.loginForm = $(".authenticate-box .form-ctn.login");
+        this.registerForm = $(".authenticate-box .form-ctn.register");
     }
-    listenEventToShowAndHideBox() { }
+    listenEventToShowAndHideBox() {
+        this.checkboxToShowBox.addEventListener("change", () => {
+            this.loginForm.reset();
+            this.registerForm.reset();
+        });
+    }
 }
-const validate = new ValidateForm();
-validate.listenEvent();
+const loginForm = new LoginForm();
+loginForm.listenEvent();
+const authenticateBox = new AuthenticateBox();
+authenticateBox.listenEventToShowAndHideBox();

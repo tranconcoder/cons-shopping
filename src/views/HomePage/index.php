@@ -11,6 +11,7 @@
 
 		<!-- Script -->
 		<script src="./src/assets/js/HomePage.js" defer></script>
+		<script src="./src/assets/js/Common/index.js"></script>
 
 		<title>CONS-Shopping</title>
 	</head>
