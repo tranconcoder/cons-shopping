@@ -150,6 +150,35 @@ class ValidateForm {
             this.checkInputValues(inputElm, config);
         });
     }
+    resetForm() {
+        const keyList = Object.getOwnPropertyNames(this);
+        // Reset form
+        const formElmList = keyList
+            // Filter keyof form element
+            .filter((key) => {
+            return (this[key] instanceof
+                HTMLFormElement);
+        })
+            // Get form element
+            .map((formElmKey) => this[formElmKey])
+            // Reset form element
+            .forEach((formElm) => {
+            formElm.reset();
+        });
+        // Reset input
+        const inputElmList = keyList
+            // Filter keyof input element
+            .filter((key) => {
+            return (this[key] instanceof
+                HTMLInputElement);
+        })
+            // Get input element
+            .map((inputElmKey) => this[inputElmKey])
+            // Remove error input element
+            .forEach((inputElm) => {
+            this.removeError(inputElm);
+        });
+    }
 }
 class LoginForm extends ValidateForm {
     constructor() {
@@ -238,10 +267,14 @@ class AuthenticateBox {
         this.registerForm.listenEvent();
     }
     listenEventToShowAndHideBox() {
-        this.checkboxToShowBox.addEventListener("change", () => { });
+        this.checkboxToShowBox.addEventListener("change", () => {
+            this.loginForm.resetForm();
+            this.registerForm.resetForm();
+        });
     }
 }
 const authenticateBox = new AuthenticateBox();
 authenticateBox.listenChangeFormInput();
+authenticateBox.listenEventToShowAndHideBox();
 authenticateBox.listenEventToShowAndHideBox();
 authenticateBox.listenEventToShowAndHideBox();

@@ -104,7 +104,7 @@ class ValidateForm {
 		return result ? this.notify.secureLevel1 : false;
 	}
 
-	public setError(inputElm: HTMLInputElement, errorMessage: string) {
+	protected setError(inputElm: HTMLInputElement, errorMessage: string) {
 		const parent = inputElm.parentElement?.parentElement as HTMLDivElement;
 		const errorElm = parent.querySelector(
 			".error-message"
@@ -116,7 +116,7 @@ class ValidateForm {
 		return false;
 	}
 
-	private removeError(inputElm: HTMLInputElement) {
+	protected removeError(inputElm: HTMLInputElement) {
 		const parent = inputElm.parentElement?.parentElement as HTMLDivElement;
 		const errorMessageElm = parent.querySelector(
 			".error-message"
@@ -212,6 +212,43 @@ class ValidateForm {
 		inputElm.addEventListener("focusout", (e) => {
 			this.checkInputValues(inputElm, config);
 		});
+	}
+
+	public resetForm() {
+		const keyList: string[] = Object.getOwnPropertyNames(this);
+		// Reset form
+		const formElmList = keyList
+			// Filter keyof form element
+			.filter((key) => {
+				return (
+					(this[key as keyof ValidateForm] as any) instanceof
+					HTMLFormElement
+				);
+			})
+			// Get form element
+			.map((formElmKey) => this[formElmKey as keyof ValidateForm] as any)
+			// Reset form element
+			.forEach((formElm: HTMLFormElement) => {
+				formElm.reset();
+			});
+
+		// Reset input
+		const inputElmList = keyList
+			// Filter keyof input element
+			.filter((key) => {
+				return (
+					(this[key as keyof ValidateForm] as any) instanceof
+					HTMLInputElement
+				);
+			})
+			// Get input element
+			.map(
+				(inputElmKey) => this[inputElmKey as keyof ValidateForm] as any
+			)
+			// Remove error input element
+			.forEach((inputElm: HTMLInputElement) => {
+				this.removeError(inputElm);
+			});
 	}
 }
 
@@ -337,11 +374,15 @@ class AuthenticateBox {
 	}
 
 	public listenEventToShowAndHideBox() {
-		this.checkboxToShowBox.addEventListener("change", () => {});
+		this.checkboxToShowBox.addEventListener("change", () => {
+			this.loginForm.resetForm();
+			this.registerForm.resetForm();
+		});
 	}
 }
 
 const authenticateBox = new AuthenticateBox();
 authenticateBox.listenChangeFormInput();
+authenticateBox.listenEventToShowAndHideBox();
 authenticateBox.listenEventToShowAndHideBox();
 authenticateBox.listenEventToShowAndHideBox();
