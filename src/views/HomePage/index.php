@@ -21,7 +21,7 @@
 			<?php $headerCtrl->invoke(); ?>
 			
 			<div class="container">	
-				<?php include_once __DIR__ . "/" . "./hero.php"; ?>
+				<?php include_once __DIR__ . '/hero.php'; ?>
 			</div>
 		</div>
 	</body>
