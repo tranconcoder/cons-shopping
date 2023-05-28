@@ -1,23 +1,24 @@
 <?php
-include_once __DIR__ . './../models/HomePage.model.php';
-include_once __DIR__ . './../controllers/Header.controller.php';
+include_once __DIR__ . "/../models/HomePage.model.php";
+include_once __DIR__ . "/../controllers/layouts/Layout1.controller.php";
 
 class HomePageController
 {
 	private HomePageModel $model;
-	private HeaderController $headerCtrl;
+	private Layout1Controller $LayoutController;
+
+	private $imageList;
 
 	public function __construct()
 	{
 		$this->model = new HomePageModel();
-		$this->headerCtrl = new HeaderController();
+		$this->LayoutController = new Layout1Controller($this);
 	}
 
 	public function invoke()
 	{
-		$headerCtrl = $this->headerCtrl;
-		$imageList = $this->model->getImageList();
+		$this->imageList = $this->model->getImageList();
 
-		include './src/views/HomePage/index.php';
+		include "./src/views/HomePage/index.php";
 	}
 }

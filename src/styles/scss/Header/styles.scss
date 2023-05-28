@@ -1,4 +1,4 @@
-@import "../_package/index.scss";
+@import '../_package/index.scss';
 
 .header-wrapper {
 	display: flex;
@@ -21,14 +21,14 @@
 		height: $headerHeight;
 
 		// LOGO
-		@import "./_logo";
+		@import './_logo';
 
 		// Center slide
-		@import "./_center-slide";
+		@import './_center-slide';
 
 		// User profile
-		@import "./user-profile";
+		@import './user-profile';
 	}
 
-	@import "./authenticate-box";
+	@import './authenticate-box';
 }

@@ -11,7 +11,7 @@
 			<section class="viewed-products">
 				<span>Sản phẩm đã xem</span>
 				<ul class="viewed-products__list">
-					<?php foreach ($phoneList as $phone): ?>
+					<?php foreach ($this->phoneList as $phone): ?>
                			<li>
                 			    <img
 						    	src="<?= $phone['images'] ?>"
@@ -31,7 +31,7 @@
 					<span>Lịch sử tìm kiếm</span>
 				</p>
 				<ul>
-					<?php foreach ($historyList as $history) { ?>
+					<?php foreach ($this->historyList as $history) { ?>
 						<li>
 							<p>
 								<?= $history['content'] ?>

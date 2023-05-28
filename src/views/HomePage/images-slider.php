@@ -4,7 +4,7 @@
 	</button>
 	
 	<ul class="image-list">
-		<?php foreach ($imageList as $image) { ?>
+		<?php foreach ($this->imageList as $image) { ?>
                <li>
                     <img
                          src="<?= $image['source'] ?>"
@@ -15,7 +15,7 @@
 	</ul>
 
 	<ul class="progress-bar">
-		<?php for ($i = 0; $i < count($imageList); $i++) { ?>
+		<?php for ($i = 0; $i < count($this->imageList); $i++) { ?>
 			<li
 				class="dot<?= $i === 0 ? ' active' : '' ?>"
 				data-index="<?= $i ?>"
