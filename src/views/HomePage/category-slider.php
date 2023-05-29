@@ -3,21 +3,33 @@
 
 	<ul class="category-list">
 		<?php
-			$categoryList= [
-				["title" => "Điện thoại thông minh", "link" => "#", "icon" => "fa-solid fa-mobile-button"],
-				["title" => "Điện thoại di động", "link" => "#", "icon" => "fa-solid fa-mobile-retro"],
-				["title" => "Máy tính bảng", "link" => "#", "icon" => "fa-solid fa-tablet-screen-button"],
-				["title" => "Phụ kiện", "link" => "#", "icon" => "fa-solid fa-bolt"],
-			];
+  $categoryList = [
+    [
+      "title" => "Điện thoại thông minh",
+      "link" => "#",
+      "icon" => "fa-solid fa-mobile-button",
+    ],
+    [
+      "title" => "Điện thoại di động",
+      "link" => "#",
+      "icon" => "fa-solid fa-mobile-retro",
+    ],
+    [
+      "title" => "Máy tính bảng",
+      "link" => "#",
+      "icon" => "fa-solid fa-tablet-screen-button",
+    ],
+    ["title" => "Phụ kiện", "link" => "#", "icon" => "fa-solid fa-bolt"],
+  ];
 
-			foreach($categoryList as $category) { ?>
-				<li>
+  foreach ($categoryList as $category): ?>
+				<li class="category-list__item">
 					<a href="<?= $category["link"] ?>">
-					<i class="<?= $category["icon"]?>"></i>
+					<i class="<?= $category["icon"] ?>"></i>
 						<span class="title"><?= $category["title"] ?></span>
 					</a>
 				</li>
-			<?php }
-		?>
+			<?php endforeach;
+  ?>
 	</ul>
 </section>
