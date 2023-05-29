@@ -41,7 +41,7 @@ body {
   padding-top: 10px; }
   .container .body {
     z-index: 1; }
-    .container .body > section:not(:first-child) {
+    .container .body > section:not(:first-of-type) {
       margin-top: 50px; }
     .container .body > section > .title {
       font-size: 24px;
@@ -120,6 +120,14 @@ body {
       gap: 20px;
       list-style: none;
       margin-top: 10px; }
+      @media only screen and (min-width: 601px) and (max-width: 1200px) {
+        .container .body .category-slider .category-list {
+          grid-template-columns: repeat(2, 1fr);
+          grid-template-rows: repeat(2, 100px); } }
+      @media only screen and (max-width: 600px) {
+        .container .body .category-slider .category-list {
+          grid-template-columns: repeat(1, 1fr);
+          grid-template-rows: repeat(4, 100px); } }
       .container .body .category-slider .category-list__item {
         box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
         border-radius: 10px;

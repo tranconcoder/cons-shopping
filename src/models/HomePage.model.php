@@ -2,10 +2,11 @@
 
 class HomePageModel extends DatabaseSQL
 {
-	public function getImageList()
-	{
-		$imageList = $this->getAll('slider-images');
+  public function getImageList()
+  {
+    $sql = "SELECT * FROM `slider-images` ORDER BY `image_order`";
+    $imageList = $this->query($sql);
 
-		return $imageList;
-	}
+    return $imageList;
+  }
 }

@@ -100,6 +100,12 @@ class ValidateForm {
             if (requiredCheckResult)
                 return this.setError(inputElm, requiredCheckResult);
         }
+        else {
+            if (inputValue.length === 0) {
+                this.removeError(inputElm);
+                return true;
+            }
+        }
         // isGmail check
         if (config.isEmail) {
             const isGmailCheckResult = this.isEmail(inputValue);
@@ -190,11 +196,13 @@ class LoginForm extends ValidateForm {
     listenEvent() {
         // Validate config
         const usernameConfig = {
+            required: true,
             minLength: 6,
             maxLength: 24,
             notSymbol: true,
         };
         const passwordConfig = {
+            required: true,
             secureLevel1: true,
         };
         // Listen focusout event and validate username input
@@ -245,7 +253,6 @@ class RegisterForm extends ValidateForm {
             equalLength: 10,
         };
         const gmailConfig = {
-            required: true,
             isEmail: true,
         };
         // Listen and validate input on focusout

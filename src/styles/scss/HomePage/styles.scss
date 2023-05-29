@@ -1,31 +1,31 @@
 @import "../_package/index.scss";
 
 .container {
-	width: $layoutWidth;
-	max-width: 100vw;
-	min-height: calc(100vh - #{$headerHeight});
-	margin-inline: auto;
-	display: block;
-	margin-top: $headerHeight;
-	padding-top: 10px;
+  width: $layoutWidth;
+  max-width: 100vw;
+  min-height: calc(100vh - #{$headerHeight});
+  margin-inline: auto;
+  display: block;
+  margin-top: $headerHeight;
+  padding-top: 10px;
 
-	.body {
-		z-index: 1;
+  .body {
+    z-index: 1;
 
-		> section {
-			&:not(:first-child) {
-				margin-top: 50px;
-			}
+    > section {
+      &:not(:first-of-type) {
+        margin-top: 50px;
+      }
 
-			> .title {
-				font-size: 24px;
-				font-weight: 500;
-				color: #333;
-			}
-		}
+      > .title {
+        font-size: 24px;
+        font-weight: 500;
+        color: #333;
+      }
+    }
 
-		@import "./hero";
-
-		@import "./category-slider";
-	}
+    @import "./hero";
+    @import "./category-slider";
+    @import "./popular-product";
+  }
 }
