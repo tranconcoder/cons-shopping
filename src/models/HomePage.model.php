@@ -14,7 +14,7 @@ class HomePageModel extends DatabaseSQL
   {
     $categoryList = [
       [
-        "title" => "Điện thoại thông minh",
+        "title" => "Smartphone",
         "link" => "#",
         "icon" => "fa-solid fa-mobile-button",
       ],
@@ -28,7 +28,11 @@ class HomePageModel extends DatabaseSQL
         "link" => "#",
         "icon" => "fa-solid fa-tablet-screen-button",
       ],
-      ["title" => "Phụ kiện", "link" => "#", "icon" => "fa-solid fa-bolt"],
+      [
+        "title" => "Phụ kiện",
+        "link" => "#",
+        "icon" => "fa-solid fa-bolt",
+      ],
     ];
 
     return $categoryList;

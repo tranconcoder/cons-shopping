@@ -80,6 +80,35 @@ section.promotional-product-ctn {
                 object-position: center;
               }
             }
+
+            .name {
+              font-size: 20px;
+              font-weight: 500;
+              margin-top: 10px;
+              text-align: center;
+            }
+
+            .price-old {
+              text-decoration: line-through;
+              color: #333;
+              font-size: 20px;
+              margin-top: 10px;
+            }
+
+            .price-new {
+              color: red;
+              font-size: 24px;
+
+              span {
+                font-size: 0.8em;
+              }
+            }
+
+            .price-old,
+            .price-new {
+              font-weight: 600;
+              text-align: right;
+            }
           }
         }
       }

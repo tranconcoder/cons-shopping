@@ -324,3 +324,22 @@ body {
                   border-radius: 10px;
                   object-fit: cover;
                   object-position: center; }
+              .container .body section.promotional-product-ctn .promotional-product-box .box__body .product-list > .product-wrapper .product-container .name {
+                font-size: 20px;
+                font-weight: 500;
+                margin-top: 10px;
+                text-align: center; }
+              .container .body section.promotional-product-ctn .promotional-product-box .box__body .product-list > .product-wrapper .product-container .price-old {
+                text-decoration: line-through;
+                color: #333;
+                font-size: 20px;
+                margin-top: 10px; }
+              .container .body section.promotional-product-ctn .promotional-product-box .box__body .product-list > .product-wrapper .product-container .price-new {
+                color: red;
+                font-size: 24px; }
+                .container .body section.promotional-product-ctn .promotional-product-box .box__body .product-list > .product-wrapper .product-container .price-new span {
+                  font-size: 0.8em; }
+              .container .body section.promotional-product-ctn .promotional-product-box .box__body .product-list > .product-wrapper .product-container .price-old,
+              .container .body section.promotional-product-ctn .promotional-product-box .box__body .product-list > .product-wrapper .product-container .price-new {
+                font-weight: 600;
+                text-align: right; }
