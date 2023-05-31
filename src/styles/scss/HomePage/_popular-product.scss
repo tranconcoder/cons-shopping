@@ -1,6 +1,5 @@
 .popular-product-ctn {
   .popular-product-list {
-    margin-top: 20px;
     list-style: none;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -18,20 +17,21 @@
       .item-container {
         $paddingSize: 10px;
         $buttonHeight: 50px;
+        $brs: 10px;
 
         position: absolute;
         inset: 0;
         box-shadow: 0 0 10px 0 rgba(#000, 0.1);
-        border-radius: 10px;
+        border-radius: $brs;
         padding: $paddingSize;
 
-        > *:not(:last-child) {
+        > *:not(:last-child):not(:first-child) {
           margin-top: 10px;
         }
 
         .thumb-ctn {
           position: relative;
-          border-radius: inherit;
+          border-radius: $brs;
           overflow: hidden;
           background-image: linear-gradient(70deg, #c6edfe, #8fddff);
 
@@ -42,13 +42,15 @@
           }
 
           img {
+            $separateSize: 8px;
+
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            top: $separateSize;
+            left: $separateSize;
+            width: calc(100% - (2 * #{$separateSize}));
+            height: calc(100% - (2 * #{$separateSize}));
             display: block;
-            object-fit: cover;
+            border-radius: $brs;
           }
         }
 

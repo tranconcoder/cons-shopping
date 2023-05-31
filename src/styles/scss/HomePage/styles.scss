@@ -14,7 +14,7 @@
 
     > section {
       &:not(:first-of-type) {
-        margin-top: 50px;
+        margin-top: 60px;
       }
 
       > .title {
@@ -22,10 +22,15 @@
         font-weight: 500;
         color: #333;
       }
+
+      > .title + * {
+        margin-top: 10px;
+      }
     }
 
     @import "./hero";
     @import "./category-slider";
     @import "./popular-product";
+    @import "./promotional-product";
   }
 }
