@@ -7,8 +7,9 @@
 			rel="stylesheet"
 			href="./src/assets/fontawesome-6.4.0/css/all.min.css"
 		/>
+		 <link rel="icon" type="image/x-icon" href="./src/assets/images/favicon/favicon.ico">
 		<script src="./src/assets/js/Common/index.js"></script>
-		<title>Document</title>
+		<title>CONS - Shopping</title>
 	</head>
 	<body>
 		<div class="container">
