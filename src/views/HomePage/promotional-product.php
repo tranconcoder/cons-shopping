@@ -1,5 +1,4 @@
 <section class="promotional-product-ctn">
-
 	<div class="promotional-product-box">
 		<header class="box__header">
 			<img src="./src/assets/images/HomePage/promotional-product-banner.jpg" alt="header-banner">
@@ -9,7 +8,7 @@
 			<div class="title">Khuyến mãi nhập tràn!</div>
 
 			<ul class="product-list">
-				<li class="product-wrapper">
+				<li class="product-item">
 					<div class="product-container">
 						<div class="thumb-wrapper">
 							<img src="https://www.pngall.com/wp-content/uploads/13/Galaxy-S23-Ultra-PNG-Free-Image.png" alt="thumb">
