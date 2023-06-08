@@ -9,6 +9,7 @@ class HomePageController
 
   private $imageList;
   private $categoryListForSlider;
+  private $promotionalPhoneList;
 
   public function __construct()
   {
@@ -18,10 +19,27 @@ class HomePageController
     // Data to render UI
     $this->imageList = $this->model->getImageList();
     $this->categoryListForSlider = $this->model->getCategoryListForSlider();
+    $this->promotionalPhoneList = $this->model->getPromotionalPhoneList();
   }
 
   public function invoke()
   {
     include "./src/views/HomePage/index.php";
+  }
+
+  private function renderPromotionalPhoneList()
+  {
+    if (is_array($this->promotionalPhoneList)) {
+      foreach ($this->promotionalPhoneList as $item) {
+        include __DIR__ . "/../views/HomePage/promotional-product-item.php";
+      }
+    }
+  }
+
+  private function renderPopularProduct()
+  {
+    for ($i = 0; $i < 8; $i++) {
+      include __DIR__ . "/../views/HomePage/popular-product-item.php";
+    }
   }
 }

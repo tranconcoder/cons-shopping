@@ -51,64 +51,53 @@ section.promotional-product-ctn {
         gap: 20px;
         list-style: none;
 
-        > .product-wrapper {
+        > .product-item {
           $brs: 10px;
 
-          position: relative;
+          border-radius: $brs;
+          padding: 10px;
+          box-shadow: 0 0 10px 0 rgba(#000, 0.1);
+          aspect-ratio: 2/3;
 
-          &::before {
-            content: "";
-            display: block;
-            padding-bottom: calc(100% / 2 * 3);
+          .thumb-wrapper {
+            background-image: linear-gradient(70deg, #c6edfe, #8fddff);
+            border-radius: 10px;
+
+            img {
+              width: 100%;
+              border-radius: $brs;
+              object-fit: cover;
+              object-position: center;
+            }
           }
 
-          .product-container {
-            position: absolute;
-            inset: 0;
-            border-radius: $brs;
-            padding: 10px;
-            box-shadow: 0 0 10px 0 rgba(#000, 0.1);
+          .name {
+            font-size: 20px;
+            font-weight: 500;
+            margin-top: 10px;
+            text-align: center;
+          }
 
-            .thumb-wrapper {
-              background-image: linear-gradient(70deg, #c6edfe, #8fddff);
-              border-radius: 10px;
+          .price-old {
+            text-decoration: line-through;
+            color: #333;
+            font-size: 20px;
+            margin-top: 10px;
+          }
 
-              img {
-                width: 100%;
-                border-radius: $brs;
-                object-fit: cover;
-                object-position: center;
-              }
+          .price-new {
+            color: red;
+            font-size: 24px;
+
+            span {
+              font-size: 0.8em;
             }
+          }
 
-            .name {
-              font-size: 20px;
-              font-weight: 500;
-              margin-top: 10px;
-              text-align: center;
-            }
-
-            .price-old {
-              text-decoration: line-through;
-              color: #333;
-              font-size: 20px;
-              margin-top: 10px;
-            }
-
-            .price-new {
-              color: red;
-              font-size: 24px;
-
-              span {
-                font-size: 0.8em;
-              }
-            }
-
-            .price-old,
-            .price-new {
-              font-weight: 600;
-              text-align: right;
-            }
+          .price-old,
+          .price-new {
+            font-weight: 600;
+            text-align: right;
           }
         }
       }

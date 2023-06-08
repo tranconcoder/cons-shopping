@@ -8,19 +8,7 @@
 			<div class="title">Khuyến mãi nhập tràn!</div>
 
 			<ul class="product-list">
-				<li class="product-item">
-					<div class="product-container">
-						<div class="thumb-wrapper">
-							<img src="https://www.pngall.com/wp-content/uploads/13/Galaxy-S23-Ultra-PNG-Free-Image.png" alt="thumb">
-						</div>
-
-						<p class="name">Samsung Galaxy S23 Ultra</p>
-						<p class="price-old">29,990,000 đ</p>
-						<p class="price-new">
-							<span>Chỉ còn</span> 9,990,000 đ
-						</p>
-					</div>
-				</li>
+				<?php $this->renderPromotionalPhoneList(); ?>
 			</ul>
 		</div>
 
