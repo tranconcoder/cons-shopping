@@ -5,119 +5,109 @@
     grid-template-columns: repeat(4, 1fr);
     gap: 20px;
 
-    .item-wrapper {
+    .item-container {
+      $paddingSize: 10px;
+      $buttonHeight: 50px;
+      $brs: 10px;
+
+      aspect-ratio: 2/3;
+      box-shadow: 0 0 10px 0 rgba(#000, 0.1);
+      border-radius: $brs;
+      padding: $paddingSize;
       position: relative;
 
-      &::before {
-        content: "";
-        display: block;
-        padding-bottom: 150%;
+      > *:not(:last-child):not(:first-child) {
+        margin-top: 10px;
       }
 
-      .item-container {
-        $paddingSize: 10px;
-        $buttonHeight: 50px;
-        $brs: 10px;
-
-        position: absolute;
-        inset: 0;
-        box-shadow: 0 0 10px 0 rgba(#000, 0.1);
+      .thumb-ctn {
+        position: relative;
         border-radius: $brs;
-        padding: $paddingSize;
+        overflow: hidden;
+        background-image: linear-gradient(70deg, #c6edfe, #8fddff);
 
-        > *:not(:last-child):not(:first-child) {
-          margin-top: 10px;
+        &::before {
+          content: "";
+          display: block;
+          padding-bottom: 75%;
         }
 
-        .thumb-ctn {
-          position: relative;
-          border-radius: $brs;
-          overflow: hidden;
-          background-image: linear-gradient(70deg, #c6edfe, #8fddff);
+        img {
+          $separateSize: 8px;
 
-          &::before {
-            content: "";
-            display: block;
-            padding-bottom: 75%;
-          }
-
-          img {
-            $separateSize: 8px;
-
-            position: absolute;
-            top: $separateSize;
-            left: $separateSize;
-            width: calc(100% - (2 * #{$separateSize}));
-            height: calc(100% - (2 * #{$separateSize}));
-            display: block;
-            border-radius: $brs;
-          }
-        }
-
-        .price {
-          color: #0080ff;
-          font-size: 20px;
-          font-weight: 600;
-        }
-
-        .name {
-          color: #333;
-          font-size: 18px;
-          font-weight: 500;
-          display: -webkit-box;
-          -webkit-box-orient: vertical;
-          -webkit-line-clamp: 2;
-          overflow: hidden;
-        }
-
-        .detail {
-          font-size: 14px;
-          display: flex;
-          flex-wrap: wrap;
-
-          > * {
-            min-width: 50%;
-            line-height: 24px;
-          }
-        }
-
-        .button-list {
-          height: $buttonHeight;
-          display: flex;
-          gap: 10px;
           position: absolute;
-          inset: $paddingSize;
-          top: unset;
+          top: $separateSize;
+          left: $separateSize;
+          width: calc(100% - (2 * #{$separateSize}));
+          height: calc(100% - (2 * #{$separateSize}));
+          display: block;
+          border-radius: $brs;
+        }
+      }
 
-          > * {
-            border-radius: 10px;
-            border: none;
-            font-size: 16px;
-            color: $whiteColor;
-            background-color: $primaryColor;
-            border: 2px solid $primaryColor;
-            transition: all ease 300ms;
-            will-change: auto;
+      .price {
+        color: #0080ff;
+        font-size: 20px;
+        font-weight: 600;
+      }
 
-            &:hover {
-              cursor: pointer;
-              background-color: $whiteColor;
-              color: $primaryColor;
-            }
+      .name {
+        color: #333;
+        font-size: 18px;
+        font-weight: 500;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        overflow: hidden;
+      }
+
+      .detail {
+        font-size: 14px;
+        display: flex;
+        flex-wrap: wrap;
+
+        > * {
+          min-width: 50%;
+          line-height: 24px;
+        }
+      }
+
+      .button-list {
+        height: $buttonHeight;
+        display: flex;
+        gap: 10px;
+        position: absolute;
+        inset: $paddingSize;
+        top: unset;
+
+        > * {
+          border-radius: 10px;
+          border: none;
+          font-size: 16px;
+          color: $whiteColor;
+          background-color: $primaryColor;
+          border: 2px solid $primaryColor;
+          transition: all ease 300ms;
+          will-change: auto;
+
+          &:hover {
+            cursor: pointer;
+            background-color: $whiteColor;
+            color: $primaryColor;
           }
+        }
 
-          .add-to-cart {
-            width: $buttonHeight;
+        .add-to-cart {
+          width: $buttonHeight;
 
-            i {
-              position: relative;
-              top: 2px;
-            }
+          i {
+            position: relative;
+            top: 2px;
           }
+        }
 
-          .buy-now {
-            flex: 1;
-          }
+        .buy-now {
+          flex: 1;
         }
       }
     }
