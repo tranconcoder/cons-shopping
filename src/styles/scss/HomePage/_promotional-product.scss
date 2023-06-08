@@ -59,12 +59,10 @@ section.promotional-product-ctn {
           &::before {
             content: "";
             display: block;
-            padding-bottom: calc(100% / 3 * 5);
+            padding-bottom: calc(100% / 2 * 3);
           }
 
           .product-container {
-            $buyButtonHeight: 50px;
-
             position: absolute;
             inset: 0;
             border-radius: $brs;
@@ -91,16 +89,15 @@ section.promotional-product-ctn {
             }
 
             .price-old {
+              text-decoration: line-through;
               color: #333;
               font-size: 20px;
-              text-decoration: line-through;
               margin-top: 10px;
             }
 
             .price-new {
               color: red;
               font-size: 24px;
-              margin-top: auto;
 
               span {
                 font-size: 0.8em;

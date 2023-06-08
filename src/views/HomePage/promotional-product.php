@@ -20,10 +20,6 @@
 						<p class="price-new">
 							<span>Chỉ còn</span> 9,990,000 đ
 						</p>
-
-						<button class="buy-product">
-							<p>Mua ngay!</p>
-						</button>
 					</div>
 				</li>
 			</ul>
