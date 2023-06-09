@@ -14,10 +14,10 @@
 					<?php foreach ($this->phoneList as $phone): ?>
                			<li>
                 			    <img
-						    	src="<?= $phone['images'] ?>"
-							alt="<?= $phone['label'] ?>">
+						    	src="<?= $phone["thumb"] ?>"
+							alt="<?= $phone["label"] ?>">
                     			
-							<h4><?= $phone['label'] ?></h4>
+							<h4><?= $phone["label"] ?></h4>
                			</li> 
 					<?php endforeach; ?>
 				</ul>
@@ -34,7 +34,7 @@
 					<?php foreach ($this->historyList as $history) { ?>
 						<li>
 							<p>
-								<?= $history['content'] ?>
+								<?= $history["content"] ?>
 							</p>
 						</li>
           			<?php } ?>

@@ -9,7 +9,13 @@
 		<span>Chỉ còn</span> <?= $item["cost_deal"] ?> đ
 	</p>
 
-	<button class="buy-button">
-		<p>Mua ngay</p>
-	</button>
+	<div class="button-list">
+		<button class="add-to-cart">
+			<p><i class="fa-solid fa-cart-plus"></i></p>
+		</button>
+
+		<button class="buy">
+			<p>Mua ngay</p>
+		</button>
+	</div>
 </li>

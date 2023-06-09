@@ -294,10 +294,10 @@ body {
           .container .body section.promotional-product-ctn .promotional-product-box .box__body .product-list > .product-item {
             border-radius: 10px;
             padding: 10px;
-            box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
-            aspect-ratio: 2/3; }
+            box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1); }
             .container .body section.promotional-product-ctn .promotional-product-box .box__body .product-list > .product-item .thumb-wrapper {
-              background-image: linear-gradient(70deg, #c6edfe, #8fddff);
+              background-color: #faaca8;
+              background-image: linear-gradient(19deg, #faaca8 0%, #ddd6f3 100%);
               border-radius: 10px;
               padding: 10px; }
               .container .body section.promotional-product-ctn .promotional-product-box .box__body .product-list > .product-item .thumb-wrapper img {
@@ -305,17 +305,18 @@ body {
                 border-radius: 10px;
                 object-fit: contain;
                 object-position: center;
-                aspect-ratio: 6/7; }
+                aspect-ratio: 4/3; }
             .container .body section.promotional-product-ctn .promotional-product-box .box__body .product-list > .product-item .name {
               height: 44px;
               font-size: 18px;
               line-height: 22px;
               font-weight: 500;
-              margin-top: 10px;
               text-align: center;
+              margin-top: 10px;
               display: -webkit-box;
               -webkit-box-orient: vertical;
               -webkit-line-clamp: 2;
+              line-clamp: 2;
               overflow: hidden; }
             .container .body section.promotional-product-ctn .promotional-product-box .box__body .product-list > .product-item .price-old {
               text-decoration: line-through;
@@ -331,3 +332,25 @@ body {
             .container .body section.promotional-product-ctn .promotional-product-box .box__body .product-list > .product-item .price-new {
               font-weight: 600;
               text-align: right; }
+            .container .body section.promotional-product-ctn .promotional-product-box .box__body .product-list > .product-item .button-list {
+              height: 50px;
+              margin-top: 30px;
+              display: flex;
+              column-gap: 10px; }
+              .container .body section.promotional-product-ctn .promotional-product-box .box__body .product-list > .product-item .button-list > button {
+                color: #ffffff;
+                font-size: 14px;
+                font-weight: 600;
+                border-radius: 10px;
+                border: none;
+                background-color: #ff9a8b;
+                background-image: linear-gradient(90deg, #ff9a8b 0%, #ff6a88 55%, #ff99ac 100%);
+                background-size: 200% 100%;
+                transition: all ease 300ms; }
+                .container .body section.promotional-product-ctn .promotional-product-box .box__body .product-list > .product-item .button-list > button:hover {
+                  cursor: pointer;
+                  background-position: center right; }
+              .container .body section.promotional-product-ctn .promotional-product-box .box__body .product-list > .product-item .button-list .add-to-cart {
+                width: 60px; }
+              .container .body section.promotional-product-ctn .promotional-product-box .box__body .product-list > .product-item .button-list .buy {
+                flex: 1; }

@@ -2,21 +2,25 @@
 
 class HeaderModel extends DatabaseSQL
 {
-	public function getPhoneList()
-	{
-		$phoneList = $this->getAll('product');
-		return $phoneList;
-	}
+  public function getPhoneList()
+  {
+    $phoneList = $this->conn->query("
+			SELECT *, image.source as thumb FROM product, image
+			WHERE product.image_id = image.image_id
+		");
 
-	public function getHistoryList()
-	{
-		$historyList = $this->getAll('search-history');
-		return $historyList;
-	}
+    return $phoneList;
+  }
 
-	public function getCategoryList()
-	{
-		$categoryList = $this->getAll('product-category');
-		return $categoryList;
-	}
+  public function getHistoryList()
+  {
+    $historyList = $this->getAll("search-history");
+    return $historyList;
+  }
+
+  public function getCategoryList()
+  {
+    $categoryList = $this->getAll("product-category");
+    return $categoryList;
+  }
 }

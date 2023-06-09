@@ -5,7 +5,7 @@ class DatabaseSQL
   private $username = "root";
   private $password = "Anhnam9ce";
   private $databaseName = "cons-shopping-db";
-  private $conn;
+  protected $conn;
 
   public function __construct()
   {

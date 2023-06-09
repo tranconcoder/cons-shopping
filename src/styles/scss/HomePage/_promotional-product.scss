@@ -48,10 +48,10 @@ section.promotional-product-ctn {
           border-radius: $brs;
           padding: 10px;
           box-shadow: 0 0 10px 0 rgba(#000, 0.1);
-          aspect-ratio: 2/3;
 
           .thumb-wrapper {
-            background-image: linear-gradient(70deg, #c6edfe, #8fddff);
+            background-color: #faaca8;
+            background-image: linear-gradient(19deg, #faaca8 0%, #ddd6f3 100%);
             border-radius: 10px;
             padding: 10px;
 
@@ -60,7 +60,7 @@ section.promotional-product-ctn {
               border-radius: $brs;
               object-fit: contain;
               object-position: center;
-              aspect-ratio: 6/7;
+              aspect-ratio: 4/3;
             }
           }
 
@@ -69,11 +69,12 @@ section.promotional-product-ctn {
             font-size: 18px;
             line-height: 22px;
             font-weight: 500;
-            margin-top: 10px;
             text-align: center;
+            margin-top: 10px;
             display: -webkit-box;
             -webkit-box-orient: vertical;
             -webkit-line-clamp: 2;
+            line-clamp: 2;
             overflow: hidden;
           }
 
@@ -97,6 +98,43 @@ section.promotional-product-ctn {
           .price-new {
             font-weight: 600;
             text-align: right;
+          }
+
+          .button-list {
+            height: 50px;
+            margin-top: 30px;
+            display: flex;
+            column-gap: 10px;
+
+            > button {
+              color: $whiteColor;
+              font-size: 14px;
+              font-weight: 600;
+              border-radius: 10px;
+              border: none;
+              background-color: #ff9a8b;
+              background-image: linear-gradient(
+                90deg,
+                #ff9a8b 0%,
+                #ff6a88 55%,
+                #ff99ac 100%
+              );
+              background-size: 200% 100%;
+              transition: all ease 300ms;
+
+              &:hover {
+                cursor: pointer;
+                background-position: center right;
+              }
+            }
+
+            .add-to-cart {
+              width: 60px;
+            }
+
+            .buy {
+              flex: 1;
+            }
           }
         }
       }
