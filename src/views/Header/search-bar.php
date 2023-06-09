@@ -14,14 +14,16 @@
 					<?php foreach ($this->phoneList as $phone): ?>
                			<li>
                 			    <img
-						    	src="<?= $phone["thumb"] ?>"
-							alt="<?= $phone["label"] ?>">
+									src="<?= $phone["thumb"] ?>"
+									alt="<?= $phone["label"] ?>"
+								>
                     			
 							<h4><?= $phone["label"] ?></h4>
                			</li> 
 					<?php endforeach; ?>
 				</ul>
 			</section>
+
 			<section class="history">
 				<p class="label-ctn">
 					<i
