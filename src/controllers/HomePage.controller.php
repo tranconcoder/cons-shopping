@@ -24,7 +24,7 @@ class HomePageController
 
   public function invoke()
   {
-    include "./src/views/HomePage/index.php";
+    include_once __DIR__ . "/../views/HomePage/index.php";
   }
 
   private function renderPromotionalPhoneList()

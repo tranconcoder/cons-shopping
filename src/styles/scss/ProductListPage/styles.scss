@@ -1,0 +1,24 @@
+@import "../_package/index.scss";
+
+.product-list-container {
+  $sidebarSeparate: 15px;
+  $sidebarWidth: 320px;
+
+  min-height: calc(100vh - #{$headerHeight});
+  display: flex;
+
+  > .sidebar {
+    width: $sidebarWidth;
+    height: calc(100vh - #{$headerHeight} - #{$sidebarSeparate * 2});
+    position: fixed;
+    top: $headerHeight + $sidebarSeparate;
+    left: calc((100vw - #{$layoutWidth}) / 2);
+    border-radius: 10px;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+  }
+
+  > .content {
+    width: 100%;
+    padding-left: $sidebarWidth + $sidebarSeparate + 10px;
+  }
+}
