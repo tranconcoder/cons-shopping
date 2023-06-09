@@ -57,8 +57,52 @@
 					</label>
 				</form>
 		
-				<form class="form-ctn register">
+				<form class="form-ctn register" method="post" action="/api/register">
 					<h3 class="title">Đăng ký</h3>
+
+					<div class="input-ctn">
+						<div class="username">
+							<div class="input-wrapper">
+								<input
+									id="username-register-input"
+									type="text"
+									name="username"
+									placeholder=" "
+								/>
+								<p class="placeholder">Tên đăng nhập ...</p>
+							</div>
+							<p class="error-message"></p>
+						</div>
+					</div>
+
+					<div class="input-ctn">
+						<div class="password">
+							<div class="input-wrapper">
+								<input
+									id="password-register-input"
+									type="password"
+									name="password"
+									placeholder=" "
+								/>
+								<p class="placeholder">Mật khẩu ...</p>
+							</div>
+							<p class="error-message"></p>
+						</div>
+					</div>
+
+					<div class="input-ctn">
+						<div class="retype-password">
+							<div class="input-wrapper">
+								<input
+									id="retype-password-input"
+									type="password"
+									placeholder=" "
+								/>
+								<p class="placeholder">Nhập lại mật khẩu ...</p>
+							</div>
+							<p class="error-message"></p>
+						</div>
+					</div>
 
 					<div class="input-ctn">
 						<div class="first-name">
@@ -135,7 +179,7 @@
 						</div>
 					</div>
 
-					<button class="register-button" type="button">
+					<button class="register-button" type="submit">
 						<p>Đăng ký</p>
 					</button>
 
