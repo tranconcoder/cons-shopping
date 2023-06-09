@@ -151,13 +151,16 @@ body {
               .header-wrapper .header-container .center-slide .search-bar .input-ctn input:focus ~ .search-box {
                 max-height: 1000px;
                 opacity: 1; }
-          .header-wrapper .header-container .center-slide .search-bar .input-ctn .search-icon {
-            font-size: 12px;
+          .header-wrapper .header-container .center-slide .search-bar .input-ctn .submit-button {
             position: absolute;
             top: 50%;
             right: 20px;
             transform: translateY(-50%);
-            color: #555; }
+            background-color: transparent;
+            border: none; }
+            .header-wrapper .header-container .center-slide .search-bar .input-ctn .submit-button .search-icon {
+              font-size: 12px;
+              color: #555; }
           .header-wrapper .header-container .center-slide .search-bar .input-ctn .search-box {
             max-height: 0;
             width: 100%;

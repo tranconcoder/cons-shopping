@@ -1,3 +1,50 @@
+class SearchBar {
+	private searchInput: HTMLInputElement;
+	private submitButton: HTMLButtonElement;
+
+	// Event state
+	private focusing = false;
+
+	public constructor() {
+		this.searchInput = $(".search-input");
+		this.submitButton = $(".search-input ~ .submit-button");
+	}
+
+	public listenAndHandleSubmit() {
+		// Submit while press enter
+		this.searchInput.addEventListener("focusin", (e) => {
+			window.addEventListener(
+				"keypress",
+				this.handleSubmitByKeyPress.bind(this)
+			);
+		});
+
+		this.searchInput.addEventListener("focusout", (e) => {
+			window.removeEventListener(
+				"keypress",
+				this.handleSubmitByKeyPress.bind(this)
+			);
+		});
+
+		// Submit while click submit button
+		this.submitButton.addEventListener(
+			"click",
+			this.handleSubmit.bind(this)
+		);
+	}
+
+	private handleSubmitByKeyPress(e: KeyboardEvent) {
+		if (e.code === "Enter" && this.searchInput.value.trim().length)
+			this.handleSubmit();
+	}
+
+	private handleSubmit() {
+		window.location.href = "/search?q=" + this.searchInput.value;
+	}
+}
+const searchBar = new SearchBar();
+searchBar.listenAndHandleSubmit();
+
 type ValidateFormConfig = Partial<{
 	required: boolean;
 	equalLength: number;
@@ -389,6 +436,4 @@ class AuthenticateBox {
 
 const authenticateBox = new AuthenticateBox();
 authenticateBox.listenChangeFormInput();
-authenticateBox.listenEventToShowAndHideBox();
-authenticateBox.listenEventToShowAndHideBox();
 authenticateBox.listenEventToShowAndHideBox();

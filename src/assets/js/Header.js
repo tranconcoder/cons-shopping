@@ -1,4 +1,32 @@
 "use strict";
+class SearchBar {
+    constructor() {
+        // Event state
+        this.focusing = false;
+        this.searchInput = $(".search-input");
+        this.submitButton = $(".search-input ~ .submit-button");
+    }
+    listenAndHandleSubmit() {
+        // Submit while press enter
+        this.searchInput.addEventListener("focusin", (e) => {
+            window.addEventListener("keypress", this.handleSubmitByKeyPress.bind(this));
+        });
+        this.searchInput.addEventListener("focusout", (e) => {
+            window.removeEventListener("keypress", this.handleSubmitByKeyPress.bind(this));
+        });
+        // Submit while click submit button
+        this.submitButton.addEventListener("click", this.handleSubmit.bind(this));
+    }
+    handleSubmitByKeyPress(e) {
+        if (e.code === "Enter" && this.searchInput.value.trim().length)
+            this.handleSubmit();
+    }
+    handleSubmit() {
+        window.location.href = "/search?q=" + this.searchInput.value;
+    }
+}
+const searchBar = new SearchBar();
+searchBar.listenAndHandleSubmit();
 class ValidateForm {
     constructor() {
         this.notify = {
@@ -282,6 +310,4 @@ class AuthenticateBox {
 }
 const authenticateBox = new AuthenticateBox();
 authenticateBox.listenChangeFormInput();
-authenticateBox.listenEventToShowAndHideBox();
-authenticateBox.listenEventToShowAndHideBox();
 authenticateBox.listenEventToShowAndHideBox();

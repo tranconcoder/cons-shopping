@@ -2,11 +2,16 @@
 <div class="search-bar">
 	<div class="input-ctn">
 		<input
-			value="iphone 14 pro"
+			class="search-input"
+			value="<?= isset($_GET["q"]) ? $_GET["q"] : "" ?>"
 			type="text"
 			placeholder="Nhập sản phẩm cần tìm..."
 		/>
-		<i class="search-icon fa-solid fa-magnifying-glass"></i>
+
+		<button class="submit-button">
+			<i class="search-icon fa-solid fa-magnifying-glass"></i>
+		</button>
+
 		<div class="search-box">
 			<section class="viewed-products">
 				<span>Sản phẩm đã xem</span>
