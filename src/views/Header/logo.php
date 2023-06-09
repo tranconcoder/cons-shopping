@@ -1,4 +1,4 @@
-<div class="logo-container">
+<a href="/" class="logo-container">
 	<span>CONS</span>
 	<span>Shopping</span>
-</div>
+</a>

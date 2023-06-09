@@ -9,7 +9,7 @@ class ProductListPageModel extends DatabaseSQL
 				FROM product, image
 				WHERE
 					label LIKE '%" .
-        implode("%", str_split($query, 1)) .
+        implode("%", explode(" ", $query)) .
         "%'
 					AND product.image_id = image.image_id
 			"
