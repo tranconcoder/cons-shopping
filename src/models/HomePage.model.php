@@ -5,7 +5,7 @@ class HomePageModel extends DatabaseSQL
   public function getImageList()
   {
     $sql = "SELECT * FROM `slider-images` ORDER BY `image_order`";
-    $imageList = $this->query($sql);
+    $imageList = $this->selectQuery($sql);
 
     return $imageList;
   }
@@ -40,11 +40,12 @@ class HomePageModel extends DatabaseSQL
 
   public function getPromotionalPhoneList()
   {
-    $promotionalPhoneList = $this->query(
-      "
-			SELECT product.*, (product.cost - deal.deal_cost) as cost_deal
-				FROM product, deal
-				WHERE product.deal_id = deal.deal_id
+    $promotionalPhoneList = $this->selectQuery(
+      "SELECT product.*, (product.cost - deal.deal_cost) as cost_deal, image.source as image
+				FROM product, deal, image
+				WHERE
+					product.deal_id = deal.deal_id AND
+					product.image_id = image.image_id
 			"
     );
 

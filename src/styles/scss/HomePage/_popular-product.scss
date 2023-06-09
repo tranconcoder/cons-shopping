@@ -10,11 +10,9 @@
       $buttonHeight: 50px;
       $brs: 10px;
 
-      aspect-ratio: 2/3;
       box-shadow: 0 0 10px 0 rgba(#000, 0.1);
       border-radius: $brs;
       padding: $paddingSize;
-      position: relative;
 
       > *:not(:last-child):not(:first-child) {
         margin-top: 10px;
@@ -62,13 +60,21 @@
       }
 
       .detail {
+        $rowHeight: 24px;
+        $maxRowCount: 3;
+        $detailContainerHeight: $rowHeight * $maxRowCount;
+
+        height: $detailContainerHeight;
         font-size: 14px;
         display: flex;
         flex-wrap: wrap;
+        align-items: center;
+        row-gap: 0px;
+        overflow: hidden;
 
-        > * {
+        > p {
           min-width: 50%;
-          line-height: 24px;
+          line-height: $rowHeight;
         }
       }
 
@@ -76,11 +82,9 @@
         height: $buttonHeight;
         display: flex;
         gap: 10px;
-        position: absolute;
-        inset: $paddingSize;
-        top: unset;
+        margin-top: 20px;
 
-        > * {
+        > button {
           border-radius: 10px;
           border: none;
           font-size: 16px;
