@@ -14,7 +14,9 @@ class ProductListPageController
   {
     $this->query = isset($_GET["q"]) ? $_GET["q"] : null;
     $this->model = new ProductListPageModel();
+
     $this->productList = $this->model->searchProduct($this->query);
+    $this->model->addNewSearchHistory($this->query);
   }
 
   public function invoke()
