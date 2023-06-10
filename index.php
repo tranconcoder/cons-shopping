@@ -8,6 +8,14 @@ $uri = explode("?", $uri, 2)[0];
 $controller;
 
 switch ($uri) {
+  case "/api/register":
+    echo "register";
+    include_once __DIR__ . "/./src/apis/Register.api.php";
+    $registerApi = new RegisterApi();
+
+    exit();
+    break;
+
   case "/search":
     include_once __DIR__ . "/./src/controllers/ProductListPage.controller.php";
 

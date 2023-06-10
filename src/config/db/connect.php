@@ -5,7 +5,7 @@ class DatabaseSQL
   private $username = "root";
   private $password = "Anhnam9ce";
   private $databaseName = "cons-shopping-db";
-  protected $conn;
+  public $conn;
 
   public function __construct()
   {
@@ -17,11 +17,11 @@ class DatabaseSQL
     );
 
     if ($this->conn->connect_error) {
-      exit("Connect to database failed!");
+      die("Connect to database failed!");
     }
   }
 
-  protected function selectQuery(string $sqlString = "")
+  public function selectQuery(string $sqlString = "")
   {
     $data = mysqli_query($this->conn, $sqlString);
     $result = [];
@@ -35,7 +35,7 @@ class DatabaseSQL
     return $result;
   }
 
-  protected function getAll(string $tableName)
+  public function getAll(string $tableName)
   {
     $tableData = $this->selectQuery("SELECT * FROM `$tableName`");
 

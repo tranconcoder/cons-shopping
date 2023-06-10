@@ -1,8 +1,6 @@
 <?php
 
-include_once __DIR__ . "/../config/db/connect.php";
-
-class RegisterApi extends DatabaseSQL
+class RegisterApi
 {
   private $username;
   private $password;
@@ -12,14 +10,17 @@ class RegisterApi extends DatabaseSQL
   private $phoneNumber;
   private $email;
 
+  private $database;
+
   public function __construct()
   {
+    $this->database = new DatabaseSQL();
     $this->username = $_POST["username"];
     $this->password = $_POST["password"];
-    $this->firstName = $_POST["firstName"];
-    $this->lastName = $_POST["lastName"];
+    $this->firstName = $_POST["first-name"];
+    $this->lastName = $_POST["last-name"];
     $this->address = $_POST["address"];
-    $this->phoneNumber = $_POST["phoneNumber"];
+    $this->phoneNumber = $_POST["phone-number"];
     $this->email = $_POST["email"];
 
     $validateSuccess = $this->validateData();
@@ -48,7 +49,6 @@ class RegisterApi extends DatabaseSQL
       return false;
     }
 
-    // Length check
     if (
       strlen($this->username) < 6 ||
       strlen($this->username) > 16 ||
@@ -67,9 +67,9 @@ class RegisterApi extends DatabaseSQL
 
     // Not contains special character check
     if (
-      !preg_match("/\$[A-Za-z_][A-Za-z_0-9]*/", $this->firstName) ||
-      !preg_match("/\$[A-Za-z_][A-Za-z_0-9]*/", $this->lastName) ||
-      !preg_match("/\$[A-Za-z_][A-Za-z_0-9]*/", $this->username)
+      !preg_match('/^[a-zA-Z0-9]+$/', $this->firstName) ||
+      !preg_match('/^[a-zA-Z0-9]+$/', $this->lastName) ||
+      !preg_match('/^[a-zA-Z0-9]+$/', $this->username)
     ) {
       return false;
     }
@@ -96,20 +96,31 @@ class RegisterApi extends DatabaseSQL
   private function handleRegister()
   {
     $passwordEncode = md5($this->password);
-    $uuid = $this->conn->query("SELECT UUID() as uuid")->fetch_assoc()["uuid"];
+    $uuid = $this->database->selectQuery("SELECT UUID_SHORT() AS uuid")[0][
+      "uuid"
+    ];
 
-    $sql = "
-			INSERT INTO authenticate(user_id, username, password) VALUES
+    $regAuthenticate = $this->database->conn->query("
+			INSERT INTO authenticate (user_id, username, password) VALUES
 				('$uuid', '$this->username', '$passwordEncode')
-
-			INSERT INTO user(user_id, first_name, last_name, address, phone_number, email) VALUES
+		");
+    $regUser = $this->database->conn->query("
+			INSERT INTO user (user_id, first_name, last_name, address, phone_number, email) VALUES
 				('$uuid', '$this->firstName', '$this->lastName', '$this->address', '$this->phoneNumber', '$this->email')
-		";
+		");
 
-    $registerResult = $this->conn->query($sql);
+    if ($regAuthenticate && $regUser) {
+      http_response_code(200);
+      header("Location: /?register=success");
+    } else {
+      // Remove data created while register fail
+      $this->database->conn->query("
+				DELETE FROM authenticate WHERE user_id = '$uuid'
+			");
 
-    if ($registerResult) {
-      header("Location: src/views/ProductListPage/index.php");
+      $this->database->conn->query("
+				DELETE FROM user WHERE user_id = '$uuid'
+			");
     }
   }
 }

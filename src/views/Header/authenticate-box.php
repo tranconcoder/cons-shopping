@@ -165,12 +165,12 @@
 					</div>
 
 					<div class="input-ctn">
-						<div class="gmail">
+						<div class="email">
 							<div class="input-wrapper">
 								<input
 									id="gmail-input"
 									type="text"
-									name="gmail"
+									name="email"
 									placeholder=" "
 								/>
 								<p class="placeholder">Địa chỉ gmail ...</p>
