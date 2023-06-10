@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Jun 09, 2023 at 10:03 AM
+-- Generation Time: Jun 11, 2023 at 12:43 AM
 -- Server version: 8.0.33-0ubuntu0.23.04.2
 -- PHP Version: 8.1.12-1ubuntu4
 
@@ -28,9 +28,9 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `authenticate` (
-  `user_id` varchar(8) CHARACTER SET ascii COLLATE ascii_general_ci NOT NULL,
+  `user_id` varchar(36) CHARACTER SET ascii COLLATE ascii_general_ci NOT NULL,
   `username` varchar(16) CHARACTER SET ascii COLLATE ascii_general_ci NOT NULL,
-  `password` varchar(32) CHARACTER SET ascii COLLATE ascii_general_ci NOT NULL
+  `password` varchar(32) CHARACTER SET armscii8 COLLATE armscii8_general_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='Save authenticate data';
 
 --
@@ -38,8 +38,8 @@ CREATE TABLE `authenticate` (
 --
 
 INSERT INTO `authenticate` (`user_id`, `username`, `password`) VALUES
-('1', 'tranvanconkg', '35510d6cd7c7ba035feef0fd37ef3065'),
-('2', 'conkgyt', 'd10906c3dac1172d4f60bd41f224ae75');
+('3c2b6c0b-0756-11ee-8d7b-ac74b16ee51f', 'conkgyt', 'f6b7c104675ce69fcb9761d084a9841a'),
+('fa08aec0-0799-11ee-9c68-ac74b16ee51f', 'tranvanconkg', 'f6b7c104675ce69fcb9761d084a9841a');
 
 -- --------------------------------------------------------
 
@@ -48,7 +48,7 @@ INSERT INTO `authenticate` (`user_id`, `username`, `password`) VALUES
 --
 
 CREATE TABLE `deal` (
-  `deal_id` varchar(36) CHARACTER SET armscii8 COLLATE armscii8_general_ci NOT NULL,
+  `deal_id` varchar(40) CHARACTER SET armscii8 COLLATE armscii8_general_ci NOT NULL,
   `title` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `time_start` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `time_range` int NOT NULL COMMENT 'A minutes number of time to apply deal to product',
@@ -82,7 +82,12 @@ CREATE TABLE `image` (
 
 INSERT INTO `image` (`image_id`, `is_thumb`, `source`, `order`) VALUES
 ('93b7e37f-0665-11ee-8d7b-ac74b16ee51f', 1, 'https://cdn.shopify.com/s/files/1/0632/3778/3783/products/SilverPro-iphone-14-pro-finish-select-202209-6-1inch-silver-removebg-preview.png?v=1663220402&width=1454&height=1056', 0),
-('7c550ab8-0667-11ee-8d7b-ac74b16ee51f', 1, 'https://www.drei.at/media/common/shop/handybilder/6800297-2_11_ImageSmaller.png', 0);
+('7c550ab8-0667-11ee-8d7b-ac74b16ee51f', 1, 'https://www.drei.at/media/common/shop/handybilder/6800297-2_11_ImageSmaller.png', 0),
+('a2eb3dc4-0688-11ee-8d7b-ac74b16ee51f', 1, 'https://www.xtsmart.vn/vnt_upload/product/09_2021/thumbs/600_Samsung_Galaxy_Z_Flip_3_5G_Tim_XTsmart_2.png', 0),
+('6a83cb2e-0689-11ee-8d7b-ac74b16ee51f', 0, 'https://didongmango.com/images/products/2022/09/23/small/600_s22_ultra_5g_black_2_1663940728.png.png', 0),
+('9916da26-0689-11ee-8d7b-ac74b16ee51f', 0, 'https://shopdunk.com/images/uploaded/iPhone-14-thumb-topzone-2-650x650-1.png', 0),
+('31c56576-068a-11ee-8d7b-ac74b16ee51f', 1, 'https://thegioiso360.vn/wp-content/uploads/2021/06/Xiaomi-A1.png', 0),
+('a73a98fa-068a-11ee-8d7b-ac74b16ee51f', 1, 'https://cdn2.cellphones.com.vn/x358,webp,q100/media/catalog/product/n/o/nokia-8210_4g-sand-front_back-int.png', 0);
 
 -- --------------------------------------------------------
 
@@ -112,8 +117,14 @@ CREATE TABLE `product` (
 --
 
 INSERT INTO `product` (`product_id`, `label`, `cost`, `category_id`, `description`, `image_id`, `processor`, `memory`, `storage`, `size_width`, `size_height`, `color`, `not_sell`, `deal_id`) VALUES
-('27901873-0667-11ee-8d7b-ac74b16ee51f', 'iPhone 14 Pro Max 128GB', 29900000, '2fa190cb-0660-11ee-8d7b-ac74b16ee51f', 'Apple', '93b7e37f-0665-11ee-8d7b-ac74b16ee51f', 'Apple A16 Bionic', 6144, 131072, 776, 1607, 'Tím', 0, '14bddd83-0665-11ee-8d7b-ac74b16ee51f'),
-('c8004af5-0667-11ee-8d7b-ac74b16ee51f', 'Samsung Galaxy S23 Ultra 5G 256GB', 26990000, '2fa190cb-0660-11ee-8d7b-ac74b16ee51f', 'Samsung', '7c550ab8-0667-11ee-8d7b-ac74b16ee51f', 'Snapdragon 8 Gen 2', 8096, 262144, 781, 1634, 'Đen', 0, '14bddd83-0665-11ee-8d7b-ac74b16ee51f');
+('13adced0-068a-11ee-8d7b-ac74b16ee51f', 'Xiaomi Redmi A1', 1890000, '2fa190cb-0660-11ee-8d7b-ac74b16ee51f', 'Xiaomi', '31c56576-068a-11ee-8d7b-ac74b16ee51f', 'Helio A22', 2048, 32768, 164, 776, 'Đen', 0, '14bddd83-0665-11ee-8d7b-ac74b16ee51f'),
+('27901873-0667-11ee-8d7b-ac74b16ee51g', 'iPhone 14 Pro Max 256GB', 32900000, '2fa190cb-0660-11ee-8d7b-ac74b16ee51f', 'Apple', '93b7e37f-0665-11ee-8d7b-ac74b16ee51f', 'Apple A16 Bionic', 8192, 262144, 776, 1607, 'Vàng', 0, '14bddd83-0665-11ee-8d7b-ac74b16ee51f'),
+('27901873-0667-11ee-8d7b-ac74b16ee51h', 'iPhone 14 Pro 512GB', 39900000, '2fa190cb-0660-11ee-8d7b-ac74b16ee51f', 'Apple', '93b7e37f-0665-11ee-8d7b-ac74b16ee51f', 'Apple A16 Bionic', 16384, 524288, 776, 1607, 'Xám', 0, '14bddd83-0665-11ee-8d7b-ac74b16ee51f'),
+('27901873-0667-11ee-8d7b-ac74b16ee51i', 'iPhone 14 Mini 64GB', 23900000, '2fa190cb-0660-11ee-8d7b-ac74b16ee51f', 'Apple', '9916da26-0689-11ee-8d7b-ac74b16ee51f', 'Apple A16 Bionic', 4096, 65536, 643, 132, 'Đỏ', 0, '14bddd83-0665-11ee-8d7b-ac74b16ee51f'),
+('8f639cfa-068a-11ee-8d7b-ac74b16ee51f', 'Nokia 8210 4G', 1590, '2fa190cb-0660-11ee-8d7b-ac74b16ee51f', 'Nokia', 'a73a98fa-068a-11ee-8d7b-ac74b16ee51f', NULL, NULL, NULL, NULL, NULL, NULL, 0, '14bddd83-0665-11ee-8d7b-ac74b16ee51f'),
+('c8004af5-0667-11ee-8d7b-ac74b16ee51g', 'Samsung Galaxy S23 5G 128GB', 17990000, '2fa190cb-0660-11ee-8d7b-ac74b16ee51f', 'Samsung', '7c550ab8-0667-11ee-8d7b-ac74b16ee51f', 'Snapdragon 8 Gen 2', 6144, 131072, 781, 1634, 'Trắng', 0, '14bddd83-0665-11ee-8d7b-ac74b16ee51f'),
+('c8004af5-0667-11ee-8d7b-ac74b16ee51h', 'Samsung Galaxy Z Flip 3 5G 128GB', 21990000, '2fa190cb-0660-11ee-8d7b-ac74b16ee51f', 'Samsung', 'a2eb3dc4-0688-11ee-8d7b-ac74b16ee51f', 'Snapdragon 8 Gen 1', 6144, 131072, 756, 166, 'Xanh', 0, '14bddd83-0665-11ee-8d7b-ac74b16ee51f'),
+('c8004af5-0667-11ee-8d7b-ac74b16ee51l', 'Samsung Galaxy Note 22 Ultra 5G 512GB', 33990000, '2fa190cb-0660-11ee-8d7b-ac74b16ee51f', 'Samsung', '6a83cb2e-0689-11ee-8d7b-ac74b16ee51f', 'Exynos 2200', 12288, 524288, 165, 76, 'Xanh', 0, '14bddd83-0665-11ee-8d7b-ac74b16ee51f');
 
 -- --------------------------------------------------------
 
@@ -160,13 +171,33 @@ CREATE TABLE `product-order` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `product-visited`
+--
+
+CREATE TABLE `product-visited` (
+  `product_id` varchar(36) CHARACTER SET armscii8 COLLATE armscii8_general_ci NOT NULL,
+  `visited_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `user_id` varchar(36) CHARACTER SET ascii COLLATE ascii_general_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `product-visited`
+--
+
+INSERT INTO `product-visited` (`product_id`, `visited_at`, `user_id`) VALUES
+('27901873-0667-11ee-8d7b-ac74b16ee51g', '2023-06-10 22:46:37', 'fa08aec0-0799-11ee-9c68-ac74b16ee51f'),
+('27901873-0667-11ee-8d7b-ac74b16ee51h', '2023-06-10 22:47:06', '3c2b6c0b-0756-11ee-8d7b-ac74b16ee51f');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `search-history`
 --
 
 CREATE TABLE `search-history` (
-  `user_id` varchar(8) CHARACTER SET ascii COLLATE ascii_general_ci NOT NULL,
+  `user_id` varchar(36) CHARACTER SET ascii COLLATE ascii_general_ci NOT NULL,
   `content` varchar(40) COLLATE utf8mb4_general_ci NOT NULL,
-  `search_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `search_at` datetime DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -174,9 +205,9 @@ CREATE TABLE `search-history` (
 --
 
 INSERT INTO `search-history` (`user_id`, `content`, `search_at`) VALUES
-('1', 'iphone', '2023-05-15 15:03:18'),
-('1', 'samsung galaxy s23 ultra', '2023-05-15 15:03:24'),
-('2', 'mi 13 ultra 64gb', '2023-05-15 15:03:39');
+('3c2b6c0b-0756-11ee-8d7b-ac74b16ee51f', 'mi a1', '2023-06-11 00:39:32'),
+('3c2b6c0b-0756-11ee-8d7b-ac74b16ee51f', 'mi', '2023-06-11 00:40:14'),
+('3c2b6c0b-0756-11ee-8d7b-ac74b16ee51f', 'samsung', '2023-06-11 00:40:16');
 
 -- --------------------------------------------------------
 
@@ -210,15 +241,23 @@ INSERT INTO `slider-images` (`id`, `image_order`, `title`, `source`, `uploaded_a
 --
 
 CREATE TABLE `user` (
-  `user_id` varchar(8) CHARACTER SET ascii COLLATE ascii_general_ci NOT NULL,
+  `user_id` varchar(36) CHARACTER SET ascii COLLATE ascii_general_ci NOT NULL,
   `first_name` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `last_name` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `avatar` varchar(20) CHARACTER SET ascii COLLATE ascii_general_ci DEFAULT NULL,
   `rank` varchar(8) CHARACTER SET ascii COLLATE ascii_general_ci NOT NULL DEFAULT 'customer',
   `address` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
   `phone_number` varchar(10) CHARACTER SET ascii COLLATE ascii_general_ci NOT NULL,
-  `gmail` varchar(30) CHARACTER SET ascii COLLATE ascii_general_ci NOT NULL
+  `email` varchar(30) CHARACTER SET ascii COLLATE ascii_general_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='Save infomation of a user';
+
+--
+-- Dumping data for table `user`
+--
+
+INSERT INTO `user` (`user_id`, `first_name`, `last_name`, `avatar`, `rank`, `address`, `phone_number`, `email`) VALUES
+('3c2b6c0b-0756-11ee-8d7b-ac74b16ee51f', 'Trần', 'Còn', NULL, 'customer', 'Kiên Giang', '0327781160', 'tranvanconkg@gmail.com'),
+('fa08aec0-0799-11ee-9c68-ac74b16ee51f', 'Tran', 'Con', NULL, 'customer', 'Kien Giang', '0327781160', 'tranvanconkg@gmail.com');
 
 --
 -- Indexes for dumped tables
@@ -266,6 +305,13 @@ ALTER TABLE `product-order`
   ADD KEY `product_id` (`product_id`);
 
 --
+-- Indexes for table `product-visited`
+--
+ALTER TABLE `product-visited`
+  ADD KEY `product_id` (`product_id`),
+  ADD KEY `user_id` (`user_id`);
+
+--
 -- Indexes for table `search-history`
 --
 ALTER TABLE `search-history`
@@ -282,7 +328,6 @@ ALTER TABLE `slider-images`
 -- Indexes for table `user`
 --
 ALTER TABLE `user`
-  ADD UNIQUE KEY `phone_number` (`phone_number`),
   ADD UNIQUE KEY `user_id` (`user_id`);
 
 --
@@ -313,6 +358,13 @@ ALTER TABLE `product`
 ALTER TABLE `product-order`
   ADD CONSTRAINT `product-order_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `authenticate` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `product-order_ibfk_2` FOREIGN KEY (`product_id`) REFERENCES `product` (`product_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `product-visited`
+--
+ALTER TABLE `product-visited`
+  ADD CONSTRAINT `product-visited_ibfk_1` FOREIGN KEY (`product_id`) REFERENCES `product` (`product_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `product-visited_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `authenticate` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `search-history`
