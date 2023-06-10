@@ -32,7 +32,18 @@ class ProductListPageModel extends DatabaseSQL
     }
 
     $userId = $_SESSION["user_id"];
-    echo $content;
+
+    // Remove old value equal content
+    $removeOldResult = $this->conn->query("
+			DELETE FROM `search-history`
+				WHERE
+					user_id = '$userId'
+					AND content = '$content'
+		");
+
+    if (!$removeOldResult) {
+      return false;
+    }
 
     $addResult = $this->conn->query("
 			INSERT INTO `search-history`(user_id, content) VALUES

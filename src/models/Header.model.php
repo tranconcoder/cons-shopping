@@ -37,10 +37,10 @@ class HeaderModel extends DatabaseSQL
     }
 
     $historyList = $this->selectQuery("
-			SELECT content
+			SELECT content 
 				FROM `search-history`
 				WHERE user_id = '$userId'
-				GROUP BY content
+				ORDER BY search_at DESC
 				LIMIT 5
 		");
     return $historyList;
@@ -49,6 +49,7 @@ class HeaderModel extends DatabaseSQL
   public function getCategoryList()
   {
     $categoryList = $this->getAll("product-category");
+
     return $categoryList;
   }
 }
