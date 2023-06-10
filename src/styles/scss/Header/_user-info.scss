@@ -40,7 +40,7 @@
     }
   }
 
-  img {
+  > img {
     height: 100%;
     aspect-ratio: 1/1;
     object-fit: cover;
@@ -97,6 +97,7 @@
       }
     }
 
+    .store-utils,
     .account-utils {
       margin-top: 15px;
       text-align: left;
@@ -122,6 +123,11 @@
             font-size: 15px;
             border-radius: 10px;
             padding-inline: 10px;
+
+            img {
+              width: 24px;
+              aspect-ratio: 1/1;
+            }
 
             &:hover {
               background-color: #ddd;

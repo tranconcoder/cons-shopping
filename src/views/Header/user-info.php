@@ -13,26 +13,40 @@
 	<div class="box">
 		<section class="change-profile">
 			<aside class="left-slide">
-				<img src="<?= $_SESSION["avatar"] ?>" alt="" class="avatar">
+				<img src="<?= $_SESSION["avatar"] ?>" alt="avatar" class="avatar">
 			</aside>
+
 			<aside class="right-slide">
 				<p>Chỉnh sửa thông tin</p>
 			</aside>
 		</section>
 		
+		<section class="store-utils">
+			<h3 class="label">Mua sắm</h3>
+
+			<ul>
+				<li>
+					<a href="">
+						<img src="./src/assets/images/Common/Header/logout.png" alt="logout">
+						<span>Xem giỏ hàng</span>
+					</a>
+				</li>
+			</ul>
+		</section>
+
 		<section class="account-utils">
 			<h3 class="label">Tài khoản</h3>
 
 			<ul>
 				<li>
 					<a href="">
-						<i class="fa-regular fa-address-card"></i>
+						<img src="./src/assets/images/Common/Header/edit-profile.png" alt="edit-profile">
 						<span>Chỉnh sửa thông tin</span>
 					</a>
 				</li>
 				<li>
-					<a href="">
-						<i class="fa-regular fa-address-card"></i>
+					<a href="/api/logout">
+						<img src="./src/assets/images/Common/Header/logout.png" alt="logout">
 						<span>Đăng xuất</span>
 					</a>
 				</li>

@@ -374,7 +374,7 @@ body {
           background-color: #0099ff;
           color: #ffffff;
           font-size: 13px; }
-      .header-wrapper .header-container .user-profile .user-info img {
+      .header-wrapper .header-container .user-profile .user-info > img {
         height: 100%;
         aspect-ratio: 1/1;
         object-fit: cover;
@@ -414,16 +414,20 @@ body {
             width: 50px; }
           .header-wrapper .header-container .user-profile .user-info .box .change-profile .right-slide p {
             font-size: 14px; }
+        .header-wrapper .header-container .user-profile .user-info .box .store-utils,
         .header-wrapper .header-container .user-profile .user-info .box .account-utils {
           margin-top: 15px;
           text-align: left; }
+          .header-wrapper .header-container .user-profile .user-info .box .store-utils > h3,
           .header-wrapper .header-container .user-profile .user-info .box .account-utils > h3 {
             font-weight: 500;
             font-size: 15px; }
+          .header-wrapper .header-container .user-profile .user-info .box .store-utils > ul,
           .header-wrapper .header-container .user-profile .user-info .box .account-utils > ul {
             border-radius: 10px;
             background-color: #eee;
             list-style-type: none; }
+            .header-wrapper .header-container .user-profile .user-info .box .store-utils > ul > li > a,
             .header-wrapper .header-container .user-profile .user-info .box .account-utils > ul > li > a {
               height: 46px;
               display: flex;
@@ -434,6 +438,11 @@ body {
               font-size: 15px;
               border-radius: 10px;
               padding-inline: 10px; }
+              .header-wrapper .header-container .user-profile .user-info .box .store-utils > ul > li > a img,
+              .header-wrapper .header-container .user-profile .user-info .box .account-utils > ul > li > a img {
+                width: 24px;
+                aspect-ratio: 1/1; }
+              .header-wrapper .header-container .user-profile .user-info .box .store-utils > ul > li > a:hover,
               .header-wrapper .header-container .user-profile .user-info .box .account-utils > ul > li > a:hover {
                 background-color: #ddd; }
 

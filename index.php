@@ -11,12 +11,14 @@ $controller;
 
 switch ($uri) {
   case "/api/register":
-    echo "register";
     include_once __DIR__ . "/./src/apis/Register.api.php";
     $registerApi = new RegisterApi();
-
     exit();
-    break;
+
+  case "/api/logout":
+    include_once __DIR__ . "/./src/apis/Logout.api.php";
+    $logoutApi = new LogoutApi();
+    exit();
 
   case "/search":
     include_once __DIR__ . "/./src/controllers/ProductListPage.controller.php";
