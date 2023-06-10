@@ -1,57 +1,61 @@
 <?php
 include_once __DIR__ . "/../config/db/connect.php";
 
-class LoginApi extends DatabaseSQL
+class LoginApi
 {
-	private $username;
-	private $password;
+  private $username;
+  private $password;
+  private $userId;
 
-	public function __construct($username, $password)
-	{
-		$username = isset($username)
-			? $username
-			: (isset($_POST["username"])
-				? $_POST["username"]
-				: "");
-		$password = isset($password)
-			? $password
-			: (isset($_POST["password"])
-				? $_POST["password"]
-				: "");
+  private $db;
 
-		$authResult = $this->auth($this->username, $this->password);
+  public function __construct($username, $password)
+  {
+    $this->username = isset($username) ? $username : "";
+    $this->password = isset($password) ? $password : "";
 
-		if ($authResult) {
-			$this->handleAuthSuccess();
-		}
-	}
+    if (!strlen($this->username) || !strlen($this->password)) {
+      $this->handleLoginFail();
+    }
 
-	private function auth($username, $password)
-	{
-		$passwordEncode = md5($password);
+    $this->db = new DatabaseSQL();
+    $this->userId = $this->auth($this->username, $this->password);
 
-		$authResult = $this->conn
-			->query(
-				"
-				SELECT COUNT(*) AS loginSuccess
-					FROM authenticate
-					WHERE
-						username = '$username'
-						AND password = '$passwordEncode'
-				"
-			)
-			->fetch_assoc()["loginSuccess"];
+    if (isset($this->userId)) {
+      $this->handleLoginSuccess($this->userId);
+    } else {
+      $this->handleLoginFail();
+    }
+  }
 
-		return $authResult;
-	}
+  private function auth($username, $password)
+  {
+    $userId = $this->db->auth($username, $password);
 
-	private function handleAuthSuccess()
-	{
-		session_start();
+    return $userId;
+  }
 
+  private function handleLoginSuccess($userId)
+  {
+    session_start();
+    $userInfo = $this->db->getUser($userId);
 
-		$_SESSION["user_id"] = 
-	}
+    if (!isset($userInfo)) {
+      http_response_code(400);
+      exit("Login fail");
+    }
+
+    $_SESSION["user_id"] = $userId;
+
+    echo $_SESSION["user_id"];
+  }
+
+  private function handleLoginFail()
+  {
+    http_response_code(400);
+    echo "Login fail";
+    exit();
+  }
 }
 
-const registerApi = new RegisterApi();
+$loginApi = new LoginApi($_POST["username"], $_POST["password"]);

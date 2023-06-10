@@ -96,9 +96,7 @@ class RegisterApi
   private function handleRegister()
   {
     $passwordEncode = md5($this->password);
-    $uuid = $this->database->selectQuery("SELECT UUID_SHORT() AS uuid")[0][
-      "uuid"
-    ];
+    $uuid = $this->database->selectQuery("SELECT UUID() AS uuid")[0]["uuid"];
 
     $regAuthenticate = $this->database->conn->query("
 			INSERT INTO authenticate (user_id, username, password) VALUES
