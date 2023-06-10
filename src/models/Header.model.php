@@ -2,11 +2,27 @@
 
 class HeaderModel extends DatabaseSQL
 {
-  public function getPhoneList()
+  public function getVisitedProducts()
   {
+    $userId = $_SESSION["user_id"];
+
+    if (!isset($userId)) {
+      return [];
+    }
+
     $phoneList = $this->conn->query("
-			SELECT *, image.source as thumb FROM product, image
-			WHERE product.image_id = image.image_id
+			SELECT `product`.*, image.source as thumb
+				FROM `product`, `image`
+				WHERE
+					product_id IN (
+						SELECT product_id
+							FROM `product-visited`
+							WHERE
+								`product`.product_id = `product-visited`.product_id
+								AND `product-visited`.user_id = '$userId'
+					)
+					AND `product`.image_id = `image`.image_id
+				LIMIT 5
 		");
 
     return $phoneList;
@@ -14,7 +30,19 @@ class HeaderModel extends DatabaseSQL
 
   public function getHistoryList()
   {
-    $historyList = $this->getAll("search-history");
+    $userId = $_SESSION["user_id"];
+
+    if (!isset($userId)) {
+      return [];
+    }
+
+    $historyList = $this->selectQuery("
+			SELECT content
+				FROM `search-history`
+				WHERE user_id = '$userId'
+				GROUP BY content
+				LIMIT 5
+		");
     return $historyList;
   }
 

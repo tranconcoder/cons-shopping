@@ -16,14 +16,14 @@
 			<section class="viewed-products">
 				<span>Sản phẩm đã xem</span>
 				<ul class="viewed-products__list">
-					<?php foreach ($this->phoneList as $phone): ?>
+					<?php foreach ($this->visitedProducts as $product): ?>
                			<li>
                 			    <img
-									src="<?= $phone["thumb"] ?>"
-									alt="<?= $phone["label"] ?>"
+									src="<?= $product["thumb"] ?>"
+									alt="<?= $product["label"] ?>"
 								>
                     			
-							<h4><?= $phone["label"] ?></h4>
+							<h4><?= $product["label"] ?></h4>
                			</li> 
 					<?php endforeach; ?>
 				</ul>

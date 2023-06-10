@@ -5,7 +5,7 @@ class HeaderController
 {
   private HeaderModel $model;
 
-  private $phoneList;
+  private $visitedProducts;
   private $historyList;
   private $categoryList;
 
@@ -16,7 +16,7 @@ class HeaderController
 
   public function invoke()
   {
-    $this->phoneList = $this->model->getPhoneList();
+    $this->visitedProducts = $this->model->getVisitedProducts();
     $this->historyList = $this->model->getHistoryList();
     $this->categoryList = $this->model->getCategoryList();
 
