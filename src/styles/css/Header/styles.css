@@ -323,28 +323,119 @@ body {
       box-sizing: border-box; }
     .header-wrapper .header-container body {
       font-family: Roboto, sans-serif; }
-    .header-wrapper .header-container .user-profile {
-      width: 300px; }
-      .header-wrapper .header-container .user-profile .login-button {
-        width: 150px;
-        height: 40px;
+    .header-wrapper .header-container .user-profile .login-button {
+      width: 150px;
+      height: 40px;
+      border-radius: 10px;
+      margin-inline: auto;
+      display: block;
+      border: 2px solid #0099ff;
+      background-color: #0099ff;
+      font-size: 14px;
+      font-weight: 500;
+      color: #ffffff;
+      transition: all ease 300ms;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none; }
+      .header-wrapper .header-container .user-profile .login-button:hover {
+        cursor: pointer;
+        background-color: #ffffff;
+        color: #0099ff; }
+    .header-wrapper .header-container .user-profile .user-info {
+      width: 200px;
+      height: 60px;
+      border: none;
+      border-radius: 10px;
+      background-color: #eee;
+      padding: 6px;
+      transition: all ease 300ms;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      margin-left: 30px;
+      position: relative; }
+      .header-wrapper .header-container .user-profile .user-info:hover {
+        cursor: pointer;
+        background-color: #ddd; }
+        .header-wrapper .header-container .user-profile .user-info:hover .box {
+          pointer-events: unset;
+          opacity: 1;
+          transform: translateY(0); }
+      .header-wrapper .header-container .user-profile .user-info .info {
+        text-align: right; }
+        .header-wrapper .header-container .user-profile .user-info .info .name {
+          font-size: 14px; }
+        .header-wrapper .header-container .user-profile .user-info .info .cart {
+          padding: 3px 6px;
+          border-radius: 10px;
+          background-color: #0099ff;
+          color: #ffffff;
+          font-size: 13px; }
+      .header-wrapper .header-container .user-profile .user-info img {
+        height: 100%;
+        aspect-ratio: 1/1;
+        object-fit: cover;
+        object-position: center;
+        border-radius: 50%;
+        overflow: hidden; }
+      .header-wrapper .header-container .user-profile .user-info .box {
+        width: 250px;
+        position: absolute;
+        top: calc(100% + 10px);
+        right: 0;
+        background-color: #ffffff;
+        box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+        padding: 10px;
         border-radius: 10px;
-        margin-inline: auto;
-        display: block;
-        border: 2px solid #0099ff;
-        background-color: #0099ff;
-        font-size: 14px;
-        font-weight: 500;
-        color: #ffffff;
-        transition: all ease 300ms;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        text-decoration: none; }
-        .header-wrapper .header-container .user-profile .login-button:hover {
-          cursor: pointer;
-          background-color: #ffffff;
-          color: #0099ff; }
+        opacity: 0;
+        pointer-events: none;
+        transform: translateY(-20px);
+        transition: all ease 350ms; }
+        .header-wrapper .header-container .user-profile .user-info .box::before {
+          content: "";
+          height: 10px;
+          width: 100%;
+          display: block;
+          position: absolute;
+          top: -10px;
+          left: 0; }
+        .header-wrapper .header-container .user-profile .user-info .box > * {
+          border-radius: inherit; }
+        .header-wrapper .header-container .user-profile .user-info .box .change-profile {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          padding: 6px;
+          background-color: #eee; }
+          .header-wrapper .header-container .user-profile .user-info .box .change-profile .left-slide .avatar {
+            width: 50px; }
+          .header-wrapper .header-container .user-profile .user-info .box .change-profile .right-slide p {
+            font-size: 14px; }
+        .header-wrapper .header-container .user-profile .user-info .box .account-utils {
+          margin-top: 15px;
+          text-align: left; }
+          .header-wrapper .header-container .user-profile .user-info .box .account-utils > h3 {
+            font-weight: 500;
+            font-size: 15px; }
+          .header-wrapper .header-container .user-profile .user-info .box .account-utils > ul {
+            border-radius: 10px;
+            background-color: #eee;
+            list-style-type: none; }
+            .header-wrapper .header-container .user-profile .user-info .box .account-utils > ul > li > a {
+              height: 46px;
+              display: flex;
+              align-items: center;
+              text-decoration: none;
+              color: #333;
+              gap: 10px;
+              font-size: 15px;
+              border-radius: 10px;
+              padding-inline: 10px; }
+              .header-wrapper .header-container .user-profile .user-info .box .account-utils > ul > li > a:hover {
+                background-color: #ddd; }
 
 @font-face {
   .header-wrapper {

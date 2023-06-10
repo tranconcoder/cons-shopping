@@ -1,3 +1,8 @@
+console.log(location.href);
+if (location.href.includes("login-success=false")) {
+	alert("Đăng nhập thất bại!");
+}
+
 class SearchBar {
 	private searchInput: HTMLInputElement;
 	private submitButton: HTMLButtonElement;
@@ -505,13 +510,10 @@ class RegisterForm extends ValidateForm {
 			if (
 				!usernameCheckResult ||
 				!passwordCheckResult ||
-			!retypePasswordCheckResult 
-			||
+				!retypePasswordCheckResult ||
 				!firstNameCheckResult ||
-				!lastNameCheckResult 
-		||
-			!addressCheckResult 
-	||
+				!lastNameCheckResult ||
+				!addressCheckResult ||
 				!phoneNumberCheckResult ||
 				!gmailCheckResult
 			) {

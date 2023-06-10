@@ -1,4 +1,8 @@
 "use strict";
+console.log(location.href);
+if (location.href.includes("login-success=false")) {
+    alert("Đăng nhập thất bại!");
+}
 class SearchBar {
     constructor() {
         // Event state
@@ -338,14 +342,11 @@ class RegisterForm extends ValidateForm {
             const gmailCheckResult = this.checkInputValues(this.gmailInput, gmailConfig);
             if (!usernameCheckResult ||
                 !passwordCheckResult ||
-                !retypePasswordCheckResult
-                ||
-                    !firstNameCheckResult ||
-                !lastNameCheckResult
-                ||
-                    !addressCheckResult
-                ||
-                    !phoneNumberCheckResult ||
+                !retypePasswordCheckResult ||
+                !firstNameCheckResult ||
+                !lastNameCheckResult ||
+                !addressCheckResult ||
+                !phoneNumberCheckResult ||
                 !gmailCheckResult) {
                 e.preventDefault();
             }

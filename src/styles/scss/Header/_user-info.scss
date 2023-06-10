@@ -1,0 +1,134 @@
+.user-info {
+  width: 200px;
+  height: 60px;
+  border: none;
+  border-radius: 10px;
+  background-color: #eee;
+  padding: 6px;
+  transition: all ease 300ms;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  margin-left: 30px;
+  position: relative;
+
+  &:hover {
+    cursor: pointer;
+    background-color: #ddd;
+
+    .box {
+      pointer-events: unset;
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .info {
+    text-align: right;
+
+    .name {
+      font-size: 14px;
+    }
+
+    .cart {
+      padding: 3px 6px;
+      border-radius: 10px;
+      background-color: $primaryColor;
+      color: $whiteColor;
+      font-size: 13px;
+    }
+  }
+
+  img {
+    height: 100%;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 50%;
+    overflow: hidden;
+  }
+
+  //
+  .box {
+    width: 250px;
+    position: absolute;
+    top: calc(100% + 10px);
+    right: 0;
+    background-color: $whiteColor;
+    box-shadow: 0 0 10px 0 rgba(#000, 0.2);
+    padding: 10px;
+    border-radius: 10px;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-20px);
+    transition: all ease 350ms;
+
+    &::before {
+      content: "";
+      height: 10px;
+      width: 100%;
+      display: block;
+      position: absolute;
+      top: -10px;
+      left: 0;
+    }
+
+    > * {
+      border-radius: inherit;
+    }
+
+    .change-profile {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 6px;
+      background-color: #eee;
+
+      .left-slide {
+        .avatar {
+          width: 50px;
+        }
+      }
+      .right-slide {
+        p {
+          font-size: 14px;
+        }
+      }
+    }
+
+    .account-utils {
+      margin-top: 15px;
+      text-align: left;
+
+      > h3 {
+        font-weight: 500;
+        font-size: 15px;
+      }
+
+      > ul {
+        border-radius: 10px;
+        background-color: #eee;
+        list-style-type: none;
+
+        > li {
+          > a {
+            height: 46px;
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: #333;
+            gap: 10px;
+            font-size: 15px;
+            border-radius: 10px;
+            padding-inline: 10px;
+
+            &:hover {
+              background-color: #ddd;
+            }
+          }
+        }
+      }
+    }
+  }
+}

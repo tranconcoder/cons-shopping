@@ -51,9 +51,11 @@ class DatabaseSQL
 				LIMIT 1
 		");
 
-    print_r($userInfo);
-
-    return $userInfo;
+    if (isset($userInfo[0]["user_id"])) {
+      return $userInfo[0];
+    } else {
+      return $userInfo;
+    }
   }
 
   public function auth(string $username, string $password): string|null

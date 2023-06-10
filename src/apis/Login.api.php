@@ -40,11 +40,16 @@ class LoginApi
     session_start();
     $userInfo = $this->db->getUser($userId);
 
-    if (!isset($userInfo)) {
-      http_response_code(400);
+    if (!isset($userInfo["user_id"])) {
+      $this->handleLoginFail();
     }
 
     $_SESSION["user_id"] = $userId;
+    $_SESSION["avatar"] = $userInfo["avatar"]
+      ? $userInfo["avatar"]
+      : "/src/assets/images/Common/avatar.png";
+    $_SESSION["full_name"] =
+      $userInfo["first_name"] . " " . $userInfo["last_name"];
 
     header("Location: /");
   }
@@ -52,7 +57,7 @@ class LoginApi
   private function handleLoginFail()
   {
     http_response_code(400);
-    echo "Login fail";
+    header("Location: /?login-success=false");
     exit();
   }
 }
