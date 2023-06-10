@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 include_once "./src/config/db/connect.php";
 include_once __DIR__ . "/./src/controllers/layouts/Layout1.controller.php";
 

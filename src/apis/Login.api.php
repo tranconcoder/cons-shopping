@@ -42,12 +42,11 @@ class LoginApi
 
     if (!isset($userInfo)) {
       http_response_code(400);
-      exit("Login fail");
     }
 
     $_SESSION["user_id"] = $userId;
 
-    echo $_SESSION["user_id"];
+    header("Location: /");
   }
 
   private function handleLoginFail()
