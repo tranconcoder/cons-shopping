@@ -77,3 +77,9 @@ body {
           font-size: 15px;
           line-height: 1.25;
           margin-top: 10px; }
+        .product-list-container > .content .product-list-item .old-cost {
+          height: 18px; }
+        .product-list-container > .content .product-list-item .cost {
+          color: #006bb3;
+          font-size: 16px;
+          font-weight: bold; }

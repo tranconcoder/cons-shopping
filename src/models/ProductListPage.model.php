@@ -8,18 +8,36 @@ class ProductListPageModel extends DatabaseSQL
       return [];
     }
 
+    // Remove all special character
+    // Add % to find any
     $queryFormatted = "%" . implode("%", explode(" ", $query)) . "%";
+
     $productList = $this->selectQuery(
-      "SELECT *, image.source as thumb
-			FROM product, image
-			WHERE
-				(
-					label LIKE '$queryFormatted'
-					OR description LIKE '$queryFormatted'
-					OR processor LIKE '$queryFormatted'
-				)
-				AND product.image_id = image.image_id
-		"
+      "
+				(SELECT `product`.*, image.source as thumb, deal.deal_cost
+					FROM product, image, deal
+					WHERE
+						(
+							label LIKE '$queryFormatted'
+							OR description LIKE '$queryFormatted'
+							OR processor LIKE '$queryFormatted'
+						)
+						AND product.image_id = image.image_id
+						AND product.deal_id IS NOT NULL
+						AND product.deal_id = deal.deal_id
+					) UNION
+					(SELECT `product`.*, image.source as thumb, 0 AS deal_cost
+						FROM product, image
+						WHERE
+							(
+								label LIKE '$queryFormatted'
+								OR description LIKE '$queryFormatted'
+								OR processor LIKE '$queryFormatted'
+							)
+							AND product.image_id = image.image_id 
+							AND product.deal_id IS NULL
+					)
+			"
     );
 
     return $productList;

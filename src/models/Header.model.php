@@ -14,7 +14,7 @@ class HeaderModel extends DatabaseSQL
 			SELECT `product`.*, image.source as thumb
 				FROM `product`, `image`
 				WHERE
-					product_id IN (
+					`product`.product_id IN (
 						SELECT product_id
 							FROM `product-visited`
 							WHERE

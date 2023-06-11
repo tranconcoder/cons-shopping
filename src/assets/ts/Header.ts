@@ -1,4 +1,3 @@
-console.log(location.href);
 if (location.href.includes("login-success=false")) {
 	alert("Đăng nhập thất bại!");
 }
@@ -39,12 +38,18 @@ class SearchBar {
 	}
 
 	private handleSubmitByKeyPress(e: KeyboardEvent) {
-		if (e.code === "Enter" && this.searchInput.value.trim().length)
-			this.handleSubmit();
+		if (e.code === "Enter") this.handleSubmit();
 	}
 
 	private handleSubmit() {
-		window.location.href = "/search?q=" + this.searchInput.value;
+		this.searchInput.value = this.searchInput.value.replace(
+			/[^\w\s]/gi,
+			""
+		);
+
+		if (this.searchInput.value.trim().length) {
+			window.location.href = "/search?q=" + this.searchInput.value;
+		}
 	}
 }
 const searchBar = new SearchBar();
