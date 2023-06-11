@@ -98,7 +98,10 @@
         }
 
         .detail {
-          height: 60px;
+          $infoCount: 4;
+          $infoHeight: 20px;
+
+          height: $infoCount * $infoHeight;
           margin-top: 10px;
           list-style: none;
           display: flex;
@@ -107,7 +110,7 @@
           color: $textColor;
 
           li > {
-            height: 20px;
+            height: $infoHeight;
 
             span {
               font-size: 13px;

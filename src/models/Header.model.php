@@ -4,9 +4,9 @@ class HeaderModel extends DatabaseSQL
 {
   public function getVisitedProducts()
   {
-    $userId = $_SESSION["user_id"];
+    $userId = isset($_SESSION["user_id"]) ? $_SESSION["user_id"] : null;
 
-    if (!isset($userId)) {
+    if (!$userId) {
       return [];
     }
 
@@ -30,9 +30,9 @@ class HeaderModel extends DatabaseSQL
 
   public function getHistoryList()
   {
-    $userId = $_SESSION["user_id"];
+    $userId = isset($_SESSION["user_id"]) ? $_SESSION["user_id"] : null;
 
-    if (!isset($userId)) {
+    if (!$userId) {
       return [];
     }
 

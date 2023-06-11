@@ -55,6 +55,13 @@
 					<span><?= round($product["storage"] / 1024) ?>GB</span>
 				</li>
 			<?php } ?>
+
+			<?php if ($product["color"]) { ?>
+				<li>
+					<span>Màu sắc:</span>
+					<span><?= $product["color"] ?></span>
+				</li>
+			<?php } ?>
 		</ul>
 	</a>
 </li>

@@ -18,7 +18,16 @@ switch ($uri) {
   case "/api/logout":
     include_once __DIR__ . "/./src/apis/Logout.api.php";
     $logoutApi = new LogoutApi();
+
     exit();
+
+  case "/product":
+    include_once __DIR__ . "/./src/controllers/ProductPage.controller.php";
+
+    $bodyController = new ProductPageController();
+    $controller = new Layout1Controller($bodyController);
+
+    break;
 
   case "/search":
     include_once __DIR__ . "/./src/controllers/ProductListPage.controller.php";

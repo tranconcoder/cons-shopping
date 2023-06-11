@@ -96,7 +96,7 @@ body {
             font-size: 18px;
             font-weight: bold; }
         .product-list-container > .content .product-list-item .detail {
-          height: 60px;
+          height: 80px;
           margin-top: 10px;
           list-style: none;
           display: flex;
