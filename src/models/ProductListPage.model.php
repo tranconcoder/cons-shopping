@@ -14,29 +14,29 @@ class ProductListPageModel extends DatabaseSQL
 
     $productList = $this->selectQuery(
       "
-				(SELECT `product`.*, image.source as thumb, deal.deal_cost
-					FROM product, image, deal
+			(SELECT `product`.*, image.source as thumb, deal.deal_cost
+				FROM product, image, deal
+				WHERE
+					(
+						label LIKE '$queryFormatted'
+						OR description LIKE '$queryFormatted'
+						OR processor LIKE '$queryFormatted'
+					)
+					AND product.image_id = image.image_id
+					AND product.deal_id IS NOT NULL
+					AND product.deal_id = deal.deal_id
+				) UNION
+				(SELECT `product`.*, image.source as thumb, 0 AS deal_cost
+					FROM product, image
 					WHERE
 						(
 							label LIKE '$queryFormatted'
 							OR description LIKE '$queryFormatted'
 							OR processor LIKE '$queryFormatted'
 						)
-						AND product.image_id = image.image_id
-						AND product.deal_id IS NOT NULL
-						AND product.deal_id = deal.deal_id
-					) UNION
-					(SELECT `product`.*, image.source as thumb, 0 AS deal_cost
-						FROM product, image
-						WHERE
-							(
-								label LIKE '$queryFormatted'
-								OR description LIKE '$queryFormatted'
-								OR processor LIKE '$queryFormatted'
-							)
-							AND product.image_id = image.image_id 
-							AND product.deal_id IS NULL
-					)
+						AND product.image_id = image.image_id 
+						AND product.deal_id IS NULL
+				)
 			"
     );
 
@@ -52,20 +52,35 @@ class ProductListPageModel extends DatabaseSQL
     $userId = $_SESSION["user_id"];
 
     // Remove old value equal content
-    $removeOldResult = $this->conn->query("
+    $removeDuplicateContent = $this->conn->query("
 			DELETE FROM `search-history`
 				WHERE
 					user_id = '$userId'
 					AND content = '$content'
 		");
+    // Remove all value exception 5 item add lastest
+    $removeAllException5 = $this->conn->query("
+			DELETE FROM `search-history` as SH1
+				WHERE
+					user_id = '$userId'
+					AND search_id NOT IN (
+						SELECT search_id FROM (
+							SELECT search_id
+								FROM `search-history` as SH2
+								WHERE SH2.user_id = '$userId'
+								ORDER BY SH2.search_at DESC
+								LIMIT 4
+						) AS records
+					)
+		");
 
-    if (!$removeOldResult) {
+    if (!$removeDuplicateContent || !$removeAllException5) {
       return false;
     }
 
     $addResult = $this->conn->query("
-			INSERT INTO `search-history`(user_id, content) VALUES
-				('$userId', '$content')
+			INSERT INTO `search-history`(search_id, user_id, content) VALUES
+				(UUID(),'$userId', '$content')
 		");
 
     return $addResult;
