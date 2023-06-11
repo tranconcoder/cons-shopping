@@ -10,7 +10,7 @@ class HeaderModel extends DatabaseSQL
       return [];
     }
 
-    $phoneList = $this->conn->query("
+    $phoneList = $this->selectQuery("
 			SELECT `product`.*, image.source as thumb
 				FROM `product`, `image`
 				WHERE
@@ -21,13 +21,19 @@ class HeaderModel extends DatabaseSQL
 								`product`.product_id = `product-visited`.product_id
 								AND `product-visited`.user_id = '$userId'
 					)
-					AND `product`.image_id = `image`.image_id
+					AND image.image_id = (
+						SELECT image_id
+							FROM image as image2
+							WHERE
+								image2.product_id = product.product_id
+							ORDER BY is_thumb ASC
+							LIMIT 1
+					)
 				LIMIT 5
 		");
 
     return $phoneList;
   }
-
   public function getHistoryList()
   {
     $userId = isset($_SESSION["user_id"]) ? $_SESSION["user_id"] : null;

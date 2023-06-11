@@ -44,8 +44,16 @@ class HomePageModel extends DatabaseSQL
       "SELECT product.*, (product.cost - deal.deal_cost) as cost_deal, image.source as image
 				FROM product, deal, image
 				WHERE
-					product.deal_id = deal.deal_id AND
-					product.image_id = image.image_id
+					product.deal_id = deal.deal_id 
+					AND	product.product_id = image.product_id
+					AND image.image_id = (
+						SELECT image_id
+							FROM image as image2
+							WHERE
+								image2.product_id = product.product_id
+								AND image2.is_thumb
+							LIMIT 1
+					)
 			"
     );
 

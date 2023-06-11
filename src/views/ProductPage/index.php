@@ -4,7 +4,6 @@
 	<h2 class="name">
 		Sản phẩm <?= $this->productInfo["label"] ?>
 	</h2>
-
-	<div class="product-introduce">
-	</div>
+	
+	<?php include_once __DIR__ . "/./product-introduce.php"; ?>
 </section>

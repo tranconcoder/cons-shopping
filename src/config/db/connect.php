@@ -77,4 +77,22 @@ class DatabaseSQL
       return null;
     }
   }
+
+  public function getImageIdProductThumb($productId)
+  {
+    $imageId = $this->selectQuery("
+			SELECT image_id
+				FROM image
+				WHERE
+					product_id = '$productId'
+					AND is_thumb
+				LIMIT 1
+		")[0];
+
+    if (!isset($imageId)) {
+      return null;
+    } else {
+      return $imageId;
+    }
+  }
 }

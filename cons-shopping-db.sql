@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Jun 11, 2023 at 09:38 AM
+-- Generation Time: Jun 12, 2023 at 12:46 AM
 -- Server version: 8.0.33-0ubuntu0.23.04.2
 -- PHP Version: 8.1.12-1ubuntu4
 
@@ -83,13 +83,15 @@ CREATE TABLE `image` (
 --
 
 INSERT INTO `image` (`image_id`, `product_id`, `is_thumb`, `source`, `order`) VALUES
-('93b7e37f-0665-11ee-8d7b-ac74b16ee51f', NULL, 1, 'https://cdn.shopify.com/s/files/1/0632/3778/3783/products/SilverPro-iphone-14-pro-finish-select-202209-6-1inch-silver-removebg-preview.png?v=1663220402&width=1454&height=1056', 0),
-('7c550ab8-0667-11ee-8d7b-ac74b16ee51f', NULL, 1, 'https://www.drei.at/media/common/shop/handybilder/6800297-2_11_ImageSmaller.png', 0),
-('a2eb3dc4-0688-11ee-8d7b-ac74b16ee51f', NULL, 1, 'https://www.xtsmart.vn/vnt_upload/product/09_2021/thumbs/600_Samsung_Galaxy_Z_Flip_3_5G_Tim_XTsmart_2.png', 0),
-('6a83cb2e-0689-11ee-8d7b-ac74b16ee51f', NULL, 0, 'https://didongmango.com/images/products/2022/09/23/small/600_s22_ultra_5g_black_2_1663940728.png.png', 0),
-('9916da26-0689-11ee-8d7b-ac74b16ee51f', NULL, 0, 'https://shopdunk.com/images/uploaded/iPhone-14-thumb-topzone-2-650x650-1.png', 0),
-('31c56576-068a-11ee-8d7b-ac74b16ee51f', NULL, 1, 'https://thegioiso360.vn/wp-content/uploads/2021/06/Xiaomi-A1.png', 0),
-('a73a98fa-068a-11ee-8d7b-ac74b16ee51f', NULL, 1, 'https://cdn2.cellphones.com.vn/x358,webp,q100/media/catalog/product/n/o/nokia-8210_4g-sand-front_back-int.png', 0);
+('31c56576-068a-11ee-8d7b-ac74b16ee51f', '13adced0-068a-11ee-8d7b-ac74b16ee51f', 1, 'https://thegioiso360.vn/wp-content/uploads/2021/06/Xiaomi-A1.png', 0),
+('6a83cb2e-0689-11ee-8d7b-ac74b16ee51f', 'c8004af5-0667-11ee-8d7b-ac74b16ee51l', 1, 'https://didongmango.com/images/products/2022/09/23/small/600_s22_ultra_5g_black_2_1663940728.png.png', 0),
+('7c550ab8-0667-11ee-8d7b-ac74b16ee51f', 'c8004af5-0667-11ee-8d7b-ac74b16ee51g', 1, 'https://www.drei.at/media/common/shop/handybilder/6800297-2_11_ImageSmaller.png', 0),
+('93b7e37f-0665-11ee-8d7b-ac74b16ee51f', '27901873-0667-11ee-8d7b-ac74b16ee51h', 1, 'https://cdn.shopify.com/s/files/1/0632/3778/3783/products/SilverPro-iphone-14-pro-finish-select-202209-6-1inch-silver-removebg-preview.png?v=1663220402&width=1454&height=1056', 0),
+('9916da26-0689-11ee-8d7b-ac74b16ee51f', '27901873-0667-11ee-8d7b-ac74b16ee51i', 1, 'https://shopdunk.com/images/uploaded/iPhone-14-thumb-topzone-2-650x650-1.png', 0),
+('a2eb3dc4-0688-11ee-8d7b-ac74b16ee51f', 'c8004af5-0667-11ee-8d7b-ac74b16ee51h', 1, 'https://www.xtsmart.vn/vnt_upload/product/09_2021/thumbs/600_Samsung_Galaxy_Z_Flip_3_5G_Tim_XTsmart_2.png', 0),
+('a73a98fa-068a-11ee-8d7b-ac74b16ee51f', '8f639cfa-068a-11ee-8d7b-ac74b16ee51f', 1, 'https://cdn2.cellphones.com.vn/x358,webp,q100/media/catalog/product/n/o/nokia-8210_4g-sand-front_back-int.png', 0),
+('baa49e7c-087b-11ee-a098-5650f2d9aa3b', '27901873-0667-11ee-8d7b-ac74b16ee51g', 1, 'https://cdn2.cellphones.com.vn/x358,webp,q100/media/catalog/product/t/_/t_m_12.png', 0),
+('fb973195-087d-11ee-a098-5650f2d9aa3b', '27901873-0667-11ee-8d7b-ac74b16ee51g', 0, 'https://about.powermaccenter.com/wp-content/uploads/2022/09/RX-S1_Smart_1-1.png', 1);
 
 -- --------------------------------------------------------
 
@@ -103,7 +105,6 @@ CREATE TABLE `product` (
   `cost` int NOT NULL DEFAULT '0',
   `category_id` varchar(36) CHARACTER SET armscii8 COLLATE armscii8_general_ci DEFAULT NULL,
   `description` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `image_id` varchar(36) CHARACTER SET armscii8 COLLATE armscii8_general_ci DEFAULT NULL COMMENT 'Id of image list',
   `monitor_width` int DEFAULT NULL,
   `monitor_height` int DEFAULT NULL,
   `processor` varchar(24) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
@@ -120,15 +121,15 @@ CREATE TABLE `product` (
 -- Dumping data for table `product`
 --
 
-INSERT INTO `product` (`product_id`, `label`, `cost`, `category_id`, `description`, `image_id`, `monitor_width`, `monitor_height`, `processor`, `memory`, `storage`, `size_width`, `size_height`, `color`, `not_sell`, `deal_id`) VALUES
-('13adced0-068a-11ee-8d7b-ac74b16ee51f', 'Xiaomi Redmi A1', 1890000, '2fa190cb-0660-11ee-8d7b-ac74b16ee51f', 'Xiaomi', '31c56576-068a-11ee-8d7b-ac74b16ee51f', NULL, NULL, 'Helio A22', 2048, 32768, 164, 776, 'Đen', 0, NULL),
-('27901873-0667-11ee-8d7b-ac74b16ee51g', 'iPhone 14 Pro Max 256GB', 32900000, '2fa190cb-0660-11ee-8d7b-ac74b16ee51f', 'Apple', '93b7e37f-0665-11ee-8d7b-ac74b16ee51f', 1290, 2796, 'Apple A16 Bionic', 8192, 262144, 776, 1607, 'Vàng', 0, 'db183460-07ee-11ee-9c68-ac74b16ee51f'),
-('27901873-0667-11ee-8d7b-ac74b16ee51h', 'iPhone 14 Pro 512GB', 39900000, '2fa190cb-0660-11ee-8d7b-ac74b16ee51f', 'Apple', '93b7e37f-0665-11ee-8d7b-ac74b16ee51f', NULL, NULL, 'Apple A16 Bionic', 16384, 524288, 776, 1607, 'Xám', 0, 'db183460-07ee-11ee-9c68-ac74b16ee51f'),
-('27901873-0667-11ee-8d7b-ac74b16ee51i', 'iPhone 14 Mini 64GB', 23900000, '2fa190cb-0660-11ee-8d7b-ac74b16ee51f', 'Apple', '9916da26-0689-11ee-8d7b-ac74b16ee51f', NULL, NULL, 'Apple A16 Bionic', 4096, 65536, 643, 132, 'Đỏ', 0, 'db183460-07ee-11ee-9c68-ac74b16ee51f'),
-('8f639cfa-068a-11ee-8d7b-ac74b16ee51f', 'Nokia 8210 4G', 1590, '2fa190cb-0660-11ee-8d7b-ac74b16ee51f', 'Nokia', 'a73a98fa-068a-11ee-8d7b-ac74b16ee51f', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 'db183460-07ee-11ee-9c68-ac74b16ee51f'),
-('c8004af5-0667-11ee-8d7b-ac74b16ee51g', 'Samsung Galaxy S23 5G 128GB', 17990000, '2fa190cb-0660-11ee-8d7b-ac74b16ee51f', 'Samsung', '7c550ab8-0667-11ee-8d7b-ac74b16ee51f', NULL, NULL, 'Snapdragon 8 Gen 2', 6144, 131072, 781, 1634, 'Trắng', 0, 'db183460-07ee-11ee-9c68-ac74b16ee51f'),
-('c8004af5-0667-11ee-8d7b-ac74b16ee51h', 'Samsung Galaxy Z Flip 3 5G 128GB', 21990000, '2fa190cb-0660-11ee-8d7b-ac74b16ee51f', 'Samsung', 'a2eb3dc4-0688-11ee-8d7b-ac74b16ee51f', NULL, NULL, 'Snapdragon 8 Gen 1', 6144, 131072, 756, 166, 'Xanh', 0, 'f48cfc1d-07f2-11ee-9c68-ac74b16ee51f'),
-('c8004af5-0667-11ee-8d7b-ac74b16ee51l', 'Samsung Galaxy Note 22 Ultra 5G 512GB', 33990000, '2fa190cb-0660-11ee-8d7b-ac74b16ee51f', 'Samsung', '6a83cb2e-0689-11ee-8d7b-ac74b16ee51f', NULL, NULL, 'Exynos 2200', 12288, 524288, 165, 76, 'Xanh', 0, 'db183460-07ee-11ee-9c68-ac74b16ee51f');
+INSERT INTO `product` (`product_id`, `label`, `cost`, `category_id`, `description`, `monitor_width`, `monitor_height`, `processor`, `memory`, `storage`, `size_width`, `size_height`, `color`, `not_sell`, `deal_id`) VALUES
+('13adced0-068a-11ee-8d7b-ac74b16ee51f', 'Xiaomi Redmi A1', 1890000, '2fa190cb-0660-11ee-8d7b-ac74b16ee51f', 'Xiaomi', NULL, NULL, 'Helio A22', 2048, 32768, 164, 776, 'Đen', 0, NULL),
+('27901873-0667-11ee-8d7b-ac74b16ee51g', 'iPhone 14 Pro Max 256GB', 32900000, '2fa190cb-0660-11ee-8d7b-ac74b16ee51f', 'Apple', 1290, 2796, 'Apple A16 Bionic', 8192, 262144, 776, 1607, 'Vàng', 0, 'db183460-07ee-11ee-9c68-ac74b16ee51f'),
+('27901873-0667-11ee-8d7b-ac74b16ee51h', 'iPhone 14 Pro 512GB', 39900000, '2fa190cb-0660-11ee-8d7b-ac74b16ee51f', 'Apple', NULL, NULL, 'Apple A16 Bionic', 16384, 524288, 776, 1607, 'Xám', 0, 'db183460-07ee-11ee-9c68-ac74b16ee51f'),
+('27901873-0667-11ee-8d7b-ac74b16ee51i', 'iPhone 14 Mini 64GB', 23900000, '2fa190cb-0660-11ee-8d7b-ac74b16ee51f', 'Apple', NULL, NULL, 'Apple A16 Bionic', 4096, 65536, 643, 132, 'Đỏ', 0, 'db183460-07ee-11ee-9c68-ac74b16ee51f'),
+('8f639cfa-068a-11ee-8d7b-ac74b16ee51f', 'Nokia 8210 4G', 1590, '2fa190cb-0660-11ee-8d7b-ac74b16ee51f', 'Nokia', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 'db183460-07ee-11ee-9c68-ac74b16ee51f'),
+('c8004af5-0667-11ee-8d7b-ac74b16ee51g', 'Samsung Galaxy S23 5G 128GB', 17990000, '2fa190cb-0660-11ee-8d7b-ac74b16ee51f', 'Samsung', NULL, NULL, 'Snapdragon 8 Gen 2', 6144, 131072, 781, 1634, 'Trắng', 0, 'db183460-07ee-11ee-9c68-ac74b16ee51f'),
+('c8004af5-0667-11ee-8d7b-ac74b16ee51h', 'Samsung Galaxy Z Flip 3 5G 128GB', 21990000, '2fa190cb-0660-11ee-8d7b-ac74b16ee51f', 'Samsung', NULL, NULL, 'Snapdragon 8 Gen 1', 6144, 131072, 756, 166, 'Xanh', 0, 'f48cfc1d-07f2-11ee-9c68-ac74b16ee51f'),
+('c8004af5-0667-11ee-8d7b-ac74b16ee51l', 'Samsung Galaxy Note 22 Ultra 5G 512GB', 33990000, '2fa190cb-0660-11ee-8d7b-ac74b16ee51f', 'Samsung', NULL, NULL, 'Exynos 2200', 12288, 524288, 165, 76, 'Xanh', 0, 'db183460-07ee-11ee-9c68-ac74b16ee51f');
 
 -- --------------------------------------------------------
 
@@ -184,6 +185,14 @@ CREATE TABLE `product-visited` (
   `user_id` varchar(36) CHARACTER SET ascii COLLATE ascii_general_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `product-visited`
+--
+
+INSERT INTO `product-visited` (`product_id`, `visited_at`, `user_id`) VALUES
+('8f639cfa-068a-11ee-8d7b-ac74b16ee51f', '2023-06-11 23:45:26', '3c2b6c0b-0756-11ee-8d7b-ac74b16ee51f'),
+('13adced0-068a-11ee-8d7b-ac74b16ee51f', '2023-06-11 23:45:38', 'fa08aec0-0799-11ee-9c68-ac74b16ee51f');
+
 -- --------------------------------------------------------
 
 --
@@ -191,6 +200,7 @@ CREATE TABLE `product-visited` (
 --
 
 CREATE TABLE `search-history` (
+  `search_id` varchar(36) COLLATE utf8mb4_general_ci NOT NULL DEFAULT 'UUID()',
   `user_id` varchar(36) CHARACTER SET ascii COLLATE ascii_general_ci NOT NULL,
   `content` varchar(40) COLLATE utf8mb4_general_ci NOT NULL,
   `search_at` datetime DEFAULT CURRENT_TIMESTAMP
@@ -200,31 +210,17 @@ CREATE TABLE `search-history` (
 -- Dumping data for table `search-history`
 --
 
-INSERT INTO `search-history` (`user_id`, `content`, `search_at`) VALUES
-('3c2b6c0b-0756-11ee-8d7b-ac74b16ee51f', 'mi a1', '2023-06-11 00:39:32'),
-('3c2b6c0b-0756-11ee-8d7b-ac74b16ee51f', 'samsung/', '2023-06-11 01:04:51'),
-('3c2b6c0b-0756-11ee-8d7b-ac74b16ee51f', '12', '2023-06-11 01:07:32'),
-('3c2b6c0b-0756-11ee-8d7b-ac74b16ee51f', 'a\\', '2023-06-11 01:20:18'),
-('3c2b6c0b-0756-11ee-8d7b-ac74b16ee51f', 'iphone/', '2023-06-11 06:55:57'),
-('3c2b6c0b-0756-11ee-8d7b-ac74b16ee51f', '123!', '2023-06-11 06:57:56'),
-('3c2b6c0b-0756-11ee-8d7b-ac74b16ee51f', '123', '2023-06-11 06:58:26'),
-('3c2b6c0b-0756-11ee-8d7b-ac74b16ee51f', '1231', '2023-06-11 06:58:30'),
-('3c2b6c0b-0756-11ee-8d7b-ac74b16ee51f', 'header', '2023-06-11 06:58:39'),
-('3c2b6c0b-0756-11ee-8d7b-ac74b16ee51f', '14', '2023-06-11 07:33:48'),
-('3c2b6c0b-0756-11ee-8d7b-ac74b16ee51f', 'i', '2023-06-11 07:34:58'),
-('3c2b6c0b-0756-11ee-8d7b-ac74b16ee51f', 'iphone', '2023-06-11 08:19:56'),
-('3c2b6c0b-0756-11ee-8d7b-ac74b16ee51f', 'redmi', '2023-06-11 08:19:58'),
-('3c2b6c0b-0756-11ee-8d7b-ac74b16ee51f', 'mi', '2023-06-11 08:52:42'),
-('3c2b6c0b-0756-11ee-8d7b-ac74b16ee51f', 'a', '2023-06-11 09:36:44'),
-('3c2b6c0b-0756-11ee-8d7b-ac74b16ee51f', 'xiaomi', '2023-06-11 09:37:24'),
-('3c2b6c0b-0756-11ee-8d7b-ac74b16ee51f', 'samsung', '2023-06-11 09:37:27'),
-('3c2b6c0b-0756-11ee-8d7b-ac74b16ee51f', 'apple', '2023-06-11 09:37:28'),
-('3c2b6c0b-0756-11ee-8d7b-ac74b16ee51f', 'apple a16', '2023-06-11 09:37:31'),
-('3c2b6c0b-0756-11ee-8d7b-ac74b16ee51f', '8gen2', '2023-06-11 09:37:48'),
-('3c2b6c0b-0756-11ee-8d7b-ac74b16ee51f', '8gen 2', '2023-06-11 09:37:50'),
-('3c2b6c0b-0756-11ee-8d7b-ac74b16ee51f', '8gen 1', '2023-06-11 09:37:53'),
-('3c2b6c0b-0756-11ee-8d7b-ac74b16ee51f', '8 gen 1', '2023-06-11 09:37:56'),
-('3c2b6c0b-0756-11ee-8d7b-ac74b16ee51f', '8 gen 2', '2023-06-11 09:38:01');
+INSERT INTO `search-history` (`search_id`, `user_id`, `content`, `search_at`) VALUES
+('300ae065-0822-11ee-9c68-ac74b16ee51f', '3c2b6c0b-0756-11ee-8d7b-ac74b16ee51f', '1', '2023-06-11 13:35:42'),
+('347025b6-0822-11ee-9c68-ac74b16ee51f', '3c2b6c0b-0756-11ee-8d7b-ac74b16ee51f', 'xiao', '2023-06-11 13:35:49'),
+('35f6ff34-0822-11ee-9c68-ac74b16ee51f', '3c2b6c0b-0756-11ee-8d7b-ac74b16ee51f', 'oppo', '2023-06-11 13:35:52'),
+('8fffdbb1-087c-11ee-a098-5650f2d9aa3b', 'fa08aec0-0799-11ee-9c68-ac74b16ee51f', 'iphone', '2023-06-12 00:22:37'),
+('91c3a3af-087c-11ee-a098-5650f2d9aa3b', 'fa08aec0-0799-11ee-9c68-ac74b16ee51f', 'apple', '2023-06-12 00:22:40'),
+('93ee7c69-087c-11ee-a098-5650f2d9aa3b', 'fa08aec0-0799-11ee-9c68-ac74b16ee51f', 'samsung', '2023-06-12 00:22:44'),
+('9549cdcb-087c-11ee-a098-5650f2d9aa3b', 'fa08aec0-0799-11ee-9c68-ac74b16ee51f', 'xiaomi', '2023-06-12 00:22:46'),
+('d7100041-087f-11ee-a098-5650f2d9aa3b', 'fa08aec0-0799-11ee-9c68-ac74b16ee51f', 'a', '2023-06-12 00:46:05'),
+('f28369db-085e-11ee-a098-5650f2d9aa3b', '3c2b6c0b-0756-11ee-8d7b-ac74b16ee51f', 'samsung', '2023-06-11 20:50:38'),
+('f861ae95-0852-11ee-a098-5650f2d9aa3b', '3c2b6c0b-0756-11ee-8d7b-ac74b16ee51f', 'apple', '2023-06-11 19:24:54');
 
 -- --------------------------------------------------------
 
@@ -296,6 +292,7 @@ ALTER TABLE `deal`
 -- Indexes for table `image`
 --
 ALTER TABLE `image`
+  ADD PRIMARY KEY (`image_id`),
   ADD KEY `image_id` (`image_id`),
   ADD KEY `product_id` (`product_id`);
 
@@ -305,7 +302,6 @@ ALTER TABLE `image`
 ALTER TABLE `product`
   ADD PRIMARY KEY (`product_id`) USING BTREE,
   ADD KEY `deal_id` (`deal_id`),
-  ADD KEY `images_id` (`image_id`),
   ADD KEY `category_id` (`category_id`);
 
 --
@@ -333,6 +329,7 @@ ALTER TABLE `product-visited`
 -- Indexes for table `search-history`
 --
 ALTER TABLE `search-history`
+  ADD PRIMARY KEY (`search_id`),
   ADD KEY `user_id` (`user_id`);
 
 --
@@ -372,7 +369,6 @@ ALTER TABLE `image`
 -- Constraints for table `product`
 --
 ALTER TABLE `product`
-  ADD CONSTRAINT `product_ibfk_2` FOREIGN KEY (`image_id`) REFERENCES `image` (`image_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `product_ibfk_4` FOREIGN KEY (`category_id`) REFERENCES `product-category` (`category_id`) ON DELETE SET NULL ON UPDATE SET NULL,
   ADD CONSTRAINT `product_ibfk_5` FOREIGN KEY (`deal_id`) REFERENCES `deal` (`deal_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 

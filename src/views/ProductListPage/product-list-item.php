@@ -26,7 +26,7 @@
 		<ul class="detail">
 			<?php if ($product["processor"]) { ?>
 				<li>
-					<span>CPU:</span>
+					<span>Cpu:</span>
 					<span><?= $product["processor"] ?></span>
 				</li>
 			<?php } ?>
@@ -44,14 +44,14 @@
 
 			<?php if ($product["memory"]) { ?>
 				<li>
-					<span>RAM:</span>
+					<span>Ram:</span>
 					<span><?= round($product["memory"] / 1024) ?>GB</span>
 				</li>
 			<?php } ?>
 
 			<?php if ($product["storage"]) { ?>
 				<li>
-					<span>ROM:</span>
+					<span>Rom:</span>
 					<span><?= round($product["storage"] / 1024) ?>GB</span>
 				</li>
 			<?php } ?>

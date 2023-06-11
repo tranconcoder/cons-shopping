@@ -6,6 +6,7 @@ class ProductPageController
   private $model;
   private $productId;
   private $productInfo;
+  private $productImageList;
 
   public function __construct()
   {
@@ -20,6 +21,9 @@ class ProductPageController
   public function invoke()
   {
     $this->productInfo = $this->model->getProductInfo($this->productId);
+    $this->productImageList = $this->model->getImageForProduct(
+      $this->productId
+    );
 
     include_once __DIR__ . "/../views/ProductPage/index.php";
   }
