@@ -228,6 +228,10 @@ body {
                 font-family: Roboto;
                 line-height: 30px;
                 display: block; }
+                .header-wrapper .header-container .center-slide .search-bar .input-ctn .search-box .history ul li > a,
+                .header-wrapper .header-container .center-slide .search-bar .input-ctn .search-box .suggest-ctn ul li > a {
+                  color: unset;
+                  text-decoration: none; }
                 .header-wrapper .header-container .center-slide .search-bar .input-ctn .search-box .history ul li:hover,
                 .header-wrapper .header-container .center-slide .search-bar .input-ctn .search-box .suggest-ctn ul li:hover {
                   background-color: #eee; }

@@ -127,6 +127,11 @@
             line-height: 30px;
             display: block;
 
+            > a {
+              color: unset;
+              text-decoration: none;
+            }
+
             &:hover {
               background-color: #eee;
             }

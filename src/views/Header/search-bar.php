@@ -40,9 +40,11 @@
 				<ul>
 					<?php foreach ($this->historyList as $history) { ?>
 						<li>
-							<p>
-								<?= $history["content"] ?>
-							</p>
+							<a href="/search?q=<?= $history["content"] ?>">
+								<p>
+									<?= $history["content"] ?>
+								</p>
+							</a>
 						</li>
           			<?php } ?>
 				</ul>
