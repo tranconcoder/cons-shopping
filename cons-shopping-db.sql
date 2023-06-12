@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Jun 12, 2023 at 12:46 AM
+-- Generation Time: Jun 12, 2023 at 10:38 AM
 -- Server version: 8.0.33-0ubuntu0.23.04.2
 -- PHP Version: 8.1.12-1ubuntu4
 
@@ -84,6 +84,7 @@ CREATE TABLE `image` (
 
 INSERT INTO `image` (`image_id`, `product_id`, `is_thumb`, `source`, `order`) VALUES
 ('31c56576-068a-11ee-8d7b-ac74b16ee51f', '13adced0-068a-11ee-8d7b-ac74b16ee51f', 1, 'https://thegioiso360.vn/wp-content/uploads/2021/06/Xiaomi-A1.png', 0),
+('585d2cad-08ce-11ee-bb09-ac74b16ee51f', '13adced0-068a-11ee-8d7b-ac74b16ee51f', 0, 'https://www.techsignin.com/wp-content/uploads/2022/10/xiaomi-redmi-a1-4.png', 1),
 ('6a83cb2e-0689-11ee-8d7b-ac74b16ee51f', 'c8004af5-0667-11ee-8d7b-ac74b16ee51l', 1, 'https://didongmango.com/images/products/2022/09/23/small/600_s22_ultra_5g_black_2_1663940728.png.png', 0),
 ('7c550ab8-0667-11ee-8d7b-ac74b16ee51f', 'c8004af5-0667-11ee-8d7b-ac74b16ee51g', 1, 'https://www.drei.at/media/common/shop/handybilder/6800297-2_11_ImageSmaller.png', 0),
 ('93b7e37f-0665-11ee-8d7b-ac74b16ee51f', '27901873-0667-11ee-8d7b-ac74b16ee51h', 1, 'https://cdn.shopify.com/s/files/1/0632/3778/3783/products/SilverPro-iphone-14-pro-finish-select-202209-6-1inch-silver-removebg-preview.png?v=1663220402&width=1454&height=1056', 0),
@@ -211,16 +212,16 @@ CREATE TABLE `search-history` (
 --
 
 INSERT INTO `search-history` (`search_id`, `user_id`, `content`, `search_at`) VALUES
-('300ae065-0822-11ee-9c68-ac74b16ee51f', '3c2b6c0b-0756-11ee-8d7b-ac74b16ee51f', '1', '2023-06-11 13:35:42'),
-('347025b6-0822-11ee-9c68-ac74b16ee51f', '3c2b6c0b-0756-11ee-8d7b-ac74b16ee51f', 'xiao', '2023-06-11 13:35:49'),
-('35f6ff34-0822-11ee-9c68-ac74b16ee51f', '3c2b6c0b-0756-11ee-8d7b-ac74b16ee51f', 'oppo', '2023-06-11 13:35:52'),
+('0dc47af5-08d2-11ee-bb09-ac74b16ee51f', '3c2b6c0b-0756-11ee-8d7b-ac74b16ee51f', 'samsun', '2023-06-12 10:34:36'),
+('3a1fb86b-08cf-11ee-bb09-ac74b16ee51f', '3c2b6c0b-0756-11ee-8d7b-ac74b16ee51f', 'xiaomi', '2023-06-12 10:14:22'),
+('5b19a8ff-08d2-11ee-bb09-ac74b16ee51f', '3c2b6c0b-0756-11ee-8d7b-ac74b16ee51f', 'iphone', '2023-06-12 10:36:45'),
+('5c01dbb5-08d2-11ee-bb09-ac74b16ee51f', '3c2b6c0b-0756-11ee-8d7b-ac74b16ee51f', 'a', '2023-06-12 10:36:47'),
 ('8fffdbb1-087c-11ee-a098-5650f2d9aa3b', 'fa08aec0-0799-11ee-9c68-ac74b16ee51f', 'iphone', '2023-06-12 00:22:37'),
 ('91c3a3af-087c-11ee-a098-5650f2d9aa3b', 'fa08aec0-0799-11ee-9c68-ac74b16ee51f', 'apple', '2023-06-12 00:22:40'),
 ('93ee7c69-087c-11ee-a098-5650f2d9aa3b', 'fa08aec0-0799-11ee-9c68-ac74b16ee51f', 'samsung', '2023-06-12 00:22:44'),
 ('9549cdcb-087c-11ee-a098-5650f2d9aa3b', 'fa08aec0-0799-11ee-9c68-ac74b16ee51f', 'xiaomi', '2023-06-12 00:22:46'),
-('d7100041-087f-11ee-a098-5650f2d9aa3b', 'fa08aec0-0799-11ee-9c68-ac74b16ee51f', 'a', '2023-06-12 00:46:05'),
-('f28369db-085e-11ee-a098-5650f2d9aa3b', '3c2b6c0b-0756-11ee-8d7b-ac74b16ee51f', 'samsung', '2023-06-11 20:50:38'),
-('f861ae95-0852-11ee-a098-5650f2d9aa3b', '3c2b6c0b-0756-11ee-8d7b-ac74b16ee51f', 'apple', '2023-06-11 19:24:54');
+('eb17a811-08d1-11ee-bb09-ac74b16ee51f', '3c2b6c0b-0756-11ee-8d7b-ac74b16ee51f', 'redmi', '2023-06-12 10:33:38'),
+('fd51d842-087f-11ee-a098-5650f2d9aa3b', 'fa08aec0-0799-11ee-9c68-ac74b16ee51f', 'a', '2023-06-12 00:47:09');
 
 -- --------------------------------------------------------
 
