@@ -41,11 +41,12 @@ class ProductListPageModel extends DatabaseSQL
 							OR processor LIKE '$queryFormatted'
 						)
 						AND product.deal_id IS NULL
-						AND image.image_id IN (
+						AND image.image_id = (
 							SELECT image_id
 								FROM image as image2
 								WHERE image2.product_id = product.product_id
 								ORDER BY image2.is_thumb DESC
+								LIMIT 1
 						)
 				)
 			"

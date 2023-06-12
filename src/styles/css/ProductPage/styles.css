@@ -1,17 +1,88 @@
+@font-face {
+  font-family: Roboto;
+  font-weight: 300;
+  src: url("../../../assets/fonts/Roboto-Thin.ttf"); }
+
+@font-face {
+  font-family: Roboto;
+  font-weight: 400;
+  src: url("../../../assets/fonts/Roboto-Regular.ttf"); }
+
+@font-face {
+  font-family: Roboto;
+  font-weight: 500;
+  src: url("../../../assets/fonts/Roboto-Medium.ttf"); }
+
+@font-face {
+  font-family: Roboto;
+  font-weight: 700;
+  src: url("../../../assets/fonts/Roboto-Bold.ttf"); }
+
+@font-face {
+  font-family: Roboto;
+  font-weight: 900;
+  src: url("../../../assets/fonts/Roboto-Black.ttf"); }
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box; }
+
+body {
+  font-family: Roboto, sans-serif; }
+
 .product-info {
   padding-top: 10px; }
   .product-info > h2.name {
     font-size: 24px;
     font-weight: 500; }
   .product-info .product-introduce {
+    margin-top: 20px;
     display: grid;
     grid-template-columns: calc(65% - 5px) calc(35% - 5px);
-    grid-template-rows: 500px 100px;
-    column-gap: 10px; }
+    grid-template-rows: 400px 160px;
+    gap: 30px; }
     .product-info .product-introduce .image-slide {
-      grid-row: 1/2; }
+      grid-row: 1/2;
+      background-color: #eee;
+      border-radius: 10px;
+      position: relative;
+      overflow: hidden; }
+      .product-info .product-introduce .image-slide .next-button,
+      .product-info .product-introduce .image-slide .prev-button {
+        width: 60px;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        border: none;
+        background-color: rgba(0, 0, 0, 0.1);
+        z-index: 2; }
+        .product-info .product-introduce .image-slide .next-button i,
+        .product-info .product-introduce .image-slide .prev-button i {
+          font-size: 24px;
+          color: #ffffff; }
+      .product-info .product-introduce .image-slide .next-button {
+        right: 0; }
+      .product-info .product-introduce .image-slide .prev-button {
+        left: 0; }
+      .product-info .product-introduce .image-slide__list {
+        height: 100%;
+        list-style-type: none;
+        white-space: nowrap;
+        display: flex;
+        transition: all ease 500ms;
+        z-index: 1; }
+        .product-info .product-introduce .image-slide__list li {
+          width: 100%;
+          height: 100%;
+          flex-shrink: 0; }
+          .product-info .product-introduce .image-slide__list li img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            object-position: center; }
     .product-info .product-introduce .cost-detail {
       grid-row: 1/3;
       border-radius: 20px;
-      box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
-      padding: 20px; }
+      padding: 20px;
+      border: 1px solid #ccc; }
