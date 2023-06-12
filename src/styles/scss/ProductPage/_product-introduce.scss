@@ -1,9 +1,9 @@
 .product-introduce {
   margin-top: 20px;
   display: grid;
-  grid-template-columns: calc(65% - 5px) calc(35% - 5px);
-  grid-template-rows: 400px 160px;
-  gap: 30px;
+  grid-template-columns: 9fr 4fr;
+  grid-template-rows: auto 120px;
+  gap: 12px 20px;
 
   .image-slide {
     grid-row: 1/2;
@@ -12,6 +12,13 @@
     position: relative;
     overflow: hidden;
 
+    &::before {
+      content: "";
+      display: block;
+      width: 100%;
+      padding-bottom: calc((100% / 2));
+    }
+
     .next-button,
     .prev-button {
       width: 60px;
@@ -19,8 +26,14 @@
       position: absolute;
       top: 0;
       border: none;
-      background-color: rgba(#000, 0.1);
+      background-color: rgba(#000, 0.05);
       z-index: 2;
+      transition: all ease 300ms;
+
+      &:hover {
+        cursor: pointer;
+        background-color: rgba(#000, 0.3);
+      }
 
       i {
         font-size: 24px;
@@ -37,12 +50,12 @@
     }
 
     &__list {
-      height: 100%;
       list-style-type: none;
-      white-space: nowrap;
       display: flex;
       transition: all ease 500ms;
       z-index: 1;
+      position: absolute;
+      inset: 10px;
 
       li {
         width: 100%;
@@ -60,6 +73,27 @@
   }
 
   .image-slide-list {
+    list-style: none;
+    display: flex;
+    column-gap: 15px;
+    overflow-x: auto;
+    padding-block: 8px;
+
+    > li {
+      height: 100%;
+      aspect-ratio: 2/1;
+      border-radius: 10px;
+      overflow: hidden;
+      padding: 10px;
+      box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        object-position: center;
+      }
+    }
   }
 
   .cost-detail {

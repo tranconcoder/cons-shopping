@@ -20,7 +20,11 @@
 	</div>
 
 	<ul class="image-slide-list">
-		<?php foreach ($this->productImageList as $image); ?>
+		<?php foreach ($this->productImageList as $image) { ?>
+			<li>
+				<img src="<?= $image["source"] ?>" alt="">
+			</li>	
+		<?php } ?>
 	</ul>
 
 	<div class="cost-detail">
