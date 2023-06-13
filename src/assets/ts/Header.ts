@@ -5,25 +5,40 @@ if (location.href.includes("login-success=false")) {
 class SearchBar {
 	private searchInput: HTMLInputElement;
 	private submitButton: HTMLButtonElement;
+	private searchBox: HTMLDivElement;
 
 	// Event state
 	private focusing = false;
 
 	public constructor() {
+		this.searchBox = $("#search-box");
 		this.searchInput = $(".search-input");
 		this.submitButton = $(".search-input ~ .submit-button");
+
+		this.listenAndHandleEvent();
 	}
 
-	public listenAndHandleSubmit() {
+	public listenAndHandleEvent() {
+		this.listenAndHandleSubmit();
+	}
+
+	private listenAndHandleSearch() {
+		this.searchInput.addEventListener(
+			"change",
+			this.handleChangeSearchInput.bind(this)
+		);
+	}
+
+	private listenAndHandleSubmit() {
 		// Submit while press enter
-		this.searchInput.addEventListener("focusin", (e) => {
+		this.searchInput.addEventListener("focusin", () => {
 			window.addEventListener(
 				"keypress",
 				this.handleSubmitByKeyPress.bind(this)
 			);
 		});
 
-		this.searchInput.addEventListener("focusout", (e) => {
+		this.searchInput.addEventListener("focusout", () => {
 			window.removeEventListener(
 				"keypress",
 				this.handleSubmitByKeyPress.bind(this)
@@ -36,6 +51,8 @@ class SearchBar {
 			this.handleSubmit.bind(this)
 		);
 	}
+
+	private handleChangeSearchInput(e: any) {}
 
 	private handleSubmitByKeyPress(e: KeyboardEvent) {
 		if (e.code === "Enter") this.handleSubmit();
@@ -53,7 +70,6 @@ class SearchBar {
 	}
 }
 const searchBar = new SearchBar();
-searchBar.listenAndHandleSubmit();
 
 type ValidateFormConfig = Partial<{
 	required: boolean;

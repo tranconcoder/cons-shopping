@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Jun 12, 2023 at 10:38 AM
+-- Generation Time: Jun 13, 2023 at 08:33 PM
 -- Server version: 8.0.33-0ubuntu0.23.04.2
 -- PHP Version: 8.1.12-1ubuntu4
 
@@ -39,7 +39,8 @@ CREATE TABLE `authenticate` (
 
 INSERT INTO `authenticate` (`user_id`, `username`, `password`) VALUES
 ('3c2b6c0b-0756-11ee-8d7b-ac74b16ee51f', 'conkgyt', 'f6b7c104675ce69fcb9761d084a9841a'),
-('fa08aec0-0799-11ee-9c68-ac74b16ee51f', 'tranvanconkg', 'f6b7c104675ce69fcb9761d084a9841a');
+('cb99ea87-09bb-11ee-aa36-82be6a6fd6ac', 'conkgytt', 'f6b7c104675ce69fcb9761d084a9841a'),
+('cc7eb722-09ab-11ee-aa36-82be6a6fd6ac', 'tranvanconkg', 'f6b7c104675ce69fcb9761d084a9841a');
 
 -- --------------------------------------------------------
 
@@ -85,13 +86,16 @@ CREATE TABLE `image` (
 INSERT INTO `image` (`image_id`, `product_id`, `is_thumb`, `source`, `order`) VALUES
 ('31c56576-068a-11ee-8d7b-ac74b16ee51f', '13adced0-068a-11ee-8d7b-ac74b16ee51f', 1, 'https://thegioiso360.vn/wp-content/uploads/2021/06/Xiaomi-A1.png', 0),
 ('585d2cad-08ce-11ee-bb09-ac74b16ee51f', '13adced0-068a-11ee-8d7b-ac74b16ee51f', 0, 'https://www.techsignin.com/wp-content/uploads/2022/10/xiaomi-redmi-a1-4.png', 1),
+('69ed31c6-0997-11ee-8aa5-ac74b16ee51f', '13adced0-068a-11ee-8d7b-ac74b16ee51f', 0, 'https://cdn.hoanghamobile.com/i/preview/Uploads/2022/10/04/image-removebg-preview-73.png', 2),
 ('6a83cb2e-0689-11ee-8d7b-ac74b16ee51f', 'c8004af5-0667-11ee-8d7b-ac74b16ee51l', 1, 'https://didongmango.com/images/products/2022/09/23/small/600_s22_ultra_5g_black_2_1663940728.png.png', 0),
 ('7c550ab8-0667-11ee-8d7b-ac74b16ee51f', 'c8004af5-0667-11ee-8d7b-ac74b16ee51g', 1, 'https://www.drei.at/media/common/shop/handybilder/6800297-2_11_ImageSmaller.png', 0),
+('8da684fe-0997-11ee-8aa5-ac74b16ee51f', '13adced0-068a-11ee-8d7b-ac74b16ee51f', 0, 'https://images2.thanhnien.vn/Uploaded/hongkyqc/2022_10_10/xiaomi-2-8425.png', 3),
 ('93b7e37f-0665-11ee-8d7b-ac74b16ee51f', '27901873-0667-11ee-8d7b-ac74b16ee51h', 1, 'https://cdn.shopify.com/s/files/1/0632/3778/3783/products/SilverPro-iphone-14-pro-finish-select-202209-6-1inch-silver-removebg-preview.png?v=1663220402&width=1454&height=1056', 0),
 ('9916da26-0689-11ee-8d7b-ac74b16ee51f', '27901873-0667-11ee-8d7b-ac74b16ee51i', 1, 'https://shopdunk.com/images/uploaded/iPhone-14-thumb-topzone-2-650x650-1.png', 0),
 ('a2eb3dc4-0688-11ee-8d7b-ac74b16ee51f', 'c8004af5-0667-11ee-8d7b-ac74b16ee51h', 1, 'https://www.xtsmart.vn/vnt_upload/product/09_2021/thumbs/600_Samsung_Galaxy_Z_Flip_3_5G_Tim_XTsmart_2.png', 0),
 ('a73a98fa-068a-11ee-8d7b-ac74b16ee51f', '8f639cfa-068a-11ee-8d7b-ac74b16ee51f', 1, 'https://cdn2.cellphones.com.vn/x358,webp,q100/media/catalog/product/n/o/nokia-8210_4g-sand-front_back-int.png', 0),
 ('baa49e7c-087b-11ee-a098-5650f2d9aa3b', '27901873-0667-11ee-8d7b-ac74b16ee51g', 1, 'https://cdn2.cellphones.com.vn/x358,webp,q100/media/catalog/product/t/_/t_m_12.png', 0),
+('c77ac874-0997-11ee-8aa5-ac74b16ee51f', '13adced0-068a-11ee-8d7b-ac74b16ee51f', 0, 'https://www.hificorp.co.za/media/catalog/product/cache/7ce9addd40d23ee411c2cc726ad5e7ed/r/e/redmi_a1___blue_ecommerce_3862.png', 4),
 ('fb973195-087d-11ee-a098-5650f2d9aa3b', '27901873-0667-11ee-8d7b-ac74b16ee51g', 0, 'https://about.powermaccenter.com/wp-content/uploads/2022/09/RX-S1_Smart_1-1.png', 1);
 
 -- --------------------------------------------------------
@@ -191,8 +195,7 @@ CREATE TABLE `product-visited` (
 --
 
 INSERT INTO `product-visited` (`product_id`, `visited_at`, `user_id`) VALUES
-('8f639cfa-068a-11ee-8d7b-ac74b16ee51f', '2023-06-11 23:45:26', '3c2b6c0b-0756-11ee-8d7b-ac74b16ee51f'),
-('13adced0-068a-11ee-8d7b-ac74b16ee51f', '2023-06-11 23:45:38', 'fa08aec0-0799-11ee-9c68-ac74b16ee51f');
+('8f639cfa-068a-11ee-8d7b-ac74b16ee51f', '2023-06-11 23:45:26', '3c2b6c0b-0756-11ee-8d7b-ac74b16ee51f');
 
 -- --------------------------------------------------------
 
@@ -212,16 +215,16 @@ CREATE TABLE `search-history` (
 --
 
 INSERT INTO `search-history` (`search_id`, `user_id`, `content`, `search_at`) VALUES
-('0dc47af5-08d2-11ee-bb09-ac74b16ee51f', '3c2b6c0b-0756-11ee-8d7b-ac74b16ee51f', 'samsun', '2023-06-12 10:34:36'),
-('3a1fb86b-08cf-11ee-bb09-ac74b16ee51f', '3c2b6c0b-0756-11ee-8d7b-ac74b16ee51f', 'xiaomi', '2023-06-12 10:14:22'),
-('5b19a8ff-08d2-11ee-bb09-ac74b16ee51f', '3c2b6c0b-0756-11ee-8d7b-ac74b16ee51f', 'iphone', '2023-06-12 10:36:45'),
-('5c01dbb5-08d2-11ee-bb09-ac74b16ee51f', '3c2b6c0b-0756-11ee-8d7b-ac74b16ee51f', 'a', '2023-06-12 10:36:47'),
-('8fffdbb1-087c-11ee-a098-5650f2d9aa3b', 'fa08aec0-0799-11ee-9c68-ac74b16ee51f', 'iphone', '2023-06-12 00:22:37'),
-('91c3a3af-087c-11ee-a098-5650f2d9aa3b', 'fa08aec0-0799-11ee-9c68-ac74b16ee51f', 'apple', '2023-06-12 00:22:40'),
-('93ee7c69-087c-11ee-a098-5650f2d9aa3b', 'fa08aec0-0799-11ee-9c68-ac74b16ee51f', 'samsung', '2023-06-12 00:22:44'),
-('9549cdcb-087c-11ee-a098-5650f2d9aa3b', 'fa08aec0-0799-11ee-9c68-ac74b16ee51f', 'xiaomi', '2023-06-12 00:22:46'),
-('eb17a811-08d1-11ee-bb09-ac74b16ee51f', '3c2b6c0b-0756-11ee-8d7b-ac74b16ee51f', 'redmi', '2023-06-12 10:33:38'),
-('fd51d842-087f-11ee-a098-5650f2d9aa3b', 'fa08aec0-0799-11ee-9c68-ac74b16ee51f', 'a', '2023-06-12 00:47:09');
+('05cec2ae-09ac-11ee-aa36-82be6a6fd6ac', 'cc7eb722-09ab-11ee-aa36-82be6a6fd6ac', 'apple', '2023-06-13 12:34:53'),
+('08dfd8f3-09ac-11ee-aa36-82be6a6fd6ac', 'cc7eb722-09ab-11ee-aa36-82be6a6fd6ac', 'samsung', '2023-06-13 12:34:58'),
+('0a2551a2-09ac-11ee-aa36-82be6a6fd6ac', 'cc7eb722-09ab-11ee-aa36-82be6a6fd6ac', 'xiaomi', '2023-06-13 12:35:00'),
+('0dfa11e0-09ac-11ee-aa36-82be6a6fd6ac', 'cc7eb722-09ab-11ee-aa36-82be6a6fd6ac', 'samsung s23', '2023-06-13 12:35:06'),
+('18c388ad-09bc-11ee-aa36-82be6a6fd6ac', 'cb99ea87-09bb-11ee-aa36-82be6a6fd6ac', 'redmi', '2023-06-13 14:29:56'),
+('4274bf4b-09bc-11ee-aa36-82be6a6fd6ac', '3c2b6c0b-0756-11ee-8d7b-ac74b16ee51f', 'a', '2023-06-13 14:31:06'),
+('58ccc21c-09ba-11ee-aa36-82be6a6fd6ac', '3c2b6c0b-0756-11ee-8d7b-ac74b16ee51f', 'samsung', '2023-06-13 14:17:25'),
+('66627bba-09ba-11ee-aa36-82be6a6fd6ac', '3c2b6c0b-0756-11ee-8d7b-ac74b16ee51f', 'apple', '2023-06-13 14:17:48'),
+('800e8649-09ba-11ee-aa36-82be6a6fd6ac', '3c2b6c0b-0756-11ee-8d7b-ac74b16ee51f', 'redmi', '2023-06-13 14:18:31'),
+('dfa1e51d-09ba-11ee-aa36-82be6a6fd6ac', '3c2b6c0b-0756-11ee-8d7b-ac74b16ee51f', 'iphone', '2023-06-13 14:21:11');
 
 -- --------------------------------------------------------
 
@@ -271,7 +274,8 @@ CREATE TABLE `user` (
 
 INSERT INTO `user` (`user_id`, `first_name`, `last_name`, `avatar`, `rank`, `address`, `phone_number`, `email`) VALUES
 ('3c2b6c0b-0756-11ee-8d7b-ac74b16ee51f', 'Trần', 'Còn', NULL, 'customer', 'Kiên Giang', '0327781160', 'tranvanconkg@gmail.com'),
-('fa08aec0-0799-11ee-9c68-ac74b16ee51f', 'Tran', 'Con', NULL, 'customer', 'Kien Giang', '0327781160', 'tranvanconkg@gmail.com');
+('cb99ea87-09bb-11ee-aa36-82be6a6fd6ac', 'Tran', 'Con', NULL, 'customer', 'Kien giang', '0327781160', 'tranvanconkg@gmail.com'),
+('cc7eb722-09ab-11ee-aa36-82be6a6fd6ac', 'Tran', 'Con', NULL, 'customer', 'Kien Giang', '0327781160', 'tranvanconkg@gmail.com');
 
 --
 -- Indexes for dumped tables
@@ -281,7 +285,8 @@ INSERT INTO `user` (`user_id`, `first_name`, `last_name`, `avatar`, `rank`, `add
 -- Indexes for table `authenticate`
 --
 ALTER TABLE `authenticate`
-  ADD PRIMARY KEY (`user_id`);
+  ADD PRIMARY KEY (`user_id`),
+  ADD UNIQUE KEY `username` (`username`);
 
 --
 -- Indexes for table `deal`

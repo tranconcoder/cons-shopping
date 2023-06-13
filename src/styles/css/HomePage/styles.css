@@ -308,6 +308,9 @@ body {
         border-radius: 10px;
         padding: 10px;
         box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1); }
+        .body section.promotional-product-ctn .promotional-product-box .box__body .product-list > .product-item > a {
+          text-decoration: none;
+          color: unset; }
         .body section.promotional-product-ctn .promotional-product-box .box__body .product-list > .product-item .thumb-wrapper {
           background-color: #faaca8;
           background-image: linear-gradient(19deg, #faaca8 0%, #ddd6f3 100%);

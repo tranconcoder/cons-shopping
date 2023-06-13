@@ -12,7 +12,23 @@
 			<i class="search-icon fa-solid fa-magnifying-glass"></i>
 		</button>
 
-		<div class="search-box">
+		<div id="search-box" class="search-box">
+			<section class="search-products">
+				<span>Gợi ý tìm kiếm</span>
+				<ul class="search-products__list">
+					<?php foreach ($this->visitedProducts as $product): ?>
+               			<li>
+                			    <img
+									src="<?= $product["thumb"] ?>"
+									alt="<?= $product["label"] ?>"
+								>
+                    			
+							<h4><?= $product["label"] ?></h4>
+               			</li> 
+					<?php endforeach; ?>
+				</ul>
+			</section>
+
 			<section class="viewed-products">
 				<span>Sản phẩm đã xem</span>
 				<ul class="viewed-products__list">
