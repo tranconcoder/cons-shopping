@@ -72,12 +72,14 @@
     }
   }
 
-  .image-slide-list {
+  .image-slide-preview {
     list-style: none;
     display: flex;
+    flex-wrap: nowrap;
     column-gap: 15px;
     overflow-x: auto;
     padding-block: 8px;
+    padding-right: 40%;
 
     > li {
       height: 100%;
@@ -85,7 +87,17 @@
       border-radius: 10px;
       overflow: hidden;
       padding: 10px;
-      box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+      border: 2px solid #eee;
+      flex-shrink: 0;
+      transition: box-shadow ease 300ms;
+
+      &.active {
+        border-color: $primaryColor;
+      }
+
+      &:hover {
+        box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+      }
 
       img {
         width: 100%;
@@ -96,10 +108,17 @@
     }
   }
 
-  .cost-detail {
+  .cost-detail-box {
     grid-row: 1/3;
     border-radius: 20px;
-    padding: 20px;
     border: 1px solid #ccc;
+    overflow: hidden;
+
+    .box__header {
+      background-color: $primaryColor;
+      padding: 24px;
+      font-size: 18px;
+      font-weight: 600;
+    }
   }
 }

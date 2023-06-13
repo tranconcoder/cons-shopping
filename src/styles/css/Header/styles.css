@@ -31,6 +31,22 @@
 body {
   font-family: Roboto, sans-serif; }
 
+/* custom scrollbar */
+*::-webkit-scrollbar {
+  width: 10px;
+  height: 6px; }
+
+*::-webkit-scrollbar-track {
+  background-color: transparent; }
+
+*::-webkit-scrollbar-thumb {
+  background-color: #d6dee1;
+  border-radius: 20px;
+  border: 6px solid transparent; }
+
+*::-webkit-scrollbar-thumb:hover {
+  background-color: #a8bbbf; }
+
 .header-wrapper {
   display: flex;
   justify-content: center;
@@ -41,14 +57,18 @@ body {
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 2; }
+  z-index: 2;
+  /* custom scrollbar */ }
   .header-wrapper .header-container {
     display: flex;
     align-items: center;
     gap: 20px;
     width: 1200px;
     max-width: 100vw;
-    height: 90px; }
+    height: 90px;
+    /* custom scrollbar */
+    /* custom scrollbar */
+    /* custom scrollbar */ }
 
 @font-face {
   .header-wrapper .header-container {
@@ -85,6 +105,17 @@ body {
       box-sizing: border-box; }
     .header-wrapper .header-container body {
       font-family: Roboto, sans-serif; }
+    .header-wrapper .header-container *::-webkit-scrollbar {
+      width: 10px;
+      height: 6px; }
+    .header-wrapper .header-container *::-webkit-scrollbar-track {
+      background-color: transparent; }
+    .header-wrapper .header-container *::-webkit-scrollbar-thumb {
+      background-color: #d6dee1;
+      border-radius: 20px;
+      border: 6px solid transparent; }
+    .header-wrapper .header-container *::-webkit-scrollbar-thumb:hover {
+      background-color: #a8bbbf; }
     .header-wrapper .header-container .logo-container {
       width: 200px;
       text-align: center;
@@ -130,9 +161,21 @@ body {
       box-sizing: border-box; }
     .header-wrapper .header-container body {
       font-family: Roboto, sans-serif; }
+    .header-wrapper .header-container *::-webkit-scrollbar {
+      width: 10px;
+      height: 6px; }
+    .header-wrapper .header-container *::-webkit-scrollbar-track {
+      background-color: transparent; }
+    .header-wrapper .header-container *::-webkit-scrollbar-thumb {
+      background-color: #d6dee1;
+      border-radius: 20px;
+      border: 6px solid transparent; }
+    .header-wrapper .header-container *::-webkit-scrollbar-thumb:hover {
+      background-color: #a8bbbf; }
     .header-wrapper .header-container .center-slide {
       flex: 1;
-      align-self: flex-start; }
+      align-self: flex-start;
+      /* custom scrollbar */ }
       .header-wrapper .header-container .center-slide .search-bar {
         margin-top: 10px; }
         .header-wrapper .header-container .center-slide .search-bar .input-ctn {
@@ -274,6 +317,17 @@ body {
         box-sizing: border-box; }
       .header-wrapper .header-container .center-slide body {
         font-family: Roboto, sans-serif; }
+      .header-wrapper .header-container .center-slide *::-webkit-scrollbar {
+        width: 10px;
+        height: 6px; }
+      .header-wrapper .header-container .center-slide *::-webkit-scrollbar-track {
+        background-color: transparent; }
+      .header-wrapper .header-container .center-slide *::-webkit-scrollbar-thumb {
+        background-color: #d6dee1;
+        border-radius: 20px;
+        border: 6px solid transparent; }
+      .header-wrapper .header-container .center-slide *::-webkit-scrollbar-thumb:hover {
+        background-color: #a8bbbf; }
       .header-wrapper .header-container .center-slide .category-ctn {
         height: 40px; }
         .header-wrapper .header-container .center-slide .category-ctn .category-list {
@@ -327,6 +381,17 @@ body {
       box-sizing: border-box; }
     .header-wrapper .header-container body {
       font-family: Roboto, sans-serif; }
+    .header-wrapper .header-container *::-webkit-scrollbar {
+      width: 10px;
+      height: 6px; }
+    .header-wrapper .header-container *::-webkit-scrollbar-track {
+      background-color: transparent; }
+    .header-wrapper .header-container *::-webkit-scrollbar-thumb {
+      background-color: #d6dee1;
+      border-radius: 20px;
+      border: 6px solid transparent; }
+    .header-wrapper .header-container *::-webkit-scrollbar-thumb:hover {
+      background-color: #a8bbbf; }
     .header-wrapper .header-container .user-profile .login-button {
       width: 150px;
       height: 40px;
@@ -485,6 +550,17 @@ body {
     box-sizing: border-box; }
   .header-wrapper body {
     font-family: Roboto, sans-serif; }
+  .header-wrapper *::-webkit-scrollbar {
+    width: 10px;
+    height: 6px; }
+  .header-wrapper *::-webkit-scrollbar-track {
+    background-color: transparent; }
+  .header-wrapper *::-webkit-scrollbar-thumb {
+    background-color: #d6dee1;
+    border-radius: 20px;
+    border: 6px solid transparent; }
+  .header-wrapper *::-webkit-scrollbar-thumb:hover {
+    background-color: #a8bbbf; }
   .header-wrapper #toggle-visible-auth-box:checked ~ .authenticate-ctn {
     pointer-events: unset; }
     .header-wrapper #toggle-visible-auth-box:checked ~ .authenticate-ctn .background {

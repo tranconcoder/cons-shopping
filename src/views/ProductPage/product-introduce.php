@@ -19,15 +19,22 @@
 		</button>
 	</div>
 
-	<ul class="image-slide-list">
-		<?php foreach ($this->productImageList as $image) { ?>
-			<li>
+	<ul class="image-slide-preview">
+		<?php foreach ($this->productImageList as $index => $image) { ?>
+			<li data-index="<?= $index ?>">
 				<img src="<?= $image["source"] ?>" alt="">
 			</li>	
 		<?php } ?>
 	</ul>
 
-	<div class="cost-detail">
-		<p class="cost"><?= $this->productInfo["cost"] ?></p>
+	<div class="cost-detail-box">
+		<header class="box__header">
+			<p class="cost"><?= number_format(
+     $this->productInfo["cost"],
+     1,
+     ".",
+     ","
+   ) ?></p>
+		</header>
 	</div>
 </div>
