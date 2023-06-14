@@ -119,7 +119,8 @@ body {
           flex-direction: column;
           overflow: hidden;
           color: #333; }
-          .product-list-container > .content .product-list-item .detail li > {
-            height: 20px; }
-            .product-list-container > .content .product-list-item .detail li > span {
+          .product-list-container > .content .product-list-item .detail > li {
+            height: 20px;
+            flex-shrink: 0; }
+            .product-list-container > .content .product-list-item .detail > li span {
               font-size: 13px; }

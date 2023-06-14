@@ -10,7 +10,7 @@ class SearchProductApi
   public function __construct()
   {
     if (!isset($_GET["q"])) {
-      exit(json_encode(false));
+      exit(json_encode(null));
     }
 
     $this->db = new DatabaseSQL();

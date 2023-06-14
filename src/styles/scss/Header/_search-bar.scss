@@ -59,7 +59,7 @@
         margin-bottom: 10px;
 
         > span {
-          padding: 10px;
+          padding: 15px;
           display: block;
         }
 
@@ -68,7 +68,7 @@
           justify-content: center;
           flex-wrap: wrap;
           gap: 10px;
-          padding-inline: 10px;
+          padding-inline: 20px;
 
           li {
             display: flex;
@@ -105,10 +105,9 @@
         }
       }
 
-      .history,
-      .suggest-ctn {
+      .history {
         .label-ctn {
-          padding: 6px;
+          padding: 10px 20px;
           color: $whiteColor;
           font-size: 13px;
           background-color: $primaryColor;
@@ -127,6 +126,7 @@
             font-family: Roboto;
             line-height: 30px;
             display: block;
+            padding: 3px 20px;
 
             > a {
               color: unset;

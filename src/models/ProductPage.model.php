@@ -9,12 +9,11 @@ class ProductPageModel extends DatabaseSQL
 				FROM product, image
 				WHERE
 					product.product_id = '$productId'	
-					AND image.is_thumb
 					AND image.image_id = (
 						SELECT image_id
 							FROM image as image2
 							WHERE image2.product_id = product.product_id
-							ORDER BY is_thumb DESC
+							ORDER BY `order` ASC
 							LIMIT 1
 					)
 		")[0];
@@ -28,9 +27,7 @@ class ProductPageModel extends DatabaseSQL
 			SELECT source 
 				FROM image
 				WHERE product_id = '$productId'
-				ORDER BY
-					is_thumb ASC,
-					`order` ASC
+				ORDER BY `order` ASC
 		");
 
     if (!isset($imageList)) {

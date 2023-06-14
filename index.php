@@ -34,6 +34,14 @@ switch ($uri) {
 
     exit();
 
+  case "/api/search-product":
+    include_once __DIR__ .
+      "/./src/controllers/apis/SearchProductApi.controller.php";
+
+    $searchProductApi = new SearchProductApi();
+
+    exit();
+
   case "/product":
     include_once __DIR__ . "/./src/controllers/ProductPage.controller.php";
 

@@ -22,13 +22,12 @@ class ProductListPageModel extends DatabaseSQL
 						OR description LIKE '$queryFormatted'
 						OR processor LIKE '$queryFormatted'
 					)
-					AND product.deal_id IS NOT NULL
 					AND product.deal_id = deal.deal_id
 					AND image.image_id = (
 						SELECT image_id
 							FROM image AS image2
 							WHERE image2.product_id = product.product_id
-							ORDER BY image2.is_thumb DESC
+							ORDER BY image2.order DESC
 							LIMIT 1
 					)
 				) UNION
@@ -45,7 +44,7 @@ class ProductListPageModel extends DatabaseSQL
 							SELECT image_id
 								FROM image as image2
 								WHERE image2.product_id = product.product_id
-								ORDER BY image2.is_thumb DESC
+								ORDER BY image2.order DESC
 								LIMIT 1
 						)
 				)

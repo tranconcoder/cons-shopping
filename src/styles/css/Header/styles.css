@@ -220,7 +220,7 @@ body {
               margin-bottom: 10px; }
               .header-wrapper .header-container .center-slide .search-bar .input-ctn .search-box .search-products > span,
               .header-wrapper .header-container .center-slide .search-bar .input-ctn .search-box .viewed-products > span {
-                padding: 10px;
+                padding: 15px;
                 display: block; }
               .header-wrapper .header-container .center-slide .search-bar .input-ctn .search-box .search-products ul,
               .header-wrapper .header-container .center-slide .search-bar .input-ctn .search-box .viewed-products ul {
@@ -228,7 +228,7 @@ body {
                 justify-content: center;
                 flex-wrap: wrap;
                 gap: 10px;
-                padding-inline: 10px; }
+                padding-inline: 20px; }
                 .header-wrapper .header-container .center-slide .search-bar .input-ctn .search-box .search-products ul li,
                 .header-wrapper .header-container .center-slide .search-bar .input-ctn .search-box .viewed-products ul li {
                   display: flex;
@@ -259,34 +259,28 @@ body {
                     -webkit-line-clamp: 2;
                     /* number of lines to show */
                     -webkit-box-orient: vertical; }
-            .header-wrapper .header-container .center-slide .search-bar .input-ctn .search-box .history .label-ctn,
-            .header-wrapper .header-container .center-slide .search-bar .input-ctn .search-box .suggest-ctn .label-ctn {
-              padding: 6px;
+            .header-wrapper .header-container .center-slide .search-bar .input-ctn .search-box .history .label-ctn {
+              padding: 10px 20px;
               color: #ffffff;
               font-size: 13px;
               background-color: #0099ff; }
-              .header-wrapper .header-container .center-slide .search-bar .input-ctn .search-box .history .label-ctn i,
-              .header-wrapper .header-container .center-slide .search-bar .input-ctn .search-box .suggest-ctn .label-ctn i {
+              .header-wrapper .header-container .center-slide .search-bar .input-ctn .search-box .history .label-ctn i {
                 padding-right: 4px; }
-            .header-wrapper .header-container .center-slide .search-bar .input-ctn .search-box .history ul,
-            .header-wrapper .header-container .center-slide .search-bar .input-ctn .search-box .suggest-ctn ul {
+            .header-wrapper .header-container .center-slide .search-bar .input-ctn .search-box .history ul {
               padding-block: 5px;
               cursor: pointer; }
-              .header-wrapper .header-container .center-slide .search-bar .input-ctn .search-box .history ul li,
-              .header-wrapper .header-container .center-slide .search-bar .input-ctn .search-box .suggest-ctn ul li {
+              .header-wrapper .header-container .center-slide .search-bar .input-ctn .search-box .history ul li {
                 font-size: 15px;
                 font-family: Roboto;
                 line-height: 30px;
-                display: block; }
-                .header-wrapper .header-container .center-slide .search-bar .input-ctn .search-box .history ul li > a,
-                .header-wrapper .header-container .center-slide .search-bar .input-ctn .search-box .suggest-ctn ul li > a {
+                display: block;
+                padding: 3px 20px; }
+                .header-wrapper .header-container .center-slide .search-bar .input-ctn .search-box .history ul li > a {
                   color: unset;
                   text-decoration: none; }
-                .header-wrapper .header-container .center-slide .search-bar .input-ctn .search-box .history ul li:hover,
-                .header-wrapper .header-container .center-slide .search-bar .input-ctn .search-box .suggest-ctn ul li:hover {
+                .header-wrapper .header-container .center-slide .search-bar .input-ctn .search-box .history ul li:hover {
                   background-color: #eee; }
-                .header-wrapper .header-container .center-slide .search-bar .input-ctn .search-box .history ul li p,
-                .header-wrapper .header-container .center-slide .search-bar .input-ctn .search-box .suggest-ctn ul li p {
+                .header-wrapper .header-container .center-slide .search-bar .input-ctn .search-box .history ul li p {
                   padding-left: 10px; }
 
 @font-face {

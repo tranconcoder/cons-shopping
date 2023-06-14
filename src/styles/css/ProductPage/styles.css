@@ -127,6 +127,7 @@ body {
         .product-info .product-introduce .image-slide-preview > li.active {
           border-color: #0099ff; }
         .product-info .product-introduce .image-slide-preview > li:hover {
+          cursor: pointer;
           box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px; }
         .product-info .product-introduce .image-slide-preview > li img {
           width: 100%;

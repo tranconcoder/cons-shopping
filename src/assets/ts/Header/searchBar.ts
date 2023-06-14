@@ -1,9 +1,11 @@
+// <reference path="../../types/product.d"/>
 import { $, $$ } from "../Common/index";
 
 class SearchBar {
     private searchInput: HTMLInputElement;
     private submitButton: HTMLButtonElement;
     private searchBox: HTMLDivElement;
+    private searchProductListElm: HTMLUListElement;
 
     // Event state
     private focusing = false;
@@ -13,6 +15,7 @@ class SearchBar {
         this.searchBox = $("#search-box");
         this.searchInput = $(".search-input");
         this.submitButton = $(".search-input ~ .submit-button");
+        this.searchProductListElm = $(".search-products__list", this.searchBox);
 
         this.listenAndHandleEvent();
     }
@@ -23,7 +26,12 @@ class SearchBar {
     }
 
     private listenAndHandleSearch() {
-        this.searchInput.addEventListener("input", this.handleSearchProduct);
+        this.handleSearchProduct();
+
+        this.searchInput.addEventListener(
+            "input",
+            this.handleSearchProduct.bind(this)
+        );
     }
 
     private listenAndHandleSubmit() {
@@ -49,11 +57,21 @@ class SearchBar {
         );
     }
 
-    private handleSearchProduct(e: any) {
+    private handleSearchProduct() {
         clearInterval(this.timeoutIdSubmitAfterStopInputSearch);
 
-        this.timeoutIdSubmitAfterStopInputSearch = setTimeout(() => {
-            console.log("submit");
+        this.timeoutIdSubmitAfterStopInputSearch = setTimeout(async () => {
+            if (!this.searchInput.value) {
+                return (this.searchProductListElm.innerHTML = "");
+            }
+
+            const url = `/api/search-product?q=${this.searchInput.value}`;
+
+            const productList: Product[] = await fetch(url, {
+                method: "GET",
+            }).then((res) => res.json());
+
+            this.renderSearchProducts(productList);
         }, 500);
     }
 
@@ -72,8 +90,23 @@ class SearchBar {
         }
     }
 
-    private searchProduct(query: string) {
-        const url = "/api/";
+    private renderSearchProducts(products: Product[]) {
+        this.searchProductListElm.innerHTML = "";
+
+        const html = products.forEach((product) => {
+            const itemElm = document.createElement("li");
+
+            itemElm.innerHTML = `
+                <img
+                    src="${product.thumb || ""}"
+                    alt="thumb"
+                >
+                    
+                <h4>${product.label}</h4>
+            `;
+
+            this.searchProductListElm.appendChild(itemElm);
+        });
     }
 }
 

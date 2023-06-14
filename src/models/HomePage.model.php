@@ -49,9 +49,8 @@ class HomePageModel extends DatabaseSQL
 					AND image.image_id = (
 						SELECT image_id
 							FROM image as image2
-							WHERE
-								image2.product_id = product.product_id
-								AND image2.is_thumb
+							WHERE image2.product_id = product.product_id
+                            ORDER BY image2.order
 							LIMIT 1
 					)
 			"

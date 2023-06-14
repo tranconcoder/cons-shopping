@@ -26,7 +26,7 @@ class HeaderModel extends DatabaseSQL
 							FROM image as image2
 							WHERE
 								image2.product_id = product.product_id
-							ORDER BY is_thumb ASC
+							ORDER BY image2.order ASC
 							LIMIT 1
 					)
 				LIMIT 5

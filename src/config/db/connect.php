@@ -25,11 +25,11 @@ class DatabaseSQL
   {
     $data = $this->conn->query($sqlString);
 
-    $result = $data->fetch_all(MYSQLI_ASSOC);
+    $result = $data->num_rows ? $data->fetch_all(MYSQLI_ASSOC) : [];
 
     $data->free_result();
 
-    return $result;
+    return isset($result[0]) ? $result : [];
   }
 
   public function getAll(string $tableName)
@@ -97,9 +97,17 @@ class DatabaseSQL
     $nameLiked = "%" . implode("%", str_split($name)) . "%";
 
     $products = $this->selectQuery("
-            SELECT *
-                FROM product
-                WHERE label LIKE '$nameLiked'
+            SELECT *, image.source as thumb
+                FROM product, image
+                WHERE
+                    label LIKE '$nameLiked'
+                    AND image_id = (
+                        SELECT image_id
+                            FROM image as im2
+                            WHERE im2.product_id = product.product_id
+                            ORDER BY im2.order ASC
+                            LIMIT 1
+                    )
         ");
 
     return $products;

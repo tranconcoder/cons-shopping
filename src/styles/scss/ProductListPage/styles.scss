@@ -109,8 +109,9 @@
           overflow: hidden;
           color: $textColor;
 
-          li > {
+          > li {
             height: $infoHeight;
+            flex-shrink: 0;
 
             span {
               font-size: 13px;

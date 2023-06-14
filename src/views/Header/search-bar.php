@@ -56,16 +56,6 @@
           			<?php } ?>
 				</ul>
 			</section>
-			<section class="suggest-ctn">
-				<p class="label-ctn">
-					<i class="fa-regular fa-lightbulb"></i>
-					<span>Từ khóa gợi ý</span>
-				</p>
-				<ul>
-					<li><p>Iphone 14 Pro Max</p></li>
-					<li><p>Sản phẩm bán chạy</p></li>
-				</ul>
-			</section>
 		</div>
 	</div>
 </div>
