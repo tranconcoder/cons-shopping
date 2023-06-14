@@ -77,8 +77,8 @@ body {
         top: 0;
         border: none;
         background-color: rgba(0, 0, 0, 0.05);
-        z-index: 2;
-        transition: all ease 300ms; }
+        transition: all ease 300ms;
+        z-index: 1; }
         .product-info .product-introduce .image-slide .next-button:hover,
         .product-info .product-introduce .image-slide .prev-button:hover {
           cursor: pointer;
@@ -95,7 +95,7 @@ body {
         list-style-type: none;
         display: flex;
         transition: all ease 500ms;
-        z-index: 1;
+        z-index: 0;
         position: absolute;
         inset: 10px; }
         .product-info .product-introduce .image-slide__list li {
@@ -141,5 +141,6 @@ body {
       .product-info .product-introduce .cost-detail-box .box__header {
         background-color: #0099ff;
         padding: 24px;
+        color: #ffffff;
         font-size: 18px;
         font-weight: 600; }

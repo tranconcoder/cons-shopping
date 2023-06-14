@@ -1,385 +1,136 @@
-"use strict";
-if (location.href.includes("login-success=false")) {
-    alert("Đăng nhập thất bại!");
-}
-class SearchBar {
-    constructor() {
-        // Event state
-        this.focusing = false;
-        this.searchBox = $("#search-box");
-        this.searchInput = $(".search-input");
-        this.submitButton = $(".search-input ~ .submit-button");
-        this.listenAndHandleEvent();
-    }
-    listenAndHandleEvent() {
-        this.listenAndHandleSubmit();
-    }
-    listenAndHandleSearch() {
-        this.searchInput.addEventListener("change", this.handleChangeSearchInput.bind(this));
-    }
-    listenAndHandleSubmit() {
-        // Submit while press enter
-        this.searchInput.addEventListener("focusin", () => {
-            window.addEventListener("keypress", this.handleSubmitByKeyPress.bind(this));
-        });
-        this.searchInput.addEventListener("focusout", () => {
-            window.removeEventListener("keypress", this.handleSubmitByKeyPress.bind(this));
-        });
-        // Submit while click submit button
-        this.submitButton.addEventListener("click", this.handleSubmit.bind(this));
-    }
-    handleChangeSearchInput(e) { }
-    handleSubmitByKeyPress(e) {
-        if (e.code === "Enter")
-            this.handleSubmit();
-    }
-    handleSubmit() {
-        this.searchInput.value = this.searchInput.value.replace(/[^\w\s]/gi, "");
-        if (this.searchInput.value.trim().length) {
-            window.location.href = "/search?q=" + this.searchInput.value;
-        }
-    }
-}
-const searchBar = new SearchBar();
-class ValidateForm {
-    constructor() {
-        this.notify = {
-            required: "Không được để trống trường này!",
-            minLength: (n) => "Độ dài tối thiểu từ " + n + " ký tự!",
-            maxLength: (n) => "Độ dài tối đa là " + n + " ký tự!",
-            equalLength: (n) => "Độ dài phải là " + n + "!",
-            secureLevel1: "Phải bao gồm số, ký tự hoa, thường và ký tự đặc biệt",
-            numberOnly: "Chỉ cho phép nhập số!",
-            notSymbolCheck: "Không nhập ký tự đặc biệt vào trường này",
-            isEmail: "Không đúng định dạng Email, vui lòng nhập lại!",
-            requiredSymbol: "Trường này bắt buộc chứa ký tự đặc biệt",
-            requiredUpper: "Trường này bắt buộc chứa ký tự in ho",
-            requiredLower: "Trường này bắt buộc chứa ký tự in thường",
-            requiredNumber: "Trường này bắt buộc chứa chữ số",
-            equalInputValue: (label) => "Giá trị vừa nhập không khớp với trường " + label + "!",
-        };
-    }
-    required(value) {
-        if (value.length == 0)
-            return this.notify.required;
-        else
-            return false;
-    }
-    lengthCheck(value, type, range) {
-        if (type === "min" && value.length < range)
-            return this.notify.minLength(range);
-        if (type === "max" && value.length > range)
-            return this.notify.maxLength(range);
-        if (type === "equal" && value.length !== range)
-            return this.notify.equalLength(range);
-        return false;
-    }
-    notSymbolCheck(value) {
-        const regex = new RegExp(/^[A-Za-z0-9]*$/);
-        return regex.test(value) ? false : this.notify.notSymbolCheck;
-    }
-    requiredSymbol(value) {
-        const regex_symbols = /[-!$%^&*()_+|~=`{}\[\]:\/;<>?,.@#]/;
-        return regex_symbols.test(value) ? false : this.notify.requiredSymbol;
-    }
-    requiredLower(value) {
-        const regex_lower = /[a-z]/;
-        return regex_lower.test(value) ? false : this.notify.requiredLower;
-    }
-    requiredUpper(value) {
-        const regex_upper = /[A-Z]/;
-        return regex_upper.test(value) ? false : this.notify.requiredUpper;
-    }
-    requiredNumber(value) {
-        const regex_number = /[0-9]/;
-        return regex_number.test(value) ? false : this.notify.requiredNumber;
-    }
-    numberOnly(value) {
-        const regex_number_only = /^[0-9]*$/;
-        return regex_number_only.test(value) ? false : this.notify.numberOnly;
-    }
-    isEmail(value) {
-        const regex_email = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-za-z\-0-9]+\.)+[a-za-z]{2,}))$/;
-        return regex_email.test(value.toLowerCase())
-            ? false
-            : this.notify.isEmail;
-    }
-    // Min length: 8
-    // Have: symbol, number, uppercase, lowercase
-    secureLevel1(value) {
-        const lengthCheckResult = this.lengthCheck(value, "min", 8);
-        if (lengthCheckResult)
-            return lengthCheckResult;
-        const symbolCheckResult = this.requiredSymbol(value);
-        const numberCheckResult = this.requiredNumber(value);
-        const lowerCheckResult = this.requiredLower(value);
-        const upperCheckResult = this.requiredUpper(value);
-        const result = symbolCheckResult ||
-            numberCheckResult ||
-            lowerCheckResult ||
-            upperCheckResult;
-        return result ? this.notify.secureLevel1 : false;
-    }
-    equalInputValue(value, inputToCompare, inputLabel) {
-        if (value !== inputToCompare.value) {
-            return this.notify.equalInputValue(inputLabel);
-        }
-        else
-            return false;
-    }
-    setError(inputElm, errorMessage) {
-        var _a;
-        const parent = (_a = inputElm.parentElement) === null || _a === void 0 ? void 0 : _a.parentElement;
-        const errorElm = parent.querySelector(".error-message");
-        parent.classList.add("error");
-        errorElm.textContent = errorMessage;
-        return false;
-    }
-    removeError(inputElm) {
-        var _a;
-        const parent = (_a = inputElm.parentElement) === null || _a === void 0 ? void 0 : _a.parentElement;
-        const errorMessageElm = parent.querySelector(".error-message");
-        errorMessageElm.textContent = "";
-        parent.classList.remove("error");
-    }
-    checkInputValues(inputElm, config) {
-        const inputValue = inputElm.value;
-        // Required check
-        if (config.required) {
-            const requiredCheckResult = this.required(inputValue);
-            if (requiredCheckResult)
-                return this.setError(inputElm, requiredCheckResult);
-        }
-        else {
-            if (inputValue.length === 0) {
-                this.removeError(inputElm);
-                return true;
-            }
-        }
-        // isGmail check
-        if (config.isEmail) {
-            const isGmailCheckResult = this.isEmail(inputValue);
-            if (isGmailCheckResult)
-                return this.setError(inputElm, isGmailCheckResult);
-        }
-        if (config.numberOnly) {
-            // Number only check
-            const numberOnlyCheckResult = this.numberOnly(inputValue);
-            if (numberOnlyCheckResult)
-                return this.setError(inputElm, numberOnlyCheckResult);
-        }
-        // Not symbol check
-        if (config.notSymbol) {
-            const notSymbolCheckResult = this.notSymbolCheck(inputValue);
-            if (notSymbolCheckResult)
-                return this.setError(inputElm, notSymbolCheckResult);
-        }
-        // Secure level 1 for password
-        if (config.secureLevel1) {
-            const secureLevel1CheckResult = this.secureLevel1(inputValue);
-            if (secureLevel1CheckResult)
-                return this.setError(inputElm, secureLevel1CheckResult);
-        }
-        // Equal length check
-        if (config.equalLength) {
-            const equalLengthCheckResult = this.lengthCheck(inputValue, "equal", config.equalLength);
-            if (equalLengthCheckResult)
-                return this.setError(inputElm, equalLengthCheckResult);
-        }
-        // Min length check
-        if (config.minLength) {
-            const minLengthCheckResult = this.lengthCheck(inputValue, "min", config.minLength);
-            if (minLengthCheckResult)
-                return this.setError(inputElm, minLengthCheckResult);
-        }
-        // Max length check
-        if (config.maxLength) {
-            const maxLengthCheckResult = this.lengthCheck(inputValue, "max", config.maxLength);
-            if (maxLengthCheckResult)
-                return this.setError(inputElm, maxLengthCheckResult);
-        }
-        // Equal input value check
-        if (config.equalInputValue) {
-            const equalInputValueCheckResult = this.equalInputValue(inputValue, config.equalInputValue.inputToCompare, config.equalInputValue.inputLabel);
-            if (equalInputValueCheckResult) {
-                return this.setError(inputElm, equalInputValueCheckResult);
-            }
-        }
-        this.removeError(inputElm);
-        return true;
-    }
-    listenAndValidateInput(inputElm, config) {
-        inputElm.addEventListener("focusout", (e) => {
-            this.checkInputValues(inputElm, config);
-        });
-    }
-    resetForm() {
-        const keyList = Object.getOwnPropertyNames(this);
-        // Reset form
-        const formElmList = keyList
-            // Filter keyof form element
-            .filter((key) => {
-            return (this[key] instanceof
-                HTMLFormElement);
-        })
-            // Get form element
-            .map((formElmKey) => this[formElmKey])
-            // Reset form element
-            .forEach((formElm) => {
-            formElm.reset();
-        });
-        // Reset input
-        const inputElmList = keyList
-            // Filter keyof input element
-            .filter((key) => {
-            return (this[key] instanceof
-                HTMLInputElement);
-        })
-            // Get input element
-            .map((inputElmKey) => this[inputElmKey])
-            // Remove error input element
-            .forEach((inputElm) => {
-            this.removeError(inputElm);
-        });
-    }
-}
-class LoginForm extends ValidateForm {
-    constructor() {
-        super();
-        this.formElm = $(".authenticate-ctn .form-ctn.login");
-        this.usernameInput = $("#username-input");
-        this.passwordInput = $("#password-input");
-    }
-    listenEvent() {
-        // Validate config
-        const usernameConfig = {
-            required: true,
-            minLength: 6,
-            maxLength: 24,
-            notSymbol: true,
-        };
-        const passwordConfig = {
-            required: true,
-            secureLevel1: true,
-        };
-        // Listen focusout event and validate username input
-        this.listenAndValidateInput(this.usernameInput, usernameConfig);
-        // Password input
-        this.listenAndValidateInput(this.passwordInput, passwordConfig);
-        this.formElm.addEventListener("submit", (e) => {
-            const usernameCheckResult = this.checkInputValues(this.usernameInput, usernameConfig);
-            const passwordCheckResult = this.checkInputValues(this.passwordInput, passwordConfig);
-            const allowSubmit = usernameCheckResult && passwordCheckResult;
-            if (!allowSubmit)
-                e.preventDefault();
-        });
-    }
-}
-class RegisterForm extends ValidateForm {
-    constructor() {
-        super();
-        this.formElm = $(".authenticate-ctn .form-ctn.register");
-        this.usernameInput = $("#username-register-input");
-        this.passwordInput = $("#password-register-input");
-        this.retypePasswordInput = $("#retype-password-input");
-        this.firstNameInput = $("#first-name-input");
-        this.lastNameInput = $("#last-name-input");
-        this.addressInput = $("#address-input");
-        this.phoneNumberInput = $("#phone-number-input");
-        this.gmailInput = $("#gmail-input");
-    }
-    listenEvent() {
-        // Validate config
-        const usernameConfig = {
-            required: true,
-            minLength: 6,
-            maxLength: 16,
-            notSymbol: true,
-        };
-        const passwordConfig = {
-            required: true,
-            minLength: 8,
-            maxLength: 36,
-            secureLevel1: true,
-        };
-        const retypePasswordConfig = Object.assign(Object.assign({}, passwordConfig), { equalInputValue: {
-                value: this.retypePasswordInput.value,
-                inputLabel: "mật khẩu",
-                inputToCompare: this.passwordInput,
-            } });
-        const firstNameConfig = {
-            required: true,
-            minLength: 2,
-            maxLength: 8,
-            notSymbol: true,
-        };
-        const lastNameConfig = {
-            required: true,
-            minLength: 2,
-            maxLength: 8,
-            notSymbol: true,
-        };
-        const addressConfig = {
-            required: true,
-            minLength: 10,
-            maxLength: 120,
-        };
-        const phoneNumberConfig = {
-            required: true,
-            numberOnly: true,
-            equalLength: 10,
-        };
-        const gmailConfig = {
-            isEmail: true,
-        };
-        // Listen and validate input on focusout
-        this.listenAndValidateInput(this.usernameInput, usernameConfig);
-        this.listenAndValidateInput(this.passwordInput, passwordConfig);
-        this.listenAndValidateInput(this.retypePasswordInput, retypePasswordConfig);
-        this.listenAndValidateInput(this.firstNameInput, firstNameConfig);
-        this.listenAndValidateInput(this.lastNameInput, lastNameConfig);
-        this.listenAndValidateInput(this.addressInput, addressConfig);
-        this.listenAndValidateInput(this.phoneNumberInput, phoneNumberConfig);
-        this.listenAndValidateInput(this.gmailInput, gmailConfig);
-        this.formElm.addEventListener("submit", (e) => {
-            const usernameCheckResult = this.checkInputValues(this.usernameInput, usernameConfig);
-            const passwordCheckResult = this.checkInputValues(this.passwordInput, passwordConfig);
-            const retypePasswordCheckResult = this.checkInputValues(this.retypePasswordInput, retypePasswordConfig);
-            const firstNameCheckResult = this.checkInputValues(this.firstNameInput, firstNameConfig);
-            const lastNameCheckResult = this.checkInputValues(this.lastNameInput, lastNameConfig);
-            const addressCheckResult = this.checkInputValues(this.addressInput, addressConfig);
-            const phoneNumberCheckResult = this.checkInputValues(this.phoneNumberInput, phoneNumberConfig);
-            const gmailCheckResult = this.checkInputValues(this.gmailInput, gmailConfig);
-            if (!usernameCheckResult ||
-                !passwordCheckResult ||
-                !retypePasswordCheckResult ||
-                !firstNameCheckResult ||
-                !lastNameCheckResult ||
-                !addressCheckResult ||
-                !phoneNumberCheckResult ||
-                !gmailCheckResult) {
-                e.preventDefault();
-            }
-        });
-    }
-}
-class AuthenticateBox {
-    constructor() {
-        this.loginForm = new LoginForm();
-        this.registerForm = new RegisterForm();
-        this.checkboxToShowBox = $("#toggle-register-auth-box");
-    }
-    listenChangeFormInput() {
-        this.loginForm.listenEvent();
-        this.registerForm.listenEvent();
-    }
-    listenEventToShowAndHideBox() {
-        this.checkboxToShowBox.addEventListener("change", () => {
-            this.loginForm.resetForm();
-            this.registerForm.resetForm();
-        });
-    }
-}
-const authenticateBox = new AuthenticateBox();
-authenticateBox.listenChangeFormInput();
-authenticateBox.listenEventToShowAndHideBox();
+/*
+ * ATTENTION: The "eval" devtool has been used (maybe by default in mode: "development").
+ * This devtool is neither made for production nor for readable output files.
+ * It uses "eval()" calls to create a separate source file in the browser devtools.
+ * If you are trying to read the output file, select a different devtool (https://webpack.js.org/configuration/devtool/)
+ * or disable the default devtool with "devtool: false".
+ * If you are looking for production-ready output files, see mode: "production" (https://webpack.js.org/configuration/mode/).
+ */
+/******/ (() => { // webpackBootstrap
+/******/ 	"use strict";
+/******/ 	var __webpack_modules__ = ({
+
+/***/ "./src/assets/ts/Common/index.ts":
+/*!***************************************!*\
+  !*** ./src/assets/ts/Common/index.ts ***!
+  \***************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   $: () => (/* binding */ $),\n/* harmony export */   $$: () => (/* binding */ $$)\n/* harmony export */ });\nconst $ = (selector, bindElm = document) => bindElm.querySelector(selector);\nconst $$ = (selector, bindElm = document) => bindElm.querySelectorAll(selector);\n\n\n//# sourceURL=webpack://cons-shopping/./src/assets/ts/Common/index.ts?");
+
+/***/ }),
+
+/***/ "./src/assets/ts/Header/authenticateBox.ts":
+/*!*************************************************!*\
+  !*** ./src/assets/ts/Header/authenticateBox.ts ***!
+  \*************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var _Common_index__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../Common/index */ \"./src/assets/ts/Common/index.ts\");\n/* harmony import */ var _loginAndRegisterForm__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./loginAndRegisterForm */ \"./src/assets/ts/Header/loginAndRegisterForm.ts\");\n\n\nclass AuthenticateBox {\n    constructor() {\n        this.loginForm = new _loginAndRegisterForm__WEBPACK_IMPORTED_MODULE_1__.LoginForm();\n        this.registerForm = new _loginAndRegisterForm__WEBPACK_IMPORTED_MODULE_1__.RegisterForm();\n        this.checkboxToShowBox = (0,_Common_index__WEBPACK_IMPORTED_MODULE_0__.$)('#toggle-register-auth-box');\n    }\n    listenChangeFormInput() {\n        this.loginForm.listenEvent();\n        this.registerForm.listenEvent();\n    }\n    listenEventToShowAndHideBox() {\n        this.checkboxToShowBox.addEventListener('change', () => {\n            this.loginForm.resetForm();\n            this.registerForm.resetForm();\n        });\n    }\n}\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (AuthenticateBox);\n\n\n//# sourceURL=webpack://cons-shopping/./src/assets/ts/Header/authenticateBox.ts?");
+
+/***/ }),
+
+/***/ "./src/assets/ts/Header/index.ts":
+/*!***************************************!*\
+  !*** ./src/assets/ts/Header/index.ts ***!
+  \***************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _authenticateBox__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./authenticateBox */ \"./src/assets/ts/Header/authenticateBox.ts\");\n/* harmony import */ var _loginAndRegisterForm__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./loginAndRegisterForm */ \"./src/assets/ts/Header/loginAndRegisterForm.ts\");\n/* harmony import */ var _searchBar__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./searchBar */ \"./src/assets/ts/Header/searchBar.ts\");\n\n\n\nconst searchBar = new _searchBar__WEBPACK_IMPORTED_MODULE_2__[\"default\"]();\nconst loginForm = new _loginAndRegisterForm__WEBPACK_IMPORTED_MODULE_1__.LoginForm();\nloginForm.listenEvent();\nconst registerForm = new _loginAndRegisterForm__WEBPACK_IMPORTED_MODULE_1__.RegisterForm();\nregisterForm.listenEvent();\nconst authenticateBox = new _authenticateBox__WEBPACK_IMPORTED_MODULE_0__[\"default\"]();\nauthenticateBox.listenChangeFormInput();\nauthenticateBox.listenEventToShowAndHideBox();\n\n\n//# sourceURL=webpack://cons-shopping/./src/assets/ts/Header/index.ts?");
+
+/***/ }),
+
+/***/ "./src/assets/ts/Header/loginAndRegisterForm.ts":
+/*!******************************************************!*\
+  !*** ./src/assets/ts/Header/loginAndRegisterForm.ts ***!
+  \******************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   LoginForm: () => (/* binding */ LoginForm),\n/* harmony export */   RegisterForm: () => (/* binding */ RegisterForm)\n/* harmony export */ });\n/* harmony import */ var _Common_index__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../Common/index */ \"./src/assets/ts/Common/index.ts\");\n/* harmony import */ var _validateFormMethod__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./validateFormMethod */ \"./src/assets/ts/Header/validateFormMethod.ts\");\n\n\nclass LoginForm extends _validateFormMethod__WEBPACK_IMPORTED_MODULE_1__[\"default\"] {\n    constructor() {\n        super();\n        this.formElm = (0,_Common_index__WEBPACK_IMPORTED_MODULE_0__.$)('.authenticate-ctn .form-ctn.login');\n        this.usernameInput = (0,_Common_index__WEBPACK_IMPORTED_MODULE_0__.$)('#username-input');\n        this.passwordInput = (0,_Common_index__WEBPACK_IMPORTED_MODULE_0__.$)('#password-input');\n    }\n    listenEvent() {\n        // Validate config\n        const usernameConfig = {\n            required: true,\n            minLength: 6,\n            maxLength: 24,\n            notSymbol: true,\n        };\n        const passwordConfig = {\n            required: true,\n            secureLevel1: true,\n        };\n        // Listen focusout event and validate username input\n        this.listenAndValidateInput(this.usernameInput, usernameConfig);\n        // Password input\n        this.listenAndValidateInput(this.passwordInput, passwordConfig);\n        this.formElm.addEventListener('submit', (e) => {\n            const usernameCheckResult = this.checkInputValues(this.usernameInput, usernameConfig);\n            const passwordCheckResult = this.checkInputValues(this.passwordInput, passwordConfig);\n            const allowSubmit = usernameCheckResult && passwordCheckResult;\n            if (!allowSubmit)\n                e.preventDefault();\n        });\n    }\n}\nclass RegisterForm extends _validateFormMethod__WEBPACK_IMPORTED_MODULE_1__[\"default\"] {\n    constructor() {\n        super();\n        this.formElm = (0,_Common_index__WEBPACK_IMPORTED_MODULE_0__.$)('.authenticate-ctn .form-ctn.register');\n        this.usernameInput = (0,_Common_index__WEBPACK_IMPORTED_MODULE_0__.$)('#username-register-input');\n        this.passwordInput = (0,_Common_index__WEBPACK_IMPORTED_MODULE_0__.$)('#password-register-input');\n        this.retypePasswordInput = (0,_Common_index__WEBPACK_IMPORTED_MODULE_0__.$)('#retype-password-input');\n        this.firstNameInput = (0,_Common_index__WEBPACK_IMPORTED_MODULE_0__.$)('#first-name-input');\n        this.lastNameInput = (0,_Common_index__WEBPACK_IMPORTED_MODULE_0__.$)('#last-name-input');\n        this.addressInput = (0,_Common_index__WEBPACK_IMPORTED_MODULE_0__.$)('#address-input');\n        this.phoneNumberInput = (0,_Common_index__WEBPACK_IMPORTED_MODULE_0__.$)('#phone-number-input');\n        this.gmailInput = (0,_Common_index__WEBPACK_IMPORTED_MODULE_0__.$)('#gmail-input');\n    }\n    listenEvent() {\n        // Validate config\n        const usernameConfig = {\n            required: true,\n            minLength: 6,\n            maxLength: 16,\n            notSymbol: true,\n        };\n        const passwordConfig = {\n            required: true,\n            minLength: 8,\n            maxLength: 36,\n            secureLevel1: true,\n        };\n        const retypePasswordConfig = Object.assign(Object.assign({}, passwordConfig), { equalInputValue: {\n                value: this.retypePasswordInput.value,\n                inputLabel: 'mật khẩu',\n                inputToCompare: this.passwordInput,\n            } });\n        const firstNameConfig = {\n            required: true,\n            minLength: 2,\n            maxLength: 8,\n            notSymbol: true,\n        };\n        const lastNameConfig = {\n            required: true,\n            minLength: 2,\n            maxLength: 8,\n            notSymbol: true,\n        };\n        const addressConfig = {\n            required: true,\n            minLength: 10,\n            maxLength: 120,\n        };\n        const phoneNumberConfig = {\n            required: true,\n            numberOnly: true,\n            equalLength: 10,\n        };\n        const gmailConfig = {\n            isEmail: true,\n        };\n        // Listen and validate input on focusout\n        this.listenAndValidateInput(this.usernameInput, usernameConfig);\n        this.listenAndValidateInput(this.passwordInput, passwordConfig);\n        this.listenAndValidateInput(this.retypePasswordInput, retypePasswordConfig);\n        this.listenAndValidateInput(this.firstNameInput, firstNameConfig);\n        this.listenAndValidateInput(this.lastNameInput, lastNameConfig);\n        this.listenAndValidateInput(this.addressInput, addressConfig);\n        this.listenAndValidateInput(this.phoneNumberInput, phoneNumberConfig);\n        this.listenAndValidateInput(this.gmailInput, gmailConfig);\n        this.formElm.addEventListener('submit', (e) => {\n            const usernameCheckResult = this.checkInputValues(this.usernameInput, usernameConfig);\n            const passwordCheckResult = this.checkInputValues(this.passwordInput, passwordConfig);\n            const retypePasswordCheckResult = this.checkInputValues(this.retypePasswordInput, retypePasswordConfig);\n            const firstNameCheckResult = this.checkInputValues(this.firstNameInput, firstNameConfig);\n            const lastNameCheckResult = this.checkInputValues(this.lastNameInput, lastNameConfig);\n            const addressCheckResult = this.checkInputValues(this.addressInput, addressConfig);\n            const phoneNumberCheckResult = this.checkInputValues(this.phoneNumberInput, phoneNumberConfig);\n            const gmailCheckResult = this.checkInputValues(this.gmailInput, gmailConfig);\n            if (!usernameCheckResult ||\n                !passwordCheckResult ||\n                !retypePasswordCheckResult ||\n                !firstNameCheckResult ||\n                !lastNameCheckResult ||\n                !addressCheckResult ||\n                !phoneNumberCheckResult ||\n                !gmailCheckResult) {\n                e.preventDefault();\n            }\n        });\n    }\n}\n\n\n\n//# sourceURL=webpack://cons-shopping/./src/assets/ts/Header/loginAndRegisterForm.ts?");
+
+/***/ }),
+
+/***/ "./src/assets/ts/Header/searchBar.ts":
+/*!*******************************************!*\
+  !*** ./src/assets/ts/Header/searchBar.ts ***!
+  \*******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var _Common_index__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../Common/index */ \"./src/assets/ts/Common/index.ts\");\n\nclass SearchBar {\n    constructor() {\n        // Event state\n        this.focusing = false;\n        this.searchBox = (0,_Common_index__WEBPACK_IMPORTED_MODULE_0__.$)('#search-box');\n        this.searchInput = (0,_Common_index__WEBPACK_IMPORTED_MODULE_0__.$)('.search-input');\n        this.submitButton = (0,_Common_index__WEBPACK_IMPORTED_MODULE_0__.$)('.search-input ~ .submit-button');\n        this.listenAndHandleEvent();\n    }\n    listenAndHandleEvent() {\n        this.listenAndHandleSubmit();\n    }\n    listenAndHandleSearch() {\n        this.searchInput.addEventListener('change', this.handleChangeSearchInput.bind(this));\n    }\n    listenAndHandleSubmit() {\n        // Submit while press enter\n        this.searchInput.addEventListener('focusin', () => {\n            window.addEventListener('keypress', this.handleSubmitByKeyPress.bind(this));\n        });\n        this.searchInput.addEventListener('focusout', () => {\n            window.removeEventListener('keypress', this.handleSubmitByKeyPress.bind(this));\n        });\n        // Submit while click submit button\n        this.submitButton.addEventListener('click', this.handleSubmit.bind(this));\n    }\n    handleChangeSearchInput(e) {\n        console.log(e.target.value);\n    }\n    handleSubmitByKeyPress(e) {\n        if (e.code === 'Enter')\n            this.handleSubmit();\n    }\n    handleSubmit() {\n        this.searchInput.value = this.searchInput.value.replace(/[^\\w\\s]/gi, '');\n        if (this.searchInput.value.trim().length) {\n            window.location.href = '/search?q=' + this.searchInput.value;\n        }\n    }\n}\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (SearchBar);\n\n\n//# sourceURL=webpack://cons-shopping/./src/assets/ts/Header/searchBar.ts?");
+
+/***/ }),
+
+/***/ "./src/assets/ts/Header/validateFormMethod.ts":
+/*!****************************************************!*\
+  !*** ./src/assets/ts/Header/validateFormMethod.ts ***!
+  \****************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\nclass ValidateForm {\n    constructor() {\n        this.notify = {\n            required: 'Không được để trống trường này!',\n            minLength: (n) => 'Độ dài tối thiểu từ ' + n + ' ký tự!',\n            maxLength: (n) => 'Độ dài tối đa là ' + n + ' ký tự!',\n            equalLength: (n) => 'Độ dài phải là ' + n + '!',\n            secureLevel1: 'Phải bao gồm số, ký tự hoa, thường và ký tự đặc biệt',\n            numberOnly: 'Chỉ cho phép nhập số!',\n            notSymbolCheck: 'Không nhập ký tự đặc biệt vào trường này',\n            isEmail: 'Không đúng định dạng Email, vui lòng nhập lại!',\n            requiredSymbol: 'Trường này bắt buộc chứa ký tự đặc biệt',\n            requiredUpper: 'Trường này bắt buộc chứa ký tự in ho',\n            requiredLower: 'Trường này bắt buộc chứa ký tự in thường',\n            requiredNumber: 'Trường này bắt buộc chứa chữ số',\n            equalInputValue: (label) => 'Giá trị vừa nhập không khớp với trường ' + label + '!',\n        };\n    }\n    required(value) {\n        if (value.length == 0)\n            return this.notify.required;\n        else\n            return false;\n    }\n    lengthCheck(value, type, range) {\n        if (type === 'min' && value.length < range)\n            return this.notify.minLength(range);\n        if (type === 'max' && value.length > range)\n            return this.notify.maxLength(range);\n        if (type === 'equal' && value.length !== range)\n            return this.notify.equalLength(range);\n        return false;\n    }\n    notSymbolCheck(value) {\n        const regex = new RegExp(/^[A-Za-z0-9]*$/);\n        return regex.test(value) ? false : this.notify.notSymbolCheck;\n    }\n    requiredSymbol(value) {\n        const regex_symbols = /[-!$%^&*()_+|~=`{}\\[\\]:\\/;<>?,.@#]/;\n        return regex_symbols.test(value) ? false : this.notify.requiredSymbol;\n    }\n    requiredLower(value) {\n        const regex_lower = /[a-z]/;\n        return regex_lower.test(value) ? false : this.notify.requiredLower;\n    }\n    requiredUpper(value) {\n        const regex_upper = /[A-Z]/;\n        return regex_upper.test(value) ? false : this.notify.requiredUpper;\n    }\n    requiredNumber(value) {\n        const regex_number = /[0-9]/;\n        return regex_number.test(value) ? false : this.notify.requiredNumber;\n    }\n    numberOnly(value) {\n        const regex_number_only = /^[0-9]*$/;\n        return regex_number_only.test(value) ? false : this.notify.numberOnly;\n    }\n    isEmail(value) {\n        const regex_email = /^(([^<>()[\\]\\\\.,;:\\s@\"]+(\\.[^<>()[\\]\\\\.,;:\\s@\"]+)*)|.(\".+\"))@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\])|(([a-za-z\\-0-9]+\\.)+[a-za-z]{2,}))$/;\n        return regex_email.test(value.toLowerCase())\n            ? false\n            : this.notify.isEmail;\n    }\n    // Min length: 8\n    // Have: symbol, number, uppercase, lowercase\n    secureLevel1(value) {\n        const lengthCheckResult = this.lengthCheck(value, 'min', 8);\n        if (lengthCheckResult)\n            return lengthCheckResult;\n        const symbolCheckResult = this.requiredSymbol(value);\n        const numberCheckResult = this.requiredNumber(value);\n        const lowerCheckResult = this.requiredLower(value);\n        const upperCheckResult = this.requiredUpper(value);\n        const result = symbolCheckResult ||\n            numberCheckResult ||\n            lowerCheckResult ||\n            upperCheckResult;\n        return result ? this.notify.secureLevel1 : false;\n    }\n    equalInputValue(value, inputToCompare, inputLabel) {\n        if (value !== inputToCompare.value) {\n            return this.notify.equalInputValue(inputLabel);\n        }\n        else\n            return false;\n    }\n    setError(inputElm, errorMessage) {\n        var _a;\n        const parent = (_a = inputElm.parentElement) === null || _a === void 0 ? void 0 : _a.parentElement;\n        const errorElm = parent.querySelector('.error-message');\n        parent.classList.add('error');\n        errorElm.textContent = errorMessage;\n        return false;\n    }\n    removeError(inputElm) {\n        var _a;\n        const parent = (_a = inputElm.parentElement) === null || _a === void 0 ? void 0 : _a.parentElement;\n        const errorMessageElm = parent.querySelector('.error-message');\n        errorMessageElm.textContent = '';\n        parent.classList.remove('error');\n    }\n    checkInputValues(inputElm, config) {\n        const inputValue = inputElm.value;\n        // Required check\n        if (config.required) {\n            const requiredCheckResult = this.required(inputValue);\n            if (requiredCheckResult)\n                return this.setError(inputElm, requiredCheckResult);\n        }\n        else {\n            if (inputValue.length === 0) {\n                this.removeError(inputElm);\n                return true;\n            }\n        }\n        // isGmail check\n        if (config.isEmail) {\n            const isGmailCheckResult = this.isEmail(inputValue);\n            if (isGmailCheckResult)\n                return this.setError(inputElm, isGmailCheckResult);\n        }\n        if (config.numberOnly) {\n            // Number only check\n            const numberOnlyCheckResult = this.numberOnly(inputValue);\n            if (numberOnlyCheckResult)\n                return this.setError(inputElm, numberOnlyCheckResult);\n        }\n        // Not symbol check\n        if (config.notSymbol) {\n            const notSymbolCheckResult = this.notSymbolCheck(inputValue);\n            if (notSymbolCheckResult)\n                return this.setError(inputElm, notSymbolCheckResult);\n        }\n        // Secure level 1 for password\n        if (config.secureLevel1) {\n            const secureLevel1CheckResult = this.secureLevel1(inputValue);\n            if (secureLevel1CheckResult)\n                return this.setError(inputElm, secureLevel1CheckResult);\n        }\n        // Equal length check\n        if (config.equalLength) {\n            const equalLengthCheckResult = this.lengthCheck(inputValue, 'equal', config.equalLength);\n            if (equalLengthCheckResult)\n                return this.setError(inputElm, equalLengthCheckResult);\n        }\n        // Min length check\n        if (config.minLength) {\n            const minLengthCheckResult = this.lengthCheck(inputValue, 'min', config.minLength);\n            if (minLengthCheckResult)\n                return this.setError(inputElm, minLengthCheckResult);\n        }\n        // Max length check\n        if (config.maxLength) {\n            const maxLengthCheckResult = this.lengthCheck(inputValue, 'max', config.maxLength);\n            if (maxLengthCheckResult)\n                return this.setError(inputElm, maxLengthCheckResult);\n        }\n        // Equal input value check\n        if (config.equalInputValue) {\n            const equalInputValueCheckResult = this.equalInputValue(inputValue, config.equalInputValue.inputToCompare, config.equalInputValue.inputLabel);\n            if (equalInputValueCheckResult) {\n                return this.setError(inputElm, equalInputValueCheckResult);\n            }\n        }\n        this.removeError(inputElm);\n        return true;\n    }\n    listenAndValidateInput(inputElm, config) {\n        inputElm.addEventListener('focusout', (e) => {\n            this.checkInputValues(inputElm, config);\n        });\n    }\n    resetForm() {\n        const keyList = Object.getOwnPropertyNames(this);\n        // Reset form\n        const formElmList = keyList\n            // Filter keyof form element\n            .filter((key) => {\n            return (this[key] instanceof\n                HTMLFormElement);\n        })\n            // Get form element\n            .map((formElmKey) => this[formElmKey])\n            // Reset form element\n            .forEach((formElm) => {\n            formElm.reset();\n        });\n        // Reset input\n        const inputElmList = keyList\n            // Filter keyof input element\n            .filter((key) => {\n            return (this[key] instanceof\n                HTMLInputElement);\n        })\n            // Get input element\n            .map((inputElmKey) => this[inputElmKey])\n            // Remove error input element\n            .forEach((inputElm) => {\n            this.removeError(inputElm);\n        });\n    }\n}\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ValidateForm);\n\n\n//# sourceURL=webpack://cons-shopping/./src/assets/ts/Header/validateFormMethod.ts?");
+
+/***/ })
+
+/******/ 	});
+/************************************************************************/
+/******/ 	// The module cache
+/******/ 	var __webpack_module_cache__ = {};
+/******/ 	
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/ 		// Check if module is in cache
+/******/ 		var cachedModule = __webpack_module_cache__[moduleId];
+/******/ 		if (cachedModule !== undefined) {
+/******/ 			return cachedModule.exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = __webpack_module_cache__[moduleId] = {
+/******/ 			// no module.id needed
+/******/ 			// no module.loaded needed
+/******/ 			exports: {}
+/******/ 		};
+/******/ 	
+/******/ 		// Execute the module function
+/******/ 		__webpack_modules__[moduleId](module, module.exports, __webpack_require__);
+/******/ 	
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/ 	
+/************************************************************************/
+/******/ 	/* webpack/runtime/define property getters */
+/******/ 	(() => {
+/******/ 		// define getter functions for harmony exports
+/******/ 		__webpack_require__.d = (exports, definition) => {
+/******/ 			for(var key in definition) {
+/******/ 				if(__webpack_require__.o(definition, key) && !__webpack_require__.o(exports, key)) {
+/******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
+/******/ 				}
+/******/ 			}
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/hasOwnProperty shorthand */
+/******/ 	(() => {
+/******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/make namespace object */
+/******/ 	(() => {
+/******/ 		// define __esModule on exports
+/******/ 		__webpack_require__.r = (exports) => {
+/******/ 			if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 				Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 			}
+/******/ 			Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/************************************************************************/
+/******/ 	
+/******/ 	// startup
+/******/ 	// Load entry module and return exports
+/******/ 	// This entry module can't be inlined because the eval devtool is used.
+/******/ 	var __webpack_exports__ = __webpack_require__("./src/assets/ts/Header/index.ts");
+/******/ 	
+/******/ })()
+;

@@ -15,18 +15,7 @@
 		<div id="search-box" class="search-box">
 			<section class="search-products">
 				<span>Gợi ý tìm kiếm</span>
-				<ul class="search-products__list">
-					<?php foreach ($this->visitedProducts as $product): ?>
-               			<li>
-                			    <img
-									src="<?= $product["thumb"] ?>"
-									alt="<?= $product["label"] ?>"
-								>
-                    			
-							<h4><?= $product["label"] ?></h4>
-               			</li> 
-					<?php endforeach; ?>
-				</ul>
+				<ul class="search-products__list"></ul>
 			</section>
 
 			<section class="viewed-products">

@@ -1,3 +1,5 @@
+import { $, $$ } from './Common/index';
+
 class ProductImageSlide {
 	private imageSlide: HTMLDivElement;
 	private imageSlideList: HTMLUListElement;
@@ -10,12 +12,12 @@ class ProductImageSlide {
 	private currentIndex: number = 0;
 
 	constructor() {
-		this.imageSlide = $("#product-image-slide");
-		this.imageSlideList = $(".image-slide__list", this.imageSlide);
-		this.prevButton = $(".prev-button", this.imageSlide);
-		this.nextButton = $(".next-button", this.imageSlide);
+		this.imageSlide = $('#product-image-slide');
+		this.imageSlideList = $('.image-slide__list', this.imageSlide);
+		this.prevButton = $('.prev-button', this.imageSlide);
+		this.nextButton = $('.next-button', this.imageSlide);
 		this.imageSlidePreview = $(
-			"#product-image-slide + .image-slide-preview"
+			'#product-image-slide + .image-slide-preview'
 		);
 		this.imageSlidePreviewItems = [
 			...this.imageSlidePreview.children,
@@ -29,18 +31,18 @@ class ProductImageSlide {
 	}
 
 	public listenEvent() {
-		this.prevButton.addEventListener("click", (e) => {
+		this.prevButton.addEventListener('click', (e) => {
 			this.handlePrev();
 		});
 
-		this.nextButton.addEventListener("click", (e) => {
+		this.nextButton.addEventListener('click', (e) => {
 			this.handleNext();
 		});
 
 		// Click preview item
 		this.imageSlidePreviewItems.forEach((previewItem) => {
 			previewItem.addEventListener(
-				"click",
+				'click',
 				this.handleClickPreviewItem.bind(this)
 			);
 		});
@@ -49,7 +51,7 @@ class ProductImageSlide {
 	private handleClickPreviewItem(e: any) {
 		let target: HTMLElement = e.target;
 
-		while (target.tagName !== "LI" && target.parentNode)
+		while (target.tagName !== 'LI' && target.parentNode)
 			target = target.parentNode as HTMLElement;
 
 		this.handleChangeIndex(Number(target?.dataset.index) || 0);
@@ -79,17 +81,17 @@ class ProductImageSlide {
 
 		// Image slide preview style
 		const oldPreviewActiveItem =
-			this.imageSlidePreview.querySelector("li.active");
-		oldPreviewActiveItem?.classList.remove("active");
+			this.imageSlidePreview.querySelector('li.active');
+		oldPreviewActiveItem?.classList.remove('active');
 
 		const newPreviewActiveItem = this.imageSlidePreview.querySelector(
 			`li[data-index="${this.currentIndex}"]`
 		);
-		newPreviewActiveItem?.classList.add("active");
+		newPreviewActiveItem?.classList.add('active');
 		// Scroll newPreviewActiveItem to view
 		newPreviewActiveItem?.scrollIntoView({
-			behavior: "smooth",
-			inline: "center",
+			behavior: 'smooth',
+			inline: 'center',
 		});
 	}
 }

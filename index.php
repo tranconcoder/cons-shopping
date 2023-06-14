@@ -1,6 +1,9 @@
 <?php
 session_start();
 
+// Include util
+include_once __DIR__ . "/./src/assets/utils/index.php";
+
 include_once "./src/config/db/connect.php";
 include_once __DIR__ . "/./src/controllers/layouts/Layout1.controller.php";
 

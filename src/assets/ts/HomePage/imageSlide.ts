@@ -1,3 +1,5 @@
+import { $ } from '../Common/index';
+
 class ImageSlide {
 	// DOM element
 	private readonly imageSlideElm: HTMLDivElement;
@@ -12,14 +14,14 @@ class ImageSlide {
 	private readonly IMAGE_COUNT: number;
 
 	// Environment variable
-	private autoChangeImageIntervalId: number = -1;
+	private autoChangeImageIntervalId: NodeJS.Timer | undefined;
 
 	constructor() {
-		this.imageSlideElm = $(".image-slide-ctn");
-		this.imageListElm = $(".image-list", this.imageSlideElm);
-		this.progressBarElm = $(".progress-bar", this.imageSlideElm);
-		this.prevButton = $(".prev-button", this.imageSlideElm);
-		this.nextButton = $(".next-button", this.imageSlideElm);
+		this.imageSlideElm = $('.image-slide-ctn');
+		this.imageListElm = $('.image-list', this.imageSlideElm);
+		this.progressBarElm = $('.progress-bar', this.imageSlideElm);
+		this.prevButton = $('.prev-button', this.imageSlideElm);
+		this.nextButton = $('.next-button', this.imageSlideElm);
 
 		this.IMAGE_COUNT = this.imageListElm.childElementCount;
 
@@ -29,18 +31,18 @@ class ImageSlide {
 
 	public clearEventButton() {
 		this.prevButton.removeEventListener(
-			"click",
+			'click',
 			this.handlePrevImage.bind(this)
 		);
 		// Next button
 		this.nextButton.removeEventListener(
-			"click",
+			'click',
 			this.handleNextImage.bind(this)
 		);
 
 		// Progress bar
 		this.progressBarElm.addEventListener(
-			"click",
+			'click',
 			this.handleClickProgressBar.bind(this)
 		);
 	}
@@ -51,18 +53,18 @@ class ImageSlide {
 
 		// Prev button
 		this.prevButton.addEventListener(
-			"click",
+			'click',
 			this.handlePrevImage.bind(this)
 		);
 		// Next button
 		this.nextButton.addEventListener(
-			"click",
+			'click',
 			this.handleNextImage.bind(this)
 		);
 
 		// Progress bar
 		this.progressBarElm.addEventListener(
-			"click",
+			'click',
 			this.handleClickProgressBar.bind(this)
 		);
 	}
@@ -115,21 +117,21 @@ class ImageSlide {
 
 		// Reset dot list style
 		// Remove current active dot
-		const currentActiveDot = $(".dot.active", this.progressBarElm);
-		currentActiveDot.classList.remove("active");
+		const currentActiveDot = $('.dot.active', this.progressBarElm);
+		currentActiveDot.classList.remove('active');
 
 		// Set new active dot
 		const newActiveDot = $(
 			`.dot[data-index="${this.currentImageIndex}"`,
 			this.imageSlideElm
 		);
-		newActiveDot.classList.add("active");
+		newActiveDot.classList.add('active');
 	}
 
 	private handleClickProgressBar(e: MouseEvent) {
 		const target = e.target as HTMLElement | null;
 
-		if (target?.hasAttribute("data-index")) {
+		if (target?.hasAttribute('data-index')) {
 			this.handleJumpImage(Number(target.dataset.index));
 		}
 	}
