@@ -24,13 +24,10 @@ class DatabaseSQL
   public function selectQuery(string $sqlString = "")
   {
     $data = $this->conn->query($sqlString);
-    $result = [];
 
-    if (mysqli_num_rows($data) > 0) {
-      while ($row = mysqli_fetch_assoc($data)) {
-        array_push($result, $row);
-      }
-    }
+    $result = $data->fetch_all(MYSQLI_ASSOC);
+
+    $data->free_result();
 
     return $result;
   }
@@ -45,10 +42,9 @@ class DatabaseSQL
   public function getUser($userId)
   {
     $userInfo = $this->selectQuery("
-			SELECT *
+			SELECT *, CONCAT(first_name, ' ', last_name) AS full_name
 				FROM user
 				WHERE user_id = '$userId'
-				LIMIT 1
 		");
 
     if (isset($userInfo[0]["user_id"])) {
@@ -94,5 +90,18 @@ class DatabaseSQL
     } else {
       return $imageId;
     }
+  }
+
+  public function getProductByName(string $name)
+  {
+    $nameLiked = "%" . implode("%", str_split($name)) . "%";
+
+    $products = $this->selectQuery("
+            SELECT *
+                FROM product
+                WHERE label LIKE '$nameLiked'
+        ");
+
+    return $products;
   }
 }

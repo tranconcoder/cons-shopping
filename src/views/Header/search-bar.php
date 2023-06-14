@@ -18,6 +18,7 @@
 				<ul class="search-products__list"></ul>
 			</section>
 
+            <!--
 			<section class="viewed-products">
 				<span>Sản phẩm đã xem</span>
 				<ul class="viewed-products__list">
@@ -33,6 +34,7 @@
 					<?php endforeach; ?>
 				</ul>
 			</section>
+            -->
 
 			<section class="history">
 				<p class="label-ctn">

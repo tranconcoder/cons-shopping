@@ -18,7 +18,7 @@
 			</div>
 
 			<div class="form-wrapper">
-				<form class="form-ctn login" action="./src/apis/Login.api.php" method="POST">
+				<form class="form-ctn login" action="/api/login" method="POST">
 					<h3 class="title">Đăng nhập</h3>
 
 					<div class="input-ctn">

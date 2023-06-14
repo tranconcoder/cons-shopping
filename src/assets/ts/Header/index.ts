@@ -1,5 +1,6 @@
 import AuthenticateBox from './authenticateBox';
-import { LoginForm, RegisterForm } from './loginAndRegisterForm';
+import LoginForm from './loginForm';
+import RegisterForm from './registerForm';
 import SearchBar from './searchBar';
 
 const searchBar = new SearchBar();

@@ -1,7 +1,8 @@
 <li>
-		<img
+    <img
 		src="<?= $phone["thumb"] ?>"
-	alt="<?= $phone["label"] ?>">
+        alt="<?= $phone["label"] ?>"
+    >
 		
 	<h4><?= $phone["label"] ?></h4>
 </li> 

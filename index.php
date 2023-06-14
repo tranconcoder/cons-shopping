@@ -14,12 +14,22 @@ $controller;
 
 switch ($uri) {
   case "/api/register":
-    include_once __DIR__ . "/./src/apis/Register.api.php";
+    include_once __DIR__ . "/./src/controllers/apis/RegisterApi.controller.php";
+
     $registerApi = new RegisterApi();
+
+    exit();
+
+  case "/api/login":
+    include_once __DIR__ . "/./src/controllers/apis/LoginApi.controller.php";
+
+    $loginApi = new LoginApi($_POST["username"], $_POST["password"]);
+
     exit();
 
   case "/api/logout":
-    include_once __DIR__ . "/./src/apis/Logout.api.php";
+    include_once __DIR__ . "/./src/controllers/apis/LogoutApi.controller.php";
+
     $logoutApi = new LogoutApi();
 
     exit();

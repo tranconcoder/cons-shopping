@@ -3,7 +3,6 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const fs = require('fs');
 
 const TS_FOLDER_PATH = './src/assets/ts';
-const JS_FOLDER_PATH = './src/assets/js';
 
 const filesName = fs.readdirSync(TS_FOLDER_PATH);
 const foldersName = filesName
@@ -22,7 +21,7 @@ function getEntries() {
 }
 
 module.exports = {
-	mode: 'development',
+	mode: 'production',
 	watch: true,
 	watchOptions: {
 		ignored: /node_modules/,

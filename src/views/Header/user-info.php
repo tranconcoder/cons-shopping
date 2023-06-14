@@ -1,19 +1,19 @@
 <button class="user-info">
 	<div class="info">
 		<p class="name">
-			<?= $_SESSION["full_name"] ?>
+			<?= $_SESSION['full_name'] ?>
 		</p>
 
 		<p class="cart">Giỏ hàng: 0</p>
 	</div>
 	
-	<img src="<?= $_SESSION["avatar"] ?>" alt="avatar">
+	<img src="<?= $_SESSION['avatar'] ?>" alt="avatar">
 
 	<!-- User info box -->
 	<div class="box">
 		<section class="change-profile">
 			<aside class="left-slide">
-				<img src="<?= $_SESSION["avatar"] ?>" alt="avatar" class="avatar">
+				<img src="<?= $_SESSION['avatar'] ?>" alt="avatar" class="avatar">
 			</aside>
 
 			<aside class="right-slide">

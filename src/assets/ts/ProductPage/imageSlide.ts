@@ -1,4 +1,4 @@
-import { $, $$ } from './Common/index';
+import { $, $$ } from '../Common/index';
 
 class ProductImageSlide {
 	private imageSlide: HTMLDivElement;
@@ -24,8 +24,6 @@ class ProductImageSlide {
 		] as HTMLLIElement[];
 
 		this.MAX_INDEX = this.imageSlideList.childElementCount - 1;
-
-		this.listenEvent();
 
 		this.resetStyle();
 	}
@@ -96,4 +94,4 @@ class ProductImageSlide {
 	}
 }
 
-const productImageSlide = new ProductImageSlide();
+export default ProductImageSlide;

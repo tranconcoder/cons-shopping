@@ -1,5 +1,6 @@
 import { $, $$ } from '../Common/index';
-import { LoginForm, RegisterForm } from './loginAndRegisterForm';
+import LoginForm from './loginForm';
+import RegisterForm from './registerForm';
 
 class AuthenticateBox {
 	private loginForm: LoginForm;
