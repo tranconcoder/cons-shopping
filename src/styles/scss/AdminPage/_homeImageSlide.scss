@@ -1,0 +1,166 @@
+input#update-image-box-state:checked + .update-image-box {
+  opacity: 1;
+  pointer-events: unset;
+}
+
+.update-image-box {
+  position: fixed;
+  inset: 0;
+  z-index: 3;
+  opacity: 0;
+  transition: all ease 500ms;
+  pointer-events: none;
+
+  .box {
+    width: 800px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: $whiteColor;
+    border-radius: 10px;
+
+    .header {
+      color: #333;
+      font-size: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px;
+
+      i {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        transition: all ease 300ms;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        &:hover {
+          cursor: pointer;
+          background-color: #eee;
+        }
+      }
+    }
+
+    .body {
+      padding: 0 20px 20px 20px;
+
+      #preview-img {
+        width: 100%;
+        max-height: 500px;
+        object-fit: contain;
+        object-position: center;
+      }
+
+      .button-list {
+        display: flex;
+        height: 50px;
+        gap: 10px;
+        margin-top: 10px;
+
+        > * {
+          border-radius: 10px;
+          border: none;
+          transition: all ease 300ms;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
+          &:hover {
+            cursor: pointer;
+            filter: brightness(1.1);
+          }
+
+          > p {
+            color: $whiteColor;
+            font-weight: 500;
+            font-size: 18px;
+          }
+        }
+
+        .accept {
+          flex: 1;
+          background-color: #0fbd0f;
+        }
+
+        .deny {
+          flex: 1;
+          background-color: #e01a10;
+        }
+      }
+    }
+  }
+
+  .background {
+    position: absolute;
+    inset: 0;
+    background: rgba(#000, 0.3);
+    backdrop-filter: blur(3px);
+  }
+}
+
+section.home-image-slide {
+  border-radius: 20px;
+  padding: 10px;
+
+  h3 {
+    font-size: 18px;
+    font-weight: 500;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  table {
+    width: 100%;
+    table-layout: auto;
+    border: none;
+    border-collapse: collapse;
+    border-radius: 10px;
+    box-shadow: 0 0 4px 0 #ccc;
+    overflow: hidden;
+
+    thead {
+      th {
+        background-color: $primaryColor;
+        padding-block: 15px;
+        color: $whiteColor;
+        font-weight: 400;
+      }
+    }
+
+    tbody {
+      tr {
+        &:hover {
+          background-color: #eee;
+        }
+
+        > * {
+          padding: 10px 5px;
+          text-align: center;
+        }
+
+        .thumb {
+          label {
+            cursor: pointer;
+            display: block;
+
+            img {
+              width: 300px;
+              height: 100px;
+              object-fit: cover;
+              object-position: center;
+              padding: 8px;
+              border-radius: 10px;
+
+              &:hover {
+                background-color: #ccc;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

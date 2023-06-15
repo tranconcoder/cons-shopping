@@ -9,11 +9,11 @@ class ProductListPageModel extends DatabaseSQL
 
   public function addNewSearchHistory($content)
   {
-    if (!isset($content) || !isset($_SESSION["user_id"])) {
+    if (!isset($content) || !isset($_SESSION["userId"])) {
       return false;
     }
 
-    $userId = $_SESSION["user_id"];
+    $userId = $_SESSION["userId"];
 
     // Remove old value equal content
     $removeDuplicateContent = $this->conn->query("

@@ -66,7 +66,7 @@ class DatabaseSQL
   {
     $passwordEncode = md5($password);
 
-    $userId = $this->selectQuery("
+    $userInfo = $this->selectQuery("
 			SELECT user_id
 				FROM authenticate
 				WHERE
@@ -75,20 +75,21 @@ class DatabaseSQL
 				LIMIT 1
 		");
 
-    if (isset($userId[0]["user_id"])) {
-      return $userId[0]["user_id"];
+    if (isset($userInfo[0]["userId"])) {
+      return $userInfo[0]["userId"];
     } else {
       return null;
     }
   }
 
-  public function searchProduct($query)
+  public function searchProduct(string $query, int $limit = 0)
   {
     if (!isset($query)) {
       return [];
     }
 
     $queryFormatted = "%" . implode("%", explode(" ", $query)) . "%";
+    $limitStr = $limit ? "LIMIT $limit" : "";
 
     $productList = $this->selectQuery(
       "
@@ -126,6 +127,7 @@ class DatabaseSQL
 								LIMIT 1
 						)
 				)
+                $limitStr
 			"
     );
 

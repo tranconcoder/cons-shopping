@@ -59,7 +59,7 @@ switch ($uri) {
   case "/admin":
     include_once __DIR__ . "/./src/controllers/AdminPage.controller.php";
 
-    if (!isset($_SESSION["user_id"])) {
+    if (!isset($_SESSION["userId"])) {
       header("Location: /");
       exit();
     }

@@ -4,7 +4,7 @@ class HeaderModel extends DatabaseSQL
 {
   public function getHistoryList()
   {
-    $userId = isset($_SESSION["user_id"]) ? $_SESSION["user_id"] : null;
+    $userId = isset($_SESSION["userId"]) ? $_SESSION["userId"] : null;
 
     if (!$userId) {
       return [];
@@ -17,6 +17,7 @@ class HeaderModel extends DatabaseSQL
 				ORDER BY search_at DESC
 				LIMIT 5
 		");
+
     return $historyList;
   }
 
