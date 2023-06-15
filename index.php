@@ -10,8 +10,6 @@ include_once __DIR__ . "/./src/controllers/layouts/Layout1.controller.php";
 $uri = isset($_SERVER["REQUEST_URI"]) ? $_SERVER["REQUEST_URI"] : "";
 $uri = explode("?", $uri, 2)[0];
 
-$controller;
-
 switch ($uri) {
   case "/api/register":
     include_once __DIR__ . "/./src/controllers/apis/RegisterApi.controller.php";
@@ -54,6 +52,14 @@ switch ($uri) {
     include_once __DIR__ . "/./src/controllers/ProductListPage.controller.php";
 
     $bodyController = new ProductListPageController();
+    $controller = new Layout1Controller($bodyController);
+
+    break;
+
+  case "/admin":
+    include_once __DIR__ . "/./src/controllers/AdminPage.controller.php";
+
+    $bodyController = new AdminPageController();
     $controller = new Layout1Controller($bodyController);
 
     break;

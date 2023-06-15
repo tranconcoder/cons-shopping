@@ -1,124 +1,134 @@
-@import "../_package/index.scss";
+@import '../_package/index.scss';
 
 .product-list-container {
-  $sidebarSeparate: 15px;
-  $sidebarWidth: 320px;
+	min-height: calc(100vh - #{$headerHeight});
 
-  min-height: calc(100vh - #{$headerHeight});
-  display: flex;
+	> .utils-slide-bar {
+		max-width: 100vw;
+		width: $layoutWidth;
+		height: 50px;
+		border-radius: 10px;
+		background-color: $whiteColor;
+		box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+		margin-block: 20px;
+	}
 
-  > .sidebar {
-    width: $sidebarWidth;
-    height: calc(100vh - #{$headerHeight} - #{$sidebarSeparate * 2});
-    position: fixed;
-    top: $headerHeight + $sidebarSeparate;
-    left: calc((100vw - #{$layoutWidth}) / 2);
-    border-radius: 10px;
-    box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px;
-    background-color: $whiteColor;
-  }
+	> .content {
+		width: 100%;
 
-  > .content {
-    width: 100%;
-    padding-left: $sidebarWidth + $sidebarSeparate + 10px;
+		.query-content {
+		}
 
-    .query-content {
-    }
+		.tool-bar {
+		}
 
-    .tool-bar {
-    }
+		.product-list {
+			display: grid;
+			grid-template-columns: repeat(4, 1fr);
+			gap: 20px;
+			list-style: none;
+			margin-top: 30px;
 
-    .product-list {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 20px;
-      list-style: none;
-      margin-top: 30px;
+			@media screen and (min-width: 601px) and (max-width: 800px) {
+				& {
+					grid-template-columns: repeat(3, 1fr);
+				}
+			}
 
-      &-item {
-        padding: 10px;
-        border-radius: 10px;
-        box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-        transition: all ease 500ms;
+			@media screen and (max-width: 600px) {
+				& {
+					grid-template-columns: repeat(2, 1fr);
+				}
+			}
 
-        &:hover {
-          box-shadow: rgba(0, 0, 0, 0.2) 0px 10px 50px;
-          cursor: pointer;
+			&-item {
+				padding: 10px;
+				border-radius: 10px;
+				box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+				transition: all ease 500ms;
 
-          .thumb img {
-            transform: translateY(-10px);
-          }
-        }
+				&:hover {
+					box-shadow: rgba(0, 0, 0, 0.2) 0px 10px 50px;
+					cursor: pointer;
 
-        > a {
-          text-decoration: none;
-          color: unset;
-        }
+					.thumb img {
+						transform: translateY(-10px);
+					}
+				}
 
-        .thumb {
-          padding: 10px;
-          border-radius: 10px;
-          background-color: #eee;
+				> a {
+					text-decoration: none;
+					color: unset;
+				}
 
-          img {
-            width: 100%;
-            aspect-ratio: 1/1;
-            object-fit: contain;
-            object-position: center;
-            transition: all ease 500ms;
-          }
-        }
+				.thumb {
+					padding: 10px;
+					border-radius: 10px;
+					background-color: #eee;
 
-        .label {
-          height: 40px;
-          color: $textColor;
-          font-size: 15px;
-          line-height: 1.25;
-          margin-top: 10px;
-        }
+					img {
+						width: 100%;
+						aspect-ratio: 1/1;
+						object-fit: contain;
+						object-position: center;
+						transition: all ease 500ms;
+					}
+				}
 
-        .cost {
-          height: 40px;
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
+				.label {
+					height: 40px;
+					color: $textColor;
+					font-size: 15px;
+					line-height: 1.25;
+					margin-top: 10px;
+				}
 
-          .old {
-            color: $textColor;
-            font-size: 14px;
-            font-weight: 400;
-            text-decoration: line-through;
-          }
+				.cost {
+					height: 40px;
+					display: flex;
+					flex-direction: column;
+					justify-content: center;
 
-          .current {
-            color: $primaryColorBlack;
-            font-size: 18px;
-            font-weight: bold;
-          }
-        }
+					.old {
+						color: $textColor;
+						font-size: 14px;
+						font-weight: 400;
+						text-decoration: line-through;
+					}
 
-        .detail {
-          $infoCount: 4;
-          $infoHeight: 20px;
+					.current {
+						color: $primaryColorBlack;
+						font-size: 18px;
+						font-weight: bold;
+					}
+				}
 
-          height: $infoCount * $infoHeight;
-          margin-top: 10px;
-          list-style: none;
-          display: flex;
-          flex-direction: column;
-          overflow: hidden;
-          color: $textColor;
+				.detail {
+					$infoCount: 4;
+					$infoHeight: 20px;
 
-          > li {
-            height: $infoHeight;
-            flex-shrink: 0;
+					height: $infoCount * $infoHeight;
+					margin-top: 10px;
+					list-style: none;
+					display: flex;
+					flex-direction: column;
+					overflow: hidden;
+					color: $textColor;
 
-            span {
-              font-size: 13px;
-            }
-          }
-        }
-      }
-    }
-  }
+					> li {
+						height: $infoHeight;
+						flex-shrink: 0;
+						display: -webkit-box;
+						-webkit-line-clamp: 1;
+						-webkit-box-orient: vertical;
+						overflow: hidden;
+
+						span {
+							font-size: 13px;
+						}
+					}
+				}
+			}
+		}
+	}
 }

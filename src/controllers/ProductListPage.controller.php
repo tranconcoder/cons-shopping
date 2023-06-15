@@ -4,18 +4,16 @@ include_once __DIR__ . "/../models/ProductListPage.model.php";
 
 class ProductListPageController
 {
-  private ProductListPageModel $model;
-
   // Query to search
-  private $query = null;
+  private $model;
+  private $query;
   private $productList;
 
   public function __construct()
   {
-    $this->query = isset($_GET["q"]) ? $_GET["q"] : null;
     $this->model = new ProductListPageModel();
-
-    $this->productList = $this->model->searchProduct($this->query);
+    $this->query = isset($_GET["q"]) ? $_GET["q"] : null;
+    $this->productList = $this->model->search($this->query);
     $this->model->addNewSearchHistory($this->query);
   }
 

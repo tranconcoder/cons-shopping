@@ -2,56 +2,9 @@
 
 class ProductListPageModel extends DatabaseSQL
 {
-  public function searchProduct($query)
+  public function search($query)
   {
-    if (!isset($query)) {
-      return [];
-    }
-
-    // Remove all special character
-    // Add % to find any
-    $queryFormatted = "%" . implode("%", explode(" ", $query)) . "%";
-
-    $productList = $this->selectQuery(
-      "
-			(SELECT `product`.*, image.source as thumb, deal.deal_cost
-				FROM product, image, deal
-				WHERE
-					(
-						label LIKE '$queryFormatted'
-						OR description LIKE '$queryFormatted'
-						OR processor LIKE '$queryFormatted'
-					)
-					AND product.deal_id = deal.deal_id
-					AND image.image_id = (
-						SELECT image_id
-							FROM image AS image2
-							WHERE image2.product_id = product.product_id
-							ORDER BY image2.order DESC
-							LIMIT 1
-					)
-				) UNION
-				(SELECT `product`.*, image.source as thumb, 0 AS deal_cost
-					FROM product, image
-					WHERE
-						(
-							label LIKE '$queryFormatted'
-							OR description LIKE '$queryFormatted'
-							OR processor LIKE '$queryFormatted'
-						)
-						AND product.deal_id IS NULL
-						AND image.image_id = (
-							SELECT image_id
-								FROM image as image2
-								WHERE image2.product_id = product.product_id
-								ORDER BY image2.order DESC
-								LIMIT 1
-						)
-				)
-			"
-    );
-
-    return $productList;
+    return $this->searchProduct($query);
   }
 
   public function addNewSearchHistory($content)
