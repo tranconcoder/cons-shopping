@@ -1,5 +1,5 @@
 <li class="product-list-item">
-	<a href="/product?id=<?= $product["product_id"] ?>">
+	<a href="/product?id=<?= $product["productId"] ?>">
 		<div class="thumb">
 			<img src="<?= $product["thumb"] ?>" alt="">
 		</div>
@@ -9,14 +9,14 @@
 		<!-- Cost -->
 		<p class="cost">
 			<span class="old">
-				<?= $product["deal_cost"]
+				<?= $product["dealCost"]
       ? number_format($product["cost"], 0, ".", ",") . " đ"
       : "" ?>
 			</span>
 
 			<span class="current">
-				<?= $product["deal_cost"]
-      ? number_format($product["cost"] - $product["deal_cost"], 0, ".", ",") .
+				<?= $product["dealCost"]
+      ? number_format($product["cost"] - $product["dealCost"], 0, ".", ",") .
         " đ"
       : number_format($product["cost"], 0, ".", ",") . " đ" ?>
 			</span>
@@ -31,13 +31,13 @@
 				</li>
 			<?php } ?>
 			
-			<?php if ($product["monitor_width"] && $product["monitor_height"]) { ?>
+			<?php if ($product["monitorWidth"] && $product["monitorHeight"]) { ?>
 				<li>
 					<span>Màn hình:</span>
 					<span>
-						<?= $product["monitor_height"] ? $product["monitor_height"] : "0" ?>
+						<?= $product["monitorHeight"] ? $product["monitorHeight"] : "0" ?>
 						x
-						<?= $product["monitor_width"] ? $product["monitor_width"] : "0" ?>
+						<?= $product["monitorWidth"] ? $product["monitorWidth"] : "0" ?>
 					</span>
 				</li>
 			<?php } ?>

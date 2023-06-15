@@ -8,9 +8,11 @@ class DatabaseSQL
   private $databaseName = "cons-shopping-db";
 
   public $conn;
+  private $commonMethod;
 
   public function __construct()
   {
+    $this->commonMethod = new CommonMethod();
     $this->conn = mysqli_connect(
       $this->serverName,
       $this->username,
@@ -27,7 +29,11 @@ class DatabaseSQL
   {
     $data = $this->conn->query($sqlString);
 
-    $result = $data->num_rows ? $data->fetch_all(MYSQLI_ASSOC) : [];
+    $result = $data->num_rows
+      ? $this->commonMethod->convertArrayKeysToCamelCase(
+        $data->fetch_all(MYSQLI_ASSOC)
+      )
+      : [];
 
     $data->free_result();
 
@@ -142,47 +148,5 @@ class DatabaseSQL
     } else {
       return $imageId;
     }
-  }
-
-  public function getProductByName(string $name)
-  {
-    $nameLiked = "%" . implode("%", str_split($name)) . "%";
-
-    $products = $this->selectQuery("
-            SELECT *, image.source as thumb
-                FROM product, image
-                WHERE
-                    label LIKE '$nameLiked'
-                    AND image_id = (
-                        SELECT image_id
-                            FROM image as im2
-                            WHERE im2.product_id = product.product_id
-                            ORDER BY im2.order ASC
-                            LIMIT 1
-                    )
-        ");
-
-    if (!isset($products[0])) {
-      return [];
-    }
-    // Convert snake_case to camelCase
-    function convertKeysToCamelCase($products)
-    {
-      $result = [];
-
-      $newKeyList = array_map(function ($input) {
-        $camel_case = lcfirst(str_replace("_", "", ucwords($input, "_")));
-
-        return $camel_case;
-      }, array_keys($products[0]));
-
-      foreach ($products as $product) {
-        array_push($result, array_combine($newKeyList, $product));
-      }
-
-      return $result;
-    }
-
-    return convertKeysToCamelCase($products);
   }
 }

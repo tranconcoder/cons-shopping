@@ -59,13 +59,13 @@ class HomePageModel extends DatabaseSQL
     // Format money after render
     for ($i = 0; $i < count($promotionalPhoneList); $i++) {
       $cost = $promotionalPhoneList[$i]["cost"];
-      $costDeal = $promotionalPhoneList[$i]["cost_deal"];
+      $costDeal = $promotionalPhoneList[$i]["costDeal"];
 
       $costFormatted = number_format($cost, 0, ".", ",");
       $costDealFormatted = number_format($costDeal, 0, ".", ",");
 
       $promotionalPhoneList[$i]["cost"] = $costFormatted;
-      $promotionalPhoneList[$i]["cost_deal"] = $costDealFormatted;
+      $promotionalPhoneList[$i]["costDeal"] = $costDealFormatted;
     }
 
     return $promotionalPhoneList;

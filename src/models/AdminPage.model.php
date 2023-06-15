@@ -1,5 +1,8 @@
 <?php
 
-class AdminPageModel
+class AdminPageModel extends DatabaseSQL
 {
+  protected function getHomeImageSlideImageInfo()
+  {
+  }
 }

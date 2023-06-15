@@ -16,7 +16,6 @@ class HeaderController
 
   public function invoke()
   {
-    $this->visitedProducts = $this->model->getVisitedProducts();
     $this->historyList = $this->model->getHistoryList();
     $this->categoryList = $this->model->getCategoryList();
 

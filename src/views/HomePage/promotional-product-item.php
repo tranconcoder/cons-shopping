@@ -1,5 +1,5 @@
 <li class="product-item">
-	<a href="/product?id=<?= $item["product_id"] ?>">
+	<a href="/product?id=<?= $item["productId"] ?>">
 		<div class="thumb-wrapper">
 			<img src="<?= $item["image"] ?>" alt="thumb">
 		</div>
@@ -7,7 +7,7 @@
 		<p class="name"><?= $item["label"] ?></p>
 		<p class="price-old"><?= $item["cost"] ?> đ</p>
 		<p class="price-new">
-			<span>Chỉ còn</span> <?= $item["cost_deal"] ?> đ
+			<span>Chỉ còn</span> <?= $item["costDeal"] ?> đ
 		</p>
 
 		<div class="button-list">
