@@ -1,64 +1,68 @@
 <?php
+include_once __DIR__ . '/../../assets/utils/commonMethod.util.php';
 class DatabaseSQL
 {
-  private $serverName = "localhost";
-  private $username = "root";
-  private $password = "Anhnam9ce";
-  private $databaseName = "cons-shopping-db";
-  public $conn;
+	private $serverName = 'localhost';
+	private $username = 'root';
+	private $password = 'Anhnam9ce';
+	private $databaseName = 'cons-shopping-db';
 
-  public function __construct()
-  {
-    $this->conn = mysqli_connect(
-      $this->serverName,
-      $this->username,
-      $this->password,
-      $this->databaseName
-    );
+	public $conn;
+	private $commonMethod;
 
-    if ($this->conn->connect_error) {
-      die("Connect to database failed!");
-    }
-  }
+	public function __construct()
+	{
+		$this->commonMethod = new CommonMethod();
+		$this->conn = mysqli_connect(
+			$this->serverName,
+			$this->username,
+			$this->password,
+			$this->databaseName
+		);
 
-  public function selectQuery(string $sqlString = "")
-  {
-    $data = $this->conn->query($sqlString);
+		if ($this->conn->connect_error) {
+			die('Connect to database failed!');
+		}
+	}
 
-    $result = $data->num_rows ? $data->fetch_all(MYSQLI_ASSOC) : [];
+	public function selectQuery(string $sqlString = '')
+	{
+		$data = $this->conn->query($sqlString);
 
-    $data->free_result();
+		$result = $data->num_rows ? $data->fetch_all(MYSQLI_ASSOC) : [];
 
-    return isset($result[0]) ? $result : [];
-  }
+		$data->free_result();
 
-  public function getAll(string $tableName)
-  {
-    $tableData = $this->selectQuery("SELECT * FROM `$tableName`");
+		return isset($result[0]) ? $result : [];
+	}
 
-    return $tableData;
-  }
+	public function getAll(string $tableName)
+	{
+		$tableData = $this->selectQuery("SELECT * FROM `$tableName`");
 
-  public function getUser($userId)
-  {
-    $userInfo = $this->selectQuery("
+		return $tableData;
+	}
+
+	public function getUser($userId)
+	{
+		$userInfo = $this->selectQuery("
 			SELECT *, CONCAT(first_name, ' ', last_name) AS full_name
 				FROM user
 				WHERE user_id = '$userId'
 		");
 
-    if (isset($userInfo[0]["user_id"])) {
-      return $userInfo[0];
-    } else {
-      return $userInfo;
-    }
-  }
+		if (isset($userInfo[0]['user_id'])) {
+			return $userInfo[0];
+		} else {
+			return $userInfo;
+		}
+	}
 
-  public function auth(string $username, string $password): string|null
-  {
-    $passwordEncode = md5($password);
+	public function auth(string $username, string $password): string|null
+	{
+		$passwordEncode = md5($password);
 
-    $userId = $this->selectQuery("
+		$userId = $this->selectQuery("
 			SELECT user_id
 				FROM authenticate
 				WHERE
@@ -67,16 +71,16 @@ class DatabaseSQL
 				LIMIT 1
 		");
 
-    if (isset($userId[0]["user_id"])) {
-      return $userId[0]["user_id"];
-    } else {
-      return null;
-    }
-  }
+		if (isset($userId[0]['user_id'])) {
+			return $userId[0]['user_id'];
+		} else {
+			return null;
+		}
+	}
 
-  public function getImageIdProductThumb($productId)
-  {
-    $imageId = $this->selectQuery("
+	public function getImageIdProductThumb($productId)
+	{
+		$imageId = $this->selectQuery("
 			SELECT image_id
 				FROM image
 				WHERE
@@ -85,18 +89,18 @@ class DatabaseSQL
 				LIMIT 1
 		")[0];
 
-    if (!isset($imageId)) {
-      return null;
-    } else {
-      return $imageId;
-    }
-  }
+		if (!isset($imageId)) {
+			return null;
+		} else {
+			return $imageId;
+		}
+	}
 
-  public function getProductByName(string $name)
-  {
-    $nameLiked = "%" . implode("%", str_split($name)) . "%";
+	public function getProductByName(string $name)
+	{
+		$nameLiked = '%' . implode('%', str_split($name)) . '%';
 
-    $products = $this->selectQuery("
+		$products = $this->selectQuery("
             SELECT *, image.source as thumb
                 FROM product, image
                 WHERE
@@ -110,6 +114,29 @@ class DatabaseSQL
                     )
         ");
 
-    return $products;
-  }
+		if (!isset($products[0])) {
+			return [];
+		}
+		// Convert snake_case to camelCase
+		function convertKeysToCamelCase($products)
+		{
+			$result = [];
+
+			$newKeyList = array_map(function ($input) {
+				$camel_case = lcfirst(
+					str_replace('_', '', ucwords($input, '_'))
+				);
+
+				return $camel_case;
+			}, array_keys($products[0]));
+
+			foreach ($products as $product) {
+				array_push($result, array_combine($newKeyList, $product));
+			}
+
+			return $result;
+		}
+
+		return convertKeysToCamelCase($products);
+	}
 }

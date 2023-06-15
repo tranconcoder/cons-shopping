@@ -1,148 +1,154 @@
 @mixin openSearchBox {
-  max-height: 1000px;
-  opacity: 1;
+	max-height: 1000px;
+	opacity: 1;
 }
 
 .search-bar {
-  margin-top: 10px;
+	margin-top: 10px;
 
-  .input-ctn {
-    position: relative;
+	.input-ctn {
+		position: relative;
 
-    input {
-      width: 100%;
-      height: $headerSearchBarHeight - 10px;
-      font-size: 14px;
-      border-radius: 6px;
-      border: 2px solid #ddd;
-      padding-inline: 10px;
-      outline: none;
-      transition: border ease 300ms;
+		input {
+			width: 100%;
+			height: $headerSearchBarHeight - 10px;
+			font-size: 14px;
+			border-radius: 6px;
+			border: 2px solid #ddd;
+			padding-inline: 10px;
+			outline: none;
+			transition: border ease 300ms;
 
-      &:focus {
-        border-color: $primaryColor;
+			&:focus {
+				border-color: $primaryColor;
 
-        & ~ .search-box {
-          @include openSearchBox();
-        }
-      }
-    }
+				& ~ .search-box {
+					@include openSearchBox();
+				}
+			}
+		}
 
-    .submit-button {
-      position: absolute;
-      top: 50%;
-      right: 20px;
-      transform: translateY(-50%);
-      background-color: transparent;
-      border: none;
+		.submit-button {
+			position: absolute;
+			top: 50%;
+			right: 20px;
+			transform: translateY(-50%);
+			background-color: transparent;
+			border: none;
 
-      .search-icon {
-        font-size: 12px;
-        color: #555;
-      }
-    }
+			.search-icon {
+				font-size: 12px;
+				color: #555;
+			}
+		}
 
-    .search-box {
-      max-height: 0;
-      width: 100%;
-      background-color: $whiteColor;
-      border-radius: 6px;
-      position: absolute;
-      top: calc(100% + 10px);
-      transition: all ease 500ms;
-      opacity: 0;
-      box-shadow: 0 0 10px 0 rgba(#000, 0.2);
-      overflow: hidden;
+		.search-box {
+			max-height: 0;
+			width: 100%;
+			background-color: $whiteColor;
+			border-radius: 6px;
+			position: absolute;
+			top: calc(100% + 10px);
+			transition: all ease 500ms;
+			opacity: 0;
+			box-shadow: 0 0 10px 0 rgba(#000, 0.2);
+			overflow: hidden;
 
-      .search-products,
-      .viewed-products {
-        margin-bottom: 10px;
+			.search-products,
+			.viewed-products {
+				margin-bottom: 10px;
 
-        > span {
-          padding: 15px;
-          display: block;
-        }
+				> span {
+					padding: 15px;
+					display: block;
+				}
 
-        ul {
-          display: flex;
-          justify-content: center;
-          flex-wrap: wrap;
-          gap: 10px;
-          padding-inline: 20px;
+				ul {
+					display: flex;
+					justify-content: center;
+					flex-wrap: wrap;
+					gap: 10px;
+					padding-inline: 20px;
+					list-style-type: none;
 
-          li {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            width: calc(20% - 8px);
-            height: 124px;
-            border-radius: 8px;
-            padding: 8px;
-            transition: all ease 300ms;
+					li {
+						width: calc(20% - 8px);
 
-            &:hover {
-              cursor: pointer;
-              box-shadow: 0 0 10px 0 rgba(#000, 0.15);
-            }
+						a {
+							height: 124px;
+							display: flex;
+							flex-direction: column;
+							align-items: center;
+							text-decoration: none;
+							color: unset;
+							padding: 8px;
+							transition: all ease 300ms;
+							border-radius: 8px;
 
-            img {
-              height: 70px;
-              object-fit: contain;
-            }
+							&:hover {
+								cursor: pointer;
+								box-shadow: 0 0 10px 0 rgba(#000, 0.15);
+							}
 
-            h4 {
-              margin-top: 10px;
-              text-align: center;
-              font-size: 14px;
-              font-weight: 500;
-              line-height: 1;
-              overflow: hidden;
-              display: -webkit-box;
-              -webkit-line-clamp: 2; /* number of lines to show */
-              -webkit-box-orient: vertical;
-            }
-          }
-        }
-      }
+							img {
+								height: 70px;
+								object-fit: contain;
+							}
 
-      .history {
-        .label-ctn {
-          padding: 10px 20px;
-          color: $whiteColor;
-          font-size: 13px;
-          background-color: $primaryColor;
+							h4 {
+								margin-top: 10px;
+								text-align: center;
+								font-size: 14px;
+								font-weight: 500;
+								line-height: 1;
+								overflow: hidden;
+								display: -webkit-box;
+								-webkit-line-clamp: 2; /* number of lines to show */
+								-webkit-box-orient: vertical;
+							}
+						}
+					}
+				}
+			}
 
-          i {
-            padding-right: 4px;
-          }
-        }
+			.history {
+				.label-ctn {
+					padding: 10px 20px;
+					color: $whiteColor;
+					font-size: 13px;
+					background-color: $primaryColor;
 
-        ul {
-          padding-block: 5px;
-          cursor: pointer;
+					i {
+						padding-right: 4px;
+					}
+				}
 
-          li {
-            font-size: 15px;
-            font-family: Roboto;
-            line-height: 30px;
-            display: block;
-            padding: 3px 20px;
+				ul {
+					padding-block: 5px;
+					cursor: pointer;
 
-            > a {
-              color: unset;
-              text-decoration: none;
-            }
+					li {
+						font-size: 15px;
+						font-family: Roboto;
+						line-height: 30px;
+						display: block;
+						padding: 3px 20px;
 
-            &:hover {
-              background-color: #eee;
-            }
+						> a {
+							color: unset;
+							text-decoration: none;
+						}
 
-            p {
-              padding-left: 10px;
-            }
-          }
-        }
-      }
-    }
-  }
+						&:hover {
+							background-color: #eee;
+						}
+
+						p {
+							padding-left: 10px;
+						}
+					}
+				}
+			}
+		}
+	}
 }

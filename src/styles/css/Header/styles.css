@@ -228,37 +228,42 @@ body {
                 justify-content: center;
                 flex-wrap: wrap;
                 gap: 10px;
-                padding-inline: 20px; }
+                padding-inline: 20px;
+                list-style-type: none; }
                 .header-wrapper .header-container .center-slide .search-bar .input-ctn .search-box .search-products ul li,
                 .header-wrapper .header-container .center-slide .search-bar .input-ctn .search-box .viewed-products ul li {
-                  display: flex;
-                  flex-direction: column;
-                  align-items: center;
-                  width: calc(20% - 8px);
-                  height: 124px;
-                  border-radius: 8px;
-                  padding: 8px;
-                  transition: all ease 300ms; }
-                  .header-wrapper .header-container .center-slide .search-bar .input-ctn .search-box .search-products ul li:hover,
-                  .header-wrapper .header-container .center-slide .search-bar .input-ctn .search-box .viewed-products ul li:hover {
-                    cursor: pointer;
-                    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.15); }
-                  .header-wrapper .header-container .center-slide .search-bar .input-ctn .search-box .search-products ul li img,
-                  .header-wrapper .header-container .center-slide .search-bar .input-ctn .search-box .viewed-products ul li img {
-                    height: 70px;
-                    object-fit: contain; }
-                  .header-wrapper .header-container .center-slide .search-bar .input-ctn .search-box .search-products ul li h4,
-                  .header-wrapper .header-container .center-slide .search-bar .input-ctn .search-box .viewed-products ul li h4 {
-                    margin-top: 10px;
-                    text-align: center;
-                    font-size: 14px;
-                    font-weight: 500;
-                    line-height: 1;
-                    overflow: hidden;
-                    display: -webkit-box;
-                    -webkit-line-clamp: 2;
-                    /* number of lines to show */
-                    -webkit-box-orient: vertical; }
+                  width: calc(20% - 8px); }
+                  .header-wrapper .header-container .center-slide .search-bar .input-ctn .search-box .search-products ul li a,
+                  .header-wrapper .header-container .center-slide .search-bar .input-ctn .search-box .viewed-products ul li a {
+                    height: 124px;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    text-decoration: none;
+                    color: unset;
+                    padding: 8px;
+                    transition: all ease 300ms;
+                    border-radius: 8px; }
+                    .header-wrapper .header-container .center-slide .search-bar .input-ctn .search-box .search-products ul li a:hover,
+                    .header-wrapper .header-container .center-slide .search-bar .input-ctn .search-box .viewed-products ul li a:hover {
+                      cursor: pointer;
+                      box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.15); }
+                    .header-wrapper .header-container .center-slide .search-bar .input-ctn .search-box .search-products ul li a img,
+                    .header-wrapper .header-container .center-slide .search-bar .input-ctn .search-box .viewed-products ul li a img {
+                      height: 70px;
+                      object-fit: contain; }
+                    .header-wrapper .header-container .center-slide .search-bar .input-ctn .search-box .search-products ul li a h4,
+                    .header-wrapper .header-container .center-slide .search-bar .input-ctn .search-box .viewed-products ul li a h4 {
+                      margin-top: 10px;
+                      text-align: center;
+                      font-size: 14px;
+                      font-weight: 500;
+                      line-height: 1;
+                      overflow: hidden;
+                      display: -webkit-box;
+                      -webkit-line-clamp: 2;
+                      /* number of lines to show */
+                      -webkit-box-orient: vertical; }
             .header-wrapper .header-container .center-slide .search-bar .input-ctn .search-box .history .label-ctn {
               padding: 10px 20px;
               color: #ffffff;
