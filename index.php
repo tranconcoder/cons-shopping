@@ -40,6 +40,12 @@ switch ($uri) {
 
     exit();
 
+  case "/api/change-image-slider":
+    include_once __DIR__ .
+      "/./src/controllers/apis/ChangeImageSliderApi.controller.php";
+
+    $ChangeImageSliderApi = new ChangeImageSliderApiController();
+
   case "/product":
     include_once __DIR__ . "/./src/controllers/ProductPage.controller.php";
 

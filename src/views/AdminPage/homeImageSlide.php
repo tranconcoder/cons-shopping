@@ -27,7 +27,33 @@
 
 <section class="home-image-slide">
     <h3>Hình ảnh đầu trang chủ</h3>
+    
+    <!-- Add new image form -->
+    <form class="add-new-image" method="POST">
+        <div class="input-style-1">
+            <div class="input-wrapper">
+                <input
+                    id="username-input"
+                    type="text"
+                    name="username"
+                    placeholder=" "
+                />
+                <p class="placeholder">Tên hình ảnh mới ...</p>
+            </div>
+            <p class="error-message"></p>
+        </div>
 
+        <input
+            type="file"
+            name="file"
+            accept="image/png, image/jpg, image/jpeg"
+            class="new-image-input"
+        />
+
+        <button class="submit" type="submit">
+            <p>Thêm ảnh</p>
+        </button>
+    </form>
 
     <table>
         <thead>

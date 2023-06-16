@@ -2,7 +2,9 @@
     <td class="thumb">
         <label>
             <img src="<?= $imageSlideInfo["source"] ?>" alt="preview">
-            <input type="file" accept="image/jpeg, image/jpg, image/png" name="thumb" hidden />
+            <input data-id="<?= $imageSlideInfo[
+              "id"
+            ] ?>" type="file" accept="image/jpeg, image/jpg, image/png" name="thumb" hidden />
         </label>
     </td>
     <td><?= $imageSlideInfo["order"] ?></td>

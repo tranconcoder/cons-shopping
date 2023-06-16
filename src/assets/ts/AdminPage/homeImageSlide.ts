@@ -29,7 +29,17 @@ class HomeImageSlide {
 
         // Upload file to php server
         const formData = new FormData();
-        formData.append("thumbFile", file)
+        const url = "/api/change-image-slider";
+        formData.append("id", e.target.dataset.id);
+        formData.append("file", file);
+        console.log(e.target);
+
+        fetch(url, {
+            method: "POST",
+            body: formData,
+        } as RequestInit)
+            .then((res) => res.text())
+            .then((data) => console.log(data));
     }
 }
 
