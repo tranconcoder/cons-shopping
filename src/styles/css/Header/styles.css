@@ -47,6 +47,17 @@ body {
 *::-webkit-scrollbar-thumb:hover {
   background-color: #a8bbbf; }
 
+.input-style-1.error .input-wrapper input {
+  color: red;
+  border-color: red !important; }
+
+.input-style-1.error .input-wrapper .placeholder {
+  color: red; }
+
+.input-style-1.error .error-message {
+  max-height: 20px;
+  opacity: 1; }
+
 .input-style-1 .input-wrapper {
   position: relative; }
   .input-style-1 .input-wrapper .placeholder {
@@ -709,14 +720,6 @@ body {
               margin-bottom: 10px; }
             .header-wrapper .authenticate-ctn .authenticate-box .box__body .form-wrapper .form-ctn .input-ctn > * {
               margin-top: 34px; }
-              .header-wrapper .authenticate-ctn .authenticate-box .box__body .form-wrapper .form-ctn .input-ctn > *.error .input-wrapper input {
-                color: red;
-                border-color: red !important; }
-              .header-wrapper .authenticate-ctn .authenticate-box .box__body .form-wrapper .form-ctn .input-ctn > *.error .input-wrapper .placeholder {
-                color: red; }
-              .header-wrapper .authenticate-ctn .authenticate-box .box__body .form-wrapper .form-ctn .input-ctn > *.error .error-message {
-                max-height: 20px;
-                opacity: 1; }
             .header-wrapper .authenticate-ctn .authenticate-box .box__body .form-wrapper .form-ctn .submit-button,
             .header-wrapper .authenticate-ctn .authenticate-box .box__body .form-wrapper .form-ctn .register-button,
             .header-wrapper .authenticate-ctn .authenticate-box .box__body .form-wrapper .form-ctn .login-button {

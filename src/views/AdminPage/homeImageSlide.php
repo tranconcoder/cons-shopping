@@ -10,7 +10,7 @@
         </header>
 
         <div class="body">
-            <img src="https://img.tgdd.vn/imgt/f_webp,fit_outside,quality_100/https://cdn.tgdd.vn/2023/05/banner/des-1920x450-4.jpg" alt="preview-img" id="preview-img">
+            <img alt="preview-img" id="preview-img">
             
             <div class="button-list">
                 <button class="accept">
@@ -33,9 +33,8 @@
         <div class="input-style-1">
             <div class="input-wrapper">
                 <input
-                    id="username-input"
                     type="text"
-                    name="username"
+                    name="image-name"
                     placeholder=" "
                 />
                 <p class="placeholder">Tên hình ảnh mới ...</p>

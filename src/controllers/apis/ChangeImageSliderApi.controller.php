@@ -32,9 +32,11 @@ class ChangeImageSliderApiController
 
     if ($this->handleSaveFile()) {
       $this->handleUpdateDatabase();
+
+      http_response_code(200);
+      exit(json_encode(true));
     } else {
-      http_response_code(400);
-      exit(false);
+      $this->handleError();
     }
   }
 
@@ -67,8 +69,13 @@ class ChangeImageSliderApiController
         ");
 
     if (!$handleUpdate) {
-      http_response_code(400);
-      exit(false);
+      $this->handleError();
     }
+  }
+
+  private function handleError()
+  {
+    http_response_code(400);
+    exit(json_encode(400));
   }
 }

@@ -146,22 +146,6 @@
           .input-ctn {
             > * {
               margin-top: 34px;
-
-              &.error {
-                .input-wrapper input {
-                  color: red;
-                  border-color: red !important;
-                }
-
-                .input-wrapper .placeholder {
-                  color: red;
-                }
-
-                .error-message {
-                  max-height: 20px;
-                  opacity: 1;
-                }
-              }
             }
           }
 

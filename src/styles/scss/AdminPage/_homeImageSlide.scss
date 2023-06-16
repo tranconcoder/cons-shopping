@@ -113,6 +113,10 @@ section.home-image-slide {
   }
 
   form.add-new-image {
+    input[type="file"] {
+      margin-top: 20px;
+    }
+
     .submit {
       width: 100%;
       height: 50px;

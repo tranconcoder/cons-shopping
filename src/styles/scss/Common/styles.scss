@@ -1,4 +1,20 @@
 .input-style-1 {
+  &.error {
+    .input-wrapper input {
+      color: red;
+      border-color: red !important;
+    }
+
+    .input-wrapper .placeholder {
+      color: red;
+    }
+
+    .error-message {
+      max-height: 20px;
+      opacity: 1;
+    }
+  }
+
   .input-wrapper {
     position: relative;
 
