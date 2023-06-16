@@ -1,11 +1,10 @@
 <?php
 
-class ChangeImageSliderApiController
+include_once __DIR__ . "/../../assets/utils/uploadFile.util.php";
+
+class ChangeImageSliderApiController extends UploadFile
 {
   private $imageId;
-  private $file;
-  private $fileName;
-  private $filePath;
   private $destFolder;
 
   private $db;
@@ -18,17 +17,12 @@ class ChangeImageSliderApiController
 
     $this->db = new DatabaseSQL();
     $this->imageId = isset($_POST["id"]) ? $_POST["id"] : "";
-
-    $this->destFolder = "./src/public/image-slide/";
-    $this->file = $_FILES["file"];
-    $this->fileName =
-      $this->imageId .
-      "." .
-      pathinfo(basename($_FILES["file"]["name"]), PATHINFO_EXTENSION);
-    $this->filePath = $this->destFolder . $this->fileName;
+    $this->destFolder = "./src/public/image-slide";
 
     // Xóa file cũ đã được lưu
     $this->handleRemoveOldFile();
+
+    parent::__construct("file", $this->imageId, "./src/public/image-slide/");
 
     if ($this->handleSaveFile()) {
       $this->handleUpdateDatabase();
@@ -42,7 +36,7 @@ class ChangeImageSliderApiController
 
   private function handleRemoveOldFile()
   {
-    $filesToDelete = glob($this->destFolder . $_POST["id"] . "*");
+    $filesToDelete = glob($this->destFolder . $_POST["id"] . ".*");
 
     foreach ($filesToDelete as $fileToDelete) {
       if (is_file($fileToDelete)) {
@@ -51,20 +45,13 @@ class ChangeImageSliderApiController
     }
   }
 
-  private function handleSaveFile()
-  {
-    if (move_uploaded_file($this->file["tmp_name"], $this->filePath)) {
-      return true;
-    } else {
-      return false;
-    }
-  }
-
   private function handleUpdateDatabase()
   {
+    $filePath = $this->getFilePath();
+
     $handleUpdate = $this->db->conn->query("
             UPDATE `slider-images`
-                SET source = '$this->filePath'
+                SET source = '$filePath'
                 WHERE id = '$this->imageId'
         ");
 

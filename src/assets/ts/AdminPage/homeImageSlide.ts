@@ -93,8 +93,6 @@ class AddImageSlide {
         this.imageNameInput = $('input[type="text"]', this.addNewImageForm);
         this.imageFileInput = $('input[type="file"]', this.addNewImageForm);
         this.submitNewImageButton = $("button.submit", this.addNewImageForm);
-
-        console.log(this.imageNameInput);
     }
 
     public listenEvent() {
@@ -107,8 +105,25 @@ class AddImageSlide {
 
             if (!target.value.length) {
                 inputContainer.classList.add("error");
-
                 errorMessage.textContent = "Vui lòng nhập tên hình ảnh!";
+            } else {
+                inputContainer.classList.remove("error");
+            }
+        });
+
+        this.addNewImageForm.addEventListener("submit", (e) => {
+            e.preventDefault();
+
+            const target = e.target as HTMLFormElement;
+            const inputContainer = this.imageNameInput.parentElement
+                ?.parentElement as HTMLDivElement;
+            const errorMessage = $(".error-message", inputContainer);
+
+            if (!this.imageNameInput.value.length) {
+                inputContainer.classList.add("error");
+                errorMessage.textContent = "Vui lòng nhập tên hình ảnh!";
+            } else {
+                target.submit();
             }
         });
     }
