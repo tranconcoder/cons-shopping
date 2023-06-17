@@ -29,7 +29,7 @@
     <h3>Hình ảnh đầu trang chủ</h3>
     
     <!-- Add new image form -->
-    <form class="add-new-image" method="POST">
+    <form class="add-new-image" method="POST" action="/api/add-image-slider" enctype="multipart/form-data">
         <div class="input-style-1">
             <div class="input-wrapper">
                 <input
@@ -44,7 +44,7 @@
 
         <input
             type="file"
-            name="file"
+            name="image-file"
             accept="image/png, image/jpg, image/jpeg"
             class="new-image-input"
         />

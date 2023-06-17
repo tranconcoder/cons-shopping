@@ -44,7 +44,17 @@ switch ($uri) {
     include_once __DIR__ .
       "/./src/controllers/apis/ChangeImageSliderApi.controller.php";
 
-    $ChangeImageSliderApi = new ChangeImageSliderApiController();
+    $changeImageSliderApi = new ChangeImageSliderApiController();
+
+    exit();
+
+  case "/api/add-image-slider":
+    include_once __DIR__ .
+      "/./src/controllers/apis/AddImageSliderApi.controller.php";
+
+    $addImageSliderApi = new AddImageSliderApiController();
+
+    exit();
 
   case "/product":
     include_once __DIR__ . "/./src/controllers/ProductPage.controller.php";
