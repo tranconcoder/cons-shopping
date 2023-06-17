@@ -1,7 +1,7 @@
 <?php
 
 include_once __DIR__ . "/../../assets/utils/uploadFile.util.php";
-include_once __DIR__ . "/../../models/apis/AddImageSlideApi.model.php";
+include_once __DIR__ . "/../../models/apis/AddImageSliderApi.model.php";
 
 class AddImageSliderApiController extends UploadFile
 {
@@ -19,7 +19,7 @@ class AddImageSliderApiController extends UploadFile
       exit(json_encode(false));
     }
 
-    $this->model = new AddImageSlideApiModel();
+    $this->model = new AddImageSliderApiModel();
     $this->imageName = $_POST["image-name"];
     $this->file = $_FILES["image-file"];
     $this->fileExtension = pathinfo($this->file["name"], PATHINFO_EXTENSION);

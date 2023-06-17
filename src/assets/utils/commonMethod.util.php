@@ -37,4 +37,8 @@ class CommonMethod
 
     return $result;
   }
+
+  function isAdmin()
+  {
+  }
 }

@@ -1,6 +1,6 @@
 <?php
 
-class AddImageSlideApiModel extends DatabaseSQL
+class AddImageSliderApiModel extends DatabaseSQL
 {
   public function addNewImageToDatabase(
     string $id,

@@ -57,8 +57,8 @@
     <table>
         <thead>
             <tr>
-                <th>Xem trước</th>
                 <th>STT</th>
+                <th>Xem trước</th>
                 <th>Tên hình ảnh</th>
                 <th></th>
             </tr>
