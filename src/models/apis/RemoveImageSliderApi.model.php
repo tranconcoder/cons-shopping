@@ -8,7 +8,7 @@ class RemoveImageSliderApiModel extends DatabaseSQL
             SELECT `label`
                 FROM `user_rank`
                 WHERE `rank_id` = '$rankId'
-        ")[0];
+        ")[0]["label"];
 
     if ($rank === "admin") {
       return true;

@@ -8,11 +8,13 @@ class RemoveImageSliderApiController
 
   public function __construct()
   {
-    // Khởi tạo giá trị
     $this->model = new RemoveImageSliderApiModel();
 
     // Kiểm tra dữ liệu
     $this->validateData();
+
+    // Khởi tạo giá trị
+    $this->imageId = $_POST["imageId"];
 
     // Thực hiện xóa
     $this->handleRemoveImage();
@@ -27,7 +29,7 @@ class RemoveImageSliderApiController
     $imageInfo = $this->model->getImageSliderInfo($this->imageId);
 
     if (!isset($imageInfo["source"])) {
-      $this->handleError();
+      $this->handleError("Không tìm thấy hình ảnh để xóa");
     }
 
     // Xóa file hình ảnh trên máy chủ
@@ -37,26 +39,26 @@ class RemoveImageSliderApiController
 
     // Xóa dữ liệu hình ảnh trên Database
     if (!$this->model->removeImageInfoOnDb($this->imageId)) {
-      $this->handleError();
+      $this->handleError("Error while remove image in DB!");
     }
   }
 
   private function validateData()
   {
-    if (!isset($_SESSION["userId"], $_SESSION["rank_id"], $_POST["imageId"])) {
-      $this->handleError();
+    if (!isset($_SESSION["userId"], $_SESSION["rankId"], $_POST["imageId"])) {
+      $this->handleError("Error while validate form");
     }
 
     // Kiểm tra có phải là admin không
-    $isAdmin = $this->model->checkIsAdmin($_SESSION["rank_id"]);
+    $isAdmin = $this->model->checkIsAdmin($_SESSION["rankId"]);
     if (!$isAdmin) {
-      $this->handleError();
+      $this->handleError("Not permission");
     }
   }
 
-  private function handleError()
+  private function handleError(string $errorMesssage)
   {
     http_response_code(400);
-    exit(json_encode(false));
+    exit(json_encode(["error" => true, "message" => $errorMesssage]));
   }
 }

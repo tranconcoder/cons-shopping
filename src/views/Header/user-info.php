@@ -44,6 +44,14 @@
 						<span>Chỉnh sửa thông tin</span>
 					</a>
 				</li>
+                <?php if (isAdmin($_SESSION["rankId"])) { ?>
+                    <li>
+                        <a href="/admin">
+                            <img src="./src/assets/images/Common/Header/edit-profile.png" alt="edit-profile">
+                            <span>Đến trang quản trị</span>
+                        </a>
+                    </li>
+                <?php } ?>
 				<li>
 					<a href="/api/logout">
 						<img src="./src/assets/images/Common/Header/logout.png" alt="logout">

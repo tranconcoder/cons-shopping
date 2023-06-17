@@ -2,9 +2,11 @@ import { $, $$ } from "../Common/index";
 
 class HomeImageSlide {
     private inputFileImageList: HTMLInputElement[];
+    private removeImageButtonList: HTMLButtonElement[];
     private updateImageBoxStateInput: HTMLInputElement;
     private updateImagePreviewImg: HTMLImageElement;
     private updateImageBoxAcceptButton: HTMLButtonElement;
+    private imageInfoInputList: HTMLInputElement[];
 
     public constructor() {
         this.updateImageBoxStateInput = $("#update-image-box-state");
@@ -13,6 +15,12 @@ class HomeImageSlide {
         this.updateImageBoxAcceptButton = $(
             ".update-image-box .button-list .accept"
         );
+        this.removeImageButtonList = $$(
+            ".home-image-slide tbody tr .action > button"
+        );
+        this.imageInfoInputList = $$(
+            '.home-image-slide tbody tr td input[type="text"] , .home-image-slide tbody tr td input[type="number"]'
+        );
     }
 
     public listenEvent() {
@@ -20,6 +28,14 @@ class HomeImageSlide {
             inputFileImage.addEventListener(
                 "change",
                 this.handleChangeFileInput.bind(this)
+            );
+        });
+
+        // Remove image
+        this.removeImageButtonList.forEach((removeButton) => {
+            removeButton.addEventListener(
+                "click",
+                this.removeImageSlide.bind(this)
             );
         });
 
@@ -38,6 +54,11 @@ class HomeImageSlide {
                     inputFileToSubmit.dataset.id as string
                 );
             }
+        });
+
+        // Listen change info image slide
+        this.imageInfoInputList.forEach((input) => {
+            input.addEventListener("change", this.changeImageInfo.bind(this));
         });
     }
 
@@ -77,6 +98,58 @@ class HomeImageSlide {
                     // Close update image slider box
                     this.updateImageBoxStateInput.checked = false;
                 }
+            })
+            .catch((err) => console.log(err));
+    }
+
+    private removeImageSlide(e: any) {
+        const imageId = e.target.dataset.id;
+        const url = "/api/remove-image-slider";
+        const formData = new FormData();
+
+        formData.append("imageId", imageId);
+
+        fetch(url, {
+            method: "POST",
+            body: formData,
+        })
+            .then((res) => res.json())
+            .then((data) => {
+                if (!data.error && data) {
+                    const imageSlideRow = e.target.parentElement
+                        .parentElement as HTMLTableRowElement;
+
+                    imageSlideRow.remove();
+                }
+            });
+    }
+
+    private changeImageInfo(e: any) {
+        const target = e.target;
+        const field = target.name;
+        const newValue = target.value as string | number;
+
+        let rowElement = target as HTMLElement;
+        while (!(rowElement instanceof HTMLTableRowElement)) {
+            rowElement = rowElement.parentNode as HTMLElement;
+        }
+
+        const imageId = rowElement.dataset.id;
+
+        const url = "/api/update-info-image-slider";
+        const formData = new FormData();
+
+        formData.append("imageId", imageId as string);
+        formData.append("field", target.name);
+        formData.append("newValue", newValue.toString());
+
+        fetch(url, {
+            method: "POST",
+            body: formData,
+        })
+            .then((res) => res.text())
+            .then((result) => {
+                console.log("Result: " + result);
             })
             .catch((err) => console.log(err));
     }

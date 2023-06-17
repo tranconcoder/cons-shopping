@@ -56,6 +56,21 @@ switch ($uri) {
 
     exit();
 
+  case "/api/remove-image-slider":
+    include_once __DIR__ .
+      "/./src/controllers/apis/RemoveImageSliderApi.controller.php";
+
+    $removeImageSliderApi = new RemoveImageSliderApiController();
+
+    exit();
+  case "/api/update-info-image-slider":
+    include_once __DIR__ .
+      "/./src/controllers/apis/ChangeInfoImageSliderApi.controller.php";
+
+    $changeInfoImageSLiderApi = new ChangeInfoImageSliderApiController();
+
+    exit();
+
   case "/product":
     include_once __DIR__ . "/./src/controllers/ProductPage.controller.php";
 

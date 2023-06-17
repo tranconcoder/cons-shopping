@@ -1,5 +1,6 @@
 <?php
 include_once __DIR__ . "/../../assets/utils/commonMethod.util.php";
+
 class DatabaseSQL
 {
   private $serverName = "localhost";
@@ -12,7 +13,6 @@ class DatabaseSQL
 
   public function __construct()
   {
-    $this->commonMethod = new CommonMethod();
     $this->conn = mysqli_connect(
       $this->serverName,
       $this->username,
@@ -30,9 +30,7 @@ class DatabaseSQL
     $data = $this->conn->query($sqlString);
 
     $result = $data->num_rows
-      ? $this->commonMethod->convertArrayKeysToCamelCase(
-        $data->fetch_all(MYSQLI_ASSOC)
-      )
+      ? convertArrayKeysToCamelCase($data->fetch_all(MYSQLI_ASSOC))
       : [];
 
     $data->free_result();

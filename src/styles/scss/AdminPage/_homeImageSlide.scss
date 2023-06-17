@@ -166,6 +166,17 @@ section.home-image-slide {
           text-align: center;
         }
 
+        td {
+          input[type="text"],
+          input[type="number"] {
+            padding: 10px;
+            background-color: transparent;
+            border: none;
+            border-bottom: 2px solid $primaryColor;
+            outline: none;
+          }
+        }
+
         .thumb {
           label {
             cursor: pointer;
@@ -183,6 +194,31 @@ section.home-image-slide {
                 background-color: #ccc;
               }
             }
+          }
+        }
+      }
+
+      td.action {
+        button {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 30px;
+          height: 30px;
+          border: none;
+          border-radius: 4px;
+          background-color: $whiteColor;
+          box-shadow: 0 0 4px 0 rgba(#000, 0.1);
+          color: red;
+          transition: all ease 300ms;
+
+          i {
+            pointer-events: none;
+          }
+
+          &:hover {
+            cursor: pointer;
+            box-shadow: 0 0 8px 0 rgba(#000, 0.2);
           }
         }
       }

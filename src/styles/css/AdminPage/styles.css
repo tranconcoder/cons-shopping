@@ -165,6 +165,13 @@ section.home-image-slide {
     section.home-image-slide table tbody tr > * {
       padding: 10px 5px;
       text-align: center; }
+    section.home-image-slide table tbody tr td input[type="text"],
+    section.home-image-slide table tbody tr td input[type="number"] {
+      padding: 10px;
+      background-color: transparent;
+      border: none;
+      border-bottom: 2px solid #0099ff;
+      outline: none; }
     section.home-image-slide table tbody tr .thumb label {
       cursor: pointer;
       display: block; }
@@ -177,3 +184,20 @@ section.home-image-slide {
         border-radius: 10px; }
         section.home-image-slide table tbody tr .thumb label img:hover {
           background-color: #ccc; }
+    section.home-image-slide table tbody td.action button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 30px;
+      height: 30px;
+      border: none;
+      border-radius: 4px;
+      background-color: #ffffff;
+      box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.1);
+      color: red;
+      transition: all ease 300ms; }
+      section.home-image-slide table tbody td.action button i {
+        pointer-events: none; }
+      section.home-image-slide table tbody td.action button:hover {
+        cursor: pointer;
+        box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.2); }

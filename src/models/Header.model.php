@@ -1,4 +1,5 @@
 <?php
+include_once __DIR__ . "/../assets/utils/commonMethod.util.php";
 
 class HeaderModel extends DatabaseSQL
 {
