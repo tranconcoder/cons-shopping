@@ -201,3 +201,60 @@ section.home-image-slide {
       section.home-image-slide table tbody td.action button:hover {
         cursor: pointer;
         box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.2); }
+
+.product-list-container {
+  margin-top: 30px; }
+  .product-list-container .product-list {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    list-style-type: none; }
+    .product-list-container .product-list .product-item {
+      padding: 10px;
+      box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+      border-radius: 10px; }
+      .product-list-container .product-list .product-item .thumb {
+        width: 100%;
+        aspect-ratio: 4/3;
+        object-fit: contain;
+        object-position: center;
+        padding: 10px; }
+      .product-list-container .product-list .product-item .name {
+        width: 100%;
+        border: none;
+        border-bottom: 2px solid #0099ff;
+        font-size: 18px;
+        margin-top: 10px; }
+      .product-list-container .product-list .product-item .price {
+        display: flex;
+        align-items: center;
+        margin-top: 16px;
+        font-size: 16px; }
+        .product-list-container .product-list .product-item .price span {
+          width: 50px;
+          display: inline-block; }
+        .product-list-container .product-list .product-item .price input {
+          flex: 1;
+          font-size: 16px;
+          border: 2px solid #ccc;
+          outline: none;
+          padding: 6px;
+          border-radius: 6px; }
+          .product-list-container .product-list .product-item .price input:focus {
+            border-color: #0099ff; }
+      .product-list-container .product-list .product-item button.delete,
+      .product-list-container .product-list .product-item button.change-info {
+        width: 100%;
+        padding-block: 16px;
+        background-color: var(--primary, #0099ff);
+        color: #ffffff;
+        font-size: 16px;
+        border-radius: 6px;
+        margin-top: 10px;
+        border: 2px solid var(--primary, #0099ff);
+        transition: all ease 500ms; }
+        .product-list-container .product-list .product-item button.delete:hover,
+        .product-list-container .product-list .product-item button.change-info:hover {
+          cursor: pointer;
+          color: var(--primary, #0099ff);
+          background-color: #ffffff; }

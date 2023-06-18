@@ -1,0 +1,108 @@
+
+.product-list {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  list-style: none;
+
+  > .product-item {
+    $brs: 10px;
+
+    border-radius: $brs;
+    padding: 10px;
+    box-shadow: 0 0 10px 0 rgba(#000, 0.1);
+
+    > a {
+      text-decoration: none;
+      color: unset;
+    }
+
+    .thumb-wrapper {
+      background-color: #faaca8;
+      background-image: linear-gradient(19deg, #faaca8 0%, #ddd6f3 100%);
+      border-radius: 10px;
+      padding: 10px;
+
+      img {
+        width: 100%;
+        border-radius: $brs;
+        object-fit: contain;
+        object-position: center;
+        aspect-ratio: 4/3;
+      }
+    }
+
+    .name {
+      height: 44px;
+      font-size: 18px;
+      line-height: 22px;
+      font-weight: 500;
+      text-align: center;
+      margin-top: 10px;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 2;
+      line-clamp: 2;
+      overflow: hidden;
+    }
+
+    .price-old {
+      text-decoration: line-through;
+      color: #333;
+      font-size: 20px;
+      margin-top: 10px;
+    }
+
+    .price-new {
+      color: red;
+      font-size: 24px;
+
+      span {
+        font-size: 0.8em;
+      }
+    }
+
+    .price-old,
+    .price-new {
+      font-weight: 600;
+      text-align: right;
+    }
+
+    .button-list {
+      height: 50px;
+      margin-top: 30px;
+      display: flex;
+      column-gap: 10px;
+
+      > button {
+        color: $whiteColor;
+        font-size: 14px;
+        font-weight: 600;
+        border-radius: 10px;
+        border: none;
+        background-color: #ff9a8b;
+        background-image: linear-gradient(
+          90deg,
+          #ff9a8b 0%,
+          #ff6a88 55%,
+          #ff99ac 100%
+        );
+        background-size: 200% 100%;
+        transition: all ease 300ms;
+
+        &:hover {
+          cursor: pointer;
+          background-position: center right;
+        }
+      }
+
+      .add-to-cart {
+        width: 60px;
+      }
+
+      .buy {
+        flex: 1;
+      }
+    }
+  }
+}

@@ -6,11 +6,13 @@ class AdminPageController
 {
   private $model;
   private $imageSlideInfoList;
+  private $productList;
 
   public function __construct()
   {
     $this->model = new AdminPageModel();
     $this->imageSlideInfoList = $this->model->getHomeImageSlideInfoList();
+    $this->productList = $this->model->getAllProduct();
   }
 
   public function invoke()
@@ -22,6 +24,13 @@ class AdminPageController
   {
     foreach ($this->imageSlideInfoList as $imageSlideInfo) {
       include __DIR__ . "/../views/AdminPage/homeImageSlideRow.php";
+    }
+  }
+
+  private function renderProductList()
+  {
+    foreach ($this->productList as $product) {
+      include __DIR__ . "/../views/AdminPage/productListItem.php";
     }
   }
 }

@@ -1,0 +1,76 @@
+.product-list-container {
+  margin-top: 30px;
+
+  .product-list {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    list-style-type: none;
+
+    .product-item {
+      padding: 10px;
+      box-shadow: 0 0 10px 0 rgba(#000, 0.2);
+      border-radius: 10px;
+
+      .thumb {
+        width: 100%;
+        aspect-ratio: 4/3;
+        object-fit: contain;
+        object-position: center;
+        padding: 10px;
+      }
+
+      .name {
+        width: 100%;
+        border: none;
+        border-bottom: 2px solid $primaryColor;
+        font-size: 18px;
+        margin-top: 10px;
+      }
+
+      .price {
+        display: flex;
+        align-items: center;
+        margin-top: 16px;
+        font-size: 16px;
+
+        span {
+          width: 50px;
+          display: inline-block;
+        }
+
+        input {
+          flex: 1;
+          font-size: 16px;
+          border: 2px solid #ccc;
+          outline: none;
+          padding: 6px;
+          border-radius: 6px;
+
+          &:focus {
+            border-color: $primaryColor;
+          }
+        }
+      }
+
+      button.delete,
+      button.change-info {
+        width: 100%;
+        padding-block: 16px;
+        background-color: var(--primary, #{$primaryColor});
+        color: $whiteColor;
+        font-size: 16px;
+        border-radius: 6px;
+        margin-top: 10px;
+        border: 2px solid var(--primary, #{$primaryColor});
+        transition: all ease 500ms;
+
+        &:hover {
+          cursor: pointer;
+          color: var(--primary, #{$primaryColor});
+          background-color: $whiteColor;
+        }
+      }
+    }
+  }
+}

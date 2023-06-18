@@ -47,7 +47,7 @@
                 <?php if (isAdmin($_SESSION["rankId"])) { ?>
                     <li>
                         <a href="/admin">
-                            <img src="./src/assets/images/Common/Header/edit-profile.png" alt="edit-profile">
+                            <img src="./src/assets/images/Common/Header/admin.png" alt="edit-profile">
                             <span>Đến trang quản trị</span>
                         </a>
                     </li>

@@ -18,4 +18,11 @@ class AdminPageModel
 
     return $imageSlideInfo;
   }
+
+  public function getAllProduct()
+  {
+    $productList = $this->db->searchProduct("");
+
+    return $productList;
+  }
 }
