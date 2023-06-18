@@ -26,6 +26,10 @@ class ChangeInfoImageSliderApiController
     ) {
       exit(json_encode(["error" => false]));
     } else {
+      if ($this->model->checkDuplicateOrder($this->newValue)) {
+        exit(json_encode(["error" => true, "duplicate" => true]));
+      }
+
       $this->handleError("Error while update info on Database");
     }
   }

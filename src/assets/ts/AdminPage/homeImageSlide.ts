@@ -8,6 +8,8 @@ class HomeImageSlide {
     private updateImageBoxAcceptButton: HTMLButtonElement;
     private imageInfoInputList: HTMLInputElement[];
 
+    private changeInfoPreviousValue: string = "";
+
     public constructor() {
         this.updateImageBoxStateInput = $("#update-image-box-state");
         this.inputFileImageList = $$(".home-image-slide tbody .thumb input");
@@ -58,6 +60,14 @@ class HomeImageSlide {
 
         // Listen change info image slide
         this.imageInfoInputList.forEach((input) => {
+            input.addEventListener("focusin", (e) => {
+                this.changeInfoPreviousValue = (
+                    e.target as HTMLInputElement
+                ).value;
+            });
+        });
+
+        this.imageInfoInputList.forEach((input) => {
             input.addEventListener("change", this.changeImageInfo.bind(this));
         });
     }
@@ -103,6 +113,12 @@ class HomeImageSlide {
     }
 
     private removeImageSlide(e: any) {
+        const confirmRemove = confirm("Bạn có muốn xóa ảnh này không?");
+
+        if (!confirmRemove) {
+            return;
+        }
+
         const imageId = e.target.dataset.id;
         const url = "/api/remove-image-slider";
         const formData = new FormData();
@@ -147,9 +163,43 @@ class HomeImageSlide {
             method: "POST",
             body: formData,
         })
-            .then((res) => res.text())
-            .then((result) => {
-                console.log("Result: " + result);
+            .then((res) => res.json())
+            .then((result: { error: boolean; message: string }) => {
+                if (result.message == "Error: Order is used") {
+                    const swapOrder = confirm(
+                        "STT mới đã được sử dụng, bạn có muốn hoán đổi vị trí 2 ảnh này không?"
+                    );
+
+                    if (!swapOrder) {
+                        target.value = this.changeInfoPreviousValue;
+                    } else {
+                        this.handleSwapOrderImage(
+                            newValue,
+                            this.changeInfoPreviousValue
+                        );
+                    }
+                }
+            })
+            .catch((err) => console.error("Error: ", err));
+    }
+
+    private handleSwapOrderImage(
+        order1: number | string,
+        order2: number | string
+    ) {
+        const url = "/api/swap-order-image-slider";
+        const formData = new FormData();
+
+        formData.append("order1", order1.toString());
+        formData.append("order2", order2.toString());
+
+        fetch(url, {
+            method: "POST",
+            body: formData,
+        })
+            .then((res) => res.json())
+            .then((data) => {
+                if (!data.error) window.location.reload();
             })
             .catch((err) => console.log(err));
     }

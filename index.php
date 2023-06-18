@@ -71,6 +71,14 @@ switch ($uri) {
 
     exit();
 
+  case "/api/swap-order-image-slider":
+    include_once __DIR__ .
+      "/./src/controllers/apis/SwapOrderImageSlideApi.controller.php";
+
+    $swapOrderImageSlideApiController = new SwapOrderImageSlideApiController();
+
+    exit();
+
   case "/product":
     include_once __DIR__ . "/./src/controllers/ProductPage.controller.php";
 
