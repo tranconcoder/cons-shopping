@@ -13,70 +13,59 @@ $uri = explode("?", $uri, 2)[0];
 switch ($uri) {
   case "/api/register":
     include_once __DIR__ . "/./src/controllers/apis/RegisterApi.controller.php";
-
     $registerApi = new RegisterApi();
-
     exit();
 
   case "/api/login":
     include_once __DIR__ . "/./src/controllers/apis/LoginApi.controller.php";
-
     $loginApi = new LoginApi($_POST["username"], $_POST["password"]);
-
     exit();
 
   case "/api/logout":
     include_once __DIR__ . "/./src/controllers/apis/LogoutApi.controller.php";
-
     $logoutApi = new LogoutApi();
-
     exit();
 
   case "/api/search-product":
     include_once __DIR__ .
       "/./src/controllers/apis/SearchProductApi.controller.php";
-
     $searchProductApi = new SearchProductApi();
-
     exit();
 
   case "/api/change-image-slider":
     include_once __DIR__ .
       "/./src/controllers/apis/ChangeImageSliderApi.controller.php";
-
     $changeImageSliderApi = new ChangeImageSliderApiController();
-
     exit();
 
   case "/api/add-image-slider":
     include_once __DIR__ .
       "/./src/controllers/apis/AddImageSliderApi.controller.php";
-
     $addImageSliderApi = new AddImageSliderApiController();
-
     exit();
 
   case "/api/remove-image-slider":
     include_once __DIR__ .
       "/./src/controllers/apis/RemoveImageSliderApi.controller.php";
-
     $removeImageSliderApi = new RemoveImageSliderApiController();
-
     exit();
+
   case "/api/update-info-image-slider":
     include_once __DIR__ .
       "/./src/controllers/apis/ChangeInfoImageSliderApi.controller.php";
-
     $changeInfoImageSLiderApi = new ChangeInfoImageSliderApiController();
-
     exit();
 
   case "/api/swap-order-image-slider":
     include_once __DIR__ .
       "/./src/controllers/apis/SwapOrderImageSlideApi.controller.php";
-
     $swapOrderImageSlideApiController = new SwapOrderImageSlideApiController();
+    exit();
 
+  case "/api/remove-product":
+    include_once __DIR__ .
+      "/./src/controllers/apis/RemoveProductApi.controller.php";
+    $removeProductApiController = new RemoveProductApiController();
     exit();
 
   case "/product":

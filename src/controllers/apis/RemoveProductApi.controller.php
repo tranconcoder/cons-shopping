@@ -1,19 +1,21 @@
 <?php
 include_once __DIR__ . "/../../models/apis/RemoveProductApi.model.php";
 
-class RemoveProductApiController extends RemoveProductApiModel
+class RemoveProductApiController
 {
   private $productId;
+  private $model;
 
   public function __construct()
   {
     // validate data
     $this->validateData();
 
+    $this->model = new RemoveProductApiModel();
     $this->productId = $_POST["productId"];
 
     // Handle remove
-    $removeSuccess = $this->removeProduct($this->productId);
+    $removeSuccess = $this->model->removeProduct($this->productId);
 
     if ($removeSuccess) {
       exit(json_encode(["error" => false]));
