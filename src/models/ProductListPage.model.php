@@ -2,28 +2,28 @@
 
 class ProductListPageModel extends DatabaseSQL
 {
-  public function search($query)
-  {
-    return $this->searchProduct($query);
-  }
+	public function search($query)
+	{
+		return $this->searchProduct($query);
+	}
 
-  public function addNewSearchHistory($content)
-  {
-    if (!isset($content) || !isset($_SESSION["userId"])) {
-      return false;
-    }
+	public function addNewSearchHistory($content)
+	{
+		if (!isset($content) || !isset($_SESSION['userId'])) {
+			return false;
+		}
 
-    $userId = $_SESSION["userId"];
+		$userId = $_SESSION['userId'];
 
-    // Remove old value equal content
-    $removeDuplicateContent = $this->conn->query("
+		// Remove old value equal content
+		$removeDuplicateContent = $this->conn->query("
 			DELETE FROM `search-history`
 				WHERE
 					user_id = '$userId'
 					AND content = '$content'
 		");
-    // Remove all value exception 5 item add lastest
-    $removeAllException5 = $this->conn->query("
+		// Remove all value exception 5 item add lastest
+		$removeAllException5 = $this->conn->query("
 			DELETE FROM `search-history` as SH1
 				WHERE
 					user_id = '$userId'
@@ -38,15 +38,15 @@ class ProductListPageModel extends DatabaseSQL
 					)
 		");
 
-    if (!$removeDuplicateContent || !$removeAllException5) {
-      return false;
-    }
+		if (!$removeDuplicateContent || !$removeAllException5) {
+			return false;
+		}
 
-    $addResult = $this->conn->query("
+		$addResult = $this->conn->query("
 			INSERT INTO `search-history`(search_id, user_id, content) VALUES
 				(UUID(),'$userId', '$content')
 		");
 
-    return $addResult;
-  }
+		return $addResult;
+	}
 }

@@ -8,9 +8,9 @@
         <input type="text" value="<?= $product["cost"] ?>">
     </div>
 
-    <button class="change-info" style="--primary: #29a329;">
+    <label for="change-product-info-state" class="change-info" style="--primary: #29a329;">
         <p>Chỉnh sửa thông tin</p>
-    </button>
+    </label>
 
     <button class="delete" style="--primary: #ff8000;">
         <p>Xóa sản phẩm</p>

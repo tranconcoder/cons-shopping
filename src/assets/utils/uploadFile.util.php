@@ -29,7 +29,7 @@ class UploadFile
   protected function handleSaveFile()
   {
     if (move_uploaded_file($this->file["tmp_name"], $this->filePath)) {
-      return true;
+      return $this->filePath;
     } else {
       return false;
     }

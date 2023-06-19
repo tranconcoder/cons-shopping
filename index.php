@@ -3,7 +3,6 @@ session_start();
 
 // Include util
 include_once __DIR__ . "/./src/assets/utils/index.php";
-
 include_once "./src/config/db/connect.php";
 include_once __DIR__ . "/./src/controllers/layouts/Layout1.controller.php";
 
@@ -66,6 +65,36 @@ switch ($uri) {
     include_once __DIR__ .
       "/./src/controllers/apis/RemoveProductApi.controller.php";
     $removeProductApiController = new RemoveProductApiController();
+    exit();
+
+  case "/api/get-product":
+    include_once __DIR__ .
+      "/./src/controllers/apis/GetProductApi.controller.php";
+    $getProductApiController = new GetProductApiController();
+    exit();
+
+  case "/api/change-product-info":
+    include_once __DIR__ .
+      "/./src/controllers/apis/ChangeProductInfoApi.controller.php";
+    $changeProductInfoApiController = new ChangeProductInfoApiController();
+    exit();
+
+  case "/api/get-all-deal":
+    include_once __DIR__ .
+      "/./src/controllers/apis/GetAllDealApi.controller.php";
+    $getAllDealApiController = new GetAllDealApiController();
+    exit();
+
+  case "/api/get-product-images":
+    include_once __DIR__ .
+      "/./src/controllers/apis/GetProductImageApi.controller.php";
+    $getProductImagesApiController = new GetProductImageApiController();
+    exit();
+
+  case "/api/change-image":
+    include_once __DIR__ .
+      "/./src/controllers/apis/ChangeImageApi.controller.php";
+    $changeImageApiController = new ChangeImageApiController();
     exit();
 
   case "/product":

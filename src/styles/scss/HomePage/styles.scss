@@ -1,24 +1,24 @@
-@import "../_package/index.scss";
+@import '../_package/index.scss';
 
 .body {
-  > section {
-    &:not(:first-of-type) {
-      margin-top: 60px;
-    }
+	> section {
+		&:not(:first-of-type) {
+			margin-top: 60px;
+		}
 
-    > .title {
-      font-size: 24px;
-      font-weight: 500;
-      color: #333;
-    }
+		> .title {
+			font-size: 24px;
+			font-weight: 500;
+			color: #333;
+		}
 
-    > .title + * {
-      margin-top: 10px;
-    }
-  }
+		> .title + * {
+			margin-top: 10px;
+		}
+	}
 
-  @import "./hero";
-  @import "./category-slider";
-  @import "./popular-product";
-  @import "./promotional-product";
+	@import './hero';
+	@import './category-slider';
+	@import './popular-product';
+	@import './promotional-product';
 }

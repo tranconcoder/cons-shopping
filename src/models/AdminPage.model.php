@@ -2,7 +2,7 @@
 
 class AdminPageModel
 {
-  private $db;
+  public $db;
 
   public function __construct()
   {
