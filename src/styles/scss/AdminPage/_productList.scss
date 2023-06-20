@@ -202,6 +202,8 @@
         .section-2 {
           margin-top: 30px;
           padding: 10px;
+          border-radius: 10px;
+          background-color: #eee;
 
           table {
             width: 100%;
@@ -212,16 +214,35 @@
                 gap: 10px;
 
                 td {
+                  position: relative;
+
+                  span {
+                    width: 20px;
+                    height: 20px;
+                    border: none;
+                    border-radius: 150%;
+                    background-color: red;
+                    color: $whiteColor;
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    cursor: pointer;
+                    text-align: center;
+                    line-height: 20px;
+                    display: block;
+                    z-index: 1;
+                  }
+
                   label {
                     border-radius: 8px;
                     overflow: hidden;
                     display: inline-block;
-                    transition: all ease 300ms;
+                    transition: all ease 500ms;
                     padding: 10px;
 
                     &:hover {
                       cursor: pointer;
-                      background-color: #eee;
+                      background-color: $whiteColor;
                     }
 
                     img {

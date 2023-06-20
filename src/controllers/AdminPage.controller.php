@@ -1,6 +1,7 @@
 <?php
 
 include_once __DIR__ . "/./../models/AdminPage.model.php";
+include_once __DIR__ . "/../assets/utils/commonMethod.util.php";
 
 class AdminPageController
 {
@@ -10,6 +11,8 @@ class AdminPageController
 
   public function __construct()
   {
+    $this->validatePermission();
+
     $this->model = new AdminPageModel();
     $this->imageSlideInfoList = $this->model->getHomeImageSlideInfoList();
     $this->productList = $this->model->getAllProduct();
@@ -18,6 +21,15 @@ class AdminPageController
   public function invoke()
   {
     include_once __DIR__ . "/../views/AdminPage/index.php";
+  }
+
+  private function validatePermission()
+  {
+    if (!isset($_SESSION["rankId"]) || !isAdmin($_SESSION["rankId"])) {
+      http_response_code(400);
+      header("Location: /");
+      exit();
+    }
   }
 
   private function renderImageSlideInfo()

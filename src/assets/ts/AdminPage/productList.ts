@@ -36,6 +36,12 @@ export default class ProductList {
             "change",
             this.handleChangeImage.bind(this)
         );
+
+        // Listen remove image event
+        this.productImagesRow.addEventListener(
+            "click",
+            this.handleRemoveImage.bind(this)
+        );
     }
 
     private handleRemoveItem(e: any) {
@@ -113,16 +119,20 @@ export default class ProductList {
             const tdElm = document.createElement("td");
 
             tdElm.innerHTML = `
+                <span>
+                    <i class="fa-solid fa-xmark"></i>
+                </span>
+
                 <label>
                     <input
                         type="file"
-                        data-id="${image.imageId}"
                         accept="image/png, image/jpg, image/jpeg"
                         hidden
                     />
                     <img src="${image.source}" />
                 </label>
             `;
+            tdElm.dataset.id = image.imageId;
 
             this.productImagesRow.appendChild(tdElm);
         });
@@ -152,8 +162,16 @@ export default class ProductList {
     }
 
     private handleChangeImage(e: any) {
+        const confirmChange = confirm("Xác nhận đổi ảnh mới?");
+        if (!confirmChange) return;
+
         const target = e.target as HTMLInputElement;
-        const imageId = target.dataset.id;
+        let tableCell = target as any;
+        while (!(tableCell instanceof HTMLTableCellElement))
+            tableCell = tableCell.parentElement as HTMLTableCellElement;
+        const imageElm = $("img", tableCell) as HTMLImageElement;
+
+        const imageId = tableCell.dataset.id;
         const file = (target?.files as FileList)[0];
         const formData = new FormData();
         const url = "/api/change-image";
@@ -167,15 +185,39 @@ export default class ProductList {
         })
             .then((res) => res.json())
             .then((data) => {
-                if(!data.error) {
+                if (!data.error) {
+                    // Show new image
+                    imageElm.src = URL.createObjectURL(file);
                 }
             })
             .catch((err) => console.log(err));
     }
 
+    private handleRemoveImage(e: any) {
+        let target = e.target;
+        while (
+            !(
+                target instanceof HTMLSpanElement ||
+                target instanceof HTMLTableRowElement
+            )
+        ) {
+            target = target.parentElement;
+        }
+
+        if (target.tagName.toLowerCase() !== "span") return;
+
+        // Handle remove
+        let imageItem = target;
+        while (!(imageItem instanceof HTMLTableCellElement)) {
+            imageItem = imageItem.parentElement as HTMLElement;
+        }
+        const imageId = imageItem.dataset.id as string;
+
+        this.removeImage(imageId);
+    }
+
     private async getAllDeal() {
         const url = "/api/get-all-deal";
-
         return fetch(url)
             .then((res) => res.json())
             .then((data: Deal[]) => data);
@@ -195,5 +237,14 @@ export default class ProductList {
             .then((res) => res.json())
             .then((data) => data[0])
             .catch((err) => console.error(err));
+    }
+
+    private async removeImage(imageId: string) {
+        const url = "/api/remove-product-image?imageId=" + imageId
+
+        return await fetch(url)
+            .then((res) => res.json())
+            .then((data) => console.log(data))
+            .catch((err) => console.log(err));
     }
 }

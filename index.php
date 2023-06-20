@@ -96,6 +96,11 @@ switch ($uri) {
       "/./src/controllers/apis/ChangeImageApi.controller.php";
     $changeImageApiController = new ChangeImageApiController();
     exit();
+  case "/api/remove-product-image":
+    include_once __DIR__ .
+      "/./src/controllers/apis/RemoveProductImageApi.controller.php";
+    $removeProductImageApiController = new RemoveProductImageApiController();
+    exit();
 
   case "/product":
     include_once __DIR__ . "/./src/controllers/ProductPage.controller.php";
