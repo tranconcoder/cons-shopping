@@ -102,6 +102,12 @@ switch ($uri) {
     $removeProductImageApiController = new RemoveProductImageApiController();
     exit();
 
+  case "/api/add-product-image":
+    include_once __DIR__ .
+      "/./src/controllers/apis/AddProductImageApi.controller.php";
+    $addProductImageApiController = new AddProductImageApiController();
+    exit();
+
   case "/product":
     include_once __DIR__ . "/./src/controllers/ProductPage.controller.php";
 

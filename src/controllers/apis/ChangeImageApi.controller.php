@@ -18,7 +18,7 @@ class ChangeImageApiController extends UploadFile
     parent::__construct(
       "imageFile",
       $this->imageId,
-      "./src/public/product-image"
+      "./src/public/product-image/"
     );
     $filePath = $this->handleSaveFile();
 

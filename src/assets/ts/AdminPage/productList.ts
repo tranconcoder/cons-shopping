@@ -3,10 +3,12 @@ import { $, $$ } from "../Common/index";
 export default class ProductList {
     private productImagesRow: HTMLTableRowElement;
     private productListItem: HTMLLIElement[];
+    private addProductImageInput: HTMLInputElement;
 
     public constructor() {
         this.productImagesRow = $("section.section-2 table tbody tr");
         this.productListItem = $$(".product-list-container .product-item");
+        this.addProductImageInput = $("#add-product-image");
     }
 
     public listenEvent() {
@@ -41,6 +43,12 @@ export default class ProductList {
         this.productImagesRow.addEventListener(
             "click",
             this.handleRemoveImage.bind(this)
+        );
+
+        // Listen add product image
+        this.addProductImageInput.addEventListener(
+            "change",
+            this.handleAddProductImage.bind(this)
         );
     }
 
@@ -212,8 +220,57 @@ export default class ProductList {
             imageItem = imageItem.parentElement as HTMLElement;
         }
         const imageId = imageItem.dataset.id as string;
+        const imageCount =
+            (imageItem.parentElement?.childElementCount || 1) - 1;
 
-        this.removeImage(imageId);
+        if (imageCount < 2)
+            return alert("Phải để lại ít nhất 1 hình ảnh cho mỗi sản phẩm!");
+
+        this.removeImage(imageId, imageItem);
+    }
+
+    private handleAddProductImage(e: any) {
+        const target = e.target as HTMLInputElement;
+        const productIdInput: HTMLInputElement = $('input[name="productId"]');
+        const productId = productIdInput.value as string;
+        const formData = new FormData();
+        const file = (target?.files as FileList)[0];
+
+        formData.append("file", file);
+        formData.append("productId", productId);
+
+        // Handle save file
+        const url = "/api/add-product-image";
+
+        fetch(url, {
+            method: "POST",
+            body: formData,
+        })
+            .then((res) => res.json())
+            .then((data) => {
+                if (!data.error) {
+                    const tdElm = document.createElement("td");
+
+                    tdElm.innerHTML = `
+                        <span>
+                            <i class="fa-solid fa-xmark"></i>
+                        </span>
+
+                        <label>
+                            <input
+                                type="file"
+                                accept="image/png, image/jpg, image/jpeg"
+                                hidden
+                            />
+                            <img src="${URL.createObjectURL(file)}" />
+                        </label>
+                    `;
+                    tdElm.dataset.id = data.newId;
+
+                    this.productImagesRow.appendChild(tdElm);
+                }
+            })
+            .catch((err) => console.log(err));
     }
 
     private async getAllDeal() {
@@ -239,12 +296,19 @@ export default class ProductList {
             .catch((err) => console.error(err));
     }
 
-    private async removeImage(imageId: string) {
-        const url = "/api/remove-product-image?imageId=" + imageId
+    private async removeImage(
+        imageId: string,
+        imageCtnElm: HTMLTableCellElement
+    ) {
+        const url = "/api/remove-product-image?imageId=" + imageId;
 
         return await fetch(url)
             .then((res) => res.json())
-            .then((data) => console.log(data))
+            .then((data) => {
+                if (!data.error) {
+                    imageCtnElm.remove();
+                }
+            })
             .catch((err) => console.log(err));
     }
 }

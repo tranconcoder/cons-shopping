@@ -23,7 +23,6 @@
       .name {
         width: 100%;
         border: none;
-        border-bottom: 2px solid $primaryColor;
         font-size: 18px;
         margin-top: 10px;
       }
@@ -39,7 +38,7 @@
           display: inline-block;
         }
 
-        input {
+        p {
           flex: 1;
           font-size: 16px;
           border: 2px solid #ccc;
@@ -207,6 +206,7 @@
 
           table {
             width: 100%;
+            margin-top: 30px;
 
             tbody {
               tr {

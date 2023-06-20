@@ -1,11 +1,11 @@
 <li class="product-item" data-id="<?= $product["productId"] ?>">
     <img class="thumb" src="<?= $product["thumb"] ?>" alt="">
 
-    <input type="text" class="name" value="<?= $product["label"] ?>">
+    <p class="name"><?= $product["label"] ?></p>
 
     <div class="price">
         <span>Giá: </span>
-        <input type="text" value="<?= $product["cost"] ?>">
+        <p><?= $product["cost"] ?></p>
     </div>
 
     <label for="change-product-info-state" class="change-info" style="--primary: #29a329;">

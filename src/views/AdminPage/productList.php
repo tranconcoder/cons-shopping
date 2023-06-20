@@ -1,4 +1,10 @@
 <section class="product-list-container">
+    <label for="change-product-info-state">
+        <button>
+            <p>Thêm sản phẩm</p>
+        </button>
+    </label>    
+
     <ul class="product-list">
         <?php $this->renderProductList(); ?>
     </ul>
@@ -39,6 +45,7 @@
                 </section>
 
                 <section class="section-2">
+                    <input type="file"id="add-product-image">
                     <table>
                         <tbody>
                             <tr>
