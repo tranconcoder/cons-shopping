@@ -22,11 +22,11 @@ class UploadFile
     $this->fileName =
       $fileName .
       "." .
-      pathinfo(basename($_FILES[$name]["name"]), PATHINFO_EXTENSION);
+      pathinfo(basename($this->file["name"]), PATHINFO_EXTENSION);
     $this->filePath = $this->destFolder . $this->fileName;
   }
 
-  protected function handleSaveFile()
+  public function handleSaveFile()
   {
     if (move_uploaded_file($this->file["tmp_name"], $this->filePath)) {
       return $this->filePath;

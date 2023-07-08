@@ -2,33 +2,33 @@
 
 class ChangeProductInfoApiModel
 {
-  private $db;
+	private $db;
 
-  public function __construct()
-  {
-    $this->db = new DatabaseSQL();
-  }
+	public function __construct()
+	{
+		$this->db = new DatabaseSQL();
+	}
 
-  public function changeProductInfo(
-    $productId,
-    $label,
-    $cost,
-    $sizeWidth,
-    $sizeHeight,
-    $monitorWidth,
-    $monitorHeight,
-    $processor,
-    $memory,
-    $storage,
-    $color
-  ) {
-    $sizeWidth = $sizeWidth ? $sizeWidth : "null";
-    $sizeHeight = $sizeHeight ? $sizeHeight : "null";
-    $monitorWidth = $monitorWidth ? $monitorWidth : "null";
-    $monitorHeight = $monitorHeight ? $monitorHeight : "null";
-    $storage = $storage ? $storage : "null";
+	public function changeProductInfo(
+		$productId,
+		$label,
+		$cost,
+		$sizeWidth,
+		$sizeHeight,
+		$monitorWidth,
+		$monitorHeight,
+		$processor,
+		$memory,
+		$storage,
+		$color
+	) {
+		$sizeWidth = $sizeWidth ? $sizeWidth : 'null';
+		$sizeHeight = $sizeHeight ? $sizeHeight : 'null';
+		$monitorWidth = $monitorWidth ? $monitorWidth : 'null';
+		$monitorHeight = $monitorHeight ? $monitorHeight : 'null';
+		$storage = $storage ? $storage : 'null';
 
-    $changeSuccess = $this->db->conn->query("
+		$changeSuccess = $this->db->conn->query("
                UPDATE product
                     SET
                          label = '$label',
@@ -44,9 +44,9 @@ class ChangeProductInfoApiModel
                     WHERE product_id = '$productId'
           ");
 
-    if ($changeSuccess) {
-      return true;
-    }
-    return false;
-  }
+		if ($changeSuccess) {
+			return true;
+		}
+		return false;
+	}
 }

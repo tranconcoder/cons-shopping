@@ -14,7 +14,7 @@ class GetProductApiModel extends DatabaseSQL
 						SELECT image_id
 							FROM image AS image2
 							WHERE image2.product_id = product.product_id
-							ORDER BY image2.order DESC
+							ORDER BY image2.order ASC
 							LIMIT 1
 					)
         ");

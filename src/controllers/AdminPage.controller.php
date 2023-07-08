@@ -8,6 +8,7 @@ class AdminPageController
   private $model;
   private $imageSlideInfoList;
   private $productList;
+  private $dealList;
 
   public function __construct()
   {
@@ -16,6 +17,7 @@ class AdminPageController
     $this->model = new AdminPageModel();
     $this->imageSlideInfoList = $this->model->getHomeImageSlideInfoList();
     $this->productList = $this->model->getAllProduct();
+    $this->dealList = $this->model->getAllDeal();
   }
 
   public function invoke()

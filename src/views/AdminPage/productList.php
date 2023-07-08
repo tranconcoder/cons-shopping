@@ -1,15 +1,9 @@
 <section class="product-list-container">
-    <label for="change-product-info-state">
-        <button>
-            <p>Thêm sản phẩm</p>
-        </button>
-    </label>    
-
     <ul class="product-list">
         <?php $this->renderProductList(); ?>
     </ul>
 
-    <input type="checkbox" id="change-product-info-state">
+    <input type="checkbox" id="change-product-info-state" hidden>
     <div class="change-product-info">
         <form class="box" method="POST" action="/api/change-product-info">
             <input type="text" name="productId" hidden>

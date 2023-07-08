@@ -1,7 +1,27 @@
 .product-list-container {
   margin-top: 30px;
 
+  .add-product {
+    width: 300px;
+    height: 60px;
+    background-color: $primaryColor;
+    display: block;
+    border-radius: 10px;
+    text-align: center;
+    line-height: 60px;
+    color: $whiteColor;
+    border: 2px solid $primaryColor;
+    transition: all ease 500ms;
+
+    &:hover {
+      cursor: pointer;
+      background-color: $whiteColor;
+      color: $primaryColor;
+    }
+  }
+
   .product-list {
+    margin-top: 30px;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 20px;
@@ -77,13 +97,20 @@
   }
 
   #change-product-info-state:checked + .change-product-info {
-    display: block !important;
+    opacity: 1;
+    pointer-events: unset;
+
+    .box {
+      transform: translate(-50%, -50%);
+    }
   }
   .change-product-info {
     position: fixed;
     inset: 0;
     z-index: 3;
-    display: none;
+    opacity: 0;
+    transition: all ease 300ms;
+    pointer-events: none;
 
     .box {
       width: 1000px;
@@ -92,8 +119,9 @@
       position: absolute;
       top: 50%;
       left: 50%;
-      transform: translate(-50%, -50%);
+      transform: translate(-50%, 0%);
       background-color: $whiteColor;
+      transition: inherit;
       z-index: 2;
       border-radius: 10px;
       box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;

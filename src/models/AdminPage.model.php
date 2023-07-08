@@ -25,4 +25,10 @@ class AdminPageModel
 
     return $productList;
   }
+
+  public function getAllDeal()
+  {
+    $dealList = $this->db->selectQuery("SELECT * FROM deal");
+    return $dealList;
+  }
 }
