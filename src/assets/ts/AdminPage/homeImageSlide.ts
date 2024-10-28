@@ -1,4 +1,4 @@
-import { $, $$ } from "../Common/index";
+import { $, $$ } from "../Common/selectElm";
 
 class HomeImageSlide {
     private inputFileImageList: HTMLInputElement[];

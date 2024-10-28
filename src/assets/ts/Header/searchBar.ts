@@ -1,5 +1,5 @@
 // <reference path="../../types/product.d"/>
-import { $, $$ } from '../Common/index';
+import { $, $$ } from '../Common/selectElm';
 
 class SearchBar {
 	private searchInput: HTMLInputElement;
@@ -58,7 +58,7 @@ class SearchBar {
 	}
 
 	private handleSearchProduct() {
-		clearInterval(this.timeoutIdSubmitAfterStopInputSearch);
+		clearInterval(Number(this.timeoutIdSubmitAfterStopInputSearch));
 
 		this.timeoutIdSubmitAfterStopInputSearch = setTimeout(async () => {
 			if (!this.searchInput.value) {

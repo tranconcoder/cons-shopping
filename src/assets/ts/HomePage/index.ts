@@ -1,1 +1,2 @@
 import './imageSlide';
+import "./popularProduct"

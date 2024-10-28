@@ -1,6 +1,6 @@
 import ValidateForm from './validateFormMethod';
 import type { ValidateFormConfig } from './validateFormMethod';
-import { $, $$ } from '../Common/index';
+import { $, $$ } from '../Common/selectElm';
 
 class RegisterForm extends ValidateForm {
 	private formElm: HTMLFormElement;

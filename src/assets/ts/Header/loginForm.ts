@@ -1,4 +1,4 @@
-import { $, $$ } from '../Common/index';
+import { $, $$ } from '../Common/selectElm';
 import ValidateForm from './validateFormMethod';
 
 class LoginForm extends ValidateForm {

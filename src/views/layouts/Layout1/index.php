@@ -10,7 +10,6 @@
 		/>
 		<link rel="stylesheet" href="./src/styles/css/Layout1/styles.css">
 
-		<script src="./src/assets/js/Common/index.js"></script>
 
 		<title>Document</title>
 	</head>
@@ -23,4 +22,6 @@
 			<div class="body"><?php $this->bodyController->invoke(); ?></div>
 		</div>
 	</body>
+
+    <script src="/src/assets/js/Layout1.js"></script>
 </html>

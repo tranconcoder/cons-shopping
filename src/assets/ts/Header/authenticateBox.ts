@@ -1,4 +1,4 @@
-import { $, $$ } from '../Common/index';
+import { $, $$ } from '../Common/selectElm';
 import LoginForm from './loginForm';
 import RegisterForm from './registerForm';
 

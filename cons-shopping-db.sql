@@ -22,7 +22,8 @@ SET time_zone = "+00:00";
 --
 
 -- --------------------------------------------------------
-
+CREATE DATABASE `cons-shopping-db`;
+USE `cons-shopping-db`;
 --
 -- Table structure for table `authenticate`
 --
@@ -304,7 +305,6 @@ ALTER TABLE `image`
   ADD UNIQUE KEY `product_id_2` (`product_id`,`order`),
   ADD KEY `image_id` (`image_id`),
   ADD KEY `product_id` (`product_id`);
-
 --
 -- Indexes for table `product`
 --

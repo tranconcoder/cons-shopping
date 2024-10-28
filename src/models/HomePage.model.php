@@ -2,46 +2,46 @@
 
 class HomePageModel extends DatabaseSQL
 {
-  public function getImageList()
-  {
-    $sql = "SELECT * FROM `slider-images` ORDER BY `order`";
-    $imageList = $this->selectQuery($sql);
+    public function getImageList()
+    {
+        $sql = "SELECT * FROM `slider-images` ORDER BY `order`";
+        $imageList = $this->selectQuery($sql);
 
-    return $imageList;
-  }
+        return $imageList;
+    }
 
-  public function getCategoryListForSlider()
-  {
-    $categoryList = [
-      [
-        "title" => "Smartphone",
-        "link" => "#",
-        "icon" => "fa-solid fa-mobile-button",
-      ],
-      [
-        "title" => "Điện thoại di động",
-        "link" => "#",
-        "icon" => "fa-solid fa-mobile-retro",
-      ],
-      [
-        "title" => "Máy tính bảng",
-        "link" => "#",
-        "icon" => "fa-solid fa-tablet-screen-button",
-      ],
-      [
-        "title" => "Phụ kiện",
-        "link" => "#",
-        "icon" => "fa-solid fa-bolt",
-      ],
-    ];
+    public function getCategoryListForSlider()
+    {
+        $categoryList = [
+            [
+                "title" => "Smartphone",
+                "link" => "#",
+                "icon" => "fa-solid fa-mobile-button",
+            ],
+            [
+                "title" => "Điện thoại di động",
+                "link" => "#",
+                "icon" => "fa-solid fa-mobile-retro",
+            ],
+            [
+                "title" => "Máy tính bảng",
+                "link" => "#",
+                "icon" => "fa-solid fa-tablet-screen-button",
+            ],
+            [
+                "title" => "Phụ kiện",
+                "link" => "#",
+                "icon" => "fa-solid fa-bolt",
+            ],
+        ];
 
-    return $categoryList;
-  }
+        return $categoryList;
+    }
 
-  public function getPromotionalPhoneList()
-  {
-    $promotionalPhoneList = $this->selectQuery(
-      "SELECT product.*, (product.cost - deal.deal_cost) as cost_deal, image.source as image
+    public function getPromotionalPhoneList()
+    {
+        $promotionalPhoneList = $this->selectQuery(
+            "SELECT product.*, (product.cost - deal.deal_cost) as cost_deal, image.source as image
 				FROM product, deal, image
 				WHERE
 					product.deal_id = deal.deal_id 
@@ -54,20 +54,20 @@ class HomePageModel extends DatabaseSQL
 							LIMIT 1
 					)
 			"
-    );
+        );
 
-    // Format money after render
-    for ($i = 0; $i < count($promotionalPhoneList); $i++) {
-      $cost = $promotionalPhoneList[$i]["cost"];
-      $costDeal = $promotionalPhoneList[$i]["costDeal"];
+        // Format money after render
+        for ($i = 0; $i < count($promotionalPhoneList); $i++) {
+            $cost = $promotionalPhoneList[$i]["cost"];
+            $costDeal = $promotionalPhoneList[$i]["costDeal"];
 
-      $costFormatted = number_format($cost, 0, ".", ",");
-      $costDealFormatted = number_format($costDeal, 0, ".", ",");
+            $costFormatted = number_format($cost, 0, ".", ",");
+            $costDealFormatted = number_format($costDeal, 0, ".", ",");
 
-      $promotionalPhoneList[$i]["cost"] = $costFormatted;
-      $promotionalPhoneList[$i]["costDeal"] = $costDealFormatted;
+            $promotionalPhoneList[$i]["cost"] = $costFormatted;
+            $promotionalPhoneList[$i]["costDeal"] = $costDealFormatted;
+        }
+
+        return $promotionalPhoneList;
     }
-
-    return $promotionalPhoneList;
-  }
 }
