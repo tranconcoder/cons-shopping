@@ -46,33 +46,42 @@ switch ($uri) {
 
   case "/api/remove-image-slider":
     include_once $controllerDir . "/apis/RemoveImageSliderApi.controller.php";
-    $removeImageSliderApi = new RemoveImageSliderApiController();
+    new RemoveImageSliderApiController();
     exit();
 
   case "/api/update-info-image-slider":
     include_once $controllerDir .
       "/apis/ChangeInfoImageSliderApi.controller.php";
-    $changeInfoImageSLiderApi = new ChangeInfoImageSliderApiController();
+    new ChangeInfoImageSliderApiController();
     exit();
 
   case "/api/swap-order-image-slider":
     include_once $controllerDir . "/apis/SwapOrderImageSlideApi.controller.php";
-    $swapOrderImageSlideApiController = new SwapOrderImageSlideApiController();
+    new SwapOrderImageSlideApiController();
     exit();
 
-  case "/api/remove-product":
-    include_once $controllerDir . "/apis/RemoveProductApi.controller.php";
-    $removeProductApiController = new RemoveProductApiController();
-    exit();
-
+  //
+  // PRODUCT
+  //
   case "/api/get-product":
     include_once $controllerDir . "/apis/GetProductApi.controller.php";
-    $getProductApiController = new GetProductApiController();
+    new GetProductApiController();
+    exit();
+
+  case "/api/get-all-product":
+    include_once $controllerDir . "/apis/GetAllProductApi.controller.php";
+    new GetAllProductApiController();
+
     exit();
 
   case "/api/change-product-info":
     include_once $controllerDir . "/apis/ChangeProductInfoApi.controller.php";
     $changeProductInfoApiController = new ChangeProductInfoApiController();
+    exit();
+
+  case "/api/remove-product":
+    include_once $controllerDir . "/apis/RemoveProductApi.controller.php";
+    $removeProductApiController = new RemoveProductApiController();
     exit();
 
   case "/api/get-all-deal":
@@ -129,6 +138,14 @@ switch ($uri) {
     }
 
     $bodyController = new AdminPageController();
+    $controller = new Layout1Controller($bodyController);
+
+    break;
+
+  case "/cart":
+    include_once $controllerDir . "/CartPage.controller.php";
+
+    $bodyController = new CartPageController();
     $controller = new Layout1Controller($bodyController);
 
     break;

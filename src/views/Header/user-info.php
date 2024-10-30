@@ -26,7 +26,7 @@
 
 			<ul>
 				<li>
-					<a href="">
+					<a href="/cart">
 						<img src="./src/assets/images/Common/Header/logout.png" alt="logout">
 						<span>Xem giỏ hàng</span>
 					</a>

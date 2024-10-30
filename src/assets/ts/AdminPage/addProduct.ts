@@ -1,4 +1,4 @@
-import { $ } from "../Common/selectElm";
+import { $ } from "../utils/selectElm";
 
 export default class AddProduct {
     private addProductForm: HTMLFormElement;

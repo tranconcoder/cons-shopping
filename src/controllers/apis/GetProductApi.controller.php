@@ -16,10 +16,10 @@ class GetProductApiController
     $this->productId = $_GET["productId"];
     $this->product = $this->model->getProduct($this->productId);
 
-    if (!$this->product) {
+    if (!$this->product[0]) {
       $this->handleError("Error: not found product");
     } else {
-      exit(json_encode($this->product));
+      exit(json_encode($this->product[0]));
     }
   }
 

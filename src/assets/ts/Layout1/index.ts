@@ -1,5 +1,5 @@
-import { $ } from "../Common/selectElm";
-import Storage from "../Common/storage";
+import { $ } from "../utils/selectElm";
+import Storage from "../utils/storage";
 
 // HTML element
 const cartList = Storage.getCartList();

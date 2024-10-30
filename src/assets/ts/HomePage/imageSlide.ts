@@ -1,4 +1,4 @@
-import { $ } from "../Common/selectElm";
+import { $ } from "../utils/selectElm";
 
 class ImageSlide {
     // DOM element

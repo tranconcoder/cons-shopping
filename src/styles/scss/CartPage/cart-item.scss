@@ -1,0 +1,37 @@
+@import "../_package/index.scss";
+
+.cart-item {
+  display: flex;
+  align-items: center;
+  box-shadow: 0 0 0.5rem 0 rgba(#000, 0.1);
+  padding: 0.5rem;
+  gap: 1rem;
+  border-radius: 1rem;
+
+  img,
+  .name,
+  .count,
+  .price {
+    flex: 1;
+  }
+
+  img {
+    max-width: 6rem;
+  }
+
+  .count {
+    @include size(false, 2rem);
+    @include flex(row, stretch, center);
+
+    > input {
+      border: none;
+      text-align: center;
+    }
+
+    > button {
+      @include size(2rem, false);
+      border: none;
+      cursor: pointer;
+    }
+  }
+}

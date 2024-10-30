@@ -1,5 +1,4 @@
-// <reference path="../../types/product.d"/>
-import { $, $$ } from '../Common/selectElm';
+import { $, $$ } from '../utils/selectElm';
 
 class SearchBar {
 	private searchInput: HTMLInputElement;
