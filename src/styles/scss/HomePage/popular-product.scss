@@ -1,3 +1,5 @@
+@import "../_package/index.scss";
+
 .popular-product-ctn {
   .popular-product-list {
     list-style: none;
@@ -10,6 +12,7 @@
       $buttonHeight: 50px;
       $brs: 10px;
 
+      @include flex(column, stretch);
       box-shadow: 0 0 10px 0 rgba(#000, 0.1);
       border-radius: $brs;
       padding: $paddingSize;
@@ -40,6 +43,7 @@
           height: calc(100% - (2 * #{$separateSize}));
           display: block;
           border-radius: $brs;
+          object-fit: contain;
         }
       }
 
@@ -71,6 +75,7 @@
         align-items: center;
         row-gap: 0px;
         overflow: hidden;
+        flex: 1;
 
         > p {
           min-width: 50%;

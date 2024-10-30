@@ -16,12 +16,14 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8mb4 */;
+SET SQL_SAFE_UPDATES = 0;
 
 --
 -- Database: `cons-shopping-db`
 --
 
 -- --------------------------------------------------------
+DROP DATABASE `cons-shopping-db`;
 CREATE DATABASE `cons-shopping-db`;
 USE `cons-shopping-db`;
 --
@@ -85,7 +87,7 @@ INSERT INTO `image` (`image_id`, `product_id`, `source`, `order`) VALUES
 ('31c56576-068a-11ee-8d7b-ac74b16ee51f', '13adced0-068a-11ee-8d7b-ac74b16ee51f', 'https://thegioiso360.vn/wp-content/uploads/2021/06/Xiaomi-A1.png', 0),
 ('585d2cad-08ce-11ee-bb09-ac74b16ee51f', '13adced0-068a-11ee-8d7b-ac74b16ee51f', 'https://www.techsignin.com/wp-content/uploads/2022/10/xiaomi-redmi-a1-4.png', 1),
 ('69ed31c6-0997-11ee-8aa5-ac74b16ee51f', '13adced0-068a-11ee-8d7b-ac74b16ee51f', 'https://cdn.hoanghamobile.com/i/preview/Uploads/2022/10/04/image-removebg-preview-73.png', 2),
-('6a83cb2e-0689-11ee-8d7b-ac74b16ee51f', 'c8004af5-0667-11ee-8d7b-ac74b16ee51l', 'https://didongmango.com/images/products/2022/09/23/small/600_s22_ultra_5g_black_2_1663940728.png.png', 0),
+('6a83cb2e-0689-11ee-8d7b-ac74b16ee51f', 'c8004af5-0667-11ee-8d7b-ac74b16ee51l', 'https://galaxydidong.vn/wp-content/uploads/2022/07/galaxydidong-s22-ultra-black.webp', 0),
 ('7c550ab8-0667-11ee-8d7b-ac74b16ee51f', 'c8004af5-0667-11ee-8d7b-ac74b16ee51g', 'https://www.drei.at/media/common/shop/handybilder/6800297-2_11_ImageSmaller.png', 0),
 ('8da684fe-0997-11ee-8aa5-ac74b16ee51f', '13adced0-068a-11ee-8d7b-ac74b16ee51f', 'https://images2.thanhnien.vn/Uploaded/hongkyqc/2022_10_10/xiaomi-2-8425.png', 3),
 ('93b7e37f-0665-11ee-8d7b-ac74b16ee51f', '27901873-0667-11ee-8d7b-ac74b16ee51h', 'https://cdn.shopify.com/s/files/1/0632/3778/3783/products/SilverPro-iphone-14-pro-finish-select-202209-6-1inch-silver-removebg-preview.png?v=1663220402&width=1454&height=1056', 0),

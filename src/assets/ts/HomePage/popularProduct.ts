@@ -1,14 +1,7 @@
 import { currencyFormatter } from "../utils/currency.util";
-import { $, $$ } from "../utils/selectElm";
+import { $} from "../utils/selectElm";
 import Storage from "../utils/storage";
-
-const cartButtonList = $$(".popular-product-list button.add-to-cart");
-
-cartButtonList.forEach((button) => {
-    button.addEventListener("click", () => {
-        Storage.addCart("123456");
-    });
-});
+import { event } from "../utils/event.util";
 
 export default class PopularProduct {
     private popularProductList: Array<Product>;
@@ -37,7 +30,8 @@ export default class PopularProduct {
             const cartButton = $("button.add-to-cart", item);
 
             cartButton.addEventListener("click", (e) => {
-                Storage.addCart(item.dataset.id as string);
+                document.dispatchEvent(event);
+                Storage.addToCart(item.dataset.id as string);
             });
         });
     }

@@ -5,11 +5,11 @@ class GetProductApiModel extends DatabaseSQL
   public function getProduct(string $productId)
   {
     $product = $this->selectQuery("
-			SELECT product.*, image.source as thumb, deal.deal_cost
+            SELECT `product`.*, `image`.source as thumb, deal.deal_cost
 				FROM product, image, deal
 				WHERE
                     product.product_id = '$productId'
-					AND product.deal_id = deal.deal_id
+					AND (isnull(product.deal_id) OR product.deal_id = deal.deal_id)
 					AND image.image_id = (
 						SELECT image_id
 							FROM image AS image2
@@ -17,6 +17,7 @@ class GetProductApiModel extends DatabaseSQL
 							ORDER BY image2.order ASC
 							LIMIT 1
 					)
+				LIMIT 1;
         ");
 
     return $product;

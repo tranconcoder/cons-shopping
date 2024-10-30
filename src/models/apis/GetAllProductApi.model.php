@@ -13,10 +13,13 @@ class GetAllProductApiModel
   {
     return $this->db->selectQuery("
             SELECT `product`.*, `image`.source AS thumb
-                FROM `product`
-                INNER JOIN `image`
-                ON `product`.`product_id` = `image`.`product_id`
-                LIMIT 8
+                FROM `product`, `image`
+                WHERE `image`.`image_id` = (
+                    SELECT `image_id`
+                        FROM `image`
+                        WHERE `product`.`product_id` = `image`.`product_id`
+                        LIMIT 1
+                )
         ");
   }
 }
