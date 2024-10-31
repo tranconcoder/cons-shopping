@@ -8,15 +8,16 @@
   gap: 1rem;
   border-radius: 1rem;
 
-  img,
-  .name,
   .count,
   .price {
     flex: 1;
   }
+  .name {
+    width: 10rem;
+  }
 
   img {
-    max-width: 6rem;
+    width: 6rem;
   }
 
   .count {

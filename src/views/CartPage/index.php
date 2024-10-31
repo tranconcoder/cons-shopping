@@ -1,11 +1,13 @@
 <div class="cart-page-container">
-    <?php include_once __DIR__ . "/./bill.php"; ?>
+    <aside class="left-side">
+        <?php include_once __DIR__ . "/./bill.php"; ?>
+    </aside>
 
-    <div class="cart-list-wrapper">
+    <aside class="right-side">
         <?php include_once __DIR__ . "/./toolbar.php"; ?>
 
-        <ul class="cart-list"></ul>
-    </div>
+        <ul id="cart-list" class="cart-list"></ul>
+    </aside>
 </div>
 
 <script src="/src/assets/js/CartPage.js"></script>

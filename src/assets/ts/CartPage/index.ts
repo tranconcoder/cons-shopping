@@ -2,22 +2,26 @@ import { $ } from "../utils/selectElm";
 import Storage from "../utils/storage";
 import { currencyFormatter } from "../utils/currency.util";
 import { CartStorage } from "../../types/cart";
-import {event} from "../utils/event.util";
+import { event } from "../utils/event.util";
 
 class CartPage {
     private productIdList: Array<string>;
     private productList: Array<Product>;
     private cartList: CartStorage;
-    private cartListCtn: HTMLUListElement;
     private cartItemList: Array<HTMLLIElement>;
+    // DOM element
+    private cartListCtn: HTMLUListElement;
+    private buyButton: HTMLButtonElement;
 
     constructor() {
         // Set default value
         this.productIdList = [];
         this.productList = [];
-        this.cartListCtn = document.createElement("ul");
         this.cartItemList = [];
         this.cartList = {};
+        // DOM element
+        this.cartListCtn = document.createElement("ul");
+        this.buyButton = document.createElement("button");
 
         this.initData();
     }
@@ -25,12 +29,7 @@ class CartPage {
     private async initData() {
         this.cartList = Storage.getCartList();
         this.productIdList = Object.keys(this.cartList);
-
-        const productIdSet = [...new Set(this.productIdList)];
-        const resArr = await Promise.all(
-            productIdSet.map((id) => fetch(`/api/get-product?productId=${id}`))
-        );
-        this.productList = await Promise.all(resArr.map((res) => res.json()));
+        await this.updateProductList(this.productIdList);
 
         this.initElm();
         this.initView();
@@ -38,7 +37,8 @@ class CartPage {
     }
 
     private initElm() {
-        this.cartListCtn = $(".cart-list-wrapper .cart-list");
+        this.cartListCtn = $("#cart-list");
+        this.buyButton = $("#buy-button");
     }
 
     private initView() {
@@ -78,6 +78,9 @@ class CartPage {
     }
 
     private initEvent() {
+        //
+        // Cart item element
+        //
         this.cartItemList.forEach((item, index) => {
             const sub = $(".sub", item);
             const add = $(".add", item);
@@ -96,7 +99,7 @@ class CartPage {
                 productPriceElm.textContent =
                     currencyFormatter.format(totalPriceOfProduct);
 
-                document.dispatchEvent(event)
+                document.dispatchEvent(event);
             };
 
             add.addEventListener("click", () => {
@@ -120,6 +123,30 @@ class CartPage {
                 handleChangeInput();
             });
         });
+
+        //
+        // Update cart list
+        //
+        document.addEventListener("cart-change", () => {
+            this.cartList = Storage.getCartList();
+        });
+
+        //
+        // Buy Button
+        //
+        this.buyButton.addEventListener("click", this.handleClickBuyButton);
+    }
+
+    private handleClickBuyButton(e: Event) {
+        console.log(123);
+    }
+
+    private async updateProductList(productIdList: Array<string>) {
+        const productIdSet = [...new Set(productIdList)];
+        const resArr = await Promise.all(
+            productIdSet.map((id) => fetch(`/api/get-product?productId=${id}`))
+        );
+        this.productList = await Promise.all(resArr.map((res) => res.json()));
     }
 }
 

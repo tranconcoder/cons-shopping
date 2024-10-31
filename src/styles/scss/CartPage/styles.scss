@@ -5,9 +5,11 @@
   align-items: start;
   gap: 1rem;
 
-  @import "./bill.scss";
+  aside.left-side {
+    @import "./bill.scss";
+  }
 
-  .cart-list-wrapper {
+  aside.right-side {
     flex: 1;
     align-self: stretch;
 

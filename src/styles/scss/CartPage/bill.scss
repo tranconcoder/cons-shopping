@@ -1,17 +1,69 @@
+@import "../_package/index.scss";
+
 .bill-ctn {
   width: 20rem;
   box-shadow: 0 0 1rem 0 rgba(#000, 0.1);
   border-radius: 1rem;
   overflow: hidden;
 
-  header {
-    background-color: $primaryColor;
+  header,
+  footer {
     padding: 1rem;
     font-weight: bold;
     color: $whiteColor;
-    border-radius: inherit;
+    border-radius: inherit inherit 0 0;
+    background-color: $primaryColorBlack;
   }
 
   .bill-body {
+    padding: 1rem;
+
+    > ul {
+      @include flex(column, stretch, center);
+      gap: 1rem;
+
+      > li {
+        @include text($textColor, 15px);
+      }
+    }
+  }
+
+  footer {
+    @include flex(row, center, space-between);
+
+    p {
+      @include text($primaryColor);
+    }
+  }
+}
+
+.note {
+  textarea {
+    @include size(100%, false);
+    @include minSize(false, 10rem);
+    @include maxSize(false, 20rem);
+    margin-top: 1rem;
+    resize: vertical;
+    border: 2px solid $primaryColorBlack;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    box-shadow: 0 0 0.5rem 0 rgba(#000, 0.1);
+  }
+}
+
+.buy-button {
+  @include size(100%, 3rem);
+  @include text($whiteColor, 1rem, 600);
+  margin-top: 1rem;
+  background-color: $primaryColorBlack;
+  outline: none;
+  border: 2px solid $primaryColorBlack;
+  border-radius: 0.5rem;
+  transition: all ease 300ms;
+
+  &:hover {
+    @include text($primaryColorBlack);
+    cursor: pointer;
+    background-color: $whiteColor;
   }
 }
