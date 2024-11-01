@@ -4,12 +4,14 @@ import Storage from "../utils/storage";
 // HTML element
 const cartTitleElm = $<HTMLParagraphElement>(".header-wrapper .cart");
 
-cartTitleElm.innerText = `Giỏ hàng: ${Storage.getCartCount()}`;
+if (cartTitleElm)
+    cartTitleElm.innerText = `Giỏ hàng: ${Storage.getCartCount()}`;
 
 document.addEventListener(
     "cart-change",
-    (e) => {
-        cartTitleElm.innerText = `Giỏ hàng: ${Storage.getCartCount()}`;
+    () => {
+        if (cartTitleElm)
+            cartTitleElm.textContent = `Giỏ hàng: ${Storage.getCartCount()}`;
     },
     false
 );

@@ -72,32 +72,40 @@ switch ($uri) {
     include_once $controllerDir . "/apis/GetAllProductApi.controller.php";
     new GetAllProductApiController();
 
-    exit();
-
   case "/api/change-product-info":
     include_once $controllerDir . "/apis/ChangeProductInfoApi.controller.php";
-    $changeProductInfoApiController = new ChangeProductInfoApiController();
-    exit();
+    new ChangeProductInfoApiController();
 
   case "/api/remove-product":
     include_once $controllerDir . "/apis/RemoveProductApi.controller.php";
-    $removeProductApiController = new RemoveProductApiController();
-    exit();
+    new RemoveProductApiController();
 
+  //
+  // ORDER
+  //
+  case "/api/add-order":
+    include_once $controllerDir . "/apis/AddOrderApi.controller.php";
+    new AddOrderApiController();
+
+  case "/api/remove-order":
+    include_once $controllerDir . "/apis/RemoveOrderApi.controller.php";
+    new RemoveOrderApiController();
+
+  //
+  // DEAL
+  //
   case "/api/get-all-deal":
     include_once $controllerDir . "/apis/GetAllDealApi.controller.php";
-    $getAllDealApiController = new GetAllDealApiController();
-    exit();
+    new GetAllDealApiController();
 
   case "/api/get-product-images":
     include_once $controllerDir . "/apis/GetProductImageApi.controller.php";
-    $getProductImagesApiController = new GetProductImageApiController();
-    exit();
+    new GetProductImageApiController();
 
   case "/api/change-image":
     include_once $controllerDir / "/apis/ChangeImageApi.controller.php";
-    $changeImageApiController = new ChangeImageApiController();
-    exit();
+    new ChangeImageApiController();
+
   case "/api/remove-product-image":
     include_once $controllerDir . "/apis/RemoveProductImageApi.controller.php";
     $removeProductImageApiController = new RemoveProductImageApiController();
@@ -146,6 +154,14 @@ switch ($uri) {
     include_once $controllerDir . "/CartPage.controller.php";
 
     $bodyController = new CartPageController();
+    $controller = new Layout1Controller($bodyController);
+
+    break;
+
+  case "/order":
+    include_once $controllerDir . "/OrderPage.controller.php";
+
+    $bodyController = new OrderPageController();
     $controller = new Layout1Controller($bodyController);
 
     break;

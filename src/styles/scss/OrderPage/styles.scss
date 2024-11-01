@@ -1,0 +1,113 @@
+@import "../_package/index.scss";
+
+.order-table {
+  @include size(100%, false);
+  table-layout: fixed;
+  border-collapse: collapse;
+
+  thead {
+    tr {
+      @include size(false, 3.6rem);
+
+      > th:first-child {
+        width: 10rem;
+      }
+    }
+  }
+
+  tbody {
+    box-shadow: 0 0 0.6rem 0 rgba(#000, 0.1);
+    border-radius: 1rem;
+    margin-top: 1rem;
+
+    tr {
+      &:not(:last-child) {
+        border-bottom: 1px solid #ccc;
+      }
+
+      td {
+        @include size(false, 4rem);
+        text-align: center;
+      }
+
+      td.id {
+        @include text($primaryColorBlack);
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        padding-left: 1rem;
+      }
+
+      td.products,
+      td.deal {
+        padding-block: 1rem;
+
+        ol,
+        ul {
+          @include flex(column, center);
+          gap: 1rem;
+          list-style-type: none;
+
+          li {
+            @include size(100%, 1rem);
+          }
+        }
+      }
+
+      td.products {
+        ul {
+          li {
+            color: $primaryColorBlack;
+            text-align: left;
+
+            &:hover {
+              text-decoration: underline;
+            }
+
+            a {
+              line-break: anywhere;
+              white-space: nowrap;
+              overflow: hidden;
+              text-overflow: ellipsis;
+              text-decoration: none;
+              color: currentColor;
+            }
+          }
+        }
+      }
+
+      td.price {
+        @include text($primaryColorBlack, 1rem, 600);
+      }
+
+      td.actions {
+        div {
+          @include flex(row, center, center);
+          gap: 10px;
+
+          button {
+            --color: #{$primaryColorBlack};
+
+            @include size(2.3rem);
+            @include text($whiteColor, 1rem, 600);
+            border-radius: 0.3rem;
+            outline: none;
+            border: 2px solid var(--color);
+            background-color: var(--color);
+            transition: all ease 300ms;
+
+            &:hover {
+              cursor: pointer;
+              color: var(--color);
+              background-color: $whiteColor;
+            }
+          }
+        }
+
+        span.order-id {
+          @include text($textColor, 0.5rem);
+        }
+      }
+    }
+  }
+}

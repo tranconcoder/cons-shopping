@@ -12,9 +12,13 @@ class CartPage {
     // DOM element
     private cartListCtn: HTMLUListElement;
     private buyButton: HTMLButtonElement;
+    private noteText: HTMLTextAreaElement;
+    private addressText: HTMLTextAreaElement;
 
     constructor() {
+        //
         // Set default value
+        //
         this.productIdList = [];
         this.productList = [];
         this.cartItemList = [];
@@ -22,6 +26,8 @@ class CartPage {
         // DOM element
         this.cartListCtn = document.createElement("ul");
         this.buyButton = document.createElement("button");
+        this.noteText = document.createElement("textarea");
+        this.addressText = document.createElement("textarea");
 
         this.initData();
     }
@@ -39,6 +45,8 @@ class CartPage {
     private initElm() {
         this.cartListCtn = $("#cart-list");
         this.buyButton = $("#buy-button");
+        this.noteText = $("#note");
+        this.addressText = $("#address");
     }
 
     private initView() {
@@ -134,11 +142,21 @@ class CartPage {
         //
         // Buy Button
         //
-        this.buyButton.addEventListener("click", this.handleClickBuyButton);
-    }
+        const handleClickBuyButton = (e: Event) => {
+            const product = this.cartList;
+            const note = this.noteText.value;
+            const address = this.addressText.value;
+            const payload = new FormData();
 
-    private handleClickBuyButton(e: Event) {
-        console.log(123);
+            payload.append("product", JSON.stringify(product));
+            payload.append("address", address);
+            payload.append("note", note);
+
+            fetch("/api/add-order", { method: "POST", body: payload })
+                .then((res) => res.json())
+                .then((data) => console.log(data));
+        };
+        this.buyButton.addEventListener("click", handleClickBuyButton);
     }
 
     private async updateProductList(productIdList: Array<string>) {
@@ -150,4 +168,4 @@ class CartPage {
     }
 }
 
-const cartPage = new CartPage();
+new CartPage();

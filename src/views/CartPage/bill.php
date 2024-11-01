@@ -13,6 +13,8 @@
 </div>
 
 <div class="note">
+    <textarea id="address" placeholder="Địa chỉ nhận hàng"></textarea>
+
     <textarea id="note" placeholder="Ghi chú cho người bán"></textarea>
 </div>
 

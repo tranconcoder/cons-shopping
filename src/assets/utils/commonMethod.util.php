@@ -52,3 +52,9 @@ function isAdmin(string $rankId)
 
   return false;
 }
+
+function handleError(string $message)
+{
+  http_response_code(400);
+  exit(json_encode(["error " => true, "message " => $message]));
+}

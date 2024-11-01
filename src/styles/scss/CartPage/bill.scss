@@ -38,6 +38,8 @@
 }
 
 .note {
+  @include flex(column, center);
+
   textarea {
     @include size(100%, false);
     @include minSize(false, 10rem);
@@ -48,6 +50,11 @@
     border-radius: 0.5rem;
     padding: 1rem;
     box-shadow: 0 0 0.5rem 0 rgba(#000, 0.1);
+  }
+
+  #address {
+    @include minSize(false, 5rem);
+    @include maxSize(false, 10rem);
   }
 }
 
