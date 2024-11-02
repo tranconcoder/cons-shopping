@@ -160,10 +160,15 @@ switch ($uri) {
 
   case "/order":
     include_once $controllerDir . "/OrderPage.controller.php";
-
     $bodyController = new OrderPageController();
     $controller = new Layout1Controller($bodyController);
 
+    break;
+
+  case "/payment":
+    include_once $controllerDir . "/PaymentPage.controller.php";
+    $bodyController = new PaymentPageController();
+    $controller = new Layout1Controller($bodyController);
     break;
 
   default:

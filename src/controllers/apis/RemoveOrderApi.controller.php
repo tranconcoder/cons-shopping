@@ -11,7 +11,7 @@ class RemoveOrderApiController
   {
     $this->model = new RemoveOrderApiModel();
 
-    $this->orderId = $_POST["orderId"];
+    $this->orderId = $_GET["orderId"];
 
     if (!isset($this->orderId)) {
       handleError("Missing field: orderId!");

@@ -17,7 +17,7 @@
     <tbody>
         <?php $index = 1; ?>
         <?php foreach ($this->orderList as $orderId => $order) { ?>
-            <tr>
+            <tr data-order-id="<?= $orderId ?>">
                 <td class="id">#<?= $index++ ?></td>
                 <td class="products">
                     <ul>
@@ -39,10 +39,10 @@
                 <td class="price">20.000.000đ</td>
                 <td class="actions">
                     <div>
-                        <button>
+                        <button class="accept-button">
                             <i class="fa-solid fa-check"></i>
                         </button>
-                        <button style="--color: red;">
+                        <button class="remove-button" style="--color: red;">
                             <i class="fa-solid fa-trash"></i>
                         </button>
                     </div>
@@ -53,3 +53,5 @@
         <?php } ?>
     </tbody>
 </table>
+
+<script src="/src/assets/js/OrderPage.js"></script>
