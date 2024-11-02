@@ -21,7 +21,7 @@ function getEntries() {
 }
 
 module.exports = {
-	mode: 'development',
+	mode: 'production',
 	watch: true,
 	watchOptions: {
 		ignored: /node_modules/,
