@@ -1,0 +1,43 @@
+@import "../_package/index.scss";
+
+.payment-ctn {
+  @include size(30rem, false);
+  margin-inline: auto;
+  box-shadow: 0 0 1rem 0 rgba(#000, 0.1);
+  border-radius: 0.5rem;
+
+  .header,
+  .footer {
+    @include size(100%, 3rem);
+    @include flex(row, center);
+    @include text($whiteColor, 1.1rem, 500);
+    background-color: $primaryColorBlack;
+    padding: 1.5rem;
+    border-radius: inherit;
+  }
+
+  .header {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+
+  .body {
+    padding: 1.5rem;
+  }
+
+  .footer {
+    @include flex(row, center, space-between);
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+
+    button.payment {
+      @include text($primaryColorBlack, 0.8rem, 500);
+      cursor: pointer;
+      background-color: $whiteColor;
+      outline: none;
+      border: none;
+      border-radius: 0.3rem;
+      padding: 0.5rem 1rem;
+    }
+  }
+}

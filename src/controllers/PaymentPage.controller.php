@@ -7,6 +7,10 @@ class PaymentPageController
 
   public function __construct()
   {
+    if (!isset($_GET["orderId"])) {
+      header("Location: /cart");
+      exit();
+    }
   }
 
   public function invoke()
