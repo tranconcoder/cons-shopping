@@ -1,0 +1,11 @@
+{
+    "name": "tvconss/cons-shopping",
+    "autoload": {
+        "psr-4": {
+            "Tvconss\\ConsShopping\\": "src/"
+        }
+    },
+    "require": {
+        "voku/anti-xss": "^4.1"
+    }
+}

@@ -1,8 +1,25 @@
 <?php
-session_start();
 
 error_reporting(E_ALL);
 ini_set("display_errors", "On");
+
+use voku\helper\AntiXSS;
+
+require_once __DIR__ . "/vendor/autoload.php";
+
+$antiXss = new AntiXSS();
+
+foreach ($_GET as $key => $value) {
+  $_GET[$key] = $antiXss->xss_clean($value);
+}
+foreach ($_POST as $key => $value) {
+  $_POST[$key] = $antiXss->xss_clean($value);
+}
+foreach ($_SESSION as $key => $value) {
+  $_SESSION[$key] = $antiXss->xss_clean($value);
+}
+
+session_start();
 
 // Include util
 include_once __DIR__ . "/./src/assets/utils/index.php";
