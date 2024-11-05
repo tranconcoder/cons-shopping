@@ -30,6 +30,7 @@
             <p class="error-message">Không được để trống trường này!</p>
         </div>
 
+        <img id="qr-code" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSwP2UF4D2Zce5HH14rRICwLoJoqrKm_JaMBw&s" alt="" width="300px">
     </div>
 
     <footer class="footer">
@@ -38,3 +39,6 @@
         <button class="payment">Thanh toán</button>
     </footer>
 </div>
+
+
+<script src="/src/assets/js/PaymentPage.js"></script>

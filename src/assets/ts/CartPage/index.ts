@@ -154,7 +154,9 @@ class CartPage {
 
             fetch("/api/add-order", { method: "POST", body: payload })
                 .then((res) => res.json())
-                .then((data) => console.log(data));
+                .then((data) => {
+                    location.href = `/payment?orderId=${data}`;
+                });
         };
         this.buyButton.addEventListener("click", handleClickBuyButton);
     }
